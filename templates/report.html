@@ -1,7 +1,9 @@
-{% extend base.html %}
-    {% for report in report  %}
+{% extends 'base.html'%} {% block content %}
+{% for report in report  %}
         <p>User: {{report.username}}</p>
         
         <p>Description: {{report.incident_description}}</p>
     {% endfor %}
 
+
+{% endblock %}
