@@ -1,6 +1,6 @@
 # import pymongo
 import os
-from flask import Flask, render_template
+from flask import Flask, render_template, url_for
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 
@@ -12,7 +12,7 @@ if path.exists("env.py"):
 
 app.config["MONGO_URI"] = os.environ.get('MONGO_URI')
 app.config["MONGO_DBNAME"] = "projectDB"
-# COLLECTION_NAME = "report"
+COLLECTION_NAME = "report"
 
 mongo = PyMongo(app)
 
@@ -20,6 +20,7 @@ mongo = PyMongo(app)
 @app.route('/get_report')
 def get_report():
     return render_template("report.html", report=mongo.db.report.find())
+    
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
