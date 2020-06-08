@@ -10,7 +10,7 @@ from os import path
 if path.exists("env.py"):
     import env
 
-app.config["MONGODB_URI"] = os.environ.get('MONGO_URI')
+app.config["MONGO_URI"] = os.environ.get('MONGO_URI')
 app.config["DBS_NAME"] = "projectDB"
 # COLLECTION_NAME = "report"
 
@@ -24,8 +24,4 @@ if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
     port=int(os.environ.get('PORT')),
     debug=True)
-
-
-
-
 
