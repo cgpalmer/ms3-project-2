@@ -12,7 +12,7 @@ if path.exists("env.py"):
 
 app.config["MONGO_URI"] = os.environ.get('MONGO_URI')
 app.config["MONGO_DBNAME"] = "projectDB"
-COLLECTION_NAME = "report"
+# COLLECTION_NAME = "report"
 
 mongo = PyMongo(app)
 
@@ -28,7 +28,11 @@ def get_report():
 @app.route('/login_page')
 def login_page():
     return render_template("login.html")
-    
+
+@app.route('/user_dash')
+def user_dash():
+    return render_template("user_dash.html", user=mongo.db.user_credentials.find())
+
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
