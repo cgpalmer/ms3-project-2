@@ -1,5 +1,12 @@
 {% extends 'base.html'%} {% block content %}
 
+{% for user in user %}
+
+<h1>Welcome, {{user.preferred_name}}</h1>
+
+ 
+
+{% endfor %}
 
 
 {% endblock %}
