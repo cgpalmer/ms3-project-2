@@ -1,16 +1,22 @@
 import pymongo
 import os
-
 from flask import Flask
+from flask_pymongo import PyMongo
+from bson.objectid import ObjectId
+
 app = Flask(__name__)
+
+app.congif
 
 from os import path
 if path.exists("env.py"):
     import env
 
-MONGODB_URI = os.environ.get('MONGO_URI')
-DBS_NAME = "projectDB"
-COLLECTION_NAME = "report"
+app.config["MONGODB_URI"] = os.environ.get('MONGO_URI')
+app.config["DBS_NAME"] = "projectDB"
+# COLLECTION_NAME = "report"
+
+mongo = PyMongo(app)
 
 @app.route('/')
 def hello():
@@ -23,16 +29,5 @@ if __name__ == '__main__':
 
 
 
-def mongo_connect(url):
-    try:
-        conn = pymongo.MongoClient(url)
-        return conn
-    except pymongo.errors.ConnectionFailure as e:
-        print("Could not connect: %s") % e
 
-conn = mongo_connect(MONGODB_URI)
-
-coll = conn[DBS_NAME][COLLECTION_NAME]
-
-documents = coll.find()
 
