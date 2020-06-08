@@ -24,6 +24,10 @@ def homepage():
 @app.route('/get_report')
 def get_report():
     return render_template("report.html", report=mongo.db.report.find())
+
+@app.route('/login_page')
+def login_page():
+    return render_template("login.html")
     
 
 if __name__ == '__main__':
