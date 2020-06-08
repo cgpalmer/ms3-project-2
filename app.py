@@ -17,8 +17,9 @@ COLLECTION_NAME = "report"
 mongo = PyMongo(app)
 
 @app.route('/')
+@app.route('/homepage')
 def homepage():
-    return render_template("base.html")
+    return render_template("home.html")
 
 @app.route('/get_report')
 def get_report():
