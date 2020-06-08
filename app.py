@@ -25,6 +25,10 @@ def homepage():
 def get_report():
     return render_template("report.html", report=mongo.db.report.find())
 
+@app.route('/add_report')
+def add_report():
+    return render_template("add_report.html", report=mongo.db.report.find())
+
 @app.route('/signup_page')
 def signup_page():
     return render_template("signup.html")
