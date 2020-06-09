@@ -48,9 +48,11 @@ def user_modify():
 def edit_report():
     return redirect(url_for('get_report'))
 
-@app.route('/delete_report')
-def delete_report():
-    return redirect(url_for('add_report'))
+@app.route('/delete_report/<report_id>')
+def delete_report(report_id):
+    mongo.db.report.remove({'_id': ObjectId(report_id)})
+    return redirect(url_for('get_report'))
+
 
 # @app.route('/insert_user', methods=['POST'])
 # def insert_user():
