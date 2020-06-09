@@ -1,6 +1,6 @@
 # import pymongo
 import os
-from flask import Flask, render_template, url_for, request, redirect, session
+from flask import Flask, render_template, url_for, request, redirect, session, escape
 from os import path
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
@@ -16,12 +16,13 @@ app.config["MONGO_DBNAME"] = "projectDB"
 # COLLECTION_NAME = "report"
 
 mongo = PyMongo(app)
-
+# Initial home page
 @app.route('/')
 @app.route('/homepage')
 def homepage():
-    return render_template("home.html", report=mongo.db.report.find())
+    return render_template("home.html", report=mongo.db.report.find().limit(5))
 
+#
 @app.route('/get_report')
 def get_report():
     return render_template("report.html", report=mongo.db.report.find())
@@ -62,7 +63,7 @@ def enter_username():
     user = mongo.db.user_credentials.find({'username': login_username, 'user_password': login_password})
     if user.count() > 0:
         session['username'] = login_username
-        return redirect(url_for('user_dash'))
+        return redirect(url_for('user_dash'), user=mongo.db.user_credentials.find({'username': login_username))
     else:
         return redirect(url_for('login_page'))
 
