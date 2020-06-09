@@ -37,6 +37,14 @@ def insert_report():
     report.insert_one(request.form.to_dict())
     return redirect(url_for('homepage'))
 
+
+@app.route('/insert_user', methods=['POST'])
+def insert_user():
+    user = mongo.db.user_credentials
+    user.insert_one(request.form.to_dict())
+    return redirect(url_for('user_dash'))
+
+
 @app.route('/signup_page')
 def signup_page():
     return render_template("signup.html")
