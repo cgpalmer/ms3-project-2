@@ -40,6 +40,10 @@ def insert_report():
     return redirect(url_for('homepage'))
 
 
+@app.route('/user_modify')
+def user_modify():
+    return render_template('user_modify.html')
+
 @app.route('/edit_report')
 def edit_report():
     return redirect(url_for('get_report'))
