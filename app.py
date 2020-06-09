@@ -1,6 +1,6 @@
 # import pymongo
 import os
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for, request, redirect
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 
@@ -19,7 +19,7 @@ mongo = PyMongo(app)
 @app.route('/')
 @app.route('/homepage')
 def homepage():
-    return render_template("home.html")
+    return render_template("home.html", report=mongo.db.report.find())
 
 @app.route('/get_report')
 def get_report():
@@ -27,7 +27,15 @@ def get_report():
 
 @app.route('/add_report')
 def add_report():
-    return render_template("add_report.html", report=mongo.db.report.find())
+    return render_template("add_report.html", categories=mongo.db.categories.find(),
+                           sub_category=mongo.db.sub_category.find(),
+                           )
+
+@app.route('/insert_report', methods=['POST'])
+def insert_report():
+    report = mongo.db.report
+    report.insert_one(request.form.to_dict())
+    return redirect(url_for('homepage'))
 
 @app.route('/signup_page')
 def signup_page():
