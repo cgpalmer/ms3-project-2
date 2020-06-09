@@ -2,10 +2,10 @@
 
 <h1>Login</h1>
 
-    <form>
+    <form action="{{ url_for('enter_username')}}" method="POST">
         <div class="form-group">
-            <label for="exampleFormControlInput1">Email address</label>
-            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+            <label for="login_username">Username</label>
+            <input type="email" class="form-control" id="login_username" name="login_username" placeholder="name@example.com">
         </div>        
         <button type="submit" name="action">Login</button>
     </form>
