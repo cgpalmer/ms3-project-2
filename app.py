@@ -58,10 +58,10 @@ def login_page():
 @app.route('/enter_username', methods=['POST'])
 def enter_username():
     login_username = request.form['login_username']
-    session['username'] = login_username
     login_password = request.form['login_password']
     user = mongo.db.user_credentials.find({'username': login_username, 'user_password': login_password})
     if user.count() > 0:
+        session['username'] = login_username
         return redirect(url_for('user_dash'))
     else:
         return redirect(url_for('login_page'))
