@@ -53,6 +53,13 @@ def signup_page():
 def login_page():
     return render_template("login.html")
 
+@app.route('/enter_password')
+def enter_password():
+    # Get the username from the login page
+    # Check it exists
+    # Retrieve the password for that user name
+    # Check the input of the password against the password for that username.
+
 @app.route('/user_dash')
 def user_dash():
     return render_template("user_dash.html", user=mongo.db.user_credentials.find())
