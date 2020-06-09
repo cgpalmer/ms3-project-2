@@ -53,6 +53,15 @@ def signup_page():
 def login_page():
     return render_template("login.html")
 
+
+@app.route('/enter_username')
+def enter_username():
+    # Check username exists
+    # If it does, proceed to enter_password stage.
+    # If not, return message saying sorry no user found.
+
+
+
 @app.route('/enter_password')
 def enter_password():
     # Get the username from the login page
