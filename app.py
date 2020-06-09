@@ -1,6 +1,6 @@
 # import pymongo
 import os
-from flask import Flask, render_template, url_for, request, redirect, session, escape
+from flask import Flask, render_template, url_for, request, redirect, session
 from os import path
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
@@ -50,6 +50,7 @@ def edit_report():
 
 @app.route('/delete_report/<report_id>')
 def delete_report(report_id):
+    #Trigger a modal of some kind where the user has to input the correct email.
     mongo.db.report.remove({'_id': ObjectId(report_id)})
     return redirect(url_for('get_report'))
 
