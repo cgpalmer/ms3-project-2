@@ -54,37 +54,20 @@ def login_page():
     return render_template("login.html")
 
 
-# @app.route('/enter_username', methods=['POST'])
-# def enter_username():
-#     login_username = request.form['login_username']
-#     # if mongo.db.user_credentials.find({'username': login_username}).count() > 0:
-#     #     return render_template('enter_password.html', user_found=mongo.db.user_credentials.find({'username': login_username}))
-#     # else:
-#     #     return render_template('login.html')  
-#     if mongo.db.user_credentials.find({'username': login_username}).count() > 0:
-#         login_password = request.form['login_password']
-#         if login_password == .user_password:
-#             return render_template('user_dash.html')
-#     else:
-#         return render_template('login.html')
-
 @app.route('/enter_username', methods=['POST'])
 def enter_username():
     login_username = request.form['login_username']
     login_password = request.form['login_password']
-    return login_username, login_password
+    user = mongo.db.user_credentials.find({'username': login_username, 'user_password': login_password})
+    if user.count() > 0:
+        return redirect(url_for('user_dash'))
+    else:
+        return redirect(url_for('login_page'))
+  
 
 
 
-# @app.route('/enter_password')
-# def enter_password():
-#     #  # Get the username from the login page
-#     login_password = request.form['login_password']
-#     if login_password == user_found.user_password:
-#     # Check it exists
-#     # Retrieve the password for that user name
-#     # Check the input of the password against the password for that username.
-#         return render_template("enter_password.html")
+
 
 
 @app.route('/user_dash')
