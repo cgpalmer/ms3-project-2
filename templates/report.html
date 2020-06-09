@@ -1,10 +1,14 @@
 {% extends 'base.html'%} {% block content %}
 
+<form method="POST" action="{{ url_for('search_by_username') }}">
+    <label for="search_username">Search by Username</label>
+    <input type="text" id="search_username" name="search_username">
+</form>
 {% for report in report  %}
         <p>User: {{report.username}}</p>
         
         <p>Description: {{report.incident_description}}</p>
-    {% endfor %}
+{% endfor %}
 
 
 {% endblock %}
