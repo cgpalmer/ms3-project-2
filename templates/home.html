@@ -4,4 +4,27 @@
     <h1>Report it</h1>
     <h2><em>For a better future</em></h2>
 </header>
+<body>
+    <div>
+        <a href="{{url_for('get_report')}}">Search for statistics</a>
+    </div>
+    <div>
+        <a href="{{url_for('add_report')}}">Report discrimination</a>
+    </div>
+
+    <h3>Latest reports</h3>
+    
+    {% for report in report  %}
+    <div>
+        <h5>1.</h5>
+            <p>User: {{report.username}}</p>
+            <p>Category: {{report.category_name}}</p>
+            <p>Sub-category: {{report.sub_category}}</p>
+            <p>Description: {{report.incident_description}}</p>
+            <p>Location: {{report.location}}</p>
+            <p>Reported to the authorities: {{report.report_to_authorities}}</p>
+    </div>
+    {% endfor %}
+
+</body>
 {% endblock %}
