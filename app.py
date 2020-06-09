@@ -1,6 +1,6 @@
 # import pymongo
 import os
-from flask import Flask, render_template, url_for, request, redirect
+from flask import Flask, render_template, url_for, request, redirect, session
 from os import path
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
@@ -58,6 +58,7 @@ def login_page():
 @app.route('/enter_username', methods=['POST'])
 def enter_username():
     login_username = request.form['login_username']
+    session['username'] = login_username
     login_password = request.form['login_password']
     user = mongo.db.user_credentials.find({'username': login_username, 'user_password': login_password})
     if user.count() > 0:
@@ -73,8 +74,10 @@ def enter_username():
 
 @app.route('/user_dash')
 def user_dash():
-    return render_template("user_dash.html", user=mongo.db.user_credentials.find())
-
+    if session['username'] is not None:
+        return render_template("user_dash.html", user=mongo.db.user_credentials.find())
+    else:
+        return redirect(url_for('login_page'))
 
 
 if __name__ == '__main__':
