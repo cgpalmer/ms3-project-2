@@ -11,12 +11,11 @@
     <div>
         <a href="{{url_for('add_report')}}">Report discrimination</a>
     </div>
-
+    
     <h3>Latest reports</h3>
     
     {% for report in report  %}
-    <div>
-        <h5>1.</h5>
+    <div class="card bg-primary text-white">
             <p>User: {{report.username}}</p>
             <p>Category: {{report.category_name}}</p>
             <p>Sub-category: {{report.sub_category}}</p>
