@@ -57,9 +57,10 @@ def login_page():
 @app.route('/enter_username', methods=['POST'])
 def enter_username():
     login_username = request.form['login_username']
-    return render_template('enter_password.html',
-                           user_found=mongo.db.user_credentials.find(
-                            {'username': login_username}))
+    if mongo.db.user_credentials.find({'username': login_username}).count() > 0:
+        return render_template('enter_password.html', user_found=mongo.db.user_credentials.find({'username': login_username}))
+    else:
+        return render_template('login.html')  
 
 
 @app.route('/enter_password')
