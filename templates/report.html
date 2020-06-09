@@ -10,8 +10,8 @@
             <p>Location: {{report.location}}</p>
             <p>Reported to the authorities: {{report.report_to_authorities}}</p>
     </div>
-    <a class="btn btn-success" href="">Edit</a>
-    <a class="btn btn-danger" href="">Delete</a>
+    <a class="btn btn-success" href="{{url_for('edit_report')}}">Edit</a>
+    <a class="btn btn-danger" href="{{url_for('add_report')}}">Delete</a>
 
     {% endfor %}
 
