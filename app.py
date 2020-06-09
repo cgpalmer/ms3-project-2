@@ -43,7 +43,7 @@ def insert_report():
 def insert_user():
     user = mongo.db.user_credentials
     user.insert_one(request.form.to_dict())
-    return redirect(url_for('user_dash'))
+    return redirect(url_for('login_page'))
 
 
 @app.route('/signup_page')
@@ -66,6 +66,11 @@ def enter_username():
     else:
         return redirect(url_for('login_page'))
 
+@app.route('/logout', methods=['POST'])
+def logout():
+    session.pop('username', None)
+    print(session['username'])
+    return redirect(url_for('login_page'))
 
 
 
