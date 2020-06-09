@@ -56,10 +56,14 @@ def login_page():
 
 @app.route('/enter_username')
 def enter_username():
-    # Check username exists
-    # If it does, proceed to enter_password stage.
-    # If not, return message saying sorry no user found.
+    try:
+        doc = mongo.db.user_credentials.find_one({'username': login_username.lower()})
+        return render_template('enter_template.html')
+    except:
+        print("Error")
 
+    if not doc:
+        return render_template('login.html')
 
 
 @app.route('/enter_password')
@@ -68,6 +72,8 @@ def enter_password():
     # Check it exists
     # Retrieve the password for that user name
     # Check the input of the password against the password for that username.
+    return render_template("enter_password.html")
+
 
 @app.route('/user_dash')
 def user_dash():
