@@ -1,12 +1,13 @@
 # import pymongo
 import os
 from flask import Flask, render_template, url_for, request, redirect
+from os import path
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 
 app = Flask(__name__)
+app.secret_key = 'thefluffiestofdogs'
 
-from os import path
 if path.exists("env.py"):
     import env
 
@@ -63,7 +64,7 @@ def enter_username():
         return redirect(url_for('user_dash'))
     else:
         return redirect(url_for('login_page'))
-  
+
 
 
 
