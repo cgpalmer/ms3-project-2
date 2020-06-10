@@ -42,4 +42,4 @@ Checking if a username exists.
 https://stackoverflow.com/questions/52930321/mongodb-with-python-used-to-store-username-and-passwords-for-a-game
 
 jQuery based on a form value
-https://stackoverflow.com/questions/15566999/how-to-show-form-input-fields-based-on-select-value
+http://jsfiddle.net/YPsqQ/
