@@ -1,3 +1,3 @@
-$('body').click(function(){
-    alert('js working')
+$("#category").on("click", "#Xenophobia", function () {
+    alert("Element clicked.")
 });

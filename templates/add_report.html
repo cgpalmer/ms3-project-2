@@ -11,17 +11,19 @@
             <input type="text" class="form-control" id="username" name="username" placeholder="Username">
         </div>        
         <div class="form-group">
-            <select class="form-control" id="category" name="category_name">
-            <option disabled selected value="">Choose category</option>
+            <!-- <select class="form-control" id="category" name="category_name">
+            <option disabled selected value="">Choose category</option> -->
             {% for category in categories %}
-                      <option value="{{category.category_name}}">{{category.category_name}}</option>
+                      <option id="{{category.category_name}}" value="{{category.category_name}}">{{category.category_name}}</option>
+                      <div id="test">Hello</div>
             {% endfor %}
-            </select>
+            <!-- </select> -->
         </div>
-        <div class="form-group">
+        <div id="subCategoryChoices" class="form-group">
          
             <select class="form-control" id="sub_category" name="sub_category">
                 <option disabled selected value="">If Xenophobia then choose sub-category</option>
+
                 {% for sub in sub_category %}
                     <option value="{{sub.sub_category}}">{{sub.sub_category}}</option>
                 {% endfor %}
