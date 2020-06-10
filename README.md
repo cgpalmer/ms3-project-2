@@ -11,6 +11,12 @@ time soon. Yet, there is a rise in racist and xenophobic attacks across the coun
 This project will be open-sourced and all councils, police, charities and authories will have access to the data.
 They can search by area or by discrimination to see where they can focus their efforts and funding.
 
+# Disclaimer
+
+The statistics on this website are free to use. However, they must be reported responsibly and with context. 
+
+Any misrepresentation of the statistics will be denounced and asked to remove them. 
+
 ### Features
 
 Users can do the following:
