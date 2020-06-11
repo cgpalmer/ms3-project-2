@@ -1,7 +1,6 @@
 {% extends 'base.html'%} {% block content %}
 
 <h3>This is the report you have chosen to edit</h3>
-{% for report in report  %}
     <div class="card bg-primary text-white">
             <p>User: {{report.username}}</p>
             <p>Category: {{report.category_name}}</p>
@@ -12,8 +11,7 @@
             <p>Location: {{report.location}}</p>
             <p>Reported to the authorities: {{report.report_to_authorities}}</p>
     </div>
-{% endfor %}
-
+    
 <form method="POST" action="{{ url_for('insert_report') }}">
         <div class="form-group">
             <label for="email"></label>
