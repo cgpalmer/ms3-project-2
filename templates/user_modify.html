@@ -1,7 +1,64 @@
 {% extends 'base.html'%} {% block content %}
 
-<h3>Edit your reports here</h3>
+<h3>This is the report you have chosen to edit</h3>
+{% for report in report  %}
+    <div class="card bg-primary text-white">
+            <p>User: {{report.username}}</p>
+            <p>Category: {{report.category_name}}</p>
+            <p>Category: {{report.new_category_name}}</p>
+            <p>Sub-category: {{report.sub_category}}</p>
+            <p>Sub-category: {{report.new_sub_category}}</p>
+            <p>Description: {{report.incident_description}}</p>
+            <p>Location: {{report.location}}</p>
+            <p>Reported to the authorities: {{report.report_to_authorities}}</p>
+    </div>
+{% endfor %}
 
+<form method="POST" action="{{ url_for('insert_report') }}">
+        <div class="form-group">
+            <label for="email"></label>
+            <input type="text" class="form-control" id="email" name="email" placeholder="{{report.email}}">
+        </div> 
+        <div class="form-group">
+            <label for="username"></label>
+            <input type="text" class="form-control" id="username" name="username" placeholder="{{report.username}}">
+        </div>        
+        <div class="form-group">
+            <select class="form-control" id="category" name="category_name">
+            <option disabled selected value="">{{report.category_name}}</option> 
+            {% for category in categories %}
+                      <option id="{{category.category_name}}" value="{{category.category_name}}">{{category.category_name}}</option>
+            {% endfor %}
+            </select>
+        </div>
+        <div id="addCategoryChoice" class="form-group">
+            <textarea class="form-control" id="otherCategory" name="new_category_name" placeholder="{{report.new_category_name}}"></textarea>
+        </div>
+        <div id="subCategoryChoices" class="form-group">
+         
+            <select class="form-control" id="sub_category" name="sub_category">
+                <option disabled selected value="">{{report.sub_category}}</option>
+
+                {% for sub in sub_category %}
+                    <option value="{{sub.sub_category}}">{{sub.sub_category}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div id="addSubCategoryChoice" class="form-group">
+            <textarea class="form-control" id="otherSubCategory" name="new_sub_category" placeholder="{{report.new_sub_category}}"></textarea>
+        </div>
+        <div class="form-group">
+            <textarea class="form-control" id="incident_description" name="incident_description" placeholder="report.incident_description"></textarea>
+        </div>
+         <div class="form-group">
+            <input type="text" class="form-control" id="location" name="location" placeholder="report.location">
+        </div>
+        <div>
+            <label for="authorities">Reported to the authorities?</label>
+            <input id="authorities" name="reported_to_authorities" class="" type="checkbox" checked data-toggle="toggle">
+        </div>
+        <button type="submit" name="action">Add report</button>
+    </form>
 
 
 {% endblock %}
