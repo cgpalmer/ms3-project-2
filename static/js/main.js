@@ -13,3 +13,13 @@
             $("#addCategoryChoice").css("display", "none")
         }
  });
+
+ $("#sub_category").change(function() {
+        var val = $(this).val();
+        if (val == "Other") {
+            $("#addSubCategoryChoice").css("display", "block")
+        }
+        else{
+            $("#addSubCategoryChoice").css("display", "none")
+        }
+ });
