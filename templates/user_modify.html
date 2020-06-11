@@ -27,7 +27,7 @@
             <select class="form-control" id="category" name="category_name">
             <option disabled selected value="">{{report.category_name}}</option> 
             {% for category in categories %}
-                      <option id="{{category.category_name}}" value="{{category.category_name}}">{{category.category_name}}</option>
+                      <option id="{{category.category_name}}" value="{{category.category_name}}">{{report.category_name}}</option>
             {% endfor %}
             </select>
         </div>
@@ -40,7 +40,7 @@
                 <option disabled selected value="">{{report.sub_category}}</option>
 
                 {% for sub in sub_category %}
-                    <option value="{{sub.sub_category}}">{{sub.sub_category}}</option>
+                    <option value="{{sub.sub_category}}">{{report.sub_category}}</option>
                 {% endfor %}
             </select>
         </div>
@@ -48,10 +48,10 @@
             <textarea class="form-control" id="otherSubCategory" name="new_sub_category" placeholder="{{report.new_sub_category}}"></textarea>
         </div>
         <div class="form-group">
-            <textarea class="form-control" id="incident_description" name="incident_description" placeholder="report.incident_description"></textarea>
+            <textarea class="form-control" id="incident_description" name="incident_description" placeholder="{{report.incident_description}}"></textarea>
         </div>
          <div class="form-group">
-            <input type="text" class="form-control" id="location" name="location" placeholder="report.location">
+            <input type="text" class="form-control" id="location" name="location" placeholder="{{report.location}}">
         </div>
         <div>
             <label for="authorities">Reported to the authorities?</label>
