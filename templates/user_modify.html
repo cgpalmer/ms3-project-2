@@ -30,7 +30,7 @@
             </select>
         </div>
         <div id="addCategoryChoice" class="form-group">
-            <textarea class="form-control" id="otherCategory" name="new_category_name" value="{{report.new_category_name}}"></textarea>
+            <textarea class="form-control" id="otherCategory" name="new_category_name">{{report.new_category_name}}</textarea>
         </div>
         <div id="subCategoryChoices" class="form-group">
          
@@ -46,7 +46,7 @@
             <textarea class="form-control" id="otherSubCategory" name="new_sub_category" value="{{report.new_sub_category}}"></textarea>
         </div>
         <div class="form-group">
-            <textarea class="form-control" id="incident_description" name="incident_description" value="{{report.incident_description}}"></textarea>
+            <textarea name="incident_description" id="incident_description" class="form-control">{{report.incident_description}}</textarea><textarea class="form-control" id="incident_description" name="incident_description">{{report.incident_description}}</textarea>
         </div>
          <div class="form-group">
             <input type="text" class="form-control" id="location" name="location" value="{{report.location}}">
