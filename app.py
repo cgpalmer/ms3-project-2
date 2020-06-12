@@ -54,9 +54,9 @@ def edit_report(report_id):
                   'username': request.form.get('username'),
                   'category_name': request.form.get('category_name'),
                   'sub_category': request.form.get('sub_category'),
-                  'insert_description': request.form.get('insert_description'),
+                  'incident_description': request.form.get('incident_description'),
                   'location': request.form.get('location'),
-                  'is_urgent':request.form.get('is_urgent')
+                  'is_urgent': request.form.get('is_urgent')
                   })
     return redirect(url_for('get_report'))
 
