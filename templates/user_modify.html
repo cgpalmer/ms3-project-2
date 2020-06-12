@@ -15,22 +15,22 @@
 <form method="POST" action="{{ url_for('edit_report', report_id=report._id) }}">
         <div class="form-group">
             <label for="email"></label>
-            <input type="text" class="form-control" id="email" name="email" placeholder="{{report.email}}">
+            <input type="text" class="form-control" id="email" name="email" value="{{report.email}}">
         </div> 
         <div class="form-group">
             <label for="username"></label>
-            <input type="text" class="form-control" id="username" name="username" placeholder="{{report.username}}">
+            <input type="text" class="form-control" id="username" name="username" value="{{report.username}}">
         </div>        
         <div class="form-group">
             <select class="form-control" id="category" name="category_name">
-            <option disabled selected value="">{{report.category_name}}</option> 
+            <option selected value="">{{report.category_name}}</option> 
             {% for category in categories %}
                       <option id="{{category.category_name}}" value="{{category.category_name}}">{{category.category_name}}</option>
             {% endfor %}
             </select>
         </div>
         <div id="addCategoryChoice" class="form-group">
-            <textarea class="form-control" id="otherCategory" name="new_category_name" placeholder="{{report.new_category_name}}"></textarea>
+            <textarea class="form-control" id="otherCategory" name="new_category_name" value="{{report.new_category_name}}"></textarea>
         </div>
         <div id="subCategoryChoices" class="form-group">
          
@@ -43,13 +43,13 @@
             </select>
         </div>
         <div id="addSubCategoryChoice" class="form-group">
-            <textarea class="form-control" id="otherSubCategory" name="new_sub_category" placeholder="{{report.new_sub_category}}"></textarea>
+            <textarea class="form-control" id="otherSubCategory" name="new_sub_category" value="{{report.new_sub_category}}"></textarea>
         </div>
         <div class="form-group">
-            <textarea class="form-control" id="incident_description" name="incident_description" placeholder="{{report.incident_description}}"></textarea>
+            <textarea class="form-control" id="incident_description" name="incident_description" value="{{report.incident_description}}"></textarea>
         </div>
          <div class="form-group">
-            <input type="text" class="form-control" id="location" name="location" placeholder="{{report.location}}">
+            <input type="text" class="form-control" id="location" name="location" value="{{report.location}}">
         </div>
         <div>
             <label for="authorities">Reported to the authorities?</label>
