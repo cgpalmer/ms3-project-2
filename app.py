@@ -56,7 +56,7 @@ def edit_report(report_id):
                   'sub_category': request.form.get('sub_category'),
                   'incident_description': request.form.get('incident_description'),
                   'location': request.form.get('location'),
-                  'is_urgent': request.form.get('is_urgent')
+                  'report_to_authorities': request.form.get('report_to_authorities')
                   })
     return redirect(url_for('get_report'))
 
