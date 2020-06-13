@@ -51,9 +51,12 @@ def edit_report(report_id):
     report = mongo.db.report
     report.update({'_id': ObjectId(report_id)},
                   {
+                  'email': request.form.get('email'),
                   'username': request.form.get('username'),
                   'category_name': request.form.get('category_name'),
+                  'category_name': request.form.get('new_category_name'),
                   'sub_category': request.form.get('sub_category'),
+                  'sub_category': request.form.get('new_sub_category'),
                   'incident_description': request.form.get('incident_description'),
                   'location': request.form.get('location'),
                   'report_to_authorities': request.form.get('report_to_authorities')
