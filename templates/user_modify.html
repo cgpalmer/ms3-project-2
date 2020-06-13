@@ -58,7 +58,13 @@
         </div>
         <div>
             <label for="authorities">Reported to the authorities?</label>
-            <input id="authorities" name="reported_to_authorities" class="" type="checkbox" checked data-toggle="toggle">
+             <select class="form-control" id="update_report_to_authorities" name="report_to_authorities" required>
+                <option disabled selected value=""></option>
+                
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+              
+            </select>
         </div>
         <button type="submit" name="action">Finished</button>
     </form>
