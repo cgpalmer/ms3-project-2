@@ -29,10 +29,10 @@
             {% endfor %}
             </select>
         </div>
-        <div id="updateAddCategoryChoice" class="form-group">
+        <div id="updateAddCategoryChoice" class="form-group hidden">
             <textarea class="form-control" id="otherCategory" name="new_category_name">{{report.new_category_name}}</textarea>
         </div>
-        <div id="updateSubCategoryChoices" class="form-group">
+        <div id="updateSubCategoryChoices" class="form-group hidden">
          
             <select class="form-control" id="updateSub_category" name="sub_category">
                 <option disabled selected value="">{{report.sub_category}}</option>
@@ -42,7 +42,7 @@
                 {% endfor %}
             </select>
         </div>
-        <div id="updateAddSubCategoryChoice" class="form-group">
+        <div id="updateAddSubCategoryChoice" class="form-group hidden">
             <textarea class="form-control" id="otherSubCategory" name="new_sub_category">{{report.new_sub_category}}</textarea>
         </div>
         <div class="form-group">
