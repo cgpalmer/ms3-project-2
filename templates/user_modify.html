@@ -14,14 +14,15 @@
     
 <form method="POST" action="{{ url_for('edit_report', report_id=report._id) }}">
         <div class="form-group">
-            <label for="updateEmail"></label>
+            <label for="updateEmail">Email</label>
             <input type="text" class="form-control" id="updateEmail" name="email" value="{{report.email}}">
         </div> 
         <div class="form-group">
-            <label for="updateUsername"></label>
+            <label for="updateUsername">Username</label>
             <input type="text" class="form-control" id="updateUsername" name="username" value="{{report.username}}">
         </div>        
         <div class="form-group">
+            <label for="updateCategory">Categories</label>
             <select class="form-control" id="updateCategory" name="category_name">
             <option selected value="">{{report.category_name}}</option> 
             {% for category in categories %}
@@ -29,11 +30,12 @@
             {% endfor %}
             </select>
         </div>
-        <div id="updateAddCategoryChoice" class="form-group hidden">
-            <textarea class="form-control" id="otherCategory" name="new_category_name">{{report.new_category_name}}</textarea>
+        <div id="updateAddCategoryChoice" class="form-group">
+            <label for="updateOtherCategory">New Category</label>
+            <textarea class="form-control" id="updateOtherCategory" name="new_category_name">{{report.new_category_name}}</textarea>
         </div>
-        <div id="updateSubCategoryChoices" class="form-group hidden">
-         
+        <div id="updateSubCategoryChoices" class="form-group">
+            <label for="updateSub_category">Sub-categories</label>
             <select class="form-control" id="updateSub_category" name="sub_category">
                 <option disabled selected value="">{{report.sub_category}}</option>
 
@@ -42,14 +44,17 @@
                 {% endfor %}
             </select>
         </div>
-        <div id="updateAddSubCategoryChoice" class="form-group hidden">
-            <textarea class="form-control" id="otherSubCategory" name="new_sub_category">{{report.new_sub_category}}</textarea>
+        <div id="updateAddSubCategoryChoice" class="form-group">
+            <label for="updateOtherSubCategory">New Sub-category</label>
+            <textarea class="form-control" id="updateOtherSubCategory" name="new_sub_category">{{report.new_sub_category}}</textarea>
         </div>
         <div class="form-group">
+            <label for="updateIncident_description">Incident Description</label>
             <textarea name="incident_description" id="updateIncident_description" class="form-control">{{report.incident_description}}</textarea>
         </div>
          <div class="form-group">
-            <input type="text" class="form-control" id="location" name="location" value="{{report.location}}">
+            <label for="updateLocation">Location</label>
+            <input type="text" class="form-control" id="updateLocation" name="location" value="{{report.location}}">
         </div>
         <div>
             <label for="authorities">Reported to the authorities?</label>
