@@ -71,7 +71,11 @@ def edit_report(report_id):
 @app.route('/delete_report/<report_id>')
 def delete_report(report_id):
     # Trigger a modal of some kind where the user has to input the correct email.
-    mongo.db.report.remove({'_id': ObjectId(report_id)})
+    report = mongo.db.report
+    report.update({'_id': ObjectId(report_id)},
+                  {
+                  'archive_report': request.form.get('archive'),
+                  })
     return redirect(url_for('get_report'))
 
 
