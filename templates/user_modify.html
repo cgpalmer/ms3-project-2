@@ -9,7 +9,11 @@
             <p>Sub-category: {{report.sub_category}}</p>
             <p>New Sub-category: {{report.new_sub_category}}</p>
             <p>Description: {{report.incident_description}}</p>
-            <p>Location: {{report.location}}</p>
+            <p>Building: {{report.building}}</p>
+            <p>Street: {{report.street}}</p>
+            <p>City: {{report.city}}</p>
+            <p>County: {{report.county}}</p>
+            <p>Postcode: {{report.postcode}}</p>
             <p>Reported to the authorities: {{report.report_to_authorities}}</p>
     </div>
     
@@ -55,11 +59,11 @@
         </div>
          <div class="form-group">
             <label for="updateLocation">Location</label>
-            <input type="text" class="form-control" id="building" name="building" placeholder="Building">
-            <input type="text" class="form-control" id="street" name="street" placeholder="Street">
-            <input type="text" class="form-control" id="city" name="city" placeholder="City">
-            <input type="text" class="form-control" id="county" name="county" placeholder="County">
-            <input type="postal" class="form-control" id="postcode" name="postcode" placeholder="Postcode">
+            <input type="text" class="form-control" id="building" name="building" value="{{report.building}}">
+            <input type="text" class="form-control" id="street" name="street" value="{{report.street}}">
+            <input type="text" class="form-control" id="city" name="city" value="{{report.city}}" required>
+            <input type="text" class="form-control" id="county" name="county" value="{{report.county}}">
+            <input type="postal" class="form-control" id="postcode" name="postcode" value="{{report.postcode}}">
         </div>
         <div>
             <label for="authorities">Reported to the authorities?</label>
