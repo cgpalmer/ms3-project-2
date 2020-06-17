@@ -44,7 +44,8 @@ def insert_report():
 def user_modify(report_id):
     the_report = mongo.db.report.find_one({"_id": ObjectId(report_id)})
     available_categories = mongo.db.categories.find()
-    return render_template('user_modify.html', report=the_report, categories=available_categories)
+    available_sub_categories = mongo.db.sub_category.find()
+    return render_template('user_modify.html', report=the_report, categories=available_categories, sub_category=available_sub_categories)
 
 @app.route('/edit_report/<report_id>', methods=["POST"])
 def edit_report(report_id):
