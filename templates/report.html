@@ -7,7 +7,11 @@
             <p>Category: {{report.category_name}}</p>
             <p>Sub-category: {{report.sub_category}}</p>
             <p>Description: {{report.incident_description}}</p>
-            <p>Location: {{report.location}}</p>
+            <p>Building: {{report.building}}</p>
+            <p>Street: {{report.street}}</p>
+            <p>City: {{report.city}}</p>
+            <p>County: {{report.county}}</p>
+            <p>Postcode: {{report.postcode}}</p>
             <p>Reported to the authorities: {{report.report_to_authorities}}</p>
     </div>
     <a class="btn btn-success" href="{{url_for('user_modify', report_id=report._id)}}">Edit</a>
