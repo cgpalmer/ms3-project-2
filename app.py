@@ -22,7 +22,7 @@ mongo = PyMongo(app)
 def homepage():
     return render_template("home.html", report=mongo.db.report.find().limit(5))
 
-#
+
 @app.route('/get_report')
 def get_report():
     return render_template("report.html", report=mongo.db.report.find())
@@ -59,7 +59,11 @@ def edit_report(report_id):
                   'sub_category': request.form.get('sub_category'),
                   'new_sub_category': request.form.get('new_sub_category'),
                   'incident_description': request.form.get('incident_description'),
-                  'location': request.form.get('location'),
+                  'building': request.form.get('building'),
+                  'street': request.form.get('street'),
+                  'city': request.form.get('city'),
+                  'county': request.form.get('county'),
+                  'postcode': request.form.get('postcode'),
                   'report_to_authorities': request.form.get('report_to_authorities')
                   })
     return redirect(url_for('get_report'))
