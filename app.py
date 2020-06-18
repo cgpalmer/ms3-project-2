@@ -23,9 +23,22 @@ def homepage():
     return render_template("home.html", report=mongo.db.report.find().limit(5))
 
 
+# Reading reports
+
 @app.route('/get_report')
 def get_report():
     return render_template("report.html", report=mongo.db.report.find())
+
+@app.route('/search_report')
+def search_report():
+    return render_template("searchResults.html", report=mongo.db.report.find())
+
+@app.route('/results_display')
+def results_display():
+    return render_template("results_display.html", report=mongo.db.report.find())
+
+
+# Adding reports
 
 @app.route('/add_report')
 def add_report():
@@ -40,6 +53,8 @@ def insert_report():
     return redirect(url_for('homepage'))
 
 
+
+# Updating reports
 @app.route('/user_modify/<report_id>')
 def user_modify(report_id):
     the_report = mongo.db.report.find_one({"_id": ObjectId(report_id)})
@@ -67,6 +82,9 @@ def edit_report(report_id):
                   'report_to_authorities': request.form.get('report_to_authorities')
                   })
     return redirect(url_for('get_report'))
+
+
+# Deleting reports
 
 @app.route('/confirm_delete_report/<report_id>')
 def confirm_delete_report(report_id):
