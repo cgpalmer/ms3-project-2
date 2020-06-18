@@ -2,6 +2,15 @@
 
 <h1>Search results here</h1>
 <form method="POST" action="{{ url_for('results_display') }}">
+    <select name="search_identifier" id="">
+        <option disabled selected value="">Choose identifier</option>
+        <option value="search_email">Email</option>
+        <option value="search_username">Username</option>
+        <option value="search_city">City</option>    
+    </select>
+
+
+
     <input type="text" name="search_email" placeholder="Search by email">
     <input type="text" name="search_username" placeholder="Search by username">
     <button type="submit">Search</button>
