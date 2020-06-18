@@ -3,6 +3,8 @@
 <h1>Search results here</h1>
 <form method="POST" action="{{ url_for('results_display') }}">
     <input type="text" name="search_email" placeholder="Search by email">
+    <input type="text" name="search_username" placeholder="Search by username">
+    <button type="submit">Search</button>
 </form>
 
 <a href="{{url_for('results_display')}}">Start search</a>
