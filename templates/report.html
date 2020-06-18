@@ -6,7 +6,9 @@
             <div class="card bg-primary text-white">
                     <p>User: {{report.username}}</p>
                     <p>Category: {{report.category_name}}</p>
-                    <p>Sub-category: {{report.sub_category}}</p>
+                    {% if report.sub_category %}
+                        <p>Sub-category: {{report.sub_category}}</p>
+                    {% endif %}
                     <p>Description: {{report.incident_description}}</p>
                     <p>Building: {{report.building}}</p>
                     <p>Street: {{report.street}}</p>
