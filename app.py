@@ -37,9 +37,11 @@ def search_report():
 def results_display():
     email = request.form["search_email"]
     username = request.form["search_username"]
-    the_report = mongo.db.report.find({"email": email})
-    the_report = mongo.db.report.find({"$or": [{"email": email}, {"username": username}]})
-    return render_template("results_display.html", report=the_report, email=email username=username)
+    if email == "":
+        the_report = mongo.db.report.find({"username": username})
+    else:
+        the_report = mongo.db.report.find({"$or": [{"email": email}, {"username": username}]})
+    return render_template("results_display.html", report=the_report, email=email, username=username)
 
 
 # Adding reports
