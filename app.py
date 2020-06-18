@@ -53,7 +53,7 @@ def results_display():
     identifier = request.form["search_identifier"]
     key = identifier.split('_')[1]
     # value must be the value posted from the input
-    value = request.form["search_email"]
+    value = request.form[identifier]
     the_report = mongo.db.report.find({key: value})
     return render_template("results_display.html", report=the_report, key=key, value=value)
 
