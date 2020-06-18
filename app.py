@@ -68,6 +68,15 @@ def edit_report(report_id):
                   })
     return redirect(url_for('get_report'))
 
+@app.route('/confirm_delete_report/<report_id>')
+def confirm_delete_report(report_id):
+    the_report = mongo.db.report.find_one({"_id": ObjectId(report_id)})
+    available_categories = mongo.db.categories.find()
+    available_sub_categories = mongo.db.sub_category.find()
+
+    return render_template('confirm_delete.html', report=the_report, categories=available_categories, sub_category=available_sub_categories)
+
+
 @app.route('/delete_report/<report_id>')
 def delete_report(report_id):
     # Trigger a modal of some kind where the user has to input the correct email.
