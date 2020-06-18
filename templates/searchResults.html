@@ -6,13 +6,21 @@
         <option disabled selected value="">Choose identifier</option>
         <option value="search_email">Email</option>
         <option value="search_username">Username</option>
-        <option value="search_city">City</option>    
+        <option value="search_category">Category</option>
+        <option value="search_sub_category">Sub-category</option>
+        <option value="search_description">Description</option>
+        <option value="search_building">Building</option>    
+        <option value="search_street">Street</option>
+        <option value="search_city">City</option>
+        <option value="search_county">County</option>
+        <option value="search_postcode">Postcode</option>
+        <option value="search_report_to_authorities">Reported to authorities?</option>       
     </select>
 
 
 
-    <input type="text" name="search_email" placeholder="Search by email">
-    <input type="text" name="search_username" placeholder="Search by username">
+    <input type="text" name="user_search_input" placeholder="Choose a {{search_identifier}}">
+    <!-- <input type="text" name="search_username" placeholder="Search by username"> -->
     <button type="submit">Search</button>
 </form>
 
