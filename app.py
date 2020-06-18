@@ -33,16 +33,29 @@ def get_report():
 def search_report():
     return render_template("searchResults.html", report=mongo.db.report.find())
 
+# @app.route('/results_display', methods=["POST"])
+# def results_display():
+#     identifier = request.form["search_identifier"]
+#     # email = request.form["search_email"]
+#     # username = request.form["search_username"]
+  
+#     # if  == "":
+#     #     the_report = mongo.db.report.find({"username": username})
+#     # else:
+#     #     the_report = mongo.db.report.find({"$or": [{"email": email}, {"username": username}]})
+#     return render_template("results_display.html", report=the_report, email=email, username=username)
+
+
 @app.route('/results_display', methods=["POST"])
 def results_display():
-    email = request.form["search_email"]
-    username = request.form["search_username"]
-    if email == "":
-        the_report = mongo.db.report.find({"username": username})
-    else:
-        the_report = mongo.db.report.find({"$or": [{"email": email}, {"username": username}]})
-    return render_template("results_display.html", report=the_report, email=email, username=username)
-
+    # find the value of the field "search_identifier"
+    # they key must equal the name of the field it will search in
+    identifier = request.form["search_identifier"]
+    key = identifier.split('_')[1]
+    # value must be the value posted from the input
+    value = request.form["search_email"]
+    # the_report = mongo.db.report.find({key: value})
+    return render_template("results_display.html", key=key, value=value)
 
 # Adding reports
 
