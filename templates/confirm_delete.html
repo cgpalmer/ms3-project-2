@@ -1,0 +1,29 @@
+{% extends 'base.html'%} {% block content %}
+
+<h3>This is the report you have chosen to edit</h3>
+    <div class="card bg-primary text-white">
+            <p>Email: {{report.email}}</p>
+            <p>User: {{report.username}}</p>
+            <p>Category: {{report.category_name}}</p>
+            <p>New Category: {{report.new_category_name}}</p>
+            <p>Sub-category: {{report.sub_category}}</p>
+            <p>New Sub-category: {{report.new_sub_category}}</p>
+            <p>Description: {{report.incident_description}}</p>
+            <p>Building: {{report.building}}</p>
+            <p>Street: {{report.street}}</p>
+            <p>City: {{report.city}}</p>
+            <p>County: {{report.county}}</p>
+            <p>Postcode: {{report.postcode}}</p>
+            <p>Reported to the authorities: {{report.report_to_authorities}}</p>
+    </div>
+    
+<form method="POST" action="{{ url_for('delete_report', report_id=report._id) }}">
+        <div>
+                <label for="delete_report">Confirm delete?</label>
+                  <input id="delete_record" name="archive" type="checkbox">
+                
+        </div>
+    </form>
+
+
+{% endblock %}
