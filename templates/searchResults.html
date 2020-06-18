@@ -1,6 +1,9 @@
 {% extends 'base.html'%} {% block content %}
 
 <h1>Search results here</h1>
+<form method="POST" action="{{ url_for('results_display') }}">
+    <input type="text" name="search_email" placeholder="Search by email">
+</form>
 
 <a href="{{url_for('results_display')}}">Start search</a>
 {% endblock %}
