@@ -77,7 +77,7 @@ def confirm_delete_report(report_id):
     return render_template('confirm_delete.html', report=the_report, categories=available_categories, sub_category=available_sub_categories)
 
 
-@app.route('/delete_report/<report_id>')
+@app.route('/delete_report/<report_id>', methods=["POST"])
 def delete_report(report_id):
     # Trigger a modal of some kind where the user has to input the correct email.
     report = mongo.db.report
