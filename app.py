@@ -35,7 +35,8 @@ def search_report():
 
 @app.route('/results_display', methods=["POST"])
 def results_display():
-    return render_template("results_display.html", report=mongo.db.report.find())
+    email = request.form["search_email"]
+    return render_template("results_display.html", report=mongo.db.report.find(), email=email)
 
 
 # Adding reports
