@@ -42,7 +42,7 @@
         <div id="updateSubCategoryChoices" class="form-group">
             <label for="updateSub_category">Sub-categories</label>
             <select class="form-control" id="updateSub_category" name="sub_category">
-                <option disabled selected value="{{report.sub_category}}">{{report.sub_category}}</option>
+                <option  selected value="">No sub-category</option>
 
                  {% for sub in sub_category %}
                     <option value="{{sub.sub_category}}">{{sub.sub_category}}</option>
