@@ -36,8 +36,10 @@ def search_report():
 @app.route('/results_display', methods=["POST"])
 def results_display():
     email = request.form["search_email"]
+    username = request.form["search_username"]
     the_report = mongo.db.report.find({"email": email})
-    return render_template("results_display.html", report=the_report, email=email)
+    the_report = mongo.db.report.find({"$or": [{"email": email}, {"username": username}]})
+    return render_template("results_display.html", report=the_report, email=email username=username)
 
 
 # Adding reports
