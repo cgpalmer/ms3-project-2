@@ -1,60 +1,30 @@
 {% extends 'base.html'%} {% block content %}
 
 <h1>Search results here</h1>
+
+
 <form method="POST" action="{{ url_for('results_display') }}">
-    <select name="search_identifier" id="search_identifier">
-        <option disabled selected value="">Choose identifier</option>
-        <option value="search_email">Email</option>
-        <option value="search_username">Username</option>
-        <option value="search_category">Category</option>
-        <option value="search_sub_category">Sub-category</option>
-        <option value="search_description">Description</option>
-        <option value="search_building">Building</option>    
-        <option value="search_street">Street</option>
-        <option value="search_city">City</option>
-        <option value="search_county">County</option>
-        <option value="search_postcode">Postcode</option>
-        <option value="search_report_to_authorities">Reported to authorities?</option>       
-    </select>
-
-
-    <input type="text" name="user_search_input" placeholder="Choose a {{search_identifier}}">
-
-
-    <!-- Use Javascript to change the list value when things are clicked and only the correct ones will show. -->
-<div>
-    <label for="ice-cream-choice">Choose a category:</label>
-    <input list="available_email" id="list" name="ice-cream-choice" />
-    <datalist id="available_email">
+    <label for="email">Email</label>
+    <input type="text" list="search_email" name="search_email">
+    <datalist id="search_email">
         {% for report in report %}
-            <option id="search_email">{{report.email}}</option>
-            <option id="search_username">{{report.username}}</option>
-            <option id="search_category">{{report.category_name}}</option>
-            <option id="search_sub_category">{{report.sub_category}}</option>
-            <option id="search_incident_description">{{report.incident_description}}</option>
-            <option id="search_building">{{report.building}}</option>
-            <option id="search_street">{{report.street}}</option>
-            <option id="search_city">{{report.city}}</option>
-            <option id="search_county">{{report.county}}</option>
-            <option id="search_postcode">{{report.postcode}}</option>
-            <option id="search_report_to_authorities">{{report.report_to_authorities}}</option>
-        {% endfor %}        
+            <option>{{report.email}}</option>      
+        {% endfor %} 
     </datalist>
-</div>
-
-
-
-
-
     <button type="submit">Search</button>
-
- 
 </form>
 
-<div class="hidden">
-{% for test in test %}
-    <h1>{{test.value1}} and {{test.value2}}</h1>
-{% endfor %}
-</div>
-<a href="{{url_for('results_display')}}">Start search</a>
+<form method="POST" action="{{ url_for('results_display') }}">
+    <label for="username">Username</label>
+    <input type="text" list="search_username" name="search_username">
+    <datalist id="search_username">
+        {% for report in report %}
+            <option>{{report.username}}</option>      
+        {% endfor %} 
+    </datalist>
+    <button type="submit">Search</button>
+</form>
+
+
+
 {% endblock %}
