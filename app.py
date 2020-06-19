@@ -13,11 +13,14 @@ if path.exists("env.py"):
 
 app.config["MONGO_URI"] = os.environ.get('MONGO_URI')
 app.config["MONGO_DBNAME"] = "projectDB"
-# COLLECTION_NAME = "report"
+
 
 mongo = PyMongo(app)
 # Initial home page
 @app.route('/')
+def settingArray():
+    test.append({"value1": "hello", "value2": "world"})
+    return redirect(url_for('homepage'))
 @app.route('/homepage')
 def homepage():
     return render_template("home.html", report=mongo.db.report.find().limit(5))
@@ -30,8 +33,7 @@ def get_report():
     return render_template("report.html", report=mongo.db.report.find())
 
 @app.route('/search_report')
-def search_report():
-    test.append({"value1": "hello", "value2": "world"})
+def search_report():    
     return render_template("searchResults.html", report=mongo.db.report.find(), categories=mongo.db.categories.find(), sub_category=mongo.db.sub_category.find(), test=test)
 
 # @app.route('/results_display', methods=["POST"])
