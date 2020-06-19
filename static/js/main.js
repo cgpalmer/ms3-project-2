@@ -22,12 +22,3 @@
             $("#addSubCategoryChoice").css("display", "none")
         }
  });
-
-//  Changing the name of the list to display different menus.
-
-
-
-$("#changeList").click(function(){
-    alert("reached");
-    $("#list").attr("list", "changed");
-});

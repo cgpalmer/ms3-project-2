@@ -18,14 +18,10 @@ app.config["MONGO_DBNAME"] = "projectDB"
 mongo = PyMongo(app)
 # Initial home page
 @app.route('/')
-def settingArray():
-    test.append({"value1": "hello", "value2": "world"})
-    return redirect(url_for('homepage'))
 @app.route('/homepage')
 def homepage():
     return render_template("home.html", report=mongo.db.report.find().limit(5))
 
-test = []
 # Reading reports
 
 @app.route('/get_report')
@@ -34,7 +30,15 @@ def get_report():
 
 @app.route('/search_report')
 def search_report():
-    return render_template("searchResults.html", report=mongo.db.report.find(), search_parameters=mongo.db.search_parameters.find(), test=mongo.db.search_parameters.find(), categories=mongo.db.categories.find(), sub_category=mongo.db.sub_category.find())
+    search_parameters_email = mongo.db.report.find().distinct("email")
+    search_parameters_username = mongo.db.report.find()
+    search_parameters_category_name = mongo.db.report.find()
+    search_parameters_city = mongo.db.report.find()
+    search_parameters_sub_category = mongo.db.search_parameters.find()
+    search_parameters_street = mongo.db.search_parameters.find()
+    categories = mongo.db.categories.find()
+    sub_category = mongo.db.sub_category.find()
+    return render_template("searchResults.html", sp_email=search_parameters_email, sp_username=search_parameters_username)
 
 # @app.route('/results_display', methods=["POST"])
 # def results_display():

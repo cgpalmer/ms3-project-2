@@ -1,9 +1,7 @@
 {% extends 'base.html'%} {% block content %}
 
 <h1>Search results here</h1>
-{% for search in search_parameters %}
-    <div id="search_{{search.type}}" class="btn btn-primary">{{search.type}}</div>
-{% endfor%}
+
 
 
 <form method="POST" action="{{ url_for('results_display') }}">
@@ -14,10 +12,14 @@
         {% endfor %}
     </select>
     
-     
+     <select name="" id="">
+        {% for email in sp_email %}
+                <option value="{{email.email}}">{{email.email}}</option>
+        {% endfor %}
+    </select> 
     <select name="" id="">
-        {% for report in report %}
-        <option value="{{report.username}}">{{report.username}}</option>
+        {% for username in sp_username %}
+        <option value="{{username.username}}">{{username.username}}</option>
         {% endfor %}
     </select>
     
