@@ -52,10 +52,8 @@
 </form>
 
 
-{% for report in report %}
-            <h1>{{report.username}}</h1>
-        {% endfor %}
-   <div id="changeList">Change</div>
-
+{% for test in test %}
+    <h1>{{test.value1}} and {{test.value2}}</h1>
+{% endfor %}
 <a href="{{url_for('results_display')}}">Start search</a>
 {% endblock %}
