@@ -19,25 +19,24 @@
 
 
     <input type="text" name="user_search_input" placeholder="Choose a {{search_identifier}}">
-    <!-- <input type="text" name="search_username" placeholder="Search by username"> -->
 
+
+    <!-- Use Javascript to change the list value when things are clicked and only the correct ones will show. -->
 
     <label for="ice-cream-choice">Choose a category:</label>
-    <input list="available_categories" id="ice-cream-choice" name="ice-cream-choice" />
+    <input list="available_categories" id="list" name="ice-cream-choice" />
 
     <datalist id="available_categories">
-    <!-- insert for loop here to read all categories -->
         {% for category in categories %}
             <option>{{category.category_name}}</option>
         {% endfor %}        
     </datalist>
     <button type="submit">Search</button>
 
-
+ 
 </form>
 
-
-
+   <div id="changeList">Change</div>
 
 <a href="{{url_for('results_display')}}">Start search</a>
 {% endblock %}
