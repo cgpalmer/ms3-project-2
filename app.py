@@ -34,7 +34,7 @@ def get_report():
 
 @app.route('/search_report')
 def search_report():
-    return render_template("searchResults.html", report=mongo.db.report.find(), search_parameters=mongo.db.search_parameters.find(), categories=mongo.db.categories.find(), sub_category=mongo.db.sub_category.find(), test=test)
+    return render_template("searchResults.html", report=mongo.db.report.find(), search_parameters=mongo.db.search_parameters.find(), test=mongo.db.search_parameters.find(), categories=mongo.db.categories.find(), sub_category=mongo.db.sub_category.find())
 
 # @app.route('/results_display', methods=["POST"])
 # def results_display():
@@ -53,10 +53,9 @@ def search_report():
 def results_display():
     # find the value of the field "search_identifier"
     # they key must equal the name of the field it will search in
-    identifier = request.form["search_identifier"]
-    key = identifier.split('_')[1]
+    key = request.form["search_parameter"]
     # value must be the value posted from the input
-    value = request.form["user_search_input"]
+    value = request.form["search_value"]
     the_report = mongo.db.report.find({key: value})
     return render_template("results_display.html", report=the_report, key=key, value=value)
 
