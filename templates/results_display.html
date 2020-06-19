@@ -6,6 +6,8 @@ This is your search display.
 <p>This is the value: {{value}}</p>
 
 {% for report in report %}
+    
+   
     <div class="card bg-primary text-white">
                     <p>User: {{report.username}}</p>
                     <p>Category: {{report.category_name}}</p>
@@ -20,6 +22,8 @@ This is your search display.
                     <p>Postcode: {{report.postcode}}</p>
                     <p>Reported to the authorities: {{report.report_to_authorities}}</p>
             </div>
-{% endfor %}
+    
+    {% endfor %}
+
 
 {% endblock %}
