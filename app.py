@@ -22,7 +22,7 @@ mongo = PyMongo(app)
 def homepage():
     return render_template("home.html", report=mongo.db.report.find().limit(5))
 
-
+test = []
 # Reading reports
 
 @app.route('/get_report')
@@ -31,7 +31,8 @@ def get_report():
 
 @app.route('/search_report')
 def search_report():
-    return render_template("searchResults.html", report=mongo.db.report.find(), categories=mongo.db.categories.find(), sub_category=mongo.db.sub_category.find())
+    test.append({"value1": "hello", "value2": "world"})
+    return render_template("searchResults.html", report=mongo.db.report.find(), categories=mongo.db.categories.find(), sub_category=mongo.db.sub_category.find(), test=test)
 
 # @app.route('/results_display', methods=["POST"])
 # def results_display():
