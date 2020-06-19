@@ -1,6 +1,9 @@
 {% extends 'base.html'%} {% block content %}
 
 <h1>Search results here</h1>
+{% for search in search_parameters %}
+    <div id="#search_{{search}}">{{search}}</div>
+{% endfor%}
 
 
 <form method="POST" action="{{ url_for('results_display') }}">
