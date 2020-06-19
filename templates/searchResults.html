@@ -26,19 +26,11 @@
     <label for="ice-cream-choice">Choose a category:</label>
     <input list="available_categories" id="list" name="ice-cream-choice" />
 
-    <datalist id="search_email">
-        {% for report in reports %}
-            <option>{{report.email}}</option>
-        {% endfor %}        
-    </datalist>
-    <datalist id="search_username">
-        {% for report in reports %}
-            <option>{{report.username}}</option>
-        {% endfor %}        
-    </datalist>
-    <datalist id="search_city">
-        {% for report in reports %}
-            <option>{{report.city}}</option>
+  
+    <datalist id="">
+        {% for report in report %}
+        <!-- Rename this ID -->
+            <option id="option">{{report.username}}</option>
         {% endfor %}        
     </datalist>
 
