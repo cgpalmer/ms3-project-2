@@ -17,19 +17,27 @@
         <option value="search_report_to_authorities">Reported to authorities?</option>       
     </select>
 
-<label for="ice-cream-choice">Choose a category:</label>
-<input list="available_categories" id="ice-cream-choice" name="ice-cream-choice" />
-
-<datalist id="available_categories">
-    <!-- insert for loop here to read all categories -->
-    <option value="Chocolate">Chocolate</option>
-   
-</datalist>
 
     <input type="text" name="user_search_input" placeholder="Choose a {{search_identifier}}">
     <!-- <input type="text" name="search_username" placeholder="Search by username"> -->
+
+
+    <label for="ice-cream-choice">Choose a category:</label>
+    <input list="available_categories" id="ice-cream-choice" name="ice-cream-choice" />
+
+    <datalist id="available_categories">
+    <!-- insert for loop here to read all categories -->
+        {% for category in categories %}
+            <option>{{category.category_name}}</option>
+        {% endfor %}        
+    </datalist>
     <button type="submit">Search</button>
+
+
 </form>
+
+
+
 
 <a href="{{url_for('results_display')}}">Start search</a>
 {% endblock %}
