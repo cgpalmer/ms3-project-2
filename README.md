@@ -44,6 +44,10 @@ https://stackoverflow.com/questions/52930321/mongodb-with-python-used-to-store-u
 jQuery based on a form value
 http://jsfiddle.net/YPsqQ/
 
+Typing to see options
+https://stackoverflow.com/questions/5650457/html-select-form-with-option-to-enter-custom-value
+https://developer.mozilla.org/en-US/docs/Web/HTML/Element/datalist
+
 
 Methodology of build
 
