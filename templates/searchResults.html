@@ -5,8 +5,10 @@
     <div id="#search_{{search.type}}" class="btn btn-primary">{{search.type}}</div>
 {% endfor%}
 
+{% for item in test %}
 
 <form method="POST" action="{{ url_for('results_display') }}">
+    <input type="text" name="" value="email" placeholder="email">
     <label for="email">Email</label>
     <input type="text" list="search_email" name="search_email">
     <datalist id="search_email">
@@ -17,7 +19,11 @@
     <button type="submit">Search</button>
 </form>
 
+{% endfor%}
+
+
 <form method="POST" action="{{ url_for('results_display') }}">
+    <input type="text" value="username" placeholder="username">
     <label for="username">Username</label>
     <input type="text" list="search_username" name="search_username">
     <datalist id="search_username">
