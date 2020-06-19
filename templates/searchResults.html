@@ -22,17 +22,29 @@
 
 
     <!-- Use Javascript to change the list value when things are clicked and only the correct ones will show. -->
-
+<div>
     <label for="ice-cream-choice">Choose a category:</label>
-    <input list="available_categories" id="list" name="ice-cream-choice" />
-
-  
-    <datalist id="">
+    <input list="available_email" id="list" name="ice-cream-choice" />
+    <datalist id="available_email">
         {% for report in report %}
-        <!-- Rename this ID -->
-            <option id="option">{{report.username}}</option>
+            <option id="search_email">{{report.email}}</option>
+            <option id="search_username">{{report.username}}</option>
+            <option id="search_category">{{report.category_name}}</option>
+            <option id="search_sub_category">{{report.sub_category}}</option>
+            <option id="search_incident_description">{{report.incident_description}}</option>
+            <option id="search_building">{{report.building}}</option>
+            <option id="search_street">{{report.street}}</option>
+            <option id="search_city">{{report.city}}</option>
+            <option id="search_county">{{report.county}}</option>
+            <option id="search_postcode">{{report.postcode}}</option>
+            <option id="search_report_to_authorities">{{report.report_to_authorities}}</option>
         {% endfor %}        
     </datalist>
+</div>
+
+
+
+
 
     <button type="submit">Search</button>
 
