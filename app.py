@@ -33,8 +33,8 @@ def get_report():
     return render_template("report.html", report=mongo.db.report.find())
 
 @app.route('/search_report')
-def search_report():    
-    return render_template("searchResults.html", report=mongo.db.report.find(), categories=mongo.db.categories.find(), sub_category=mongo.db.sub_category.find(), test=test)
+def search_report():
+    return render_template("searchResults.html", report=mongo.db.report.find(), search_parameters=mongo.db.search_parameters.find(), categories=mongo.db.categories.find(), sub_category=mongo.db.sub_category.find(), test=test)
 
 # @app.route('/results_display', methods=["POST"])
 # def results_display():
