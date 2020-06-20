@@ -5,7 +5,7 @@
 <a href="{{url_for('search_report_username')}}">Search by username</a>
 <a href="{{url_for('search_report_email')}}">Search by email</a>
 
-<form>
+<form method="POST" action="{{ url_for('search_report_username') }}">
     <select name="search_parameter" id="">
         <option value="" disabled selected></option>
         <option value="email">Email</option>
