@@ -40,20 +40,14 @@ def search_report_parameter():
     emails=mongo.db.report.distinct("email")
     return render_template("searchResults.html", emails=emails, username=username, parameter=parameter)
 
-@app.route('/search_report_email')
-def search_report_email():
-    parameter = "email"
-    return render_template("searchResults.html")
-
-@app.route('/results_display', methods=["POST"])
-def results_display():
-    # find the value of the field "search_identifier"
-    # they key must equal the name of the field it will search in
-    key = request.form["search_parameter"]
-    # value must be the value posted from the input
+@app.route('/retrieving_report', methods=["POST"])
+def retrieving_report():
+    key = request.form["search_choice"]
     value = request.form["search_value"]
     the_report = mongo.db.report.find({key: value})
-    return render_template("results_display.html", report=the_report, key=key, value=value)
+    return render_template("results_display.html", report=the_report)
+
+
 
 
 
