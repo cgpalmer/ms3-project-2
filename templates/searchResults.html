@@ -2,11 +2,11 @@
 
 <h1>Search results here</h1>
 
-<a href="{{url_for('search_report_username')}}">Search by username</a>
+<a href="{{url_for('search_report_parameter')}}">Search by username</a>
 <a href="{{url_for('search_report_email')}}">Search by email</a>
 
 {% if parameter == "Not chosen" %}
-<form method="POST" action="{{ url_for('search_report_username') }}">
+<form method="POST" action="{{ url_for('search_report_parameter') }}">
     <select name="search_parameter" id="">
         <option value="" disabled selected></option>
         <option value="email">Email</option>
@@ -18,7 +18,7 @@
 
 <h1>{{parameter}}</h1>
 
-{% if parameter == "email" %}
+{% if parameter == "username" %}
     {% for user in username %}
         <h1>{{user}}</h1>
     {% endfor %}

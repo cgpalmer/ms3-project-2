@@ -33,18 +33,17 @@ def search_report():
     parameter = "Not chosen"
     return render_template("searchResults.html", parameter=parameter)
 
-@app.route('/search_report_username',  methods=["POST"])
-def search_report_username():
-    parameter = request.form["search_parameter"]    
-    return render_template("searchResults.html", parameter=parameter)
-
-@app.route('/search_report_email')
-def search_report_email():
-    parameter = "email"
+@app.route('/search_report_parameter',  methods=["POST"])
+def search_report_parameter():
+    parameter = request.form["search_parameter"]
     username=mongo.db.report.distinct("username")
     emails=mongo.db.report.distinct("email")
     return render_template("searchResults.html", emails=emails, username=username, parameter=parameter)
 
+@app.route('/search_report_email')
+def search_report_email():
+    parameter = "email"
+    return render_template("searchResults.html")
 
 @app.route('/results_display', methods=["POST"])
 def results_display():
