@@ -5,6 +5,15 @@
 <a href="{{url_for('search_report_username')}}">Search by username</a>
 <a href="{{url_for('search_report_email')}}">Search by email</a>
 
+<form>
+    <select name="search_parameter" id="">
+        <option value="" disabled selected></option>
+        <option value="email">Email</option>
+        <option value="username">Username</option>
+    </select>
+    <button type="submit">Search</button>
+</form>
+
 <h1>{{parameter}}</h1>
 
 {% if parameter == "email" %}
