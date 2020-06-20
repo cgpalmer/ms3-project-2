@@ -32,11 +32,10 @@ def get_report():
 def search_report():
     return render_template("searchResults.html")
 
-@app.route('/search_report_username')
+@app.route('/search_report_username',  methods=["POST"])
 def search_report_username():
-    parameter = "username"
-    username=mongo.db.report.distinct("username")
-    return render_template("searchResults.html", username=username, parameter=parameter)
+    parameter = request.form["search_parameter"]    
+    return render_template("searchResults.html", parameter=parameter)
 
 @app.route('/search_report_email')
 def search_report_email():
