@@ -26,32 +26,23 @@ def homepage():
 
 @app.route('/get_report')
 def get_report():
-    return render_template("report.html", report=mongo.db.report.find())
+    return render_template("report.html", report=mongo.db.report.find())    
 
 @app.route('/search_report')
 def search_report():
-    search_parameters_email = mongo.db.report.find()
-    search_parameters_username = mongo.db.report.find()
-    search_parameters_category_name = mongo.db.report.find()
-    search_parameters_city = mongo.db.report.find()
-    search_parameters_sub_category = mongo.db.report.find()
-    search_parameters_street = mongo.db.report.find()
-    search_parameters_types = mongo.db.search_parameters.find()
-    categories = mongo.db.categories.find()
-    sub_category = mongo.db.sub_category.find()
-    return render_template("searchResults.html", sp_types=search_parameters_types, sub_category=sub_category, categories=categories, sp_street=search_parameters_street, sp_sub_category=search_parameters_sub_category, sp_city=search_parameters_city, sp_category=search_parameters_category_name, sp_email=search_parameters_email, sp_username=search_parameters_username)
+    return render_template("searchResults.html")
 
-# @app.route('/results_display', methods=["POST"])
-# def results_display():
-#     identifier = request.form["search_identifier"]
-#     # email = request.form["search_email"]
-#     # username = request.form["search_username"]
-  
-#     # if  == "":
-#     #     the_report = mongo.db.report.find({"username": username})
-#     # else:
-#     #     the_report = mongo.db.report.find({"$or": [{"email": email}, {"username": username}]})
-#     return render_template("results_display.html", report=the_report, email=email, username=username)
+@app.route('/search_report_username')
+def search_report_username():
+    parameter = "username"
+    username=mongo.db.report.distinct("username")
+    return render_template("searchResults.html", username=username, parameter=parameter)
+
+@app.route('/search_report_email')
+def search_report_email():
+    parameter = "email"
+    emails=mongo.db.report.distinct("email")
+    return render_template("searchResults.html", emails=emails, parameter=parameter)
 
 
 @app.route('/results_display', methods=["POST"])
@@ -63,6 +54,28 @@ def results_display():
     value = request.form["search_value"]
     the_report = mongo.db.report.find({key: value})
     return render_template("results_display.html", report=the_report, key=key, value=value)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # Adding reports
 
