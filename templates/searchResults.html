@@ -4,22 +4,22 @@
 
 
 
-<form method="POST" action="{{ url_for('results_display') }}">
+<form id="search_form" method="POST" action="{{ url_for('results_display') }}">
     
-    <select name="" id="">
-        {% for search in search_parameters %}
+    <select name="search_identifier" id="search_type">
+        {% for search in sp_types %}
             <option value="{{search.type}}">{{search.type}}</option>
         {% endfor %}
     </select>
     
-     <select name="" id="">
+     <select class="hidden searchValue" name="search_value" id="search_email">
         {% for email in sp_email %}
                 <option value="{{email.email}}">{{email.email}}</option>
         {% endfor %}
     </select> 
-    <select name="" id="">
+    <select class="hidden searchValue" name="search_value" id="search_username">
         {% for username in sp_username %}
-        <option value="{{username.username}}">{{username.username}}</option>
+        <option  value="{{username.username}}">{{username.username}}</option>
         {% endfor %}
     </select>
     
