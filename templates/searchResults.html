@@ -2,9 +2,6 @@
 
 <h1>Search results here</h1>
 
-<a href="{{url_for('search_report_parameter')}}">Search by username</a>
-<a href="{{url_for('search_report_email')}}">Search by email</a>
-
 {% if parameter == "Not chosen" %}
 <form method="POST" action="{{ url_for('search_report_parameter') }}">
     <select name="search_parameter" id="">
