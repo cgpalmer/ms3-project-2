@@ -41,8 +41,9 @@ def search_report_username():
 @app.route('/search_report_email')
 def search_report_email():
     parameter = "email"
+    username=mongo.db.report.distinct("username")
     emails=mongo.db.report.distinct("email")
-    return render_template("searchResults.html", emails=emails, parameter=parameter)
+    return render_template("searchResults.html", emails=emails, username=username, parameter=parameter)
 
 
 @app.route('/results_display', methods=["POST"])
