@@ -30,7 +30,8 @@ def get_report():
 
 @app.route('/search_report')
 def search_report():
-    return render_template("searchResults.html")
+    parameter = "Not chosen"
+    return render_template("searchResults.html", parameter=parameter)
 
 @app.route('/search_report_username',  methods=["POST"])
 def search_report_username():
