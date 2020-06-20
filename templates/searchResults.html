@@ -16,7 +16,8 @@
 <h1>{{parameter}}</h1>
 
 {% if parameter != "Not chosen" %}
-<form method="POST" action="{{ url_for('retrieving_report') }}">
+<form method="POST" action="{{ url_for('retrieving_report', parameter='{{parameter}}') }}">
+    <input type="text" class="hidden" value="{{parameter}}" name="search_choice">
     <select name="search_value" id="">
         {% if parameter == "username" %}
             {% for user in username %}
