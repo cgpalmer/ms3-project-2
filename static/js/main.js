@@ -22,3 +22,16 @@
             $("#addSubCategoryChoice").css("display", "none")
         }
  });
+
+
+  $("#search_type").change(function() {
+        var val = $(this).val();
+        $(".searchValue").addClass("hidden");
+        if (val == "email") {
+            $("#search_email").removeClass("hidden");
+        }
+        else if (val == "username") {
+            $("#search_username").removeClass("hidden");
+        }
+
+ });
