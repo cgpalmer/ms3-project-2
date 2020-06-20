@@ -2,36 +2,18 @@
 
 <h1>Search results here</h1>
 
+<a href="{{url_for('search_report_identifier')}}">Search by username</a>
+<a href="{{url_for('search_report_value')}}">Search by email</a>
 
+<h1>{{var}}</h1>
 
-<form id="search_form" method="POST" action="{{ url_for('find_search_parameter') }}">
-    
-    <select name="search_parameter" id="search_type">
-        <option value="" selected disabled>Please choose a search type</option>
-        {% for search in sp_types %}
-            <option value="{{search.type}}">{{search.type}}</option>
-        {% endfor %}
-    </select>
-  <button type="submit">Search</button>
-</form>
+{% for key in key %}
+    <h1>{{key}}</h1>
+{% endfor %}
 
-<form>    
-     <select class="hidden searchValue" name="search_value" id="search_email">
-        {% for email in sp_email %}
-                <option value="{{email.email}}">{{email.email}}</option>
-        {% endfor %}
-    </select> 
-    <select class="hidden searchValue" name="search_value" id="search_username">
-        {% for username in sp_username %}
-        <option  value="{{username.username}}">{{username.username}}</option>
-        {% endfor %}
-    </select>
-    
-  
-</form>
-
-
-
+{% for email in emails %}
+    <h1>{{email}}</h1>
+{% endfor %}
 
 
 {% endblock %}
