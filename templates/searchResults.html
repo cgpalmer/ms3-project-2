@@ -5,6 +5,7 @@
 <a href="{{url_for('search_report_username')}}">Search by username</a>
 <a href="{{url_for('search_report_email')}}">Search by email</a>
 
+{% if parameter == "Not chosen" %}
 <form method="POST" action="{{ url_for('search_report_username') }}">
     <select name="search_parameter" id="">
         <option value="" disabled selected></option>
@@ -13,6 +14,7 @@
     </select>
     <button type="submit">Search</button>
 </form>
+{% endif %}
 
 <h1>{{parameter}}</h1>
 
