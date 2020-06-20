@@ -30,15 +30,16 @@ def get_report():
 
 @app.route('/search_report')
 def search_report():
-    search_parameters_email = mongo.db.report.find().distinct("email")
+    search_parameters_email = mongo.db.report.find()
     search_parameters_username = mongo.db.report.find()
     search_parameters_category_name = mongo.db.report.find()
     search_parameters_city = mongo.db.report.find()
-    search_parameters_sub_category = mongo.db.search_parameters.find()
-    search_parameters_street = mongo.db.search_parameters.find()
+    search_parameters_sub_category = mongo.db.report.find()
+    search_parameters_street = mongo.db.report.find()
+    search_parameters_types = mongo.db.search_parameters.find()
     categories = mongo.db.categories.find()
     sub_category = mongo.db.sub_category.find()
-    return render_template("searchResults.html", sp_email=search_parameters_email, sp_username=search_parameters_username)
+    return render_template("searchResults.html", sp_types=search_parameters_types, sub_category=sub_category, categories=categories, sp_street=search_parameters_street, sp_sub_category=search_parameters_sub_category, sp_city=search_parameters_city, sp_category=search_parameters_category_name, sp_email=search_parameters_email, sp_username=search_parameters_username)
 
 # @app.route('/results_display', methods=["POST"])
 # def results_display():
