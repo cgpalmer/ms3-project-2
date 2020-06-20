@@ -7,9 +7,11 @@
 
 <h1>{{parameter}}</h1>
 
-{% for user in username %}
-    <h1>{{user}}</h1>
-{% endfor %}
+{% if parameter == "username" %}
+    {% for user in username %}
+        <h1>{{user}}</h1>
+    {% endfor %}
+{% endif %}
 
 {% for email in emails %}
     <h1>{{email}}</h1>
