@@ -15,6 +15,7 @@
 
 <h1>{{parameter}}</h1>
 
+{% if parameter != "Not chosen" %}
 <form method="POST" action="{{ url_for('search_report_parameter') }}">
     <select name="search_value" id="">
         {% if parameter == "username" %}
@@ -32,6 +33,7 @@
     </select>
     <button type="submit">Search</button>
 </form>
+{% endif %}
 
 
 
