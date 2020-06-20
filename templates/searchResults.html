@@ -5,10 +5,10 @@
 <a href="{{url_for('search_report_identifier')}}">Search by username</a>
 <a href="{{url_for('search_report_value')}}">Search by email</a>
 
-<h1>{{var}}</h1>
+<h1>{{parameter}}</h1>
 
-{% for key in key %}
-    <h1>{{key}}</h1>
+{% for user in username %}
+    <h1>{{user}}</h1>
 {% endfor %}
 
 {% for email in emails %}
