@@ -11,7 +11,9 @@
                 {% for search in search_parameter1 %}
                     <option>{{search}}</option>
                 {% endfor %}
+                
         </select> 
+        <button type="submit">Search</button>
         {% for x in range(test) %}
             <select name="search_parameter" id="">
                 <option value="" disabled selected></option>
@@ -27,12 +29,6 @@
 {% endif %}
 
 <a class="btn" href="{{url_for('adding_search_parameter')}}">Add more than one search field</a>
-
-
-            <h1>hello</h1>
-        
-
-
 
 {% if parameter != "Not chosen" %}
 
