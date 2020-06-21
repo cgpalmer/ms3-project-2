@@ -22,61 +22,61 @@
     <input type="text" class="hidden" value="{{parameter}}" name="search_choice" id="search_choice">
     <select name="search_value" id="">
         {% if parameter == "username" %}
-            {% for user in username %}
+            {% for user in username|sort %}
                 <option>{{user}}</option>
             {% endfor %}
         {% endif %}
         
-        {% if parameter == "category" %}
-            {% for category in category %}
+        {% if parameter == "category_name" %}
+            {% for category in category|sort %}
                 <option>{{category}}</option>
             {% endfor %}
         {% endif %}
         
         {% if parameter == "incident_description" %}
-            {% for incident in incident_description %}
+            {% for incident in incident_description|sort %}
                 <option>{{incident}}</option>
             {% endfor %}
         {% endif %}
 
         {% if parameter == "sub_category" %}
-            {% for sub in sub_category %}
+            {% for sub in sub_category |sort %}
                 <option>{{sub}}</option>
             {% endfor %}
         {% endif %}
         
         {% if parameter == "building" %}
-            {% for building in building %}
+            {% for building in building|sort %}
                 <option>{{building}}</option>
             {% endfor %}
         {% endif %}
 
         {% if parameter == "street" %}
-            {% for street in street %}
+            {% for street in street|sort %}
                 <option>{{street}}</option>
             {% endfor %}
         {% endif %}
         
         {% if parameter == "city" %}
-            {% for city in city %}
+            {% for city in city|sort %}
                 <option>{{city}}</option>
             {% endfor %}
         {% endif %}
 
         {% if parameter == "county" %}
-            {% for county in county %}
+            {% for county in county|sort %}
                 <option>{{county}}</option>
             {% endfor %}
         {% endif %}
 
         {% if parameter == "postcode" %}
-            {% for postcode in postcode %}
+            {% for postcode in postcode|sort %}
                 <option>{{postcode}}</option>
             {% endfor %}
         {% endif %}
 
         {% if parameter == "reported" %}
-            {% for reported in reported_to_authories %}
+            {% for reported in reported_to_authories|sort %}
                 <option>{{reported}}</option>
             {% endfor %}
         {% endif %}

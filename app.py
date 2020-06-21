@@ -31,8 +31,8 @@ def get_report():
 @app.route('/search_report')
 def search_report():
     parameter = "Not chosen"
-    search_parameter=mongo.db.search_parameters.distinct("type")
-    return render_template("searchResults.html", search_parameter=search_parameter, parameter=parameter)
+    search_parameters=mongo.db.search_parameters.distinct("type")
+    return render_template("searchResults.html", search_parameter=search_parameters, parameter=parameter)
 
 @app.route('/search_report_parameter',  methods=["POST"])
 def search_report_parameter():
@@ -43,11 +43,11 @@ def search_report_parameter():
     sub_category=mongo.db.report.distinct("sub_category")
     building=mongo.db.report.distinct("building")
     street=mongo.db.report.distinct("street")
-    city=mongo.db.report.distinct("ci")
+    city=mongo.db.report.distinct("city")
     county=mongo.db.report.distinct("county")
     postcode=mongo.db.report.distinct("postcode")
     reported=mongo.db.report.distinct("reported_to_authorities")
-    return render_template("searchResults.html", postcode=postcode, county=county, city=city, street=street, sub_category=sub_category, building=building, incident_description=incident_description, category=category, emails=emails, username=username, parameter=parameter)
+    return render_template("searchResults.html", sub_category=sub_category, username=username, postcode=postcode, county=county, city=city, street=street, building=building, incident_description=incident_description, category=category, parameter=parameter)
 
 @app.route('/retrieving_report', methods=["POST"])
 def retrieving_report():
