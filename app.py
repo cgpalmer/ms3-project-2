@@ -37,8 +37,15 @@ def search_report():
 def search_report_parameter():
     parameter = request.form["search_parameter"]
     username=mongo.db.report.distinct("username")
-    emails=mongo.db.report.distinct("email")
-    return render_template("searchResults.html", emails=emails, username=username, parameter=parameter)
+    incident_description=mongo.db.report.distinct("incident_description")
+    category=mongo.db.report.distinct("category")
+    sub_category=mongo.db.report.distinct("sub_category")
+    building=mongo.db.report.distinct("building")
+    street=mongo.db.report.distinct("street")
+    city=mongo.db.report.distinct("ci")
+    county=mongo.db.report.distinct("county")
+    postcode=mongo.db.report.distinct("postcode")
+    return render_template("searchResults.html", postcode=postcode, county=county, city=city, street=street, sub_category=sub_category, building=building, incident_description=incident_description, category=category, emails=emails, username=username, parameter=parameter)
 
 @app.route('/retrieving_report', methods=["POST"])
 def retrieving_report():
