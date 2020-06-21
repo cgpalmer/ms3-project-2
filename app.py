@@ -31,7 +31,8 @@ def get_report():
 @app.route('/search_report')
 def search_report():
     parameter = "Not chosen"
-    return render_template("searchResults.html", parameter=parameter)
+    search_parameter=mongo.db.search_parameters.distinct("type")
+    return render_template("searchResults.html", search_parameter=search_parameter, parameter=parameter)
 
 @app.route('/search_report_parameter',  methods=["POST"])
 def search_report_parameter():
