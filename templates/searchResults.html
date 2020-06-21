@@ -6,13 +6,26 @@
 <form method="POST" action="{{ url_for('search_report_parameter') }}">
     <select name="search_parameter" id="">
         <option value="" disabled selected></option>
-        {% for search in search_parameter %}
+        {% for search in search_parameter1 %}
             <option>{{search}}</option>
         {% endfor %}
-    </select>
+        </select>
+
+
+        {% if added_parameter == True %}
+        <select name="search_parameter" id="">
+        <option value="" disabled selected></option>
+        {% for search in search_parameter2 %}
+            <option>{{search}}</option>
+        {% endfor %}
+        </select>
+        {% endif %}
+    
     <button type="submit">Search</button>
 </form>
 {% endif %}
+
+<a class="btn" href="{{url_for('search_report_2')}}">Add more than one search field</a>
 
 
 {% if parameter != "Not chosen" %}
