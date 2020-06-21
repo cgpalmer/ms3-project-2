@@ -33,7 +33,7 @@ def get_report():
 def search_report():
     parameter = "Not chosen"
     global test
-    test = 4
+    test = 3
     search_parameter1=mongo.db.search_parameters.distinct("type")
     return render_template("searchResults.html", search_parameter1=search_parameter1, parameter=parameter, test=test)
 
@@ -42,7 +42,7 @@ def search_report():
 def search_report_2():
     added_parameter = True
     global test
-    test = 4
+    test = test + 1
     parameter = "Not chosen"
     search_parameter1=mongo.db.search_parameters.distinct("type")
     search_parameter2=mongo.db.search_parameters.distinct("type")
