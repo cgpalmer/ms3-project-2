@@ -6,7 +6,6 @@
 <form method="POST" action="{{ url_for('search_report_parameter') }}">
     <select name="search_parameter" id="">
         <option value="" disabled selected></option>
-        <option value="email">Email</option>
         <option value="username">Username</option>
     </select>
     <button type="submit">Search</button>
@@ -26,9 +25,57 @@
             {% endfor %}
         {% endif %}
         
-        {% if parameter == "email" %}
-            {% for email in emails %}
-                <option>{{email}}</option>
+        {% if parameter == "category" %}
+            {% for category in category %}
+                <option>{{category}}</option>
+            {% endfor %}
+        {% endif %}
+        
+        {% if parameter == "incident_description" %}
+            {% for incident in incident_description %}
+                <option>{{incident}}</option>
+            {% endfor %}
+        {% endif %}
+
+        {% if parameter == "sub_category" %}
+            {% for sub in sub_category %}
+                <option>{{sub}}</option>
+            {% endfor %}
+        {% endif %}
+        
+        {% if parameter == "building" %}
+            {% for building in building %}
+                <option>{{building}}</option>
+            {% endfor %}
+        {% endif %}
+
+        {% if parameter == "street" %}
+            {% for street in street %}
+                <option>{{street}}</option>
+            {% endfor %}
+        {% endif %}
+        
+        {% if parameter == "city" %}
+            {% for city in city %}
+                <option>{{city}}</option>
+            {% endfor %}
+        {% endif %}
+
+        {% if parameter == "county" %}
+            {% for county in county %}
+                <option>{{county}}</option>
+            {% endfor %}
+        {% endif %}
+
+        {% if parameter == "postcode" %}
+            {% for postcode in postcode %}
+                <option>{{postcode}}</option>
+            {% endfor %}
+        {% endif %}
+
+        {% if parameter == "reported" %}
+            {% for reported in reported_to_authories %}
+                <option>{{reported}}</option>
             {% endfor %}
         {% endif %}
   
