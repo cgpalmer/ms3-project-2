@@ -14,7 +14,7 @@ if path.exists("env.py"):
 app.config["MONGO_URI"] = os.environ.get('MONGO_URI')
 app.config["MONGO_DBNAME"] = "projectDB"
 
-
+number_of_parameters = []
 mongo = PyMongo(app)
 # Initial home page
 @app.route('/')
@@ -32,7 +32,12 @@ def get_report():
 def search_report():
     parameter = "Not chosen"
     search_parameter1=mongo.db.search_parameters.distinct("type")
-    return render_template("searchResults.html", search_parameter1=search_parameter1, parameter=parameter)
+    return render_template("searchResults.html", search_parameter1=search_parameter1, parameter=parameter, pCount=number_of_parameters)
+
+@app.route('/producing_selects')
+def producing_selects():
+    number_of_parameters.append(1)
+    return redirect(url_for('search_report_2'))
 
 @app.route('/search_report_2')
 def search_report_2():
