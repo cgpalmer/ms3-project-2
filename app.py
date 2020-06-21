@@ -31,8 +31,16 @@ def get_report():
 @app.route('/search_report')
 def search_report():
     parameter = "Not chosen"
-    search_parameters=mongo.db.search_parameters.distinct("type")
-    return render_template("searchResults.html", search_parameter=search_parameters, parameter=parameter)
+    search_parameter1=mongo.db.search_parameters.distinct("type")
+    return render_template("searchResults.html", search_parameter1=search_parameter1, parameter=parameter)
+
+@app.route('/search_report_2')
+def search_report_2():
+    added_parameter = True
+    parameter = "Not chosen"
+    search_parameter1=mongo.db.search_parameters.distinct("type")
+    search_parameter2=mongo.db.search_parameters.distinct("type")
+    return render_template("searchResults.html", added_parameter=added_parameter, search_parameter1=search_parameter1, search_parameter2=search_parameter2, parameter=parameter)
 
 @app.route('/search_report_parameter',  methods=["POST"])
 def search_report_parameter():
