@@ -59,7 +59,7 @@ def search_report_parameter():
     global test
     parameter = request.form["search_parameter"]
     parameter2 = request.form["search_parameter0"]
-    username=mongo.db.report.distinct("username")
+    username=mongo.db.report.distinct(parameter)
     incident_description=mongo.db.report.distinct("incident_description")
     category=mongo.db.report.distinct("category_name")
     sub_category=mongo.db.report.distinct("sub_category")
