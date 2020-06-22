@@ -43,6 +43,8 @@ def adding_search_parameter():
     test = test + 1
     return redirect(url_for('search_report_2'))
 
+# You need to make a 'remove parameter'
+
 
 @app.route('/search_report_2')
 def search_report_2():
@@ -54,7 +56,9 @@ def search_report_2():
 
 @app.route('/search_report_parameter',  methods=["POST"])
 def search_report_parameter():
+    global test
     parameter = request.form["search_parameter"]
+    parameter2 = request.form["search_parameter0"]
     username=mongo.db.report.distinct("username")
     incident_description=mongo.db.report.distinct("incident_description")
     category=mongo.db.report.distinct("category_name")
@@ -65,13 +69,15 @@ def search_report_parameter():
     county=mongo.db.report.distinct("county")
     postcode=mongo.db.report.distinct("postcode")
     reported=mongo.db.report.distinct("reported_to_authorities")
-    return render_template("searchResults.html", sub_category=sub_category, username=username, postcode=postcode, county=county, city=city, street=street, building=building, incident_description=incident_description, category=category, parameter=parameter)
+    return render_template("searchResults.html", test=test, sub_category=sub_category, username=username, postcode=postcode, county=county, city=city, street=street, building=building, incident_description=incident_description, category=category, parameter=parameter, parameter2=parameter2)
 
 @app.route('/retrieving_report', methods=["POST"])
 def retrieving_report():
     key = request.form["search_choice"]
     value = request.form["search_value"]
-    the_report = mongo.db.report.find({key: value})
+    key2 = request.form["search_choice2"]
+    value2 = request.form["search_value2"]
+    the_report = mongo.db.report.find( { "$and": [ { key:value }, { key2 : value2} ] } )
     return render_template("results_display.html", report=the_report)
 
 

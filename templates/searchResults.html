@@ -40,66 +40,155 @@
     <input type="text" class="hidden" value="{{parameter}}" name="search_choice" id="search_choice">
     <select name="search_value" id="">
         {% if parameter == "username" %}
+            <option disabled></option>
             {% for user in username|sort %}
                 <option>{{user}}</option>
             {% endfor %}
         {% endif %}
         
         {% if parameter == "category_name" %}
+            <option disabled></option>
             {% for category in category|sort %}
                 <option>{{category}}</option>
             {% endfor %}
         {% endif %}
         
         {% if parameter == "incident_description" %}
+            <option disabled></option>
             {% for incident in incident_description|sort %}
                 <option>{{incident}}</option>
             {% endfor %}
         {% endif %}
 
         {% if parameter == "sub_category" %}
+            <option disabled></option>
             {% for sub in sub_category |sort %}
                 <option>{{sub}}</option>
             {% endfor %}
         {% endif %}
         
         {% if parameter == "building" %}
+            <option disabled></option>
             {% for building in building|sort %}
                 <option>{{building}}</option>
             {% endfor %}
         {% endif %}
 
         {% if parameter == "street" %}
+            <option disabled></option>
             {% for street in street|sort %}
                 <option>{{street}}</option>
             {% endfor %}
         {% endif %}
         
         {% if parameter == "city" %}
+        <option selected disabled value=""></option>
             {% for city in city|sort %}
                 <option>{{city}}</option>
             {% endfor %}
         {% endif %}
 
         {% if parameter == "county" %}
+            <option disabled></option>
             {% for county in county|sort %}
                 <option>{{county}}</option>
             {% endfor %}
         {% endif %}
 
         {% if parameter == "postcode" %}
+            <option disabled></option>
             {% for postcode in postcode|sort %}
                 <option>{{postcode}}</option>
             {% endfor %}
         {% endif %}
 
         {% if parameter == "reported" %}
+            <option disabled></option>
             {% for reported in reported_to_authories|sort %}
                 <option>{{reported}}</option>
             {% endfor %}
         {% endif %}
   
     </select>
+
+    <label for="search_choice2">{{parameter2.capitalize()}}</label>
+    <input type="text" class="hidden" value="{{parameter2}}" name="search_choice2" id="search_choice2">
+    <select name="search_value2" id="">
+        {% if parameter2 == "username" %}
+            <option disabled></option>
+            {% for user in username|sort %}
+                <option>{{user}}</option>
+            {% endfor %}
+        {% endif %}
+        
+        {% if parameter2 == "category_name" %}
+            <option disabled></option>
+            {% for category in category|sort %}
+                <option>{{category}}</option>
+            {% endfor %}
+        {% endif %}
+        
+        {% if parameter2 == "incident_description" %}
+            <option disabled></option>
+            {% for incident in incident_description|sort %}
+                <option>{{incident}}</option>
+            {% endfor %}
+        {% endif %}
+
+        {% if parameter2 == "sub_category" %}
+            <option disabled></option>
+            {% for sub in sub_category |sort %}
+                <option>{{sub}}</option>
+            {% endfor %}
+        {% endif %}
+        
+        {% if parameter2 == "building" %}
+            <option disabled></option>
+            {% for building in building|sort %}
+                <option>{{building}}</option>
+            {% endfor %}
+        {% endif %}
+
+        {% if parameter2 == "street" %}
+            <option disabled></option>
+            {% for street in street|sort %}
+                <option>{{street}}</option>
+            {% endfor %}
+        {% endif %}
+        
+        {% if parameter2 == "city" %}
+            <option selected disabled value=""></option>
+            {% for city in city|sort %}
+                <option>{{city}}</option>
+            {% endfor %}
+        {% endif %}
+
+        {% if parameter2 == "county" %}
+            <option disabled></option>
+            {% for county in county|sort %}
+                <option>{{county}}</option>
+            {% endfor %}
+        {% endif %}
+
+        {% if parameter2 == "postcode" %}
+            <option disabled></option>
+            {% for postcode in postcode|sort %}
+                <option>{{postcode}}</option>
+            {% endfor %}
+        {% endif %}
+
+        {% if parameter == "reported" %}
+            <option disabled></option>
+            {% for reported in reported_to_authories|sort %}
+                <option>{{reported}}</option>
+            {% endfor %}
+        {% endif %}
+  
+    </select>
+
+
+
+
     <button type="submit">Search</button>
 </form>
 {% endif %}
