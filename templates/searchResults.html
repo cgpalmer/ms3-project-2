@@ -40,7 +40,7 @@
     <input type="text" class="hidden" value="{{parameter}}" name="search_choice" id="search_choice">
     <select name="search_value" id="">
             <option disabled></option>
-            {% for value in parameter|sort %}
+            {% for value in parameterChoice1|sort %}
                 <option>{{value}}</option>
             {% endfor %}
     </select>
@@ -49,7 +49,7 @@
     <input type="text" class="hidden" value="{{parameter2}}" name="search_choice2" id="search_choice2">
     <select name="search_value2" id="">
             <option disabled></option>
-            {% for value in parameter|sort %}
+            {% for value in parameterChoice2|sort %}
                 <option>{{value}}</option>
             {% endfor %}
 
