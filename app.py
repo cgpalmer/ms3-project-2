@@ -59,6 +59,8 @@ def search_report_parameter():
     global test
     parameter = request.form["search_parameter"]
     parameter2 = request.form["search_parameter0"]
+    parameterChoice1 = mongo.db.report.distinct(parameter)
+    parameterChoice2 = mongo.db.report.distinct(parameter2)
     username=mongo.db.report.distinct(parameter)
     incident_description=mongo.db.report.distinct("incident_description")
     category=mongo.db.report.distinct("category_name")
@@ -69,7 +71,7 @@ def search_report_parameter():
     county=mongo.db.report.distinct("county")
     postcode=mongo.db.report.distinct("postcode")
     reported=mongo.db.report.distinct("reported_to_authorities")
-    return render_template("searchResults.html", test=test, sub_category=sub_category, username=username, postcode=postcode, county=county, city=city, street=street, building=building, incident_description=incident_description, category=category, parameter=parameter, parameter2=parameter2)
+    return render_template("searchResults.html", parameterChoice2=parameterChoice2, parameterChoice1=parameterChoice1, test=test, sub_category=sub_category, username=username, postcode=postcode, county=county, city=city, street=street, building=building, incident_description=incident_description, category=category, parameter=parameter, parameter2=parameter2)
 
 @app.route('/retrieving_report', methods=["POST"])
 def retrieving_report():
