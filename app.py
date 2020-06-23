@@ -66,14 +66,18 @@ def search_report_parameter():
         return render_template("searchResults.html", parameterChoice2=parameterChoice2, parameterChoice1=parameterChoice1, test=test, parameter=parameter, parameter2=parameter2)
     else:
         return render_template("searchResults.html", parameterChoice1=parameterChoice1, test=test, parameter=parameter)
-        
+
 @app.route('/retrieving_report', methods=["POST"])
 def retrieving_report():
     key = request.form["search_choice"]
     value = request.form["search_value"]
-    key2 = request.form["search_choice2"]
-    value2 = request.form["search_value2"]
-    the_report = mongo.db.report.find( { "$and": [ { key:value }, { key2 : value2} ] } )
+    if test == 1: 
+        key2 = request.form["search_choice2"]
+        value2 = request.form["search_value2"]
+    if test == 1:
+        the_report = mongo.db.report.find( { "$and": [ { key:value }, { key2 : value2} ] } )
+    else:
+        the_report = mongo.db.report.find( {key: value})
     return render_template("results_display.html", report=the_report)
 
 
