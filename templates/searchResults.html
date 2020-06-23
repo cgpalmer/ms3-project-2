@@ -3,7 +3,7 @@
 <h1>Search results here</h1>
 
 {% if parameter == "Not chosen" %}
-        
+        <!-- This allows the user to choose which parameters they will use to filter. -->
         <form method="POST" action="{{ url_for('search_report_parameter') }}">
         <select name="search_parameter" id="">
                 <option value="" disabled selected></option>
@@ -29,6 +29,8 @@
 {% endif %}
 
 <!-- Change this eventually to the count of the types in search_parameters -->
+
+<!-- This is the part of the code that produces the correct values when the parameters have been chosen. -->
 {% if test < 9 %}
 <a class="btn" href="{{url_for('adding_search_parameter')}}">Add more than one search field</a>
 {% endif %}
@@ -37,7 +39,7 @@
 
 <form method="POST" action="{{ url_for('retrieving_report', parameter='{{parameter}}') }}">
 
-    {% for x in range(test) %}
+    {% for x in range(-1,test2) %}
     <label for="search_choice">{{parameter.capitalize()}}</label>
     <input type="text" class="hidden" value="{{parameter}}" name="search_choice" id="search_choice">
     <select name="search_value" id="">

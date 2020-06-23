@@ -69,7 +69,7 @@ def search_report_parameter():
     county=mongo.db.report.distinct("county")
     postcode=mongo.db.report.distinct("postcode")
     reported=mongo.db.report.distinct("reported_to_authorities")
-    return render_template("searchResults.html", test=test, sub_category=sub_category, username=username, postcode=postcode, county=county, city=city, street=street, building=building, incident_description=incident_description, category=category, parameter=parameter, parameter2=parameter2)
+    return render_template("searchResults.html", test2=test, test=test, sub_category=sub_category, username=username, postcode=postcode, county=county, city=city, street=street, building=building, incident_description=incident_description, category=category, parameter=parameter, parameter2=parameter2)
 
 @app.route('/retrieving_report', methods=["POST"])
 def retrieving_report():
