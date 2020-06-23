@@ -50,8 +50,8 @@ def adding_search_parameter():
 def search_report_2():
     global test
     parameter = "Not chosen"
-    search_parameter1=mongo.db.search_parameters.distinct("type")
-    search_parameter2=mongo.db.search_parameters.distinct("type")
+    search_parameter1=mongo.db.search_parameters.find()
+    search_parameter2=mongo.db.search_parameters.find()
     return render_template("searchResults.html", search_parameter1=search_parameter1, search_parameter2=search_parameter2, parameter=parameter, test=test)
 
 @app.route('/search_report_parameter',  methods=["POST"])
