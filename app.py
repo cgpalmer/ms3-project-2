@@ -34,7 +34,7 @@ def search_report():
     parameter = "Not chosen"
     global test
     test = 0
-    search_parameter1=mongo.db.search_parameters.distinct("type")
+    search_parameter1=mongo.db.search_parameters.find()
     return render_template("searchResults.html", search_parameter1=search_parameter1, parameter=parameter, test=test)
 
 @app.route('/adding_search_parameter')
