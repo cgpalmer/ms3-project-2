@@ -58,21 +58,15 @@ def search_report_2():
 def search_report_parameter():
     global test
     parameter = request.form["search_parameter"]
-    parameter2 = request.form["search_parameter0"]
     parameterChoice1 = mongo.db.report.distinct(parameter)
-    parameterChoice2 = mongo.db.report.distinct(parameter2)
-    username=mongo.db.report.distinct(parameter)
-    incident_description=mongo.db.report.distinct("incident_description")
-    category=mongo.db.report.distinct("category_name")
-    sub_category=mongo.db.report.distinct("sub_category")
-    building=mongo.db.report.distinct("building")
-    street=mongo.db.report.distinct("street")
-    city=mongo.db.report.distinct("city")
-    county=mongo.db.report.distinct("county")
-    postcode=mongo.db.report.distinct("postcode")
-    reported=mongo.db.report.distinct("reported_to_authorities")
-    return render_template("searchResults.html", parameterChoice2=parameterChoice2, parameterChoice1=parameterChoice1, test=test, sub_category=sub_category, username=username, postcode=postcode, county=county, city=city, street=street, building=building, incident_description=incident_description, category=category, parameter=parameter, parameter2=parameter2)
-
+    if test == 1:
+        parameter2 = request.form["search_parameter0"]
+        parameterChoice2 = mongo.db.report.distinct(parameter2)
+    if test == 1:
+        return render_template("searchResults.html", parameterChoice2=parameterChoice2, parameterChoice1=parameterChoice1, test=test, parameter=parameter, parameter2=parameter2)
+    else:
+        return render_template("searchResults.html", parameterChoice1=parameterChoice1, test=test, parameter=parameter)
+        
 @app.route('/retrieving_report', methods=["POST"])
 def retrieving_report():
     key = request.form["search_choice"]

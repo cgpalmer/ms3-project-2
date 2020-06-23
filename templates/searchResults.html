@@ -13,7 +13,7 @@
                 {% endfor %}
                 
         </select> 
-        
+    {% if test > 0 %}    
         {% for x in range(test) %}
             <select name="search_parameter{{x}}" id="">
                 <option value="" disabled selected></option>
@@ -23,8 +23,10 @@
                 {% endfor %}
                 </select>            
         {% endfor %}
+    {% endif %}
         <button type="submit">Search</button>
     </form>
+
 
 {% endif %}
 
@@ -36,8 +38,8 @@
 {% if parameter != "Not chosen" %}
 
 <form method="POST" action="{{ url_for('retrieving_report', parameter='{{parameter}}') }}">
-    <label for="search_choice">{{parameter.capitalize()}}</label>
-    <input type="text" class="hidden" value="{{parameter}}" name="search_choice" id="search_choice">
+    <label for="search_choice{{x}}">{{parameter.capitalize()}}</label>
+    <input type="text" class="hidden" value="{{parameter}}" name="search_choice{{x}}" id="search_choice">
     <select name="search_value" id="">
             <option disabled></option>
             {% for value in parameterChoice1|sort %}
@@ -45,6 +47,7 @@
             {% endfor %}
     </select>
 
+    {% if test == 1 %}
     <label for="search_choice2">{{parameter2.capitalize()}}</label>
     <input type="text" class="hidden" value="{{parameter2}}" name="search_choice2" id="search_choice2">
     <select name="search_value2" id="">
@@ -52,6 +55,7 @@
             {% for value in parameterChoice2|sort %}
                 <option>{{value}}</option>
             {% endfor %}
+    {% endif %}
 
     </select>
 
