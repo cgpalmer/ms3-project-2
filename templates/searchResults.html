@@ -16,7 +16,7 @@
                 {% endfor %}
                 
         </select> 
-{% endif %}
+
        
   
 <!-- Will show as many extra forms as needed. -->
@@ -43,6 +43,7 @@
 
 <button type="submit">Search</button>
 </form>
+{% endif %}
 
       
         
@@ -51,7 +52,7 @@
 
 
 <!-- Change this eventually to the count of the types in search_parameters -->
-{% if test < 9 %}
+{% if test < 7 %}
 <a class="btn" href="{{url_for('adding_search_parameter')}}">Add more than one search field</a>
 {% endif %}
 
