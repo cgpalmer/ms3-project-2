@@ -54,12 +54,7 @@ def search_report_2():
     global test
     parameter = "Not chosen"
     search_parameter1=mongo.db.search_parameters.find()
-    search_parameter2=mongo.db.search_parameters.find()
-    # Define a list variable
-    # Change parameter back to distinct
-    # Push the results to a list
-    # Pass the list through and then read the list in the loop. 
-    return render_template("searchResults.html", search_parameter1=search_parameter1, search_parameter2=search_parameter2, parameter=parameter, test=test)
+    return render_template("searchResults.html", search_parameter1=search_parameter1, parameter=parameter, test=test)
 
 @app.route('/search_report_parameter',  methods=["POST"])
 def search_report_parameter():
