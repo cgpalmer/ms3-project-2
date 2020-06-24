@@ -2,7 +2,10 @@
 
 <h1>Search results here</h1>
 
+
 {% if parameter == "Not chosen" %}
+
+<!-- Will show a form when search is first clicked -->
         
         <form method="POST" action="{{ url_for('search_report_parameter') }}">
         <select name="search_parameter" id="">
@@ -13,22 +16,39 @@
                 {% endfor %}
                 
         </select> 
-    {% if test > 0 %}    
-        {% for x in range(test) %}
-            <select name="search_parameter{{x}}" id="">
+{% endif %}
+       
+  
+<!-- Will show as many extra forms as needed. -->
+{% if test > 0 %}
+    {% for x in range(test) %}
+        <select name="search_parameter{{x}}" id="">
                 <option value="" disabled selected></option>
                 
-                {% for search in search_parameter2 %}
-                    <option value="{{search.type}}">{{search.display_name}}</option>
-                {% endfor %}
-                </select>            
-        {% endfor %}
-    {% endif %}
-        <button type="submit">Search</button>
-    </form>
-
-
+                <!-- Hard code a loop here. For range of list, write all the options and each option is list[x] -->
+           
+                    <option value="building">Building</option>
+                    <option value="category_name">Category</option>
+                    <option value="city">City</option>
+                    <option value="county">County</option>
+                    <option value="postcode">Postcode</option>
+                    <option value="report_to_authorities">Reported_to_authorities</option>
+                    <option value="street">Street</option>
+                    <option value="sub_category">Sub-category</option>
+              
+                </select>
+    {% endfor %}
+     
 {% endif %}
+
+<button type="submit">Search</button>
+</form>
+
+      
+        
+
+
+
 
 <!-- Change this eventually to the count of the types in search_parameters -->
 {% if test < 9 %}
@@ -36,6 +56,7 @@
 {% endif %}
 
 {% if parameter != "Not chosen" %}
+
 
 <form method="POST" action="{{ url_for('retrieving_report', parameter='{{parameter}}') }}">
     <label for="search_choice{{x}}">{{parameter.capitalize()}}</label>

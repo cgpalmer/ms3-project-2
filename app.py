@@ -34,8 +34,11 @@ def search_report():
     parameter = "Not chosen"
     global test
     test = 0
+    range_param = ["hello"]
+    search_parameter=mongo.db.search_parameters.distinct("type")
+    range_param.append(search_parameter)
     search_parameter1=mongo.db.search_parameters.find()
-    return render_template("searchResults.html", search_parameter1=search_parameter1, parameter=parameter, test=test)
+    return render_template("searchResults.html", range=range_param, search_parameter1=search_parameter1, parameter=parameter, test=test)
 
 @app.route('/adding_search_parameter')
 def adding_search_parameter():
@@ -52,6 +55,10 @@ def search_report_2():
     parameter = "Not chosen"
     search_parameter1=mongo.db.search_parameters.find()
     search_parameter2=mongo.db.search_parameters.find()
+    # Define a list variable
+    # Change parameter back to distinct
+    # Push the results to a list
+    # Pass the list through and then read the list in the loop. 
     return render_template("searchResults.html", search_parameter1=search_parameter1, search_parameter2=search_parameter2, parameter=parameter, test=test)
 
 @app.route('/search_report_parameter',  methods=["POST"])
