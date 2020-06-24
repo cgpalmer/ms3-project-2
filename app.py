@@ -71,12 +71,21 @@ def search_report_parameter():
 
 @app.route('/retrieving_report', methods=["POST"])
 def retrieving_report():
+    global test
     key = request.form["search_choice"]
     value = request.form["search_value"]
-    if test == 1: 
+    if test > 0:
         key2 = request.form["search_choice2"]
         value2 = request.form["search_value2"]
-    if test == 1:
+    if test > 1:
+        key3 = request.form["search_choice3"]
+        value3 = request.form["search_value3"]
+
+
+
+
+
+    if test > 0:
         the_report = mongo.db.report.find( { "$and": [ { key:value }, { key2 : value2} ] } )
     else:
         the_report = mongo.db.report.find( {key: value})
