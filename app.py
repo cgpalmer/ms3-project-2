@@ -14,6 +14,7 @@ if path.exists("env.py"):
 app.config["MONGO_URI"] = os.environ.get('MONGO_URI')
 app.config["MONGO_DBNAME"] = "projectDB"
 
+# Look into why test can't be 0? 
 test = None
 
 mongo = PyMongo(app)
@@ -29,26 +30,29 @@ def homepage():
 def get_report():
     return render_template("report.html", report=mongo.db.report.find())    
 
+
+# This is the OG screen with one search box as default.
 @app.route('/search_report')
 def search_report():
     parameter = "Not chosen"
     global test
     test = 0
-    range_param = ["hello"]
     search_parameter=mongo.db.search_parameters.distinct("type")
-    range_param.append(search_parameter)
     search_parameter1=mongo.db.search_parameters.find()
-    return render_template("searchResults.html", range=range_param, search_parameter1=search_parameter1, parameter=parameter, test=test)
+    return render_template("searchResults.html", search_parameter1=search_parameter1, parameter=parameter, test=test)
 
+
+# Tells the computer how many extra boxes we need.
 @app.route('/adding_search_parameter')
 def adding_search_parameter():
     global test
+    # turn test to number first.
     test = test + 1
     return redirect(url_for('search_report_2'))
 
 # You need to make a 'remove parameter'
 
-
+# Will add in extra parameter boxes. 
 @app.route('/search_report_2')
 def search_report_2():
     global test
@@ -56,6 +60,7 @@ def search_report_2():
     search_parameter1=mongo.db.search_parameters.find()
     return render_template("searchResults.html", search_parameter1=search_parameter1, parameter=parameter, test=test)
 
+# Will search two parameters.
 @app.route('/search_report_parameter',  methods=["POST"])
 def search_report_parameter():
     global test
@@ -69,6 +74,10 @@ def search_report_parameter():
     else:
         return render_template("searchResults.html", parameterChoice1=parameterChoice1, test=test, parameter=parameter)
 
+
+
+
+# This submits the final report and returns the reports
 @app.route('/retrieving_report', methods=["POST"])
 def retrieving_report():
     global test
@@ -77,14 +86,6 @@ def retrieving_report():
     if test > 0:
         key2 = request.form["search_choice2"]
         value2 = request.form["search_value2"]
-    if test > 1:
-        key3 = request.form["search_choice3"]
-        value3 = request.form["search_value3"]
-
-
-
-
-
     if test > 0:
         the_report = mongo.db.report.find( { "$and": [ { key:value }, { key2 : value2} ] } )
     else:
