@@ -66,12 +66,10 @@ def search_report_parameter():
     global test
     parameter = request.form["search_parameter"]
     parameterChoice1 = mongo.db.report.distinct(parameter)
+    y = 0
 
-""" What if I defined a list here and then looped through the list of variables to repeat the process.
-    for x in range(test): list[x] = parameter
-"""
     if test > 0:
-        parameter2 = request.form["search_parameter0"]
+        parameter2 = request.form["search_parameter{}".format(y)]
         parameterChoice2 = mongo.db.report.distinct(parameter2)
     if test > 1:
         parameter3 = request.form["search_parameter1"]
