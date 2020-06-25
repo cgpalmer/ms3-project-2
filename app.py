@@ -52,7 +52,7 @@ def adding_search_parameter():
 
 # You need to make a 'remove parameter'
 
-# Will add in extra parameter boxes. 
+# Will add in extra parameter boxes. This is neccessary as the og search_report needs to reset the test value.
 @app.route('/search_report_2')
 def search_report_2():
     global test
@@ -66,11 +66,16 @@ def search_report_parameter():
     global test
     parameter = request.form["search_parameter"]
     parameterChoice1 = mongo.db.report.distinct(parameter)
-    if test == 1:
+    if test > 0:
         parameter2 = request.form["search_parameter0"]
         parameterChoice2 = mongo.db.report.distinct(parameter2)
+    if test > 1:
+        parameter3 = request.form["search_parameter1"]
+        parameterChoice3 = mongo.db.report.distinct(parameter3)
     if test == 1:
         return render_template("searchResults.html", parameterChoice2=parameterChoice2, parameterChoice1=parameterChoice1, test=test, parameter=parameter, parameter2=parameter2)
+    if test == 2:
+        return render_template("searchResults.html", parameterChoice2=parameterChoice2, parameterChoice1=parameterChoice1, parameterChoice3=parameterChoice3, test=test, parameter=parameter, parameter2=parameter2, parameter3=parameter3) 
     else:
         return render_template("searchResults.html", parameterChoice1=parameterChoice1, test=test, parameter=parameter)
 
