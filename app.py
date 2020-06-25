@@ -66,15 +66,21 @@ def search_report_parameter():
     global test
     parameter = request.form["search_parameter"]
     parameterChoice1 = mongo.db.report.distinct(parameter)
+
+""" What if I defined a list here and then looped through the list of variables to repeat the process.
+    for x in range(test): list[x] = parameter
+"""
     if test > 0:
         parameter2 = request.form["search_parameter0"]
         parameterChoice2 = mongo.db.report.distinct(parameter2)
     if test > 1:
         parameter3 = request.form["search_parameter1"]
         parameterChoice3 = mongo.db.report.distinct(parameter3)
+
+    # Return different templates - add in until you have seven ifs. 
     if test == 1:
         return render_template("searchResults.html", parameterChoice2=parameterChoice2, parameterChoice1=parameterChoice1, test=test, parameter=parameter, parameter2=parameter2)
-    if test == 2:
+    elif test == 2:
         return render_template("searchResults.html", parameterChoice2=parameterChoice2, parameterChoice1=parameterChoice1, parameterChoice3=parameterChoice3, test=test, parameter=parameter, parameter2=parameter2, parameter3=parameter3) 
     else:
         return render_template("searchResults.html", parameterChoice1=parameterChoice1, test=test, parameter=parameter)
