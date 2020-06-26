@@ -74,8 +74,7 @@ def search_report_parameter():
         pushParameterChoice = str(parameterChoice)
         z.append(pushParameterChoice)
         # Return different templates - add in until you have seven ifs.
-  
-    return render_template("searchResults.html", test=test)
+    return render_template("searchResults.html", test=test, z=z, w=w)
 
 # This submits the final report and returns the reports
 @app.route('/retrieving_report', methods=["POST"])
