@@ -37,7 +37,6 @@ def search_report():
     parameter = "Not chosen"
     global test
     test = 0
-    search_parameter=mongo.db.search_parameters.distinct("type")
     search_parameter1=mongo.db.search_parameters.find()
     return render_template("searchResults.html", search_parameter1=search_parameter1, parameter=parameter, test=test)
 
@@ -68,11 +67,11 @@ def search_report_parameter():
     z = []
     parameterChoice = mongo.db.report.distinct(parameter)
     pushParameter = str(parameterChoice)
-    for x in parameterChoice:
-        z.append(pushParameter)
+    z.append(pushParameter)
 
-    # Return different templates - add in until you have seven ifs. 
-    return z[3]
+    # Return different templates - add in until you have seven ifs.
+
+    return z[0]
 
 # This submits the final report and returns the reports
 @app.route('/retrieving_report', methods=["POST"])
