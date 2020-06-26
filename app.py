@@ -63,7 +63,8 @@ def search_report_2():
 @app.route('/search_report_parameter',  methods=["POST"])
 def search_report_parameter():
     global test
-    parameter = request.form["search_parameter"]
+  
+    parameter = "search_parameter{}".format(test)
     z = []
     parameterChoice = mongo.db.report.distinct(parameter)
     pushParameter = str(parameterChoice)
@@ -71,7 +72,7 @@ def search_report_parameter():
 
     # Return different templates - add in until you have seven ifs.
 
-    return z[0]
+    return parameter
 
 # This submits the final report and returns the reports
 @app.route('/retrieving_report', methods=["POST"])
