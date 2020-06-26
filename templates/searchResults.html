@@ -21,7 +21,7 @@
   
 <!-- Will show as many extra forms as needed. -->
 {% if test > 0 %}
-    {% for x in range(0,test) %}
+    {% for x in range(test) %}
         <select name="search_parameter{{x+1}}" id="">
                 <option value="" disabled selected></option>
                 
