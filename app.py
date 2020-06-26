@@ -65,26 +65,14 @@ def search_report_2():
 def search_report_parameter():
     global test
     parameter = request.form["search_parameter"]
-    parameterChoice1 = mongo.db.report.distinct(parameter)
-    y = 0
-
-    if test > 0:
-        parameter2 = request.form["search_parameter{}".format(y)]
-        parameterChoice2 = mongo.db.report.distinct(parameter2)
-    if test > 1:
-        parameter3 = request.form["search_parameter1"]
-        parameterChoice3 = mongo.db.report.distinct(parameter3)
+    z = []
+    parameterChoice = mongo.db.report.distinct(parameter)
+    pushParameter = str(parameterChoice)
+    for x in parameterChoice:
+        z.append(pushParameter)
 
     # Return different templates - add in until you have seven ifs. 
-    if test == 1:
-        return render_template("searchResults.html", parameterChoice2=parameterChoice2, parameterChoice1=parameterChoice1, test=test, parameter=parameter, parameter2=parameter2)
-    elif test == 2:
-        return render_template("searchResults.html", parameterChoice2=parameterChoice2, parameterChoice1=parameterChoice1, parameterChoice3=parameterChoice3, test=test, parameter=parameter, parameter2=parameter2, parameter3=parameter3) 
-    else:
-        return render_template("searchResults.html", parameterChoice1=parameterChoice1, test=test, parameter=parameter)
-
-
-
+    return z[3]
 
 # This submits the final report and returns the reports
 @app.route('/retrieving_report', methods=["POST"])
