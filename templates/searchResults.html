@@ -8,7 +8,7 @@
 <!-- Will show a form when search is first clicked -->
         
         <form method="POST" action="{{ url_for('search_report_parameter') }}">
-        <select name="search_parameter" id="">
+        <select name="search_parameter0" id="">
                 <option value="" disabled selected></option>
                 
                 {% for search in search_parameter1 %}
@@ -21,8 +21,8 @@
   
 <!-- Will show as many extra forms as needed. -->
 {% if test > 0 %}
-    {% for x in range(test) %}
-        <select name="search_parameter{{x}}" id="">
+    {% for x in range(0,test) %}
+        <select name="search_parameter{{x+1}}" id="">
                 <option value="" disabled selected></option>
                 
                 <!-- Hard code a loop here. For range of list, write all the options and each option is list[x] -->
