@@ -65,14 +65,17 @@ def search_report_parameter():
     global test
     number_of_fields = int(test) + 1
     z = []
+    w = []
     for x in range(number_of_fields):
         parameter = request.form["search_parameter{}".format(x)]
+        pushParameter = str(parameter)
+        w.append(pushParameter)
         parameterChoice = mongo.db.report.distinct(parameter)
-        pushParameter = str(parameterChoice)
-        z.append(pushParameter)
+        pushParameterChoice = str(parameterChoice)
+        z.append(pushParameterChoice)
         # Return different templates - add in until you have seven ifs.
-
-    return z[1]
+  
+    return render_template("searchResults.html", test=test)
 
 # This submits the final report and returns the reports
 @app.route('/retrieving_report', methods=["POST"])

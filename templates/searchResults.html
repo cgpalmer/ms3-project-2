@@ -45,17 +45,14 @@
 </form>
 {% endif %}
 
-      
-        
-
-
-
 
 <!-- Change this eventually to the count of the types in search_parameters -->
 {% if test < 7 %}
 <a class="btn" href="{{url_for('adding_search_parameter')}}">Add more than one search field</a>
 {% endif %}
 
+
+<!-- This half of the template is all to do with selecting values for our parameters. Should it be on another page? -->
 {% if parameter != "Not chosen" %}
 
 
@@ -69,32 +66,6 @@
                 <option>{{value}}</option>
             {% endfor %}
     </select>
-
-    {% if test == 1 %}
-    <label for="search_choice2">{{parameter2.capitalize()}}</label>
-    <input type="text" class="hidden" value="{{parameter2}}" name="search_choice2" id="search_choice2">
-    <select name="search_value2" id="">
-            <option disabled></option>
-            {% for value in parameterChoice2|sort %}
-                <option>{{value}}</option>
-            {% endfor %}
-    {% endif %}
-
-    </select>
-
-    {% if test == 2 %}
-    <label for="search_choice3">{{parameter3.capitalize()}}</label>
-    <input type="text" class="hidden" value="{{parameter3}}" name="search_choice3" id="search_choice3">
-    <select name="search_value3" id="">
-            <option disabled></option>
-            {% for value in parameterChoice3|sort %}
-                <option>{{value}}</option>
-            {% endfor %}
-    {% endif %}
-
-    </select>
-
-
 
 
     <button type="submit">Search</button>
