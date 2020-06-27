@@ -90,12 +90,18 @@ def retrieving_report():
         values.append(value)
     return choices[0]
 
-    # # Return values
-    # if test > 0:
-    #     the_report = mongo.db.report.find( { "$and": [ { key:value }, { key2 : value2} ] } )
-    # else:
-    #     the_report = mongo.db.report.find( {key: value})
-    # return render_template("results_display.html", report=the_report)
+    # Return values
+    if test == 1:
+        the_report = mongo.db.report.find( { "$and": [ { choices[0]:values[0] }, { choices[1] : values[1]} ] } )
+    elif test == 2:
+        the_report = mongo.db.report.find( { "$and": [ { choices[0]:values[0] }, { choices[1] : values[1]}, { choices[2] : values[2]} ] } )
+    elif test == 3:
+        the_report = mongo.db.report.find( { "$and": [ { choices[0]:values[0] }, { choices[1] : values[1]}, { choices[2] : values[2]}, { choices[3] : values[3]} ] } )
+    elif test == 4:
+        the_report = mongo.db.report.find( { "$and": [ { choices[0]:values[0] }, { choices[1] : values[1]}, { choices[2] : values[2]}, { choices[3] : values[3]}, { choices[4] : values[4]} ] } )
+    else:
+        the_report = mongo.db.report.find( {choices[0]: values[0]})
+    return render_template("results_display.html", report=the_report)
 
 
 
