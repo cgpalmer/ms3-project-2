@@ -80,8 +80,8 @@ def search_report_parameter():
 @app.route('/retrieving_report', methods=["POST"])
 def retrieving_report():
     global test
-    key = request.form["search_choice"]
-    value = request.form["search_value"]
+    key = request.form["search_choice0"]
+    value = request.form["search_value0"]
     if test > 0:
         key2 = request.form["search_choice2"]
         value2 = request.form["search_value2"]
