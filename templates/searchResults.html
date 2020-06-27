@@ -1,7 +1,7 @@
 {% extends 'base.html'%} {% block content %}
 
 <h1>Search results here</h1>
-{{test}}
+{{extra_parameters}}
 
 
 {% if parameter == "Not chosen" %}
@@ -21,8 +21,8 @@
        
   
 <!-- Will show as many extra forms as needed. -->
-{% if test > 0 %}
-    {% for x in range(test) %}
+{% if extra_parameters > 0 %}
+    {% for x in range(extra_parameters) %}
         <select name="search_parameter{{x+1}}" id="">
                 <option value="" disabled selected></option>
                 
@@ -48,7 +48,7 @@
 
 
 <!-- Change this eventually to the count of the types in search_parameters -->
-{% if test < 7 %}
+{% if extra_parameters < 7 %}
 <a class="btn" href="{{url_for('adding_search_parameter')}}">Add more than one search field</a>
 {% endif %}
 
@@ -60,7 +60,7 @@
 
 <form method="POST" action="{{ url_for('retrieving_report', parameter='{{parameter}}') }}">
 <!-- This will display the first parameter -->
-{% for x in range(-1, test) %}
+{% for x in range(-1, extra_parameters) %}
     <label for="search_choice{{x+1}}">{{w[x].capitalize()}}</label>
     <input type="text" class="hidden" value="{{w[x]}}" name="search_choice{{x+1}}" id="search_choice{{x+1}}">
     <select name="search_value{{x+1}}" id="">

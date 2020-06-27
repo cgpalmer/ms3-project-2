@@ -15,7 +15,7 @@ app.config["MONGO_URI"] = os.environ.get('MONGO_URI')
 app.config["MONGO_DBNAME"] = "projectDB"
 
 # Look into why test can't be 0? 
-test = None
+extra_parameters = None
 
 mongo = PyMongo(app)
 # Initial home page
@@ -35,18 +35,18 @@ def get_report():
 @app.route('/search_report')
 def search_report():
     parameter = "Not chosen"
-    global test
-    test = 0
+    global extra_parameters
+    extra_parameters = 0
     search_parameter1=mongo.db.search_parameters.find()
-    return render_template("searchResults.html", search_parameter1=search_parameter1, parameter=parameter, test=test)
+    return render_template("searchResults.html", search_parameter1=search_parameter1, parameter=parameter, extra_parameters=extra_parameters)
 
 
 # Tells the computer how many extra boxes we need.
 @app.route('/adding_search_parameter')
 def adding_search_parameter():
-    global test
+    global extra_parameters
     # turn test to number first.
-    test = test + 1
+    extra_parameters = extra_parameters + 1
     return redirect(url_for('search_report_2'))
 
 # You need to make a 'remove parameter'
@@ -54,16 +54,16 @@ def adding_search_parameter():
 # Will add in extra parameter boxes. This is neccessary as the og search_report needs to reset the test value.
 @app.route('/search_report_2')
 def search_report_2():
-    global test
+    global extra_parameters
     parameter = "Not chosen"
     search_parameter1=mongo.db.search_parameters.find()
-    return render_template("searchResults.html", search_parameter1=search_parameter1, parameter=parameter, test=test)
+    return render_template("searchResults.html", search_parameter1=search_parameter1, parameter=parameter, extra_parameters=extra_parameters)
 
 # Will search two parameters.
 @app.route('/search_report_parameter',  methods=["POST"])
 def search_report_parameter():
-    global test
-    number_of_fields = int(test) + 1
+    global extra_parameters
+    number_of_fields = int(extra_parameters) + 1
     z = []
     w = []
     for x in range(number_of_fields):
@@ -74,29 +74,29 @@ def search_report_parameter():
         pushParameterChoice = parameterChoice
         z.append(pushParameterChoice)
         # Return different templates - add in until you have seven ifs.
-    return render_template("searchResults.html", test=test, z=z, w=w, pushParameterChoice=pushParameterChoice)
+    return render_template("searchResults.html", extra_parameters=extra_parameters, z=z, w=w, pushParameterChoice=pushParameterChoice)
 
 # This submits the final report and returns the reports
 @app.route('/retrieving_report', methods=["POST"])
 def retrieving_report():
-    global test
+    global extra_parameters
     choices = []
     values = []
 
-    for x in range(-1, test):
+    for x in range(-1, extra_parameters):
         key = request.form["search_choice{}".format(x+1)]
         choices.append(key)
         value = request.form["search_value{}".format(x+1)]
         values.append(value)
 
     # Return values
-    if test == 1:
+    if extra_parameters == 1:
         the_report = mongo.db.report.find( { "$and": [ { choices[0]:values[0] }, { choices[1] : values[1]} ] } )
-    elif test == 2:
+    elif extra_parameters == 2:
         the_report = mongo.db.report.find( { "$and": [ { choices[0]:values[0] }, { choices[1] : values[1]}, { choices[2] : values[2]} ] } )
-    elif test == 3:
+    elif extra_parameters == 3:
         the_report = mongo.db.report.find( { "$and": [ { choices[0]:values[0] }, { choices[1] : values[1]}, { choices[2] : values[2]}, { choices[3] : values[3]} ] } )
-    elif test == 4:
+    elif extra_parameters == 4:
         the_report = mongo.db.report.find( { "$and": [ { choices[0]:values[0] }, { choices[1] : values[1]}, { choices[2] : values[2]}, { choices[3] : values[3]}, { choices[4] : values[4]} ] } )
     else:
         the_report = mongo.db.report.find( {choices[0]: values[0]})
