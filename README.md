@@ -49,6 +49,8 @@ https://stackoverflow.com/questions/5650457/html-select-form-with-option-to-ente
 https://developer.mozilla.org/en-US/docs/Web/HTML/Element/datalist
 
 
+
+
 Methodology of build
 
 First establish CRUD abilities to all users.
