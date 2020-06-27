@@ -61,11 +61,11 @@
 <form method="POST" action="{{ url_for('retrieving_report', parameter='{{parameter}}') }}">
 <!-- This will display the first parameter -->
 {% for x in range(-1, extra_parameters) %}
-    <label for="search_choice{{x+1}}">{{w[x].capitalize()}}</label>
-    <input type="text" class="hidden" value="{{w[x]}}" name="search_choice{{x+1}}" id="search_choice{{x+1}}">
+    <label for="search_choice{{x+1}}">{{chosen_parameters[x].capitalize()}}</label>
+    <input type="text" class="hidden" value="{{chosen_parameters[x]}}" name="search_choice{{x+1}}" id="search_choice{{x+1}}">
     <select name="search_value{{x+1}}" id="">
             <option disabled></option>
-            {% for value in z[x] %}
+            {% for value in chosen_parameter_options[x] %}
                 <option>{{value}}</option>
             {% endfor %}
     </select>

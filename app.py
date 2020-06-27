@@ -63,18 +63,18 @@ def search_report_2():
 @app.route('/search_report_parameter',  methods=["POST"])
 def search_report_parameter():
     global extra_parameters
-    number_of_fields = int(extra_parameters) + 1
-    z = []
-    w = []
-    for x in range(number_of_fields):
+    number_of_parameter_fields = int(extra_parameters) + 1
+    chosen_parameter_options = []
+    chosen_parameters = []
+    for x in range(number_of_parameter_fields):
         parameter = request.form["search_parameter{}".format(x)]
         pushParameter = str(parameter)
-        w.append(pushParameter)
+        chosen_parameters.append(pushParameter)
         parameterChoice = mongo.db.report.distinct(parameter)
         pushParameterChoice = parameterChoice
-        z.append(pushParameterChoice)
-        # Return different templates - add in until you have seven ifs.
-    return render_template("searchResults.html", extra_parameters=extra_parameters, z=z, w=w, pushParameterChoice=pushParameterChoice)
+        chosen_parameter_options.append(pushParameterChoice)
+        
+    return render_template("searchResults.html", extra_parameters=extra_parameters, chosen_parameter_options=chosen_parameter_options, chosen_parameters=chosen_parameters)
 
 # This submits the final report and returns the reports
 @app.route('/retrieving_report', methods=["POST"])
