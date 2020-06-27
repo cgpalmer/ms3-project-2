@@ -3,6 +3,7 @@
 <h1>Search results here</h1>
 {{test}}
 
+
 {% if parameter == "Not chosen" %}
 
 <!-- Will show a form when search is first clicked -->
@@ -54,6 +55,7 @@
 
 <!-- This half of the template is all to do with selecting values for our parameters. Should it be on another page? -->
 {% if parameter != "Not chosen" %}
+
 
 
 <form method="POST" action="{{ url_for('retrieving_report', parameter='{{parameter}}') }}">
