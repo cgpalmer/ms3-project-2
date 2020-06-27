@@ -62,7 +62,7 @@
 <!-- This will display the first parameter -->
 {% for x in range(-1, test) %}
     <label for="search_choice{{x+1}}">{{w[x].capitalize()}}</label>
-    <input type="text" class="" value="{{w[x]}}" name="search_choice{{x+1}}" id="search_choice{{x+1}}">
+    <input type="text" class="hidden" value="{{w[x]}}" name="search_choice{{x+1}}" id="search_choice{{x+1}}">
     <select name="search_value{{x+1}}" id="">
             <option disabled></option>
             {% for value in z[x] %}
