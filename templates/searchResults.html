@@ -3,7 +3,7 @@
 <h1>Search results here</h1>
 {{extra_parameters}}
 
-<div id="location" class="btn btn-primary">Location</div>
+<div id="locationBTN" class="btn btn-primary">Location</div>
 
 
 {% if parameter == "Not chosen" %}
@@ -16,9 +16,15 @@
                 
                 {% for search in search_parameter1 %}
                     <option id="parameter_{{search.type}}" value="{{search.type}}">{{search.display_name}}</option>
-                {% endfor %}
-                
+                {% endfor %}                
         </select> 
+        <select name="search_parameter0" id="locationOptions">
+            <option value="street">Street</option>
+            <option value="city">City</option>
+            <option value="county">County</option>
+            <option value="postcode">Postcode</option>
+        </select>
+
 
        
   

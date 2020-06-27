@@ -35,3 +35,13 @@
         }
 
  });
+
+
+  $("#search_parameter0").change(function() {
+        var val = $(this).val();
+        if (val == "location"){
+            $("#locationOptions").css("display", "block")
+        }
+        
+
+ });
