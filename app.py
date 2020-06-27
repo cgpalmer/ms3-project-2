@@ -71,10 +71,10 @@ def search_report_parameter():
         pushParameter = str(parameter)
         w.append(pushParameter)
         parameterChoice = mongo.db.report.distinct(parameter)
-        pushParameterChoice = str(parameterChoice)
+        pushParameterChoice = parameterChoice
         z.append(pushParameterChoice)
         # Return different templates - add in until you have seven ifs.
-    return render_template("searchResults.html", test=test, z=z, w=w)
+    return render_template("searchResults.html", test=test, z=z, w=w, pushParameterChoice=pushParameterChoice)
 
 # This submits the final report and returns the reports
 @app.route('/retrieving_report', methods=["POST"])
