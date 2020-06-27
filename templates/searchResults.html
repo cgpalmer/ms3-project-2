@@ -3,17 +3,19 @@
 <h1>Search results here</h1>
 {{extra_parameters}}
 
+<div id="location" class="btn btn-primary">Location</div>
+
 
 {% if parameter == "Not chosen" %}
 
 <!-- Will show a form when search is first clicked -->
         
         <form method="POST" action="{{ url_for('search_report_parameter') }}">
-        <select name="search_parameter0" id="">
+        <select name="search_parameter0" id="search_parameter0">
                 <option value="" disabled selected></option>
                 
                 {% for search in search_parameter1 %}
-                    <option value="{{search.type}}">{{search.display_name}}</option>
+                    <option id="parameter_{{search.type}}" value="{{search.type}}">{{search.display_name}}</option>
                 {% endfor %}
                 
         </select> 
