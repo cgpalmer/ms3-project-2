@@ -88,7 +88,6 @@ def retrieving_report():
         choices.append(key)
         value = request.form["search_value{}".format(x+1)]
         values.append(value)
-    return choices[0]
 
     # Return values
     if test == 1:
