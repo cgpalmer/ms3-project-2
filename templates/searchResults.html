@@ -60,7 +60,7 @@
 
 <form method="POST" action="{{ url_for('retrieving_report', parameter='{{parameter}}') }}">
 <!-- This will display the first parameter -->
-{% for x in range(test) %}
+{% for x in range(-1, test) %}
     <label for="search_choice{{x}}">{{w[x].capitalize()}}</label>
     <input type="text" class="" value="{{w[x]}}" name="search_choice{{x}}" id="search_choice{{x}}">
     <select name="search_value" id="">
