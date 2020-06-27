@@ -1,9 +1,6 @@
 {% extends 'base.html'%} {% block content %}
 
 <h1>Search results here</h1>
-{{extra_parameters}}
-
-<div id="locationBTN" class="btn btn-primary">Location</div>
 
 
 {% if parameter == "Not chosen" %}
@@ -13,17 +10,18 @@
         <form method="POST" action="{{ url_for('search_report_parameter') }}">
         <select name="search_parameter0" id="search_parameter0">
                 <option value="" disabled selected></option>
-                
-                {% for search in search_parameter1 %}
-                    <option id="parameter_{{search.type}}" value="{{search.type}}">{{search.display_name}}</option>
-                {% endfor %}                
-        </select> 
-        <select name="search_parameter0" id="locationOptions">
-            <option value="street">Street</option>
-            <option value="city">City</option>
-            <option value="county">County</option>
-            <option value="postcode">Postcode</option>
+                <option value="building">Building</option>
+                <option value="category_name">Category</option>
+                <option value="sub_category">Sub-category</option>
+                <option value="report_to_authorities">Reported_to_authorities</option>
+                <option value="" disabled>Or search by a location identifier</option>
+                <option value="street">Street</option>
+                <option value="city">City</option>
+                <option value="county">County</option>
+                <option value="postcode">Postcode</option>          
+                                   
         </select>
+      
 
 
        
@@ -38,12 +36,16 @@
            
                     <option value="building">Building</option>
                     <option value="category_name">Category</option>
+                    <option value="sub_category">Sub-category</option>
+                    <option value="report_to_authorities">Reported_to_authorities</option>
+                    <option value="" disabled>Or search by a location identifier</option>
+                    <option value="street">Street</option>
                     <option value="city">City</option>
                     <option value="county">County</option>
                     <option value="postcode">Postcode</option>
-                    <option value="report_to_authorities">Reported_to_authorities</option>
-                    <option value="street">Street</option>
-                    <option value="sub_category">Sub-category</option>
+                    
+                    
+                    
               
                 </select>
     {% endfor %}
