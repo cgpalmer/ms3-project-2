@@ -2,6 +2,26 @@
 
 <h1>Search results here</h1>
 
+<form method="POST" action= "">
+    <input type="checkbox" id="building" name="searchParameter">
+    <label for="building">Building</label>
+
+    <div class="dropdown">
+  <input class=" dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Dropdown button
+  </input>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <input type="radio" id="street" name="searchParameter">
+    <label for="street">Street</label>
+    <input type="radio" id="" name="searchParameter">
+    <label for="building">Building</label>
+    <input type="radio" id="building" name="searchParameter">
+    <label for="building">Building</label>
+  </div>
+</div>
+
+</form>
+
 
 {% if parameter == "Not chosen" %}
 
@@ -58,7 +78,7 @@
 
 
 <!-- Change this eventually to the count of the types in search_parameters -->
-{% if extra_parameters < 7 %}
+{% if extra_parameters < 4 %}
 <a class="btn" href="{{url_for('adding_search_parameter')}}">Add more than one search field</a>
 {% endif %}
 
