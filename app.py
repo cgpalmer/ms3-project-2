@@ -74,8 +74,7 @@ def search_report_parameter():
             options = mongo.db.report.distinct(option)
             chosen_parameter_options.append(options)
             print(chosen_parameter_options)
-        return "done"
-    # return render_template("searchResults.html", extra_parameters=extra_parameters, chosen_parameter_options=chosen_parameter_options, chosen_parameters=chosen_parameters)
+    return render_template("searchResults.html", chosen_parameter_options=chosen_parameter_options, parameterChoices=parameterChoices)
 
 # This submits the final report and returns the reports
 @app.route('/retrieving_report', methods=["POST"])
