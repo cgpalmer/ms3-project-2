@@ -107,8 +107,11 @@ def retrieving_report():
 @app.route('/checkbox', methods=["GET","POST"])
 def checkbox():
     if request.method == "POST":
+        z=[]
         selected_users = request.form.getlist("searchParameter")
-        return str(selected_users)
+        for i in selected_users:
+            z.append(i)
+        return z[1]
 
 
 
