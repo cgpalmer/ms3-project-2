@@ -2,7 +2,7 @@
 
 <h1>Search results here</h1>
 
-<form method="POST" action="{{ url_for('checkbox') }}">
+<form method="POST" action="{{ url_for('search_report_parameter') }}">
     <input type="checkbox" id="checkBuilding" value="building" name="searchParameter">
     <label for="checkBuilding">Building</label>
 
@@ -31,88 +31,12 @@
 <button tpye="submit">Go</button>
 </form>
 
-
-{% if parameter == "Not chosen" %}
-
-<!-- Will show a form when search is first clicked -->
-        
-        <form method="POST" action="{{ url_for('search_report_parameter') }}">
-        <select name="search_parameter0" id="search_parameter0">
-                <option value="" disabled selected></option>
-                <option value="building">Building</option>
-                <option value="category_name">Category</option>
-                <option value="sub_category">Sub-category</option>
-                <option value="report_to_authorities">Reported_to_authorities</option>
-                <option value="" disabled>Or search by a location identifier</option>
-                <option value="street">Street</option>
-                <option value="city">City</option>
-                <option value="county">County</option>
-                <option value="postcode">Postcode</option>          
-                                   
-        </select>
-      
-
-
-       
-  
-<!-- Will show as many extra forms as needed. -->
-{% if extra_parameters > 0 %}
-    {% for x in range(extra_parameters) %}
-        <select name="search_parameter{{x+1}}" id="">
-                <option value="" disabled selected></option>
-                
-                <!-- Hard code a loop here. For range of list, write all the options and each option is list[x] -->
-           
-                    <option value="building">Building</option>
-                    <option value="category_name">Category</option>
-                    <option value="sub_category">Sub-category</option>
-                    <option value="report_to_authorities">Reported_to_authorities</option>
-                    <option value="" disabled>Or search by a location identifier</option>
-                    <option value="street">Street</option>
-                    <option value="city">City</option>
-                    <option value="county">County</option>
-                    <option value="postcode">Postcode</option>
-                    
-                    
-                    
-              
-                </select>
-    {% endfor %}
-     
-{% endif %}
-
-<button type="submit">Search</button>
-</form>
-{% endif %}
-
-
-<!-- Change this eventually to the count of the types in search_parameters -->
-{% if extra_parameters < 4 %}
-<a class="btn" href="{{url_for('adding_search_parameter')}}">Add more than one search field</a>
-{% endif %}
-
-
-<!-- This half of the template is all to do with selecting values for our parameters. Should it be on another page? -->
-{% if parameter != "Not chosen" %}
-
-
-
 <form method="POST" action="{{ url_for('retrieving_report', parameter='{{parameter}}') }}">
-<!-- This will display the first parameter -->
-{% for x in range(-1, extra_parameters) %}
-    <label for="search_choice{{x+1}}">{{chosen_parameters[x].capitalize()}}</label>
-    <input type="text" class="hidden" value="{{chosen_parameters[x]}}" name="search_choice{{x+1}}" id="search_choice{{x+1}}">
-    <select name="search_value{{x+1}}" id="">
-            <option disabled></option>
-            {% for value in chosen_parameter_options[x] %}
-                <option>{{value}}</option>
-            {% endfor %}
-    </select>
-{% endfor %}
+
 
     <button type="submit">Search</button>
 </form>
-{% endif %}
+
 
 
 
