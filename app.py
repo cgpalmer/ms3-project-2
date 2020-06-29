@@ -75,7 +75,8 @@ def search_report_parameter():
             options = mongo.db.report.distinct(option)
             chosen_parameter_options.append(options)
             print(chosen_parameter_options)
-    return render_template("searchResults.html", chosen_parameter_options=chosen_parameter_options, parameterChoices=parameterChoices, x=x)
+        number_of_fields = len(chosen_parameter_options)
+        return render_template("searchResults.html", number_of_fields=number_of_fields, chosen_parameter_options=chosen_parameter_options, parameterChoices=parameterChoices, x=x)
 
 # This submits the final report and returns the reports
 @app.route('/retrieving_report', methods=["POST"])
@@ -83,43 +84,29 @@ def retrieving_report():
     global extra_parameters
     choices = []
     values = []
-
-    for x in range(-1, extra_parameters):
-        key = request.form["search_choice{}".format(x+1)]
+    number_of_fields = request.form["number_of_fields"]
+    for x in range(int(number_of_fields)):
+        key = request.form["search_choice{}".format(x)]
         choices.append(key)
-        value = request.form["search_value{}".format(x+1)]
+        value = request.form["search_value{}".format(x)]
         values.append(value)
 
-    # Return values
-    if extra_parameters == 1:
-        the_report = mongo.db.report.find( { "$and": [ { choices[0]:values[0] }, { choices[1] : values[1]} ] } )
-    elif extra_parameters == 2:
-        the_report = mongo.db.report.find( { "$and": [ { choices[0]:values[0] }, { choices[1] : values[1]}, { choices[2] : values[2]} ] } )
-    elif extra_parameters == 3:
-        the_report = mongo.db.report.find( { "$and": [ { choices[0]:values[0] }, { choices[1] : values[1]}, { choices[2] : values[2]}, { choices[3] : values[3]} ] } )
-    elif extra_parameters == 4:
-        the_report = mongo.db.report.find( { "$and": [ { choices[0]:values[0] }, { choices[1] : values[1]}, { choices[2] : values[2]}, { choices[3] : values[3]}, { choices[4] : values[4]} ] } )
-    else:
-        the_report = mongo.db.report.find( {choices[0]: values[0]})
-    return render_template("results_display.html", report=the_report)
+    # # Return values
+    # if number_of_fields == 1:
+    #     the_report = mongo.db.report.find( { "$and": [ { choices[0]:values[0] }, { choices[1] : values[1]} ] } )
+    # elif extra_parameters == 2:
+    #     the_report = mongo.db.report.find( { "$and": [ { choices[0]:values[0] }, { choices[1] : values[1]}, { choices[2] : values[2]} ] } )
+    # elif extra_parameters == 3:
+    #     the_report = mongo.db.report.find( { "$and": [ { choices[0]:values[0] }, { choices[1] : values[1]}, { choices[2] : values[2]}, { choices[3] : values[3]} ] } )
+    # elif extra_parameters == 4:
+    #     the_report = mongo.db.report.find( { "$and": [ { choices[0]:values[0] }, { choices[1] : values[1]}, { choices[2] : values[2]}, { choices[3] : values[3]}, { choices[4] : values[4]} ] } )
+    # else:
+    #     the_report = mongo.db.report.find( {choices[0]: values[0]})
+    # return render_template("results_display.html", report=the_report)
 
 
 
-@app.route('/checkbox', methods=["GET","POST"])
-def checkbox():
-    if request.method == "POST":
-        z=[]
-        w=[]
-        selected_users = request.form.getlist("searchParameter")
-        print(request.form.getlist("searchParameter"))
-        for i in selected_users:
-            z.append(i)
-            print(z)
-        for j in z:
-            values = mongo.db.report.distinct(j)
-            w.append(values)
-            print(w)
-        return "done"
+
 
 
 
