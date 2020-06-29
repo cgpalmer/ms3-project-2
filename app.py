@@ -62,19 +62,20 @@ def search_report_2():
 # Will search two parameters.
 @app.route('/search_report_parameter',  methods=["POST"])
 def search_report_parameter():
-    global extra_parameters
-    number_of_parameter_fields = int(extra_parameters) + 1
-    chosen_parameter_options = []
-    chosen_parameters = []
-    for x in range(number_of_parameter_fields):
-        parameter = request.form["search_parameter{}".format(x)]
-        pushParameter = str(parameter)
-        chosen_parameters.append(pushParameter)
-        parameterChoice = mongo.db.report.distinct(parameter)
-        pushParameterChoice = parameterChoice
-        chosen_parameter_options.append(pushParameterChoice)
-        
-    return render_template("searchResults.html", extra_parameters=extra_parameters, chosen_parameter_options=chosen_parameter_options, chosen_parameters=chosen_parameters)
+    if request.method == "POST":
+        parameterChoices=[]
+        chosen_parameter_options=[]
+        checkedParameters = request.form.getlist("searchParameter")
+        print(request.form.getlist("searchParameter"))
+        for choice in checkedParameters:
+            parameterChoices.append(choice)
+            print(parameterChoices)
+        for option in parameterChoices:
+            options = mongo.db.report.distinct(option)
+            chosen_parameter_options.append(options)
+            print(chosen_parameter_options)
+        return "done"
+    # return render_template("searchResults.html", extra_parameters=extra_parameters, chosen_parameter_options=chosen_parameter_options, chosen_parameters=chosen_parameters)
 
 # This submits the final report and returns the reports
 @app.route('/retrieving_report', methods=["POST"])
