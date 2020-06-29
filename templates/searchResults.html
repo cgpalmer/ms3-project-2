@@ -2,24 +2,24 @@
 
 <h1>Search results here</h1>
 
-<form method="POST" action= "">
-    <input type="checkbox" id="building" name="searchParameter">
+<form method="POST" action="{{ url_for('checkbox') }}">
+    <input type="checkbox" id="building" value="building" name="searchParameter">
     <label for="building">Building</label>
 
     <div class="dropdown">
   <input class=" dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Dropdown button
-  </input>
+    <label for="dropdownMenuButton">Drop down</label>
+ 
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <input type="radio" id="street" name="searchParameter">
+    <input type="radio" id="street" value="street" name="searchParameter">
     <label for="street">Street</label>
-    <input type="radio" id="" name="searchParameter">
-    <label for="building">Building</label>
-    <input type="radio" id="building" name="searchParameter">
-    <label for="building">Building</label>
+    <input type="radio" id="city" value="city" name="searchParameter">
+    <label for="city">City</label>
+    <input type="radio" id="county" value="county" name="searchParameter">
+    <label for="county" >Building</label>
   </div>
 </div>
-
+<button tpye="submit">Go</button>
 </form>
 
 
