@@ -31,7 +31,11 @@
 <button tpye="submit">Go</button>
 </form>
 
-<form method="POST" action="{{ url_for('retrieving_report', parameter='{{parameter}}') }}">
+{% for i in parameterChoices %}
+    <h1>{{i}}</h1>
+{% endfor %}
+
+<form method="POST" class="hidden" action="{{ url_for('retrieving_report', parameter='{{parameter}}') }}">
 
 
     <button type="submit">Search</button>
