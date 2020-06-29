@@ -104,7 +104,11 @@ def retrieving_report():
 
 
 
-
+@app.route('/checkbox', methods=["GET","POST"])
+def checkbox():
+    if request.method == "POST":
+        selected_users = request.form.getlist("searchParameter")
+        return str(selected_users)
 
 
 
@@ -195,4 +199,8 @@ if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
     port=int(os.environ.get('PORT')),
     debug=True)
+
+
+
+
 
