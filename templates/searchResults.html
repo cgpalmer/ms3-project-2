@@ -3,20 +3,29 @@
 <h1>Search results here</h1>
 
 <form method="POST" action="{{ url_for('checkbox') }}">
-    <input type="checkbox" id="building" value="building" name="searchParameter">
-    <label for="building">Building</label>
+    <input type="checkbox" id="checkBuilding" value="building" name="searchParameter">
+    <label for="checkBuilding">Building</label>
 
-    <div class="dropdown">
-  <input class=" dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    <label for="dropdownMenuButton">Drop down</label>
- 
+    <input type="checkbox" id="checkCategory" value="category_name" name="searchParameter">
+    <label for="checkCategory">Category</label>
+
+    <input type="checkbox" id="checkSubcategory" value="sub_category" name="searchParameter">
+    <label for="checkSubcategory">Sub-category</label>
+
+    <input type="checkbox" id="checkReported" value="reported_to_authorities" name="searchParameter">
+    <label for="checkReported">Reported to authorities?</label>
+
+<div class="dropdown">
+  <div class=" dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Location</div>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <input type="radio" id="street" value="street" name="searchParameter">
-    <label for="street">Street</label>
-    <input type="radio" id="city" value="city" name="searchParameter">
-    <label for="city">City</label>
+    <input type="radio" id="checkStreet" value="street" name="searchParameter">
+    <label for="checkStreet">Street</label>
+    <input type="radio" id="checkCity" value="city" name="searchParameter">
+    <label for="checkCity">City</label>
+    <input type="radio" id="checkCounty" value="county" name="searchParameter">
+    <label for="checkCounty">County</label>
     <input type="radio" id="county" value="county" name="searchParameter">
-    <label for="county" >Building</label>
+    <label for="checkPostcode">Postcode</label>
   </div>
 </div>
 <button tpye="submit">Go</button>
