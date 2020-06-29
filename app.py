@@ -63,6 +63,7 @@ def search_report_2():
 @app.route('/search_report_parameter',  methods=["POST"])
 def search_report_parameter():
     if request.method == "POST":
+        x = 1
         parameterChoices=[]
         chosen_parameter_options=[]
         checkedParameters = request.form.getlist("searchParameter")
@@ -74,7 +75,7 @@ def search_report_parameter():
             options = mongo.db.report.distinct(option)
             chosen_parameter_options.append(options)
             print(chosen_parameter_options)
-    return render_template("searchResults.html", chosen_parameter_options=chosen_parameter_options, parameterChoices=parameterChoices)
+    return render_template("searchResults.html", chosen_parameter_options=chosen_parameter_options, parameterChoices=parameterChoices, x=x)
 
 # This submits the final report and returns the reports
 @app.route('/retrieving_report', methods=["POST"])
