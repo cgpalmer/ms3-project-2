@@ -108,10 +108,13 @@ def retrieving_report():
 def checkbox():
     if request.method == "POST":
         z=[]
+        w=[]
         selected_users = request.form.getlist("searchParameter")
         for i in selected_users:
             z.append(i)
-        return z[1]
+        for j in z:
+            w = mongo.db.report.distinct(j)
+        return w[2]
 
 
 
