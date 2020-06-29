@@ -29,11 +29,26 @@
   </div>
 </div>
 <button tpye="submit">Go</button>
-</form>
 
-{% for i in parameterChoices %}
-    <h1>{{i}}</h1>
-{% endfor %}
+
+
+
+
+</form>
+{% if x == 1 %}
+    {% for x in range(3) %}
+     <label for="search_choice{{x+1}}">{{parameterChoices[x].capitalize()}}</label>
+    <input type="text" class="hidden" value="{{parameterChoices[x]}}" name="search_choice{{x+1}}" id="search_choice{{x+1}}">
+    <select name="search_value{{x+1}}" id="">
+            <option disabled></option>
+            {% for value in chosen_parameter_options[x] %}
+                <option>{{value}}</option>
+            {% endfor %}
+    </select>
+    {% endfor %}
+{% endif %}
+
+
 
 <form method="POST" class="hidden" action="{{ url_for('retrieving_report', parameter='{{parameter}}') }}">
 
