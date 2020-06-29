@@ -110,11 +110,15 @@ def checkbox():
         z=[]
         w=[]
         selected_users = request.form.getlist("searchParameter")
+        print(request.form.getlist("searchParameter"))
         for i in selected_users:
             z.append(i)
+            print(z)
         for j in z:
-            w = mongo.db.report.distinct(j)
-        return w[2]
+            values = mongo.db.report.distinct(j)
+            w.append(values)
+            print(w)
+        return "done"
 
 
 
