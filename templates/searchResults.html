@@ -29,26 +29,29 @@
   </div>
 </div>
 <button tpye="submit">Go</button>
-
-
-
-
-
 </form>
+
 {% if x == 1 %}
-    {% for x in range(3) %}
-     <label for="search_choice{{x+1}}">{{parameterChoices[x].capitalize()}}</label>
-    <input type="text" class="hidden" value="{{parameterChoices[x]}}" name="search_choice{{x+1}}" id="search_choice{{x+1}}">
-    <select name="search_value{{x+1}}" id="">
+<form method="POST" action="{{ url_for('retrieving_report') }}">
+    <input type="text" class="hidden" name="number_of_fields" id="" value="{{number_of_fields}}">
+    {% for x in range(number_of_fields) %}
+     <label for="search_choice{{x}}">{{parameterChoices[x].capitalize()}}</label>
+    <input type="text" class="hidden" value="{{parameterChoices[x]}}" name="search_choice{{x}}" id="search_choice{{x}}">
+    <select name="search_value{{x}}" id="">
             <option disabled></option>
             {% for value in chosen_parameter_options[x] %}
                 <option>{{value}}</option>
             {% endfor %}
     </select>
     {% endfor %}
+    <button type="submit">Search</button>
+</form>
 {% endif %}
 
-
+<!-- Here's what to do next. 
+    Instead of range of 3, store a variable with the length of the array as an int and use that. 
+    Also change x == 1 to the array not being null and then also write in a sentence that says
+    If null = h1> Just bring up all reports. -->
 
 <form method="POST" class="hidden" action="{{ url_for('retrieving_report', parameter='{{parameter}}') }}">
 
