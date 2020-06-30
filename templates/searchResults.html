@@ -2,18 +2,10 @@
 
 <h1>Search results here</h1>
 
+<h3>Search by any checked value</h3>
+<p>This will search for any reports that have one, or more, of the checked values.</p>
 <form method="POST" action="{{ url_for('search_report_parameter') }}">
-
-    <select name="" id="">
-        <option value="">Building</option>
-        <option value="">Category</option>
-        <option value="">Sub-category</option>
-        <option value="">reported_to_authorities</option>
-    </select>
-
-    <div id="AddingField" class="btn btn-primary">Click</div>
-
-    <div class="addFilter hidden">
+    <!-- This can also be a loop -->
     <input type="checkbox" id="checkBuilding" value="building" name="searchParameter">
     <label for="checkBuilding">Building</label>
 
@@ -29,6 +21,7 @@
 <div class="dropdown">
   <div class=" dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Location</div>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+  <!-- This can be a for loop. -->
     <input type="radio" id="checkStreet" value="street" name="searchParameter">
     <label for="checkStreet">Street</label>
     <input type="radio" id="checkCity" value="city" name="searchParameter">
@@ -39,8 +32,8 @@
     <label for="checkPostcode">Postcode</label>
   </div>
 </div>
-</div>
-<button tpye="submit">Go</button>
+
+<button type="submit">Go</button>
 </form>
 
 {% if x == 1 %}
@@ -60,13 +53,56 @@
 </form>
 {% endif %}
 
+<h3>Compare</h3>
+<p> Any searches return will include all checked boxes. Click "Add another" field if you would like to compare two searches.</p>
+<form method="POST" action="{{ url_for('search_report_parameter') }}">
+    <!-- This can also be a loop -->
+    <input type="checkbox" id="checkBuilding" value="building" name="searchParameter">
+    <label for="checkBuilding">Building</label>
 
-<form method="POST" class="hidden" action="{{ url_for('retrieving_report', parameter='{{parameter}}') }}">
+    <input type="checkbox" id="checkCategory" value="category_name" name="searchParameter">
+    <label for="checkCategory">Category</label>
 
+    <input type="checkbox" id="checkSubcategory" value="sub_category" name="searchParameter">
+    <label for="checkSubcategory">Sub-category</label>
 
-    <button type="submit">Search</button>
+    <input type="checkbox" id="checkReported" value="reported_to_authorities" name="searchParameter">
+    <label for="checkReported">Reported to authorities?</label>
+
+<div class="dropdown">
+  <div class=" dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Location</div>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+  <!-- This can be a for loop. -->
+    <input type="radio" id="checkStreet" value="street" name="searchParameter">
+    <label for="checkStreet">Street</label>
+    <input type="radio" id="checkCity" value="city" name="searchParameter">
+    <label for="checkCity">City</label>
+    <input type="radio" id="checkCounty" value="county" name="searchParameter">
+    <label for="checkCounty">County</label>
+    <input type="radio" id="county" value="county" name="searchParameter">
+    <label for="checkPostcode">Postcode</label>
+  </div>
+</div>
+
+<button type="submit">Go</button>
 </form>
 
+{% if x == 1 %}
+<form method="POST" action="{{ url_for('retrieving_report') }}">
+    <input type="text" class="hidden" name="number_of_fields" id="" value="{{number_of_fields}}">
+    {% for x in range(number_of_fields) %}
+     <label for="search_choice{{x}}">{{parameterChoices[x].capitalize()}}</label>
+    <input type="text" class="hidden" value="{{parameterChoices[x]}}" name="search_choice{{x}}" id="search_choice{{x}}">
+    <select name="search_value{{x}}" id="">
+            <option disabled></option>
+            {% for value in chosen_parameter_options[x] %}
+                <option>{{value}}</option>
+            {% endfor %}
+    </select>
+    {% endfor %}
+    <button type="submit">Search</button>
+</form>
+{% endif %}
 
 
 
