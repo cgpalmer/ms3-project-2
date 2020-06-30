@@ -3,6 +3,17 @@
 <h1>Search results here</h1>
 
 <form method="POST" action="{{ url_for('search_report_parameter') }}">
+
+    <select name="" id="">
+        <option value="">Building</option>
+        <option value="">Category</option>
+        <option value="">Sub-category</option>
+        <option value="">reported_to_authorities</option>
+    </select>
+
+    <div id="AddingField" class="btn btn-primary">Click</div>
+
+    <div class="addFilter hidden">
     <input type="checkbox" id="checkBuilding" value="building" name="searchParameter">
     <label for="checkBuilding">Building</label>
 
@@ -28,6 +39,7 @@
     <label for="checkPostcode">Postcode</label>
   </div>
 </div>
+</div>
 <button tpye="submit">Go</button>
 </form>
 
@@ -48,10 +60,6 @@
 </form>
 {% endif %}
 
-<!-- Here's what to do next. 
-    Instead of range of 3, store a variable with the length of the array as an int and use that. 
-    Also change x == 1 to the array not being null and then also write in a sentence that says
-    If null = h1> Just bring up all reports. -->
 
 <form method="POST" class="hidden" action="{{ url_for('retrieving_report', parameter='{{parameter}}') }}">
 
