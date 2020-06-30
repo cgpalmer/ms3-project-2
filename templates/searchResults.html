@@ -88,7 +88,7 @@
 </form>
 
 {% if x == 1 %}
-<form method="POST" action="{{ url_for('retrieving_report') }}">
+<form method="POST" action="{{ url_for('retrieving_report_with_filters') }}">
     <input type="text" class="hidden" name="number_of_fields" id="" value="{{number_of_fields}}">
     {% for x in range(number_of_fields) %}
      <label for="search_choice{{x}}">{{parameterChoices[x].capitalize()}}</label>
