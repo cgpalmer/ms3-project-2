@@ -2,8 +2,54 @@
 
 This is your search display.
 
+{{report}}
 
 {% for report in report %}
+    
+   
+    <div class="card bg-primary text-white">
+                    <p>User: {{report.username}}</p>
+                    <p>Category: {{report.category_name}}</p>
+                    {% if report.sub_category %}
+                        <p>Sub-category: {{report.sub_category}}</p>
+                    {% endif %}
+                    <p>Description: {{report.incident_description}}</p>
+                    <p>Building: {{report.building}}</p>
+                    <p>Street: {{report.street}}</p>
+                    <p>City: {{report.city}}</p>
+                    <p>County: {{report.county}}</p>
+                    <p>Postcode: {{report.postcode}}</p>
+                    <p>Reported to the authorities: {{report.report_to_authorities}}</p>
+            </div>
+    
+    {% endfor %}
+
+    Second search
+
+    {% for report in report2 %}
+    
+   
+    <div class="card bg-primary text-white">
+                    <p>User: {{report.username}}</p>
+                    <p>Category: {{report.category_name}}</p>
+                    {% if report.sub_category %}
+                        <p>Sub-category: {{report.sub_category}}</p>
+                    {% endif %}
+                    <p>Description: {{report.incident_description}}</p>
+                    <p>Building: {{report.building}}</p>
+                    <p>Street: {{report.street}}</p>
+                    <p>City: {{report.city}}</p>
+                    <p>County: {{report.county}}</p>
+                    <p>Postcode: {{report.postcode}}</p>
+                    <p>Reported to the authorities: {{report.report_to_authorities}}</p>
+            </div>
+    
+    {% endfor %}
+
+
+    third search
+
+    {% for report in report3 %}
     
    
     <div class="card bg-primary text-white">
