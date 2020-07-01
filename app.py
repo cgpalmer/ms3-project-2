@@ -121,31 +121,31 @@ def retrieving_report_with_filters():
     number_of_fields = int(fields)
     print(str(number_of_fields))
 
-    
-    for x in range(int(number_of_fields)):
-        print(x)
-        key = request.form["search_choice{}".format(x)]
-        print(key)
-        choices.append(key)
-        value = request.form["search_value{}".format(x)]
-        print(value)
-        values.append(value)
+    for r in range(3):
+        for x in range(int(number_of_fields)):
+            print(x)
+            key = request.form["search_choice{}".format(x)]
+            print(key)
+            choices.append(key)
+            value = request.form["search_value{}".format(x)]
+            print(value)
+            values.append(value)
 
-        # Return values
-    if number_of_fields == 2:
-        the_report = mongo.db.report.find( { "$and": [ { choices[0]:values[0] }, { choices[1] : values[1]} ] } )
-    elif number_of_fields  == 3:
-        the_report = mongo.db.report.find( { "$and": [ { choices[0]:values[0] }, { choices[1] : values[1]}, { choices[2] : values[2]} ] } )
-    elif number_of_fields  == 4:
-        the_report = mongo.db.report.find( { "$and": [ { choices[0]:values[0] }, { choices[1] : values[1]}, { choices[2] : values[2]}, { choices[3] : values[3]} ] } )
-    elif number_of_fields  == 5:
-        the_report = mongo.db.report.find( { "$and": [ { choices[0]:values[0] }, { choices[1] : values[1]}, { choices[2] : values[2]}, { choices[3] : values[3]}, { choices[4] : values[4]} ] } )
-    else:
-        the_report = mongo.db.report.find( {choices[0]: values[0]})
-    the_report_array.append(the_report)
-    print(the_report[0])
+            # Return values
+        if number_of_fields == 2:
+            the_report = mongo.db.report.find( { "$and": [ { choices[0]:values[0] }, { choices[1] : values[1]} ] } )
+        elif number_of_fields == 3:
+            the_report = mongo.db.report.find( { "$and": [ { choices[0]:values[0] }, { choices[1] : values[1]}, { choices[2] : values[2]} ] } )
+        elif number_of_fields  == 4:
+            the_report = mongo.db.report.find( { "$and": [ { choices[0]:values[0] }, { choices[1] : values[1]}, { choices[2] : values[2]}, { choices[3] : values[3]} ] } )
+        elif number_of_fields  == 5:
+            the_report = mongo.db.report.find( { "$and": [ { choices[0]:values[0] }, { choices[1] : values[1]}, { choices[2] : values[2]}, { choices[3] : values[3]}, { choices[4] : values[4]} ] } )
+        else:
+            the_report = mongo.db.report.find( {choices[0]: values[0]})
+        the_report_array.append(the_report)
+        print(the_report[0])
 
-    return render_template("results_display.html", report=the_report_array[0])
+    return render_template("results_display.html", report=the_report_array[0], report2=the_report_array[1], report3=the_report_array[2])
 
 
 
