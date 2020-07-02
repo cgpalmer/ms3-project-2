@@ -15,7 +15,7 @@ app.config["MONGO_URI"] = os.environ.get('MONGO_URI')
 app.config["MONGO_DBNAME"] = "projectDB"
 
 # Look into why test can't be 0? 
-extra_parameters = None
+comparison_number = 1
 
 mongo = PyMongo(app)
 # Initial home page
@@ -35,18 +35,18 @@ def get_report():
 @app.route('/search_report')
 def search_report():
     parameter = "Not chosen"
-    global extra_parameters
-    extra_parameters = 0
+    global comparison_number
+    comparison_number = 1
     search_parameter1=mongo.db.search_parameters.find()
     return render_template("searchResults.html", search_parameter1=search_parameter1, parameter=parameter, extra_parameters=extra_parameters)
 
 
 # Tells the computer how many extra boxes we need.
-@app.route('/adding_search_parameter')
-def adding_search_parameter():
-    global extra_parameters
+@app.route('/comparison_number')
+def comparison_number():
+    global comparison_number = 1
     # turn test to number first.
-    extra_parameters = extra_parameters + 1
+    comparison_number = comparison_number + 1
     return redirect(url_for('search_report_2'))
 
 # You need to make a 'remove parameter'
@@ -119,7 +119,7 @@ def retrieving_report_with_filters():
     values = []
     fields = request.form["number_of_fields"]
     number_of_fields = int(fields)
-    print(str(number_of_fields))
+    print("number of fields" + str(number_of_fields))
 
     for r in range(3):
         for x in range(int(number_of_fields)):
