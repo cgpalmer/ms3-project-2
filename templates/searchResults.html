@@ -58,8 +58,9 @@
 
 <a href="{{ url_for('comparison_number') }}">Add another comparison</a>
 
-{% for number in range(comparison_number)%}
+
 <form method="POST" action="{{ url_for('search_report_parameter') }}">
+    {% for number in range(comparison_number) %}
     <!-- This can also be a loop -->
     <input type="checkbox" id="checkBuilding" value="building" name="searchParameter">
     <label for="checkBuilding">Building</label>
@@ -87,10 +88,10 @@
     <label for="checkPostcode">Postcode</label>
   </div>
 </div>
-
+{% endfor %}
 <button type="submit">Go</button>
 </form>
-{% endfor %}
+
 
 {% if x == 1 %}
 <form method="POST" action="{{ url_for('retrieving_report_with_filters') }}">
