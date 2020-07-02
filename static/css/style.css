@@ -6,3 +6,7 @@ header {
     background-color: rgb(175, 175, 174);
 } 
 
+
+#compareSearch, #orSearch{
+    display: none;
+}

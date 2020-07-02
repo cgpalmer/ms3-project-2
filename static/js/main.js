@@ -36,3 +36,11 @@
 
  });
 
+
+  $("#basic").click(function(){;
+      $("#orSearch").toggle();
+  });
+
+    $("#compare").click(function(){;
+      $("#compareSearch").toggle();
+  });
