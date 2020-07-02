@@ -62,36 +62,38 @@
 <form method="POST" action="{{ url_for('search_report_parameter') }}">
     {% for number in range(comparison_number) %}
     <!-- This can also be a loop -->
-    <input type="checkbox" id="checkBuilding" value="building" name="searchParameter">
-    <label for="checkBuilding">Building</label>
+    <input type="checkbox" id="comparisonCheckBuilding{{number}}" value="building" name="searchParameter{{number}}">
+    <label for="comparisonCheckBuilding{{number}}">Building</label>
 
-    <input type="checkbox" id="checkCategory" value="category_name" name="searchParameter">
-    <label for="checkCategory">Category</label>
+    <input type="checkbox" id="comparisonCheckCategory{{number}}" value="category_name" name="searchParameter{{number}}">
+    <label for="comparisonCheckCategory{{number}}">Category</label>
 
-    <input type="checkbox" id="checkSubcategory" value="sub_category" name="searchParameter">
-    <label for="checkSubcategory">Sub-category</label>
+    <input type="checkbox" id="comparisonCheckSubcategory{{number}}" value="sub_category" name="searchParameter{{number}}">
+    <label for="comparisonCheckSubcategory{{number}}">Sub-category</label>
 
-    <input type="checkbox" id="checkReported" value="reported_to_authorities" name="searchParameter">
-    <label for="checkReported">Reported to authorities?</label>
+    <input type="checkbox" id="comparisonCheckReported{{number}}" value="reported_to_authorities{{number}}" name="searchParameter{{number}}">
+    <label for="comparisonCheckReported{{number}}">Reported to authorities?</label>
 
 <div class="dropdown">
-  <div class=" dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Location</div>
+  <div class=" dropdown-toggle" type="button" id="comparisonDropdownMenuButton{{number}}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Location</div>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
   <!-- This can be a for loop. -->
-    <input type="radio" id="checkStreet" value="street" name="searchParameter">
-    <label for="checkStreet">Street</label>
-    <input type="radio" id="checkCity" value="city" name="searchParameter">
-    <label for="checkCity">City</label>
-    <input type="radio" id="checkCounty" value="county" name="searchParameter">
-    <label for="checkCounty">County</label>
-    <input type="radio" id="county" value="county" name="searchParameter">
-    <label for="checkPostcode">Postcode</label>
+    <input type="radio" id="comparisonCheckStreet{{number}}" value="street" name="searchParameter{{number}}">
+    <label for="comparisonCheckStreet{{number}}">Street</label>
+    <input type="radio" id="comparisonCheckCity{{number}}" value="city" name="searchParameter{{number}}">
+    <label for="comparisonCheckCity{{number}}">City</label>
+    <input type="radio" id="comparisonCheckCounty{{number}}" value="county" name="searchParameter{{number}}">
+    <label for="comparisonCheckCounty{{number}}">County</label>
+    <input type="radio" id="comparisonCounty{{number}}" value="county" name="searchParameter{{number}}">
+    <label for="comparisonCheckPostcode{{number}}">Postcode</label>
   </div>
 </div>
 {% endfor %}
 <button type="submit">Go</button>
 </form>
 
+
+<!-- From here you are adding in search values. This might need to be a separate piece of html. -->
 
 {% if x == 1 %}
 <form method="POST" action="{{ url_for('retrieving_report_with_filters') }}">
