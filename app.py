@@ -38,13 +38,13 @@ def search_report():
     global comparison_number
     comparison_number = 1
     search_parameter1=mongo.db.search_parameters.find()
-    return render_template("searchResults.html", search_parameter1=search_parameter1, parameter=parameter, extra_parameters=extra_parameters)
+    return render_template("searchResults.html", search_parameter1=search_parameter1, parameter=parameter, comparison_number=comparison_number)
 
 
 # Tells the computer how many extra boxes we need.
 @app.route('/comparison_number')
 def comparison_number():
-    global comparison_number = 1
+    global comparison_number
     # turn test to number first.
     comparison_number = comparison_number + 1
     return redirect(url_for('search_report_2'))
@@ -54,15 +54,16 @@ def comparison_number():
 # Will add in extra parameter boxes. This is neccessary as the og search_report needs to reset the test value.
 @app.route('/search_report_2')
 def search_report_2():
-    global extra_parameters
+    
     parameter = "Not chosen"
     search_parameter1=mongo.db.search_parameters.find()
-    return render_template("searchResults.html", search_parameter1=search_parameter1, parameter=parameter, extra_parameters=extra_parameters)
+    return render_template("searchResults.html", search_parameter1=search_parameter1, parameter=parameter, comparison_number=comparison_number)
 
 # Will search two parameters.
 @app.route('/search_report_parameter',  methods=["POST"])
 def search_report_parameter():
     if request.method == "POST":
+        global comparison_number
         x = 1
         parameterChoices=[]
         chosen_parameter_options=[]
