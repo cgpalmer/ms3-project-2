@@ -1,9 +1,8 @@
 {% extends 'base.html'%} {% block content %}
 
 <h1>Search results here</h1>
-
 <h3 id="basic">Basic search</h3>
-<div id="orSearch" class="hidden">
+<div id="orSearch">
     <h3>Search by any checked value</h3>
     <p>This will search for any reports that have one, or more, of the checked values.</p>
     <form method="POST" action="{{ url_for('search_report_parameter') }}">
@@ -43,7 +42,7 @@
 
 
 <h3 id="compare">Compare</h3>
-<div id="compareSearch" class="hidden">
+<div id="compareSearch">
 <p> Any searches return will include all checked boxes. Click "Add another" field if you would like to compare up to three searches.</p>
 
 <a href="{{ url_for('comparison_number') }}">Add another comparison</a>
