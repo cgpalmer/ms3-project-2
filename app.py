@@ -45,7 +45,7 @@ def search_report():
 def search_report_parameter():
     if request.method == "POST":
         global comparison_number
-        x = 1
+     
         parameterChoices=[]
         chosen_parameter_options=[]
         checkedParameters = request.form.getlist("searchParameter")
@@ -59,7 +59,7 @@ def search_report_parameter():
             chosen_parameter_options.append(options)
             print(chosen_parameter_options)
         number_of_fields = len(chosen_parameter_options)
-        return render_template("pickValuesBasic.html", comparison_number=comparison_number, number_of_fields=number_of_fields, chosen_parameter_options=chosen_parameter_options, parameterChoices=parameterChoices, x=x)
+        return render_template("pickValuesBasic.html", comparison_number=comparison_number, number_of_fields=number_of_fields, chosen_parameter_options=chosen_parameter_options, parameterChoices=parameterChoices)
 
 # This submits the final report and returns the reports
 @app.route('/retrieving_report', methods=["POST"])
