@@ -153,21 +153,29 @@ def compare_by_all():
 @app.route('/search_all_by_parameter',  methods=["POST"])
 def search_all_by_parameter():
     parameter = request.form['parameter']
+    print(parameter)
     parameterValue = request.form['parameterValue']
+    print(parameterValue)
     location = request.form['locationValue']
-    locationValues = []
-    all_value_options = mongo.db.report.distinct(location)
-    print(all_value_options)
-    locationValues.append(all_value_options)
+    print(location)
+    searches = []
+    strings = []
+    locationValues= mongo.db.report.distinct(location)
+
     print(locationValues)
   
-    for x in range(len(all_value_options)):
-        the_report = mongo.db.report.find( { "$and": [ { parameter:parameterValue }, { location : locationValues[0]}] } )
-
-    # the_report = mongo.db.report.find({parameter: value })
+    for x in range(len(locationValues)):
+        the_report = mongo.db.report.find( { "$and": [ {parameter:parameterValue }, {location : locationValues[x]}] } )
+        searches.append(the_report)
+        print(searches)
     
-    # return render_template("resultsDisplayComparison", all_value_options)
-    return "done"
+    for report in searches:
+        string = str(searches[0])
+        strings.append(string)
+        print(strings)
+
+    return render_template("resultsDisplayCompareByAll.html", report=the_report, searches=searches)
+    # return "done"
 
 
 
