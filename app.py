@@ -168,11 +168,6 @@ def search_all_by_parameter():
         the_report = mongo.db.report.find( { "$and": [ {parameter:parameterValue }, {location : locationValues[x]}] } )
         searches.append(the_report)
         print(searches)
-    
-    for report in searches:
-        string = str(searches[0])
-        strings.append(string)
-        print(strings)
 
     return render_template("resultsDisplayCompareByAll.html", report=the_report, searches=searches)
     # return "done"
