@@ -3,27 +3,20 @@
 
 <form method="POST" action="">
     <!-- number of comparisons -->
-    <input type="text" class="hidden" name="comparison_number" id="" value="{{comparison_number}}">
-    {% for x in range(comparison_number) %}
-    <div class="comparisonPickValues">
-        <h1>Search field {{x}}</h1>
-        {% for choice in parameterChoices %}
-       
-            <input type="text" class="hidden" name="" value="{{choice}}" placeholder="{{choice}}">
-            <label for="">{{choice}}</label>
-            <select name="" id="">
-        
-                {% for value in chosen_parameter_options[loop.index0] %}
-                    <option value="">{{value}}</option>
-                {% endfor %}
-          
-                </select>
-            <p>{{loop.index0}}</p>
-          
-        {% endfor %}
-    </div>
-    {% endfor %}
-    <button type="submit">Search</button>
+    <div class="dropdown">
+  <div class=" dropdown-toggle" type="button" id="comparisonDropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Location</div>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+  <!-- This can be a for loop. -->
+    <input type="radio" id="comparisonCheckStreet" value="street" name="searchParameter">
+    <label for="comparisonCheckStreet">Street</label>
+    <input type="radio" id="comparisonCheckCity" value="city" name="searchParameter">
+    <label for="comparisonCheckCity">City</label>
+    <input type="radio" id="comparisonCheckCounty" value="county" name="searchParameter">
+    <label for="comparisonCheckCounty">County</label>
+    <input type="radio" id="comparisonCounty" value="county" name="searchParameter">
+    <label for="comparisonCheckPostcode">Postcode</label>
+  </div>
+</div>
 </form>
 
 {% endblock %}
