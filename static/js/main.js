@@ -41,6 +41,6 @@
       $("#orSearch").toggle();
   });
 
-    $("#compare").click(function(){;
-      $("#compareSearch").toggle();
+    $("#filtered").click(function(){;
+      $("#filteredSearch").toggle();
   });
