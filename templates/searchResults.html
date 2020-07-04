@@ -41,12 +41,9 @@
 
 <!-- This is a comparison route -->
 
-<h3 id="compare">Compare</h3>
-<div id="compareSearch">
+<h3 id="filtered">Filtered</h3>
+<div class="hidden" id="filteredSearch">
 <p> Any searches return will include all checked boxes. Click "Add another" field if you would like to compare up to three searches.</p>
-
-
-
 
 <form method="POST" action="{{ url_for('and_filter_parameters') }}">
 
@@ -62,6 +59,29 @@
     <label for="comparisonCheckSubcategory">Sub-category</label>
 
     <input type="checkbox" id="comparisonCheckReported" value="reported_to_authorities" name="searchParameter">
+    <label for="comparisonCheckReported">Reported to authorities?</label>
+
+<button type="submit">Go</button>
+</form>
+</div>
+
+
+<h1>Compare</h1>
+<p>Here you can search for a type of report in any location filter.</p>
+<form method="POST" action="">
+
+    <input class="hidden" type="text" id="comparisonNumber" value="{{comparison_number}}" name="comparison_number">
+    <!-- This can also be a loop -->
+    <input type="radio" id="comparisonCheckBuilding" value="building" name="searchParameter">
+    <label for="comparisonCheckBuilding">Building</label>
+
+    <input type="radio" id="comparisonCheckCategory" value="category_name" name="searchParameter">
+    <label for="comparisonCheckCategory">Category</label>
+
+    <input type="radio" id="comparisonCheckSubcategory" value="sub_category" name="searchParameter">
+    <label for="comparisonCheckSubcategory">Sub-category</label>
+
+    <input type="radio" id="comparisonCheckReported" value="reported_to_authorities" name="searchParameter">
     <label for="comparisonCheckReported">Reported to authorities?</label>
 
 <div class="dropdown">
@@ -81,10 +101,6 @@
 
 <button type="submit">Go</button>
 </form>
-</div>
-
-
-
 
 
 
