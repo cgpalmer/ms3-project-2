@@ -43,3 +43,21 @@ https://stackoverflow.com/questions/52930321/mongodb-with-python-used-to-store-u
 
 jQuery based on a form value
 http://jsfiddle.net/YPsqQ/
+
+Typing to see options
+https://stackoverflow.com/questions/5650457/html-select-form-with-option-to-enter-custom-value
+https://developer.mozilla.org/en-US/docs/Web/HTML/Element/datalist
+
+
+https://www.youtube.com/watch?v=_sgVt16Q4O4
+
+Methodology of build
+
+First establish CRUD abilities to all users.
+Create a search function based on just the form options
+Add in basic statistics for when a search is carried out
+Add in an autocomplete based on postcode
+Add a login 
+Add a user area
+Make sure users can only edit their own reports
+Send an email to me when a report has been updated
