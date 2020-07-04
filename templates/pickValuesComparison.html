@@ -3,12 +3,12 @@
 
 <h3>You have chosen to search by {{parameter}}</h3>
 
-{{parameter_options}}
+
 
 <p>Search by all...</p>
 <form method="POST" action="{{ url_for('search_all_by_parameter') }}">
 
-    <input type="text" name="parameter" value="{{parameter}}">
+    <input type="text" class="hidden" name="parameter" value="{{parameter}}">
     <!-- number of comparisons -->
     <label for="parameterValue}">Choose a search parameter</label>
     <select name="parameterValue" id="">
