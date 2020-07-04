@@ -7,9 +7,10 @@
 
 <p>Search by all...</p>
 <form method="POST" action="{{ url_for('search_all_by_parameter') }}">
-  
+
+    <input type="text" name="parameter" value="{{parameter}}">
     <!-- number of comparisons -->
-    <label for="parameter_value}">Choose a search parameter</label>
+    <label for="parameterValue}">Choose a search parameter</label>
     <select name="parameterValue" id="">
                     <option disabled></option>
                     {% for value in parameter_options %}
