@@ -1,7 +1,7 @@
 {% extends 'base.html'%} {% block content %}
 <!-- From here you are adding in search values. This might need to be a separate piece of html. -->
 
-<form method="POST" action="">
+<form method="POST" action="{{ url_for('retrieving_report_with_filters') }}">
     <!-- number of comparisons -->
     <input type="text" class="hidden" name="comparison_number" id="" value="{{comparison_number}}">
     <div class="comparisonPickValues">
