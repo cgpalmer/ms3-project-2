@@ -8,7 +8,7 @@ header {
 
 
 #compareSearch, #orSearch{
-    display: none;
+    display: block;
 }
 
 
