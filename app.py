@@ -121,11 +121,14 @@ def collecting_comparison_parameters():
     print(comparison_number)
 
     for x in range(comparison_number):
+        parameterChoices = []
+        print(parameterChoices)
         checkedParameters = request.form.getlist("searchParameter{}".format(x))
         print("checked parameters " + str(checkedParameters))
         
         for choice in checkedParameters:
             parameterChoices.append(choice)
+            print(parameterChoices)
     
         for option in parameterChoices:
             options = mongo.db.report.distinct(option)
