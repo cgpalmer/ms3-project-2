@@ -116,8 +116,10 @@ def adding_comparisons():
 @app.route('/collecting_comparison_parameters', methods=["POST"])
 def collecting_comparison_parameters():
     parameterChoices = []
+    numChecked = []
     comparison_number = int(request.form["comparison_number"])
     chosen_parameter_options = []
+  
     print(comparison_number)
 
     for x in range(comparison_number):
@@ -125,6 +127,10 @@ def collecting_comparison_parameters():
         print(parameterChoices)
         checkedParameters = request.form.getlist("searchParameter{}".format(x))
         print("checked parameters " + str(checkedParameters))
+        parametersLen = len(checkedParameters)
+        numChecked.append(parametersLen)
+        print("no. of parameters " + str(parametersLen))
+        print(numChecked)
         
         for choice in checkedParameters:
             parameterChoices.append(choice)
@@ -134,8 +140,10 @@ def collecting_comparison_parameters():
             options = mongo.db.report.distinct(option)
             chosen_parameter_options.append(options)
             print(chosen_parameter_options)
-    
-    return render_template("pickValuesComparison.html", comparison_number=comparison_number, chosen_parameter_options=chosen_parameter_options, parameterChoices=parameterChoices)
+
+
+    return "done"
+    # return render_template("pickValuesComparison.html", comparison_number=comparison_number, chosen_parameter_options=chosen_parameter_options, parameterChoices=parameterChoices)
 
 
 
