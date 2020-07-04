@@ -44,7 +44,6 @@ def search_report():
 @app.route('/search_report_parameter',  methods=["POST"])
 def search_report_parameter():
     if request.method == "POST":
-        global comparison_number
      
         parameterChoices=[]
         chosen_parameter_options=[]
@@ -59,12 +58,11 @@ def search_report_parameter():
             chosen_parameter_options.append(options)
             print(chosen_parameter_options)
         number_of_fields = len(chosen_parameter_options)
-        return render_template("pickValuesOr.html", comparison_number=comparison_number, number_of_fields=number_of_fields, chosen_parameter_options=chosen_parameter_options, parameterChoices=parameterChoices)
+        return render_template("pickValuesOr.html", number_of_fields=number_of_fields, chosen_parameter_options=chosen_parameter_options, parameterChoices=parameterChoices)
 
 # This submits the final report and returns the reports
 @app.route('/retrieving_report', methods=["POST"])
 def retrieving_report():
-    global extra_parameters
     choices = []
     values = []
     fields = request.form["number_of_fields"]
@@ -94,28 +92,9 @@ def retrieving_report():
     return render_template("resultsDisplayBasic.html", report=the_report)
 
 
-
-# For a comparison search
-
-# Tells the computer how many extra boxes we need.
-@app.route('/comparison_number')
-def comparison_number():
-    global comparison_number
-    comparison_number = comparison_number + 1
-    return redirect(url_for('adding_comparisons'))
-
-# You need to make a 'remove parameter'
-
-@app.route('/adding_comparisons')
-def adding_comparisons():
-    search_parameter1=mongo.db.search_parameters.find()
-    return render_template("searchResults.html", search_parameter1=search_parameter1, comparison_number=comparison_number)
-
-# Here we need a route that can store the parameters
-# Will search the basic parameters.
 @app.route('/and_filter_parameters',  methods=["POST"])
 def and_filter_parameters():
-    if request.method == "POST":
+    
         parameterChoices=[]
         chosen_parameter_options=[]
         checkedParameters = request.form.getlist("searchParameter")
@@ -129,50 +108,37 @@ def and_filter_parameters():
             chosen_parameter_options.append(options)
             print(chosen_parameter_options)
         number_of_fields = len(chosen_parameter_options)
-        return render_template("pickValuesAnd.html", comparison_number=comparison_number, number_of_fields=number_of_fields, chosen_parameter_options=chosen_parameter_options, parameterChoices=parameterChoices)
+        return render_template("pickValuesAnd.html", number_of_fields=number_of_fields, chosen_parameter_options=chosen_parameter_options, parameterChoices=parameterChoices)
 
-# This submits the final report and returns the reports
 @app.route('/retrieving_report_with_filters', methods=["POST"])
 def retrieving_report_with_filters():
-    global comparison_number
-    the_report_array = []
     choices = []
     values = []
     fields = request.form["number_of_fields"]
     number_of_fields = int(fields)
-    print("number of fields" + str(number_of_fields))
+    print(str(number_of_fields))
+    for x in range(int(number_of_fields)):
+        print(x)
+        key = request.form["search_choice{}".format(x)]
+        print(key)
+        choices.append(key)
+        value = request.form["search_value{}".format(x)]
+        print(value)
+        values.append(value)
 
-    for r in range(comparison_number):
-        for x in range(int(number_of_fields)):
-            print(x)
-            key = request.form["search_choice{}".format(x)]
-            print(key)
-            choices.append(key)
-            value = request.form["search_value{}".format(x)]
-            print(value)
-            values.append(value)
-
-            # Return values
-        if number_of_fields == 2:
-            the_report = mongo.db.report.find( { "$and": [ { choices[0]:values[0] }, { choices[1] : values[1]} ] } )
-        elif number_of_fields == 3:
-            the_report = mongo.db.report.find( { "$and": [ { choices[0]:values[0] }, { choices[1] : values[1]}, { choices[2] : values[2]} ] } )
-        elif number_of_fields  == 4:
-            the_report = mongo.db.report.find( { "$and": [ { choices[0]:values[0] }, { choices[1] : values[1]}, { choices[2] : values[2]}, { choices[3] : values[3]} ] } )
-        elif number_of_fields  == 5:
-            the_report = mongo.db.report.find( { "$and": [ { choices[0]:values[0] }, { choices[1] : values[1]}, { choices[2] : values[2]}, { choices[3] : values[3]}, { choices[4] : values[4]} ] } )
-        else:
-            the_report = mongo.db.report.find( {choices[0]: values[0]})
-        the_report_array.append(the_report)
-        print(the_report[0])
-
-    return render_template("results_display.html", report=the_report_array[0], report2=the_report_array[1], report3=the_report_array[2])
-
-
-
-
-
-
+        # Return values
+    if number_of_fields == 2:
+        print("if 2")
+        the_report = mongo.db.report.find( { "$and": [ { choices[0]:values[0] }, { choices[1] : values[1]} ] } )
+    elif number_of_fields  == 3:
+        the_report = mongo.db.report.find( { "$and": [ { choices[0]:values[0] }, { choices[1] : values[1]}, { choices[2] : values[2]} ] } )
+    elif number_of_fields  == 4:
+        the_report = mongo.db.report.find( { "$and": [ { choices[0]:values[0] }, { choices[1] : values[1]}, { choices[2] : values[2]}, { choices[3] : values[3]} ] } )
+    elif number_of_fields  == 5:
+        the_report = mongo.db.report.find( { "$and": [ { choices[0]:values[0] }, { choices[1] : values[1]}, { choices[2] : values[2]}, { choices[3] : values[3]}, { choices[4] : values[4]} ] } )
+    else:
+        the_report = mongo.db.report.find( {choices[0]: values[0]})
+    return render_template("results_display.html", report=the_report)
 
 
 
