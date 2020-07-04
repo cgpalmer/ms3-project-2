@@ -10,3 +10,8 @@ header {
 #compareSearch, #orSearch{
     display: none;
 }
+
+
+.comparisonPickValues{
+    margin: 30px;
+}
