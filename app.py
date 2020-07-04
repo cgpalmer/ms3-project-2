@@ -159,7 +159,7 @@ def search_all_by_parameter():
     location = request.form['locationValue']
     print(location)
     searches = []
-    strings = []
+    
     locationValues= mongo.db.report.distinct(location)
 
     print(locationValues)
@@ -168,8 +168,10 @@ def search_all_by_parameter():
         the_report = mongo.db.report.find( { "$and": [ {parameter:parameterValue }, {location : locationValues[x]}] } )
         searches.append(the_report)
         print(searches)
+    
+    amountOfSearches = len(locationValues)
 
-    return render_template("resultsDisplayCompareByAll.html", report=the_report, searches=searches)
+    return render_template("resultsDisplayCompareByAll.html", report=the_report, searches=searches, amountOfSearches=amountOfSearches)
     # return "done"
 
 
