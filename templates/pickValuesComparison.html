@@ -1,0 +1,14 @@
+{% extends 'base.html'%} {% block content %}
+<!-- From here you are adding in search values. This might need to be a separate piece of html. -->
+
+<form method="POST" action="">
+    <input type="text" class="hidden" name="comparison_number" id="" value="{{comparison_number}}">
+    {% for x in range(comparison_number) %}
+    <div class="comparisonPickValues">
+        <h1>Search field {{x}}</h1>
+    </div>
+    {% endfor %}
+    <button type="submit">Search</button>
+</form>
+
+{% endblock %}
