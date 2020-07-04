@@ -3,18 +3,28 @@
 
 <h3>You have chosen to search by {{parameter}}</h3>
 
+{{parameter_options}}
+
 <p>Search by all...</p>
 <form method="POST" action="">
-    <input type="text" class="hidden" name="parameter" value="{{parameter}}">
+  
     <!-- number of comparisons -->
- 
-    <input type="radio" id="comparisonCheckStreet" value="street" name="searchParameter">
+    <label for="parameter_value}">Choose a search parameter</label>
+    <select name="parameterValue" id="">
+                    <option disabled></option>
+                    {% for value in parameter_options %}
+                        <option>{{value}}</option>
+                    {% endfor %}
+            </select>
+
+    <p>Search all </p>
+    <input type="radio" id="comparisonCheckStreet" value="street" name="searchValue">
     <label for="comparisonCheckStreet">Street</label>
-    <input type="radio" id="comparisonCheckCity" value="city" name="searchParameter">
+    <input type="radio" id="comparisonCheckCity" value="city" name="searchValue">
     <label for="comparisonCheckCity">City</label>
-    <input type="radio" id="comparisonCheckCounty" value="county" name="searchParameter">
+    <input type="radio" id="comparisonCheckCounty" value="county" name="searchValue">
     <label for="comparisonCheckCounty">County</label>
-    <input type="radio" id="comparisonCounty" value="county" name="searchParameter">
+    <input type="radio" id="comparisonCounty" value="county" name="searchValue">
     <label for="comparisonCheckPostcode">Postcode</label>
 
 <button type="submit">Go</button>
