@@ -59,7 +59,7 @@ def search_report_parameter():
             chosen_parameter_options.append(options)
             print(chosen_parameter_options)
         number_of_fields = len(chosen_parameter_options)
-        return render_template("pickValuesBasic.html", comparison_number=comparison_number, number_of_fields=number_of_fields, chosen_parameter_options=chosen_parameter_options, parameterChoices=parameterChoices)
+        return render_template("pickValuesOr.html", comparison_number=comparison_number, number_of_fields=number_of_fields, chosen_parameter_options=chosen_parameter_options, parameterChoices=parameterChoices)
 
 # This submits the final report and returns the reports
 @app.route('/retrieving_report', methods=["POST"])
@@ -112,41 +112,24 @@ def adding_comparisons():
     return render_template("searchResults.html", search_parameter1=search_parameter1, comparison_number=comparison_number)
 
 # Here we need a route that can store the parameters
-
-@app.route('/collecting_comparison_parameters', methods=["POST"])
-def collecting_comparison_parameters():
-    parameterChoices = []
-    numChecked = []
-    comparison_number = int(request.form["comparison_number"])
-    chosen_parameter_options = []
-  
-    print(comparison_number)
-
-    for x in range(comparison_number):
-        parameterChoices = []
-        print(parameterChoices)
-        checkedParameters = request.form.getlist("searchParameter{}".format(x))
-        print("checked parameters " + str(checkedParameters))
-        parametersLen = len(checkedParameters)
-        numChecked.append(parametersLen)
-        print("no. of parameters " + str(parametersLen))
-        print(numChecked)
-        
+# Will search the basic parameters.
+@app.route('/and_filter_parameters',  methods=["POST"])
+def and_filter_parameters():
+    if request.method == "POST":
+        parameterChoices=[]
+        chosen_parameter_options=[]
+        checkedParameters = request.form.getlist("searchParameter")
+        print(request.form.getlist("searchParameter"))
         for choice in checkedParameters:
             parameterChoices.append(choice)
             print(parameterChoices)
-    
         for option in parameterChoices:
             options = mongo.db.report.distinct(option)
+            print(options)
             chosen_parameter_options.append(options)
             print(chosen_parameter_options)
-
-
-    return "done"
-    # return render_template("pickValuesComparison.html", comparison_number=comparison_number, chosen_parameter_options=chosen_parameter_options, parameterChoices=parameterChoices)
-
-
-
+        number_of_fields = len(chosen_parameter_options)
+        return render_template("pickValuesAnd.html", comparison_number=comparison_number, number_of_fields=number_of_fields, chosen_parameter_options=chosen_parameter_options, parameterChoices=parameterChoices)
 
 # This submits the final report and returns the reports
 @app.route('/retrieving_report_with_filters', methods=["POST"])

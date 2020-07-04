@@ -4,9 +4,8 @@
 <form method="POST" action="">
     <!-- number of comparisons -->
     <input type="text" class="hidden" name="comparison_number" id="" value="{{comparison_number}}">
-    {% for x in range(comparison_number) %}
     <div class="comparisonPickValues">
-        <h1>Search field {{x}}</h1>
+        <h1>Search field</h1>
         {% for choice in parameterChoices %}
        
             <input type="text" class="hidden" name="" value="{{choice}}" placeholder="{{choice}}">
@@ -18,11 +17,11 @@
                 {% endfor %}
           
                 </select>
-            <p>{{loop.index0}}</p>
+  
           
         {% endfor %}
     </div>
-    {% endfor %}
+
     <button type="submit">Search</button>
 </form>
 

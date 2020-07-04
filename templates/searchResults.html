@@ -45,40 +45,40 @@
 <div id="compareSearch">
 <p> Any searches return will include all checked boxes. Click "Add another" field if you would like to compare up to three searches.</p>
 
-<a href="{{ url_for('comparison_number') }}">Add another comparison</a>
 
 
-<form method="POST" action="{{ url_for('collecting_comparison_parameters') }}">
-    {% for number in range(comparison_number) %}
+
+<form method="POST" action="{{ url_for('and_filter_parameters') }}">
+
     <input class="hidden" type="text" id="comparisonNumber" value="{{comparison_number}}" name="comparison_number">
     <!-- This can also be a loop -->
-    <input type="checkbox" id="comparisonCheckBuilding{{number}}" value="building" name="searchParameter{{number}}">
-    <label for="comparisonCheckBuilding{{number}}">Building</label>
+    <input type="checkbox" id="comparisonCheckBuilding" value="building" name="searchParameter">
+    <label for="comparisonCheckBuilding">Building</label>
 
-    <input type="checkbox" id="comparisonCheckCategory{{number}}" value="category_name" name="searchParameter{{number}}">
-    <label for="comparisonCheckCategory{{number}}">Category</label>
+    <input type="checkbox" id="comparisonCheckCategory" value="category_name" name="searchParameter">
+    <label for="comparisonCheckCategory">Category</label>
 
-    <input type="checkbox" id="comparisonCheckSubcategory{{number}}" value="sub_category" name="searchParameter{{number}}">
-    <label for="comparisonCheckSubcategory{{number}}">Sub-category</label>
+    <input type="checkbox" id="comparisonCheckSubcategory" value="sub_category" name="searchParameter">
+    <label for="comparisonCheckSubcategory">Sub-category</label>
 
-    <input type="checkbox" id="comparisonCheckReported{{number}}" value="reported_to_authorities{{number}}" name="searchParameter{{number}}">
-    <label for="comparisonCheckReported{{number}}">Reported to authorities?</label>
+    <input type="checkbox" id="comparisonCheckReported" value="reported_to_authorities" name="searchParameter">
+    <label for="comparisonCheckReported">Reported to authorities?</label>
 
 <div class="dropdown">
-  <div class=" dropdown-toggle" type="button" id="comparisonDropdownMenuButton{{number}}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Location</div>
+  <div class=" dropdown-toggle" type="button" id="comparisonDropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Location</div>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
   <!-- This can be a for loop. -->
-    <input type="radio" id="comparisonCheckStreet{{number}}" value="street" name="searchParameter{{number}}">
-    <label for="comparisonCheckStreet{{number}}">Street</label>
-    <input type="radio" id="comparisonCheckCity{{number}}" value="city" name="searchParameter{{number}}">
-    <label for="comparisonCheckCity{{number}}">City</label>
-    <input type="radio" id="comparisonCheckCounty{{number}}" value="county" name="searchParameter{{number}}">
-    <label for="comparisonCheckCounty{{number}}">County</label>
-    <input type="radio" id="comparisonCounty{{number}}" value="county" name="searchParameter{{number}}">
-    <label for="comparisonCheckPostcode{{number}}">Postcode</label>
+    <input type="radio" id="comparisonCheckStreet" value="street" name="searchParameter">
+    <label for="comparisonCheckStreet">Street</label>
+    <input type="radio" id="comparisonCheckCity" value="city" name="searchParameter">
+    <label for="comparisonCheckCity">City</label>
+    <input type="radio" id="comparisonCheckCounty" value="county" name="searchParameter">
+    <label for="comparisonCheckCounty">County</label>
+    <input type="radio" id="comparisonCounty" value="county" name="searchParameter">
+    <label for="comparisonCheckPostcode">Postcode</label>
   </div>
 </div>
-{% endfor %}
+
 <button type="submit">Go</button>
 </form>
 </div>
