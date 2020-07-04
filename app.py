@@ -135,10 +135,7 @@ def collecting_comparison_parameters():
             chosen_parameter_options.append(options)
             print(chosen_parameter_options)
     
-    
-      
-
-    return "Here will be your comparison results!"
+    return render_template("pickValuesComparison.html", comparison_number=comparison_number, chosen_parameter_options=chosen_parameter_options, parameterChoices=parameterChoices)
 
 
 
