@@ -115,6 +115,11 @@ def adding_comparisons():
 
 @app.route('/collecting_comparison_parameters', methods=["POST"])
 def collecting_comparison_parameters():
+    parameterChoices = []
+    checkedParameters = request.form.getlist("searchParameter0")
+    parameterChoices.append(checkedParameters)
+    print(parameterChoices)
+
     return "Here will be your comparison results!"
 
 
