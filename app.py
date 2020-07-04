@@ -55,6 +55,7 @@ def search_report_parameter():
             print(parameterChoices)
         for option in parameterChoices:
             options = mongo.db.report.distinct(option)
+            print(options)
             chosen_parameter_options.append(options)
             print(chosen_parameter_options)
         number_of_fields = len(chosen_parameter_options)
@@ -116,11 +117,23 @@ def adding_comparisons():
 def collecting_comparison_parameters():
     parameterChoices = []
     comparison_number = int(request.form["comparison_number"])
+    chosen_parameter_options = []
     print(comparison_number)
+
     for x in range(comparison_number):
         checkedParameters = request.form.getlist("searchParameter{}".format(x))
-        parameterChoices.append(checkedParameters)
-        print(parameterChoices)
+        print("checked parameters " + str(checkedParameters))
+        
+        for choice in checkedParameters:
+            parameterChoices.append(choice)
+    
+        for option in parameterChoices:
+            options = mongo.db.report.distinct(option)
+            chosen_parameter_options.append(options)
+            print(chosen_parameter_options)
+    
+    
+      
 
     return "Here will be your comparison results!"
 
