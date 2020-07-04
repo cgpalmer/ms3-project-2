@@ -142,8 +142,32 @@ def retrieving_report_with_filters():
 
 
 
+@app.route('/compare_by_all',  methods=["POST"])
+def compare_by_all():
+    parameter = request.form['searchParameter']
+    parameter_options = mongo.db.report.distinct(parameter)
+    return render_template("pickValuesComparison.html", parameter=parameter, parameter_options=parameter_options)
 
 
+
+@app.route('/search_all_by_parameter',  methods=["POST"])
+def search_all_by_parameter():
+    parameter = request.form['parameter']
+    parameterValue = request.form['parameterValue']
+    location = request.form['locationValue']
+    locationValues = []
+    all_value_options = mongo.db.report.distinct(location)
+    print(all_value_options)
+    locationValues.append(all_value_options)
+    print(locationValues)
+  
+    for x in range(len(all_value_options)):
+        the_report = mongo.db.report.find( { "$and": [ { parameter:parameterValue }, { location : locationValues[0]}] } )
+
+    # the_report = mongo.db.report.find({parameter: value })
+    
+    # return render_template("resultsDisplayComparison", all_value_options)
+    return "done"
 
 
 
