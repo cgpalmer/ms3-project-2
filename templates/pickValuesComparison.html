@@ -1,12 +1,13 @@
 {% extends 'base.html'%} {% block content %}
 <!-- From here you are adding in search values. This might need to be a separate piece of html. -->
 
+<h3>You have chosen to search by {{parameter}}</h3>
+
+<p>Search by all...</p>
 <form method="POST" action="">
+    <input type="text" class="hidden" name="parameter" value="{{parameter}}">
     <!-- number of comparisons -->
-    <div class="dropdown">
-  <div class=" dropdown-toggle" type="button" id="comparisonDropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Location</div>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-  <!-- This can be a for loop. -->
+ 
     <input type="radio" id="comparisonCheckStreet" value="street" name="searchParameter">
     <label for="comparisonCheckStreet">Street</label>
     <input type="radio" id="comparisonCheckCity" value="city" name="searchParameter">
@@ -15,8 +16,8 @@
     <label for="comparisonCheckCounty">County</label>
     <input type="radio" id="comparisonCounty" value="county" name="searchParameter">
     <label for="comparisonCheckPostcode">Postcode</label>
-  </div>
-</div>
+
+<button type="submit">Go</button>
 </form>
 
 {% endblock %}
