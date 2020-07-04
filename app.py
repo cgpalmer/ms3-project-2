@@ -40,27 +40,7 @@ def search_report():
     search_parameter1=mongo.db.search_parameters.find()
     return render_template("searchResults.html", search_parameter1=search_parameter1, parameter=parameter, comparison_number=comparison_number)
 
-
-# Tells the computer how many extra boxes we need.
-@app.route('/comparison_number')
-def comparison_number():
-    global comparison_number
-    # turn test to number first.
-    comparison_number = comparison_number + 1
-    return redirect(url_for('adding_comparisons'))
-
-# You need to make a 'remove parameter'
-
-@app.route('/adding_comparisons')
-def adding_comparisons():
-
-    parameter = "Not chosen"
-    search_parameter1=mongo.db.search_parameters.find()
-    return render_template("searchResults.html", search_parameter1=search_parameter1, parameter=parameter, comparison_number=comparison_number)
-
-
-
-# Will search two parameters.
+# Will search the basic parameters.
 @app.route('/search_report_parameter',  methods=["POST"])
 def search_report_parameter():
     if request.method == "POST":
@@ -111,6 +91,33 @@ def retrieving_report():
     else:
         the_report = mongo.db.report.find( {choices[0]: values[0]})
     return render_template("resultsDisplayBasic.html", report=the_report)
+
+
+
+# For a comparison search
+
+# Tells the computer how many extra boxes we need.
+@app.route('/comparison_number')
+def comparison_number():
+    global comparison_number
+    comparison_number = comparison_number + 1
+    return redirect(url_for('adding_comparisons'))
+
+# You need to make a 'remove parameter'
+
+@app.route('/adding_comparisons')
+def adding_comparisons():
+    parameter = "Not chosen"
+    search_parameter1=mongo.db.search_parameters.find()
+    return render_template("searchResults.html", search_parameter1=search_parameter1, parameter=parameter, comparison_number=comparison_number)
+
+# Here we need a route that can store the 
+
+@app.route('/collecting_comparison_parameters', methods=["POST"])
+def collecting_comparison_parameters():
+    return "Here will be your comparison results!"
+
+
 
 
 # This submits the final report and returns the reports

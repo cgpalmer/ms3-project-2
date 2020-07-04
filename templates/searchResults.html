@@ -39,7 +39,7 @@
 </div>
 
 
-
+<!-- This is a comparison route -->
 
 <h3 id="compare">Compare</h3>
 <div id="compareSearch">
@@ -48,7 +48,7 @@
 <a href="{{ url_for('comparison_number') }}">Add another comparison</a>
 
 
-<form method="POST" action="{{ url_for('search_report_parameter') }}">
+<form method="POST" action="{{ url_for('collecting_comparison_parameters') }}">
     {% for number in range(comparison_number) %}
     <!-- This can also be a loop -->
     <input type="checkbox" id="comparisonCheckBuilding{{number}}" value="building" name="searchParameter{{number}}">
