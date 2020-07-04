@@ -47,9 +47,18 @@ def comparison_number():
     global comparison_number
     # turn test to number first.
     comparison_number = comparison_number + 1
-    return redirect(url_for('search_report_2'))
+    return redirect(url_for('adding_comparisons'))
 
 # You need to make a 'remove parameter'
+
+@app.route('/adding_comparisons')
+def adding_comparisons():
+
+    parameter = "Not chosen"
+    search_parameter1=mongo.db.search_parameters.find()
+    return render_template("searchResults.html", search_parameter1=search_parameter1, parameter=parameter, comparison_number=comparison_number)
+
+
 
 # Will search two parameters.
 @app.route('/search_report_parameter',  methods=["POST"])
