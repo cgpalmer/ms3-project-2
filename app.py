@@ -51,14 +51,6 @@ def comparison_number():
 
 # You need to make a 'remove parameter'
 
-# Will add in extra parameter boxes. This is neccessary as the og search_report needs to reset the test value.
-@app.route('/search_report_2')
-def search_report_2():
-    
-    parameter = "Not chosen"
-    search_parameter1=mongo.db.search_parameters.find()
-    return render_template("searchResults.html", search_parameter1=search_parameter1, parameter=parameter, comparison_number=comparison_number)
-
 # Will search two parameters.
 @app.route('/search_report_parameter',  methods=["POST"])
 def search_report_parameter():
