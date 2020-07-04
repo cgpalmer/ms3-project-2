@@ -15,7 +15,7 @@ app.config["MONGO_URI"] = os.environ.get('MONGO_URI')
 app.config["MONGO_DBNAME"] = "projectDB"
 
 # Look into why test can't be 0? 
-comparison_number = 1
+comparison_number = None
 
 mongo = PyMongo(app)
 # Initial home page
@@ -77,7 +77,7 @@ def search_report_parameter():
             chosen_parameter_options.append(options)
             print(chosen_parameter_options)
         number_of_fields = len(chosen_parameter_options)
-        return render_template("searchResults.html", number_of_fields=number_of_fields, chosen_parameter_options=chosen_parameter_options, parameterChoices=parameterChoices, x=x)
+        return render_template("pickValuesBasic.html", comparison_number=comparison_number, number_of_fields=number_of_fields, chosen_parameter_options=chosen_parameter_options, parameterChoices=parameterChoices, x=x)
 
 # This submits the final report and returns the reports
 @app.route('/retrieving_report', methods=["POST"])
@@ -109,12 +109,13 @@ def retrieving_report():
         the_report = mongo.db.report.find( { "$or": [ { choices[0]:values[0] }, { choices[1] : values[1]}, { choices[2] : values[2]}, { choices[3] : values[3]}, { choices[4] : values[4]} ] } )
     else:
         the_report = mongo.db.report.find( {choices[0]: values[0]})
-    return render_template("results_display.html", report=the_report)
+    return render_template("resultsDisplayBasic.html", report=the_report)
 
 
 # This submits the final report and returns the reports
 @app.route('/retrieving_report_with_filters', methods=["POST"])
 def retrieving_report_with_filters():
+    global comparison_number
     the_report_array = []
     choices = []
     values = []
@@ -122,7 +123,7 @@ def retrieving_report_with_filters():
     number_of_fields = int(fields)
     print("number of fields" + str(number_of_fields))
 
-    for r in range(3):
+    for r in range(comparison_number):
         for x in range(int(number_of_fields)):
             print(x)
             key = request.form["search_choice{}".format(x)]
