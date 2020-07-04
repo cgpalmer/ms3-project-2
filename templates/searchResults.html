@@ -50,6 +50,7 @@
 
 <form method="POST" action="{{ url_for('collecting_comparison_parameters') }}">
     {% for number in range(comparison_number) %}
+    <input class="hidden" type="text" id="comparisonNumber" value="{{comparison_number}}" name="comparison_number">
     <!-- This can also be a loop -->
     <input type="checkbox" id="comparisonCheckBuilding{{number}}" value="building" name="searchParameter{{number}}">
     <label for="comparisonCheckBuilding{{number}}">Building</label>

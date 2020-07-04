@@ -107,18 +107,20 @@ def comparison_number():
 
 @app.route('/adding_comparisons')
 def adding_comparisons():
-    parameter = "Not chosen"
     search_parameter1=mongo.db.search_parameters.find()
-    return render_template("searchResults.html", search_parameter1=search_parameter1, parameter=parameter, comparison_number=comparison_number)
+    return render_template("searchResults.html", search_parameter1=search_parameter1, comparison_number=comparison_number)
 
-# Here we need a route that can store the 
+# Here we need a route that can store the parameters
 
 @app.route('/collecting_comparison_parameters', methods=["POST"])
 def collecting_comparison_parameters():
     parameterChoices = []
-    checkedParameters = request.form.getlist("searchParameter0")
-    parameterChoices.append(checkedParameters)
-    print(parameterChoices)
+    comparison_number = int(request.form["comparison_number"])
+    print(comparison_number)
+    for x in range(comparison_number):
+        checkedParameters = request.form.getlist("searchParameter{}".format(x))
+        parameterChoices.append(checkedParameters)
+        print(parameterChoices)
 
     return "Here will be your comparison results!"
 
