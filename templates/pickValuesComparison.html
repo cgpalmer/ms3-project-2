@@ -6,7 +6,7 @@
 {{parameter_options}}
 
 <p>Search by all...</p>
-<form method="POST" action="">
+<form method="POST" action="{{ url_for('search_all_by_parameter') }}">
   
     <!-- number of comparisons -->
     <label for="parameter_value}">Choose a search parameter</label>
@@ -18,13 +18,13 @@
             </select>
 
     <p>Search all </p>
-    <input type="radio" id="comparisonCheckStreet" value="street" name="searchValue">
+    <input type="radio" id="comparisonCheckStreet" value="street" name="locationValue">
     <label for="comparisonCheckStreet">Street</label>
-    <input type="radio" id="comparisonCheckCity" value="city" name="searchValue">
+    <input type="radio" id="comparisonCheckCity" value="city" name="locationValue">
     <label for="comparisonCheckCity">City</label>
-    <input type="radio" id="comparisonCheckCounty" value="county" name="searchValue">
+    <input type="radio" id="comparisonCheckCounty" value="county" name="locationValue">
     <label for="comparisonCheckCounty">County</label>
-    <input type="radio" id="comparisonCounty" value="county" name="searchValue">
+    <input type="radio" id="comparisonCounty" value="county" name="locationValue">
     <label for="comparisonCheckPostcode">Postcode</label>
 
 <button type="submit">Go</button>
