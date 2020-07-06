@@ -37,16 +37,8 @@ def login():
 def check_password():
     input_username = request.form['login_username']
     # Find stored password by search for the one associated with email objectID.
-    stored_password = "password"
-    hash_stored_password = hashlib.pbkdf2_hmac(
-    'sha256', # The hash digest algorithm for HMAC
-    stored_password.encode('utf-8'), # Convert the password to bytes
-    salt, # Provide the salt
-    100000, # It is recommended to use at least 100,000 iterations of SHA-256 
-    dklen=128 # Get a 128 byte key
-    )
-    print("this is the stored password hash")
-    print(hash_stored_password)
+    
+  
     login_password = request.form['login_password']
     hash_login_password = hashlib.pbkdf2_hmac(
     'sha256', # The hash digest algorithm for HMAC
@@ -65,6 +57,23 @@ def check_password():
 @app.route('/signup')
 def signup():
     return render_template("signup.html")
+
+#signup
+@app.route('/creating_user', methods=['POST'])
+def creating_user():
+    new_username= request.form['new_username']
+    new_password = request.form['new_password']
+    hash_new_password = hashlib.pbkdf2_hmac(
+    'sha256', # The hash digest algorithm for HMAC
+    new_password.encode('utf-8'), # Convert the password to bytes
+    salt, # Provide the salt
+    100000, # It is recommended to use at least 100,000 iterations of SHA-256 
+    dklen=128 # Get a 128 byte key
+    )
+    mongo.db.user_credentials.insert_one({"user_email": new_username, "user_password": hash_new_password})
+    return "done"
+    # return render_template("signup.html")
+
 
 
 # Reading reports
