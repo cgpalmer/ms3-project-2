@@ -33,7 +33,7 @@ def homepage():
 def login():
     return render_template("login.html")
     
-@app.route('/check_password')
+@app.route('/check_password', methods=['POST'])
 def check_password():
     input_username = request.form['login_username']
     # Find stored password by search for the one associated with email objectID.
