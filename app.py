@@ -71,8 +71,7 @@ def creating_user():
     dklen=128 # Get a 128 byte key
     )
     mongo.db.user_credentials.insert_one({"user_email": new_username, "user_password": hash_new_password})
-    return "done"
-    # return render_template("signup.html")
+    return render_template("login.html")
 
 
 
