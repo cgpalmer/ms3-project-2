@@ -35,22 +35,32 @@ def login():
     
 @app.route('/check_password', methods=['POST'])
 def check_password():
-    input_username = request.form['login_username']
-    # Find stored password by search for the one associated with email objectID.
-    
-  
+    login_email = request.form['login_username']  
     login_password = request.form['login_password']
-    hash_login_password = hashlib.pbkdf2_hmac(
-    'sha256', # The hash digest algorithm for HMAC
-    login_password.encode('utf-8'), # Convert the password to bytes
-    salt, # Provide the salt
-    100000, # It is recommended to use at least 100,000 iterations of SHA-256 
-    dklen=128 # Get a 128 byte key
-    )
-    if hash_stored_password == hash_login_password:
-        print("match")
-    else:
-        print("No match")
+    user = mongo.db.user_credentials.find_one({"user_email": login_email})
+    for k,v in user.items():
+        if k != "_id":
+            if k == 'user_password':
+                stored_password = v
+                print(stored_password)
+            else:
+                print("bugger that" + v)
+    
+    # stored_password = user.user_password
+   
+    # print(stored_password)
+    # hash_login_password = hashlib.pbkdf2_hmac(
+    # 'sha256', # The hash digest algorithm for HMAC
+    # login_password.encode('utf-8'), # Convert the password to bytes
+    # salt, # Provide the salt
+    # 100000, # It is recommended to use at least 100,000 iterations of SHA-256 
+    # dklen=128 # Get a 128 byte key
+    # )
+ 
+    # if hash_stored_password == hash_login_password:
+    #     print("match")
+    # else:
+    #     print("No match")
     return "done"
 
 #signup
