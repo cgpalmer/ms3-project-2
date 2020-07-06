@@ -24,6 +24,12 @@ mongo = PyMongo(app)
 def homepage():
     return render_template("home.html", report=mongo.db.report.find().limit(5))
 
+#login page
+@app.route('/login')
+def login():
+    return render_template("login.html")
+
+
 # Reading reports
 
 @app.route('/get_report')
@@ -95,20 +101,20 @@ def retrieving_report():
 @app.route('/and_filter_parameters',  methods=["POST"])
 def and_filter_parameters():
     
-        parameterChoices=[]
-        chosen_parameter_options=[]
-        checkedParameters = request.form.getlist("searchParameter")
-        print(request.form.getlist("searchParameter"))
-        for choice in checkedParameters:
-            parameterChoices.append(choice)
-            print(parameterChoices)
-        for option in parameterChoices:
-            options = mongo.db.report.distinct(option)
-            print(options)
-            chosen_parameter_options.append(options)
-            print(chosen_parameter_options)
-        number_of_fields = len(chosen_parameter_options)
-        return render_template("pickValuesAnd.html", number_of_fields=number_of_fields, chosen_parameter_options=chosen_parameter_options, parameterChoices=parameterChoices)
+    parameterChoices=[]
+    chosen_parameter_options=[]
+    checkedParameters = request.form.getlist("searchParameter")
+    print(request.form.getlist("searchParameter"))
+    for choice in checkedParameters:
+        parameterChoices.append(choice)
+        print(parameterChoices)
+    for option in parameterChoices:
+        options = mongo.db.report.distinct(option)
+        print(options)
+        chosen_parameter_options.append(options)
+        print(chosen_parameter_options)
+    number_of_fields = len(chosen_parameter_options)
+    return render_template("pickValuesAnd.html", number_of_fields=number_of_fields, chosen_parameter_options=chosen_parameter_options, parameterChoices=parameterChoices)
 
 @app.route('/retrieving_report_with_filters', methods=["POST"])
 def retrieving_report_with_filters():
