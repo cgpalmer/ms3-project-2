@@ -31,9 +31,22 @@ def homepage():
 #login page
 @app.route('/login')
 def login():
+    return render_template("login.html")
+    
+@app.route('/check_password')
+def check_password():
     input_username = request.form['login_username']
     # Find stored password by search for the one associated with email objectID.
-    stored_password = mongo.db.report.find()
+    stored_password = "password"
+    hash_stored_password = hashlib.pbkdf2_hmac(
+    'sha256', # The hash digest algorithm for HMAC
+    stored_password.encode('utf-8'), # Convert the password to bytes
+    salt, # Provide the salt
+    100000, # It is recommended to use at least 100,000 iterations of SHA-256 
+    dklen=128 # Get a 128 byte key
+    )
+    print("this is the stored password hash")
+    print(hash_stored_password)
     login_password = request.form['login_password']
     hash_login_password = hashlib.pbkdf2_hmac(
     'sha256', # The hash digest algorithm for HMAC
@@ -42,7 +55,11 @@ def login():
     100000, # It is recommended to use at least 100,000 iterations of SHA-256 
     dklen=128 # Get a 128 byte key
     )
-    return render_template("login.html")
+    if hash_stored_password == hash_login_password:
+        print("match")
+    else:
+        print("No match")
+    return "done"
 
 #signup
 @app.route('/signup')
