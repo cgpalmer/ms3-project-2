@@ -1,5 +1,6 @@
 # import pymongo
 import os
+import hashlib
 from flask import Flask, render_template, url_for, request, redirect, session
 from os import path
 from flask_pymongo import PyMongo
@@ -13,6 +14,9 @@ if path.exists("env.py"):
 
 app.config["MONGO_URI"] = os.environ.get('MONGO_URI')
 app.config["MONGO_DBNAME"] = "projectDB"
+salt = os.urandom(32)
+
+
 
 # Look into why test can't be 0? 
 comparison_number = None
@@ -27,6 +31,17 @@ def homepage():
 #login page
 @app.route('/login')
 def login():
+    input_username = request.form['login_username']
+    # Find stored password by search for the one associated with email objectID.
+    stored_password = mongo.db.report.find()
+    login_password = request.form['login_password']
+    hash_login_password = hashlib.pbkdf2_hmac(
+    'sha256', # The hash digest algorithm for HMAC
+    login_password.encode('utf-8'), # Convert the password to bytes
+    salt, # Provide the salt
+    100000, # It is recommended to use at least 100,000 iterations of SHA-256 
+    dklen=128 # Get a 128 byte key
+    )
     return render_template("login.html")
 
 #signup
