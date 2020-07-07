@@ -14,9 +14,10 @@ if path.exists("env.py"):
 
 app.config["MONGO_URI"] = os.environ.get('MONGO_URI')
 app.config["MONGO_DBNAME"] = "projectDB"
+
+
 salt = os.urandom(32)
-
-
+print(salt)
 
 # Look into why test can't be 0? 
 comparison_number = None
@@ -35,33 +36,34 @@ def login():
     
 @app.route('/check_password', methods=['POST'])
 def check_password():
+    
     login_email = request.form['login_username']  
     login_password = request.form['login_password']
+    print(login_password)
     user = mongo.db.user_credentials.find_one({"user_email": login_email})
     for k,v in user.items():
         if k != "_id":
             if k == 'user_password':
                 stored_password = v
-                print(stored_password)
-            else:
-                print("bugger that" + v)
-    
-    # stored_password = user.user_password
-   
-    # print(stored_password)
-    # hash_login_password = hashlib.pbkdf2_hmac(
-    # 'sha256', # The hash digest algorithm for HMAC
-    # login_password.encode('utf-8'), # Convert the password to bytes
-    # salt, # Provide the salt
-    # 100000, # It is recommended to use at least 100,000 iterations of SHA-256 
-    # dklen=128 # Get a 128 byte key
-    # )
+                print(stored_password)    
+  
+    hash_login_password = hashlib.pbkdf2_hmac(
+    'sha256', # The hash digest algorithm for HMAC
+    login_password.encode('utf-8'), # Convert the password to bytes
+    salt, # Provide the salt
+    100000, # It is recommended to use at least 100,000 iterations of SHA-256 
+    dklen=128 # Get a 128 byte key
+    )
+    print(hash_login_password)
  
-    # if hash_stored_password == hash_login_password:
-    #     print("match")
-    # else:
-    #     print("No match")
-    return "done"
+    if stored_password == hash_login_password:
+        print("match")
+        return render_template('user-dash.html')
+    else:
+        print("no match")
+        return render_template('login.html')
+        
+   
 
 #signup
 @app.route('/signup')
@@ -73,6 +75,7 @@ def signup():
 def creating_user():
     new_username= request.form['new_username']
     new_password = request.form['new_password']
+    print(new_password)
     hash_new_password = hashlib.pbkdf2_hmac(
     'sha256', # The hash digest algorithm for HMAC
     new_password.encode('utf-8'), # Convert the password to bytes
@@ -82,7 +85,6 @@ def creating_user():
     )
     mongo.db.user_credentials.insert_one({"user_email": new_username, "user_password": hash_new_password})
     return render_template("login.html")
-
 
 
 # Reading reports
