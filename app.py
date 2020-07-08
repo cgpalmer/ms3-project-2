@@ -78,6 +78,9 @@ def creating_user():
     new_password = request.form['new_password']
     check_username_availibility = mongo.db.user_credentials.find_one({"user_email": new_username})
     print(check_username_availibility)
+    if "user_email" in check_username_availibility:
+        return "done"
+    
     print(new_password)
     hash_new_password = hashlib.pbkdf2_hmac(
     'sha256', # The hash digest algorithm for HMAC
