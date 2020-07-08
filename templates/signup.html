@@ -23,8 +23,9 @@
     </form>
 
 <script> 
-var v = '{{list_existing_emails}}'
+var v = '{{list_existing_emails|tojson}}'
 console.log(v)
+console.log(v[1])
 
 var inputBox = document.getElementById('email');
 
