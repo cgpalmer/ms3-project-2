@@ -60,7 +60,7 @@ def check_password():
         
                 if stored_password == hash_login_password:
                     print("match")
-                    return render_template('user-dash.html')
+                    return render_template('user_dash.html')
                 else:
                     print("no match")
                     return render_template('login.html')
