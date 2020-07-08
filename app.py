@@ -78,6 +78,10 @@ def creating_user():
     new_password = request.form['new_password']
     check_username_availibility = mongo.db.user_credentials.find_one({"user_email": new_username})
     print(check_username_availibility)
+    for k,v in check_username_availibility.items():
+        if k == "user_email":
+            user_email = v
+            print(user_email)
     if "user_email" in check_username_availibility:
         return render_template("signup.html")
     else:
