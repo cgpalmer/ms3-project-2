@@ -85,7 +85,7 @@ def creating_user():
     100000, # It is recommended to use at least 100,000 iterations of SHA-256 
     dklen=128 # Get a 128 byte key
     )
-    mongo.db.user_credentials.insert_one({"user_email": new_username, "user_password": hash_new_password})
+    mongo.db.user_credentials.insert_one({"user_email": new_username, "user_password": hash_new_password, "salt": salt})
     return render_template("login.html")
 
 
