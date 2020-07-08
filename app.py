@@ -79,18 +79,18 @@ def creating_user():
     check_username_availibility = mongo.db.user_credentials.find_one({"user_email": new_username})
     print(check_username_availibility)
     if "user_email" in check_username_availibility:
-        return "done"
-    
-    print(new_password)
-    hash_new_password = hashlib.pbkdf2_hmac(
-    'sha256', # The hash digest algorithm for HMAC
-    new_password.encode('utf-8'), # Convert the password to bytes
-    salt, # Provide the salt
-    100000, # It is recommended to use at least 100,000 iterations of SHA-256 
-    dklen=128 # Get a 128 byte key
-    )
-    mongo.db.user_credentials.insert_one({"user_email": new_username, "user_password": hash_new_password, "salt": salt})
-    return render_template("login.html")
+        return render_template("signup.html")
+    else:
+        print(new_password)
+        hash_new_password = hashlib.pbkdf2_hmac(
+        'sha256', # The hash digest algorithm for HMAC
+        new_password.encode('utf-8'), # Convert the password to bytes
+        salt, # Provide the salt
+        100000, # It is recommended to use at least 100,000 iterations of SHA-256 
+        dklen=128 # Get a 128 byte key
+        )
+        mongo.db.user_credentials.insert_one({"user_email": new_username, "user_password": hash_new_password, "salt": salt})
+        return render_template("login.html")
 
 
 # Reading reports
