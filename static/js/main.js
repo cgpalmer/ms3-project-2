@@ -54,10 +54,14 @@
 
 var confirmPassword = document.getElementById('confirmedPassword');
 
+// In here add the code to put a tick next to the password box once it is a certain length.
+
 password, confirmPassword.onkeyup = function(){
     var password = document.getElementById('password');
     if (confirmedPassword.value == password.value){
         console.log("match")
+        // In here add the code to put a tick next to the password box.
+        
     } else {
         console.log("no match")
     }
