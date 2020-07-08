@@ -16,8 +16,7 @@ app.config["MONGO_URI"] = os.environ.get('MONGO_URI')
 app.config["MONGO_DBNAME"] = "projectDB"
 
 
-salt = os.urandom(32)
-print(salt)
+
 
 # Look into why test can't be 0? 
 comparison_number = None
