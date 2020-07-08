@@ -78,7 +78,8 @@ def creating_user():
     new_password = request.form['new_password']
     used_email = mongo.db.user_credentials.find()
     print(used_email)
-    
+    for x in used_email:
+        print(x["user_email"])
     
     check_username_availibility = mongo.db.user_credentials.find_one({"user_email": new_username})
     print(check_username_availibility)
