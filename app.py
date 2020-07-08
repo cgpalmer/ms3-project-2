@@ -76,6 +76,8 @@ def creating_user():
     salt = os.urandom(32)
     new_username= request.form['new_username']
     new_password = request.form['new_password']
+    check_username_availibility = mongo.db.user_credentials.find_one({"user_email": new_username})
+    print(check_username_availibility)
     print(new_password)
     hash_new_password = hashlib.pbkdf2_hmac(
     'sha256', # The hash digest algorithm for HMAC
