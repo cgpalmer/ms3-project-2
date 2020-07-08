@@ -44,26 +44,26 @@ def check_password():
             if k == 'user_password':
                 stored_password = v
                 print(stored_password)
-        if k == 'salt':
-            stored_salt = v
-            print("this is the salt")
-            print(stored_salt)
+            if k == 'salt':
+                stored_salt = v
+                print("this is the salt")
+                print(stored_salt)
   
-            hash_login_password = hashlib.pbkdf2_hmac(
-            'sha256', # The hash digest algorithm for HMAC
-            login_password.encode('utf-8'), # Convert the password to bytes
-            stored_salt, # Provide the salt
-            100000, # It is recommended to use at least 100,000 iterations of SHA-256 
-            dklen=128 # Get a 128 byte key
-            )
-            print(hash_login_password)
-    
-            if stored_password == hash_login_password:
-                print("match")
-                return render_template('user-dash.html')
-            else:
-                print("no match")
-                return render_template('login.html')
+                hash_login_password = hashlib.pbkdf2_hmac(
+                'sha256', # The hash digest algorithm for HMAC
+                login_password.encode('utf-8'), # Convert the password to bytes
+                stored_salt, # Provide the salt
+                100000, # It is recommended to use at least 100,000 iterations of SHA-256 
+                dklen=128 # Get a 128 byte key
+                )
+                print(hash_login_password)
+        
+                if stored_password == hash_login_password:
+                    print("match")
+                    return render_template('user-dash.html')
+                else:
+                    print("no match")
+                    return render_template('login.html')
 
 #signup
 @app.route('/signup')
