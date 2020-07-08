@@ -76,10 +76,14 @@ def creating_user():
     salt = os.urandom(32)
     new_username= request.form['new_username']
     new_password = request.form['new_password']
+    list_existing_emails = []
     used_email = mongo.db.user_credentials.find()
     print(used_email)
     for x in used_email:
         print(x["user_email"])
+        list_existing_emails.append(x["user_email"])
+        print(list_existing_emails)
+
     
     check_username_availibility = mongo.db.user_credentials.find_one({"user_email": new_username})
     print(check_username_availibility)
