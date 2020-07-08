@@ -68,14 +68,6 @@ def check_password():
 #signup
 @app.route('/signup')
 def signup():
-    return render_template("signup.html")
-
-#signup
-@app.route('/creating_user', methods=['POST'])
-def creating_user():
-    salt = os.urandom(32)
-    new_username= request.form['new_username']
-    new_password = request.form['new_password']
     list_existing_emails = []
     used_email = mongo.db.user_credentials.find()
     print(used_email)
@@ -85,7 +77,13 @@ def creating_user():
         print(list_existing_emails)
     return render_template("signup.html", list_existing_emails=list_existing_emails)
 
-    
+#signup
+@app.route('/creating_user', methods=['POST'])
+def creating_user():
+    salt = os.urandom(32)
+    new_username= request.form['new_username']
+    new_password = request.form['new_password']
+      
     check_username_availibility = mongo.db.user_credentials.find_one({"user_email": new_username})
     print(check_username_availibility)
     for k,v in check_username_availibility.items():
