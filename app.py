@@ -75,6 +75,7 @@ def signup():
 #signup
 @app.route('/creating_user', methods=['POST'])
 def creating_user():
+    salt = os.urandom(32)
     new_username= request.form['new_username']
     new_password = request.form['new_password']
     print(new_password)
