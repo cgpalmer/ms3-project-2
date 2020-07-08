@@ -23,14 +23,14 @@
     </form>
 
 <script> 
-var v = '{{list_existing_emails|tojson}}'
+var v = {{list_existing_emails|tojson}}
 console.log(v)
 console.log(v[1])
 
 var inputBox = document.getElementById('email');
 
 inputBox.onkeyup = function(){
-    user_email_input = "&#39;" + inputBox.value + "&#39;"
+    user_email_input = inputBox.value;
     if ( v[0] == user_email_input){
         alert("match!")
     } else {
