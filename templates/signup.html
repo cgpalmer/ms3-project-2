@@ -4,6 +4,7 @@
 
     <form action="creating_user" method="POST">
         <div class="form-group">
+            <p id="email_taken"></p>
             <label for="email">Email address</label>
             <input type="email" class="form-control" id="email" name="new_username" placeholder="name@example.com">
         </div>        
@@ -31,11 +32,14 @@ var inputBox = document.getElementById('email');
 
 inputBox.onkeyup = function(){
     user_email_input = inputBox.value;
-    if ( v[0] == user_email_input){
-        alert("match!")
-    } else {
-        console.log("no match yet")
-        console.log(user_email_input)
+    // Add in a loop here that checks for each array.
+    for (i = 0; i < v.length; i++) {
+        if ( v[i] == user_email_input){
+            document.getElementById('email_taken').innerHTML = "Sorry this email is already registered!"
+        } else {
+            console.log("no match yet")
+            console.log(user_email_input)
+        }
     }
 }
 </script>
