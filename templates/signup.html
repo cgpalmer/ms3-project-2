@@ -1,6 +1,9 @@
 {% extends 'base.html'%} {% block content %}
 
 <h1>Your journey to making a difference starts here.</h1>
+<script> var v = '{{list_existing_emails}}'
+console.log(v)
+</script>
     <form action="creating_user" method="POST">
         <div class="form-group">
             <label for="email">Email address</label>
