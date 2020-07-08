@@ -44,7 +44,10 @@ def check_password():
         if k != "_id":
             if k == 'user_password':
                 stored_password = v
-                print(stored_password)    
+                print(stored_password)
+            if k == 'salt':
+                stored_salt = v
+                print(stored_salt)    
   
     hash_login_password = hashlib.pbkdf2_hmac(
     'sha256', # The hash digest algorithm for HMAC
