@@ -83,6 +83,7 @@ def creating_user():
         print(x["user_email"])
         list_existing_emails.append(x["user_email"])
         print(list_existing_emails)
+    return render_template("signup.html", list_existing_emails=list_existing_emails)
 
     
     check_username_availibility = mongo.db.user_credentials.find_one({"user_email": new_username})
