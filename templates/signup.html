@@ -1,9 +1,7 @@
 {% extends 'base.html'%} {% block content %}
 
 <h1>Your journey to making a difference starts here.</h1>
-<script> var v = '{{list_existing_emails}}'
-console.log(v)
-</script>
+
     <form action="creating_user" method="POST">
         <div class="form-group">
             <label for="email">Email address</label>
@@ -24,5 +22,20 @@ console.log(v)
         <button type="submit" name="action">Sign Up!</button>
     </form>
 
+<script> 
+var v = '{{list_existing_emails}}'
+console.log(v)
 
+var inputBox = document.getElementById('email');
+
+inputBox.onkeyup = function(){
+    user_email_input = "&#39;" + inputBox.value + "&#39;"
+    if ( v[0] == inputBox.value){
+        alert("match!")
+    } else {
+        console.log("no match yet")
+        console.log(user_email_input)
+    }
+}
+</script>
 {% endblock %}
