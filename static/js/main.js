@@ -44,3 +44,23 @@
     $("#filtered").click(function(){;
       $("#filteredSearch").toggle();
   });
+
+
+
+
+//   Matching passwords
+
+
+
+var confirmPassword = document.getElementById('confirmedPassword');
+
+password, confirmPassword.onkeyup = function(){
+    var password = document.getElementById('password');
+    if (confirmedPassword.value == password.value){
+        console.log("match")
+    } else {
+        console.log("no match")
+    }
+    // Add in a loop here that checks for each array.
+    
+    }
