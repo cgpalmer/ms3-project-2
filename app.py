@@ -82,15 +82,16 @@ def signup():
 def creating_user():
     salt = os.urandom(32)
     new_username= request.form['new_username']
+    print(new_username)
     new_password = request.form['new_password']
-      
     check_username_availibility = mongo.db.user_credentials.find_one({"user_email": new_username})
     print(check_username_availibility)
-    for k,v in check_username_availibility.items():
-        if k == "user_email":
-            user_email = v
-            print(user_email)
-    if "user_email" in check_username_availibility:
+    
+    # for k,v in check_username_availibility.items():
+    #     # if k == "user_email":
+    #     #     user_email = v
+    #     #     print(user_email)
+    if check_username_availibility == None:
         return render_template("signup.html")
     else:
         print(new_password)
