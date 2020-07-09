@@ -52,6 +52,7 @@
 
 
 
+// There is a console error on this. 
 var confirmPassword = document.getElementById('confirmedPassword');
 
 // In here add the code to put a tick next to the password box once it is a certain length.
@@ -60,11 +61,14 @@ password, confirmPassword.onkeyup = function(){
     var password = document.getElementById('password');
     if (confirmedPassword.value == password.value){
         console.log("match")
+        $("#passwordMatch").removeClass("hidden");
         // In here add the code to put a tick next to the password box.
         
     } else {
+        $("#passwordMatch").addClass("hidden");
         console.log("no match")
     }
     // Add in a loop here that checks for each array.
     
     }
+
