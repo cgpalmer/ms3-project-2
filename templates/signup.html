@@ -2,7 +2,7 @@
 
 <h1>Your journey to making a difference starts here.</h1>
 
-    <form action="creating_user" method="POST">
+    <form action="{{ url_for('creating_user') }}" method="POST">
         <div class="form-group">
             <p id="email_taken"></p>
             <label for="email">Email address</label>
