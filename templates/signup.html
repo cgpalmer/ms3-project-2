@@ -34,10 +34,12 @@ inputBox.onkeyup = function(){
     user_email_input = inputBox.value;
         if (v.includes(user_email_input)){
             document.getElementById('email_taken').innerHTML = "Sorry this email is already registered!"
+            document.getElementById("signupButton").disabled = true;
         } else {
             console.log("no match yet")
             console.log(user_email_input)
             document.getElementById('email_taken').innerHTML = ""
+            document.getElementById("signupButton").disabled = false;
         }
     }
 
