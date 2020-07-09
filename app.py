@@ -86,14 +86,7 @@ def creating_user():
     new_password = request.form['new_password']
     check_username_availibility = mongo.db.user_credentials.find_one({"user_email": new_username})
     print(check_username_availibility)
-    
-    # for k,v in check_username_availibility.items():
-    #     # if k == "user_email":
-    #     #     user_email = v
-    #     #     print(user_email)
     if check_username_availibility == None:
-        return render_template("signup.html")
-    else:
         print(new_password)
         hash_new_password = hashlib.pbkdf2_hmac(
         'sha256', # The hash digest algorithm for HMAC
@@ -104,6 +97,8 @@ def creating_user():
         )
         mongo.db.user_credentials.insert_one({"user_email": new_username, "user_password": hash_new_password, "salt": salt})
         return render_template("login.html")
+    else:
+        return redirect(url_for('signup'))
 
 
 # Reading reports
