@@ -47,6 +47,25 @@
 
 
 
+//  Signup page
+
+// Temporarily seeing passwords.
+
+$("#seePassword").click(function(){
+         var seePassword = document.getElementById('password');
+        seePassword.type = "text";
+    var passwordTimeout = setTimeout(passwordReveal, 2000);
+    function passwordReveal() {
+        seePassword.type = "password";
+    }
+    clearTimeout(passwordTimeout);
+    
+})
+
+
+
+
+
 
 //   Matching passwords
 
