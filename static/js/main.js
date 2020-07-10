@@ -90,11 +90,13 @@ password, confirmPassword.onkeyup = function(){
     if (confirmedPassword.value == password.value){
         console.log("match")
         $("#passwordMatch").removeClass("hidden");
+        document.getElementById("signupButton").disabled = false;
         // In here add the code to put a tick next to the password box.
         
     } else {
         $("#passwordMatch").addClass("hidden");
         console.log("no match")
+        document.getElementById("signupButton").disabled = true;
     }
     // Add in a loop here that checks for each array.
     
