@@ -58,11 +58,20 @@ $("#seePassword").click(function(){
     function passwordReveal() {
         seePassword.type = "password";
     }
-    clearTimeout(passwordTimeout);
+    clearTimeout();
     
 })
 
-
+$("#seeConfirmedPassword").click(function(){
+         var seeConfirmedPassword = document.getElementById('confirmedPassword');
+        seeConfirmedPassword.type = "text";
+    var confirmedPasswordTimeout = setTimeout(confirmedPasswordReveal, 2000);
+    function confirmedPasswordReveal() {
+        seeConfirmedPassword.type = "password";
+    }
+    clearTimeout();
+    
+})
 
 
 
