@@ -84,6 +84,8 @@ def creating_user():
     new_username= request.form['new_username']
     print(new_username)
     new_password = request.form['new_password']
+    preferred_name = request.form['preferred_name'].lower()
+    print(preferred_name)
     check_username_availibility = mongo.db.user_credentials.find_one({"user_email": new_username})
     print(check_username_availibility)
     if check_username_availibility == None:
@@ -95,7 +97,7 @@ def creating_user():
         100000, # It is recommended to use at least 100,000 iterations of SHA-256 
         dklen=128 # Get a 128 byte key
         )
-        mongo.db.user_credentials.insert_one({"user_email": new_username, "user_password": hash_new_password, "salt": salt})
+        mongo.db.user_credentials.insert_one({"user_email": new_username, "user_password": hash_new_password, "salt": salt, "name": preferred_name})
         return render_template("login.html")
     else:
         return redirect(url_for('signup'))
