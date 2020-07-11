@@ -6,6 +6,7 @@ from os import path
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 import re
+from validate_email import validate_email
 
 app = Flask(__name__)
 app.secret_key = 'thefluffiestofwoofers'
@@ -109,35 +110,41 @@ def creating_user():
     new_password = request.form['new_password']
     preferred_name = request.form['preferred_name'].lower()
     print(preferred_name)
+    regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
+    if(re.search(regex,new_username)):  
+        print("Valid Email")  
+          
+    else:  
+        print("Invalid Email")
     check_username_availibility = mongo.db.user_credentials.find_one({"user_email": new_username})
     print(check_username_availibility)
-    while True:   
-        if (len(new_password)<8): 
-            flag = -1
-            break
-        elif not re.search("[a-z]", new_password): 
-            flag = -1
-            break
-        elif not re.search("[A-Z]", new_password): 
-            flag = -1
-            break
-        elif not re.search("[0-9]", new_password): 
-            flag = -1
-            break
-        elif re.search("\s", new_password): 
-            flag = -1
-            break
-        else:
-            flag = 0
-            print("Valid Password") 
-            break
-    
-    if flag ==-1: 
-        print("Not a Valid Password")
-        flash('Please use a valid password')
-        return redirect(url_for('signup'))
-
     if check_username_availibility == None:
+        while True:   
+            if (len(new_password)<8): 
+                flag = -1
+                break
+            elif not re.search("[a-z]", new_password): 
+                flag = -1
+                break
+            elif not re.search("[A-Z]", new_password): 
+                flag = -1
+                break
+            elif not re.search("[0-9]", new_password): 
+                flag = -1
+                break
+            elif re.search("\s", new_password): 
+                flag = -1
+                break
+            else:
+                flag = 0
+                print("Valid Password") 
+                break
+    
+        if flag ==-1: 
+            print("Not a Valid Password")
+            flash('Please use a valid password')
+            return redirect(url_for('signup'))
+
         print(new_password)
         hash_new_password = hashlib.pbkdf2_hmac(
         'sha256', # The hash digest algorithm for HMAC
