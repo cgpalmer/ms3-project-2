@@ -37,8 +37,11 @@ def developer():
 
 @app.route('/userSetting')
 def userSetting():
-    
-    return render_template("settings.html")
+    if session.get("USERNAME") is None:
+        flash('Please login to see all of our amazing features')
+        return redirect(url_for('login'))
+    else: 
+        return render_template("settings.html")
 
 
 
