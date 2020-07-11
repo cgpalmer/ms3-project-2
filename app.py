@@ -51,17 +51,34 @@ def delete_user():
     else:
         current_user = session.get('USERNAME')
         deletePassword = request.form['deletePassword']
-        user_password = mongo.db.user_credentials.find_one({"user_email": current_user})
-        for x in user_password:
-            user_password = x['user_password']
-            print(user_password)
-            if deletePassword == user_password:
-                mongo.db.user_credentials.delete_one({"user_email": current_user})
-                flash('We are sorry to see you go, but come back any time!')
-                return redirect(url_for('signup'))
-            else:
-                return "not the right password"
-            
+        print(deletePassword)
+        user = mongo.db.user_credentials.find_one({"user_email": current_user})
+        for k,v in user.items():
+            if k == 'user_password':
+                user_password = v
+                print("this has been reach")
+                print(user_password)
+            if k == 'salt':
+                stored_salt = v
+                print("this is the salt")
+                print(stored_salt)
+                    
+                hash_delete_password = hashlib.pbkdf2_hmac(
+                'sha256', # The hash digest algorithm for HMAC
+                deletePassword.encode('utf-8'), # Convert the password to bytes
+                stored_salt, # Provide the salt
+                100000, # It is recommended to use at least 100,000 iterations of SHA-256 
+                dklen=128 # Get a 128 byte key
+                )
+                print(hash_delete_password)
+
+                if hash_delete_password == user_password:
+                    mongo.db.user_credentials.delete_one({"user_email": current_user})
+                    flash('We are sorry to see you go, but come back any time!')
+                    return redirect(url_for('signup'))
+                else:
+                    return "not the right password"
+                
 
 
 #login page
