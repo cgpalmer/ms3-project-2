@@ -113,49 +113,50 @@ def creating_user():
     regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
     if(re.search(regex,new_username)):  
         print("Valid Email")  
-          
-    else:  
-        print("Invalid Email")
-    check_username_availibility = mongo.db.user_credentials.find_one({"user_email": new_username})
-    print(check_username_availibility)
-    if check_username_availibility == None:
-        while True:   
-            if (len(new_password)<8): 
-                flag = -1
-                break
-            elif not re.search("[a-z]", new_password): 
-                flag = -1
-                break
-            elif not re.search("[A-Z]", new_password): 
-                flag = -1
-                break
-            elif not re.search("[0-9]", new_password): 
-                flag = -1
-                break
-            elif re.search("\s", new_password): 
-                flag = -1
-                break
-            else:
-                flag = 0
-                print("Valid Password") 
-                break
-    
-        if flag ==-1: 
-            print("Not a Valid Password")
-            flash('Please use a valid password')
-            return redirect(url_for('signup'))
+        
+        check_username_availibility = mongo.db.user_credentials.find_one({"user_email": new_username})
+        print(check_username_availibility)
+        if check_username_availibility == None:
+            while True:   
+                if (len(new_password)<8): 
+                    flag = -1
+                    break
+                elif not re.search("[a-z]", new_password): 
+                    flag = -1
+                    break
+                elif not re.search("[A-Z]", new_password): 
+                    flag = -1
+                    break
+                elif not re.search("[0-9]", new_password): 
+                    flag = -1
+                    break
+                elif re.search("\s", new_password): 
+                    flag = -1
+                    break
+                else:
+                    flag = 0
+                    print("Valid Password") 
+                    break
+        
+            if flag ==-1: 
+                print("Not a Valid Password")
+                flash('Please use a valid password')
+                return redirect(url_for('signup'))
 
-        print(new_password)
-        hash_new_password = hashlib.pbkdf2_hmac(
-        'sha256', # The hash digest algorithm for HMAC
-        new_password.encode('utf-8'), # Convert the password to bytes
-        salt, # Provide the salt
-        100000, # It is recommended to use at least 100,000 iterations of SHA-256 
-        dklen=128 # Get a 128 byte key
-        )
-        mongo.db.user_credentials.insert_one({"user_email": new_username, "user_password": hash_new_password, "salt": salt, "name": preferred_name})
-        return redirect(url_for('dashboard'))
-    else:
+            print(new_password)
+            hash_new_password = hashlib.pbkdf2_hmac(
+            'sha256', # The hash digest algorithm for HMAC
+            new_password.encode('utf-8'), # Convert the password to bytes
+            salt, # Provide the salt
+            100000, # It is recommended to use at least 100,000 iterations of SHA-256 
+            dklen=128 # Get a 128 byte key
+            )
+            mongo.db.user_credentials.insert_one({"user_email": new_username, "user_password": hash_new_password, "salt": salt, "name": preferred_name})
+            return redirect(url_for('dashboard'))
+        else:
+            return redirect(url_for('signup'))
+    else:  
+        flash('Please use a valid email format. For example - email@test.com')
         return redirect(url_for('signup'))
 
 
