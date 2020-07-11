@@ -50,9 +50,18 @@ def delete_user():
         return redirect(url_for('login'))
     else:
         current_user = session.get('USERNAME')
-        mongo.db.user_credentials.delete_one({"user_email": current_user})
-        flash('We are sorry to see you go, but come back any time!')
-        return redirect(url_for('signup'))
+        deletePassword = request.form['deletePassword']
+        user_password = mongo.db.user_credentials.find_one({"user_email": current_user})
+        for x in user_password:
+            user_password = x['user_password']
+            print(user_password)
+            if deletePassword == user_password:
+                mongo.db.user_credentials.delete_one({"user_email": current_user})
+                flash('We are sorry to see you go, but come back any time!')
+                return redirect(url_for('signup'))
+            else:
+                return "not the right password"
+            
 
 
 #login page
