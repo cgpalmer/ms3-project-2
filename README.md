@@ -38,8 +38,21 @@ Councils to be able to upload reports of discrimination via their own CSV
 Be able to log into their own area
 
 ### Tutorials
-Checking if a username exists.
-https://stackoverflow.com/questions/52930321/mongodb-with-python-used-to-store-username-and-passwords-for-a-game
+
+https://www.youtube.com/watch?v=DFCKWhoiHZ4
+
+https://pythonise.com/series/learning-flask/flask-session-object
+
+https://www.geeksforgeeks.org/python-program-check-validity-password/
+https://hackersandslackers.com/flask-login-user-authentication
+
+https://stackoverflow.com/questions/55957237/checking-if-input-value-matches-the-array-items
+
+https://stackoverflow.com/questions/14411235/while-typing-in-a-text-input-field-printing-the-content-typed-in-a-div
+
+https://groups.google.com/forum/#!topic/web2py/OmwTo1ZsFN4
+
+https://stackoverflow.com/questions/23038710/accessing-python-list-in-javascript-as-an-array
 
 jQuery based on a form value
 http://jsfiddle.net/YPsqQ/
