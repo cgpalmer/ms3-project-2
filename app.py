@@ -75,6 +75,13 @@ def dashboard():
         return "login"
     else: 
         return "successful"
+
+#dashboard
+@app.route('/logout')
+def logout():
+    session.pop("USERNAME", None)
+    return redirect(url_for('homepage'))
+  
     
 
 
