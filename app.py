@@ -68,6 +68,18 @@ def check_password():
                     print("no match")
                     return render_template('login.html')
 
+#dashboard
+@app.route('/dashboard')
+def dashboard():
+    if session.get("USERNAME") is None:
+        return "login"
+    else: 
+        return "successful"
+    
+
+
+
+
 #signup
 @app.route('/signup')
 def signup():
@@ -127,7 +139,7 @@ def creating_user():
         dklen=128 # Get a 128 byte key
         )
         mongo.db.user_credentials.insert_one({"user_email": new_username, "user_password": hash_new_password, "salt": salt, "name": preferred_name})
-        return render_template("login.html")
+        return redirect(url_for('dashboard'))
     else:
         return redirect(url_for('signup'))
 
