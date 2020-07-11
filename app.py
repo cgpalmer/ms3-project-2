@@ -62,7 +62,8 @@ def check_password():
                 if stored_password == hash_login_password:
                     print("match")
                     session["USERNAME"] = login_email
-                    return render_template('user_dash.html')
+                    username = session.get("USERNAME")
+                    return render_template('user_dash.html', username=username )
                 else:
                     print("no match")
                     return render_template('login.html')
