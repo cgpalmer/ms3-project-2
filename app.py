@@ -5,6 +5,7 @@ from flask import Flask, render_template, url_for, request, redirect, session
 from os import path
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
+import re
 
 app = Flask(__name__)
 app.secret_key = 'thefluffiestofdogs'
@@ -88,6 +89,33 @@ def creating_user():
     print(preferred_name)
     check_username_availibility = mongo.db.user_credentials.find_one({"user_email": new_username})
     print(check_username_availibility)
+    while True:   
+        if (len(password)<8): 
+            flag = -1
+            break
+        elif not re.search("[a-z]", password): 
+            flag = -1
+            break
+        elif not re.search("[A-Z]", password): 
+            flag = -1
+            break
+        elif not re.search("[0-9]", password): 
+            flag = -1
+            break
+        elif not re.search("[_@$]", password): 
+            flag = -1
+            break
+        elif re.search("\s", password): 
+            flag = -1
+            break
+        else: 
+            flag = 0
+            print("Valid Password") 
+            break
+    
+        if flag ==-1: 
+            print("Not a Valid Password")
+
     if check_username_availibility == None:
         print(new_password)
         hash_new_password = hashlib.pbkdf2_hmac(
