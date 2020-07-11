@@ -32,13 +32,17 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{url_for('signup')}}">Signup</a>
                     </li>
-                
+                    {% if session.get('USERNAME') != None %}
                         <li class="nav-item">
                             <a class="nav-link" href="{{url_for('logout')}}">Logout</a>
                         </li>
+                        
+                     {% endif %}
                     <li class="nav-item">
                             <a class="nav-link" href="{{url_for('developer')}}">developer</a>
                         </li>
+                   
+                    
                 
 
                 </ul>
