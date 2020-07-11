@@ -110,10 +110,10 @@ password, confirmPassword.onkeyup = function(){
     var input = document.getElementById('password')
         if(input.value.match(passw))
             {
-            console.log("all good")
+            $("#validatedPassword").removeClass('hidden');
             }
         else
             {
-            console.log("no good")
+            $("#validatedPassword").addClass('hidden');
             }
     }
