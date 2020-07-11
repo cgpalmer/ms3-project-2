@@ -102,3 +102,18 @@ password, confirmPassword.onkeyup = function(){
     
     }
 
+
+     // Live validating the password
+    password = document.getElementById('password')
+    password.onkeyup = function(){
+    var passw = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
+    var input = document.getElementById('password')
+        if(input.value.match(passw))
+            {
+            console.log("all good")
+            }
+        else
+            {
+            console.log("no good")
+            }
+    }
