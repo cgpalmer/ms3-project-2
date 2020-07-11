@@ -49,9 +49,8 @@ def delete_user():
         flash('Please login to see all of our amazing features')
         return redirect(url_for('login'))
     else:
-        currentUser = session.get('USERNAME')
-        print("current user")
-        print(currentUser)
+        current_user = session.get('USERNAME')
+        mongo.db.user_credentials.delete_one({"user_email": current_user})
         flash('We are sorry to see you go, but come back any time!')
         return redirect(url_for('signup'))
 
