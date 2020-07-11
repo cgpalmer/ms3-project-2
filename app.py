@@ -90,25 +90,22 @@ def creating_user():
     check_username_availibility = mongo.db.user_credentials.find_one({"user_email": new_username})
     print(check_username_availibility)
     while True:   
-        if (len(password)<8): 
+        if (len(new_password)<8): 
             flag = -1
             break
-        elif not re.search("[a-z]", password): 
+        elif not re.search("[a-z]", new_password): 
             flag = -1
             break
-        elif not re.search("[A-Z]", password): 
+        elif not re.search("[A-Z]", new_password): 
             flag = -1
             break
-        elif not re.search("[0-9]", password): 
+        elif not re.search("[0-9]", new_password): 
             flag = -1
             break
-        elif not re.search("[_@$]", password): 
+        elif re.search("\s", new_password): 
             flag = -1
             break
-        elif re.search("\s", password): 
-            flag = -1
-            break
-        else: 
+        else:
             flag = 0
             print("Valid Password") 
             break
