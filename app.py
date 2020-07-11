@@ -1,7 +1,7 @@
 # import pymongo
 import os
 import hashlib
-from flask import Flask, render_template, url_for, request, redirect, session
+from flask import Flask, render_template, url_for, request, redirect, session, flash
 from os import path
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
@@ -112,7 +112,8 @@ def creating_user():
     
     if flag ==-1: 
         print("Not a Valid Password")
-        return "invalid"
+        flash('Please use a valid password')
+        return redirect(url_for('signup'))
 
     if check_username_availibility == None:
         print(new_password)
