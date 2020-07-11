@@ -110,8 +110,9 @@ def creating_user():
             print("Valid Password") 
             break
     
-        if flag ==-1: 
-            print("Not a Valid Password")
+    if flag ==-1: 
+        print("Not a Valid Password")
+        return "invalid"
 
     if check_username_availibility == None:
         print(new_password)
