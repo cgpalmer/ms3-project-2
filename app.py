@@ -43,6 +43,14 @@ def userSetting():
     else: 
         return render_template("settings.html")
 
+@app.route('/delete_user')
+def delete_user():
+    if session.get("USERNAME") is None:
+        flash('Please login to see all of our amazing features')
+        return redirect(url_for('login'))
+    else: 
+        flash('We are sorry to see you go, but come back any time!')
+        return redirect(url_for('signup'))
 
 
 #login page
