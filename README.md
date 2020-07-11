@@ -38,6 +38,9 @@ Councils to be able to upload reports of discrimination via their own CSV
 Be able to log into their own area
 
 ### Tutorials
+https://www.w3resource.com/javascript/form/password-validation.php
+
+https://www.geeksforgeeks.org/check-if-email-address-valid-or-not-in-python/
 
 https://www.youtube.com/watch?v=DFCKWhoiHZ4
 
