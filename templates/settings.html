@@ -2,4 +2,79 @@
 
 <h1>Settings</h1>
 
+<div class="accordion md-accordion" id="changeDetailsAccordian" role="tablist" aria-multiselectable="true">
+  <div class="card">
+
+    <!-- Card header -->
+    <div class="card-header" role="tab" id="changePassword">
+      <a data-toggle="collapse" data-parent="#changeDetailsAccordian" href="#changePasswordForm" aria-expanded="false"
+        aria-controls="collapseOne1">
+        <h5 class="mb-0">
+          Collapsible Group Item #1 <i class="fas fa-angle-down rotate-icon"></i>
+        </h5>
+      </a>
+    </div>
+
+    <!-- Card body -->
+    <div id="changePasswordForm" class="collapse" role="tabpanel" aria-labelledby="headingOne1"
+      data-parent="#changeDetailsAccordian">
+      <div class="card-body">
+        Password
+      </div>
+    </div>
+
+  </div>
+  <!-- Accordion card -->
+
+  <!-- Accordion card -->
+  <div class="card">
+
+    <!-- Card header -->
+    <div class="card-header" role="tab" id="changeEmail">
+      <a class="collapsed" data-toggle="collapse" data-parent="#changeDetailsAccordian" href="#changeEmailForm"
+        aria-expanded="false" aria-controls="collapseTwo2">
+        <h5 class="mb-0">
+          Collapsible Group Item #2 <i class="fas fa-angle-down rotate-icon"></i>
+        </h5>
+      </a>
+    </div>
+
+    <!-- Card body -->
+    <div id="changeEmailForm" class="collapse" role="tabpanel" aria-labelledby="headingTwo2"
+      data-parent="#changeDetailsAccordian">
+      <div class="card-body">
+        Change email
+      </div>
+    </div>
+
+  </div>
+  <!-- Accordion card -->
+
+  <!-- Accordion card -->
+  <div class="card">
+
+    <!-- Card header -->
+    <div class="card-header" role="tab" id="changeName">
+      <a class="collapsed" data-toggle="collapse" data-parent="#changeDetailsAccordian" href="#changeNameForm"
+        aria-expanded="false" aria-controls="collapseThree3">
+        <h5 class="mb-0">
+          Collapsible Group Item #3 <i class="fas fa-angle-down rotate-icon"></i>
+        </h5>
+      </a>
+    </div>
+
+    <!-- Card body -->
+    <div id="changeNameForm" class="collapse" role="tabpanel" aria-labelledby="headingThree3"
+      data-parent="#changeDeatilsAccordian">
+      <div class="card-body">
+        Change name
+      </div>
+    </div>
+
+  </div>
+  <!-- Accordion card -->
+
+</div>
+<!-- Accordion wrapper -->
+
 {% endblock %}
