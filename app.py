@@ -48,7 +48,10 @@ def delete_user():
     if session.get("USERNAME") is None:
         flash('Please login to see all of our amazing features')
         return redirect(url_for('login'))
-    else: 
+    else:
+        currentUser = session.get('USERNAME')
+        print("current user")
+        print(currentUser)
         flash('We are sorry to see you go, but come back any time!')
         return redirect(url_for('signup'))
 
