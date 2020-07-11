@@ -72,9 +72,10 @@ def check_password():
 @app.route('/dashboard')
 def dashboard():
     if session.get("USERNAME") is None:
-        return "login"
+        flash('Please login to see all of our amazing features')
+        return redirect(url_for('login'))
     else: 
-        return "successful"
+        return render_template('user_dash.html')
 
 #dashboard
 @app.route('/logout')
