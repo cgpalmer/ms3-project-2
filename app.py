@@ -30,6 +30,13 @@ mongo = PyMongo(app)
 def homepage():
     return render_template("home.html", report=mongo.db.report.find().limit(5))
 
+@app.route('/developer')
+def developer():
+    session["USERNAME"] = "developer"
+    return render_template("home.html")
+
+
+
 #login page
 @app.route('/login')
 def login():
