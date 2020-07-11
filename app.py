@@ -35,6 +35,11 @@ def developer():
     session["USERNAME"] = "developer"
     return render_template("home.html")
 
+@app.route('/userSetting')
+def userSetting():
+    
+    return render_template("settings.html")
+
 
 
 #login page
