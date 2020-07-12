@@ -63,6 +63,7 @@ def changeDetails():
         salt = os.urandom(32)
         currentEmail = session.get("USERNAME")
         if changeType == 'password':
+            # Validating the new password
             updated_password = request.form['updatePassword']
             while True:   
                 if (len(updated_password)<8): 
@@ -90,6 +91,7 @@ def changeDetails():
                 flash('Please use a valid password')
                 return "not valid password"
 
+            # Hashing the new password ready for the database
             print(updated_password)
             hash_updated_password = hashlib.pbkdf2_hmac(
             'sha256', # The hash digest algorithm for HMAC
@@ -98,13 +100,34 @@ def changeDetails():
             100000, # It is recommended to use at least 100,000 iterations of SHA-256 
             dklen=128 # Get a 128 byte key
             ) 
-            current_password = request.form['confirmCurrentPass']
-            check_password_record = mongo.db.user_credentials.find_one({"user_password": current_password})
-            if check_password_record == None:
-                mongo.db.user_credentials.update_one({"user_email": currentEmail},{"$set": {"user_password": hash_updated_password, "salt": salt}})
-                return "user wants to update their password"
-            else: 
-                return "incorrect password"
+
+            # Checking the current password is correct.
+            user = mongo.db.user_credentials.find_one({"user_email": currentEmail})
+            for k,v in user.items():
+                if k != "_id":
+                    if k == 'user_password':
+                        stored_password = v
+                        print(stored_password)
+                    if k == 'salt':
+                        stored_salt = v
+                        print("this is the salt")
+                        print(stored_salt)
+
+                        current_password = request.form['confirmCurrentPass']
+        
+                        hash_current_password = hashlib.pbkdf2_hmac(
+                        'sha256', # The hash digest algorithm for HMAC
+                        current_password.encode('utf-8'), # Convert the password to bytes
+                        stored_salt, # Provide the salt
+                        100000, # It is recommended to use at least 100,000 iterations of SHA-256 
+                        dklen=128 # Get a 128 byte key
+                        )
+                        if hash_current_password == stored_password:
+                            mongo.db.user_credentials.update_one({"user_email": currentEmail},{"$set": {"user_password": hash_updated_password, "salt": salt}})
+                            return "user wants to update their password"
+
+                        else: 
+                            return "incorrect password"
 
 
 
