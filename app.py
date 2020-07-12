@@ -53,13 +53,22 @@ def userSetting():
 
                 return render_template("settings.html", user_email=user_email, user_password=user_password, preferred_name=preferred_name)
 
-@app.route('/changeDetails')
+@app.route('/changeDetails', methods=['POST'])
 def changeDetails():
     if session.get("USERNAME") is None:
         flash('Please login to see all of our amazing features')
         return redirect(url_for('login'))
-    else:             
-        return render_template("settings.html")
+    else:   
+        changeType = request.form['changeType']
+        if changeType == 'password':
+            updated_password = request.form['updatePassword'] 
+            return "user wants to update their password" 
+        if changeType == 'password':
+            updated_email = request.form['updateEmail'] 
+            return "user wants to update their email"
+        if changeType == 'email':
+            updated_name = request.form['updateName']        
+            return "user wants to update their name"
     
 
 @app.route('/delete_user', methods=['POST'])
