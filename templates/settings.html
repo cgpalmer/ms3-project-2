@@ -19,7 +19,7 @@
     <div id="changePasswordForm" class="collapse" role="tabpanel" aria-labelledby="headingOne1"
       data-parent="#changeDetailsAccordian">
       <div class="card-body">
-         <form action="" method="POST">
+         <form action="{{url_for('changeDetails')}}" method="POST">
             <div class="form-group">
                 <label for="confirmCurrentPass">Current password</label>
                 <input type="password" class="form-control" id="confirmCurrentPass" name="confirmCurrentPass" placeholder="Please enter your current password" required>
@@ -52,7 +52,7 @@
       data-parent="#changeDetailsAccordian">
       <div class="card-body">
         <p>Current email: {{ user_email }}</p>
-        <form action="" method="POST">
+        <form action="{{url_for('changeDetails')}}" method="POST">
             <div class="form-group">
                 <label for="updateEmail">New email</label>
                 <input type="password" class="form-control" id="updateEmail" name="updateEmail" placeholder="Please enter your new email" required>
@@ -82,7 +82,7 @@
     <div id="changeNameForm" class="collapse" role="tabpanel" aria-labelledby="headingThree3"
       data-parent="#changeDeatilsAccordian">
       <div class="card-body">
-        <form action="" method="POST">
+        <form action="{{url_for('changeDetails')}}" method="POST">
             <div class="form-group">
                 <p>Current preferred name: {{ preferred_name.capitalize() }}</p>
                 <label for="updateName">New preferred name</label>
