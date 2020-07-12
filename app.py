@@ -74,6 +74,8 @@ def changeDetails():
                 check_username_availibility = mongo.db.user_credentials.find_one({"user_email": updated_email})
                 print(check_username_availibility)
                 if check_username_availibility == None: 
+                    mongo.db.user_credentials.update_one({"user_email": currentEmail},{"$set": {"user_email": updated_email}})
+
                     return "user wants to update their email"
                 else:
                     return "email taken"
