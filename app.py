@@ -150,7 +150,8 @@ def changeDetails():
             else: 
                 return "Email not valid."
         if changeType == 'name':
-            updated_name = request.form['updateName']        
+            updated_name = request.form['updateName']
+            mongo.db.user_credentials.update_one({"user_email": currentEmail},{"$set": {"name": updated_name}})        
             return "user wants to update their name"
     
 
