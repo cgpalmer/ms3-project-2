@@ -60,9 +60,48 @@ def changeDetails():
         return redirect(url_for('login'))
     else:   
         changeType = request.form['changeType']
+        salt = os.urandom(32)
         if changeType == 'password':
-            updated_password = request.form['updatePassword'] 
+            updated_password = request.form['updatePassword']
+            while True:   
+                if (len(updated_password)<8): 
+                    flag = -1
+                    break
+                elif not re.search("[a-z]", updated_password): 
+                    flag = -1
+                    break
+                elif not re.search("[A-Z]", updated_password): 
+                    flag = -1
+                    break
+                elif not re.search("[0-9]", updated_password): 
+                    flag = -1
+                    break
+                elif re.search("\s", updated_password): 
+                    flag = -1
+                    break
+                else:
+                    flag = 0
+                    print("Valid Password") 
+                    break
+        
+            if flag ==-1: 
+                print("Not a Valid Password")
+                flash('Please use a valid password')
+                return "not valid password"
+
+            print(updated_password)
+            hash_updated_password = hashlib.pbkdf2_hmac(
+            'sha256', # The hash digest algorithm for HMAC
+            updated_password.encode('utf-8'), # Convert the password to bytes
+            salt, # Provide the salt
+            100000, # It is recommended to use at least 100,000 iterations of SHA-256 
+            dklen=128 # Get a 128 byte key
+            ) 
             return "user wants to update their password" 
+
+
+
+            
         if changeType == 'email':
             currentEmail = session.get("USERNAME")
             print(currentEmail)
@@ -75,7 +114,6 @@ def changeDetails():
                 print(check_username_availibility)
                 if check_username_availibility == None: 
                     mongo.db.user_credentials.update_one({"user_email": currentEmail},{"$set": {"user_email": updated_email}})
-
                     return "user wants to update their email"
                 else:
                     return "email taken"
