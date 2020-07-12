@@ -40,17 +40,25 @@ def userSetting():
     if session.get("USERNAME") is None:
         flash('Please login to see all of our amazing features')
         return redirect(url_for('login'))
-    else: 
-        return render_template("settings.html")
+    else:
+        current_user = session.get('USERNAME')
+        user = mongo.db.user_credentials.find_one({"user_email": current_user})
+        for k,v in user.items():
+            if k == 'user_password':
+                user_email = v
+            if k == 'user_password':
+                user_password = v
+            if k == 'name':
+                preferred_name = v
+
+                return render_template("settings.html", user_email=user_email, user_password=user_password, preferred_name=preferred_name)
 
 @app.route('/changeDetails')
 def changeDetails():
     if session.get("USERNAME") is None:
         flash('Please login to see all of our amazing features')
         return redirect(url_for('login'))
-    else: 
-
-        
+    else:             
         return render_template("settings.html")
     
 
