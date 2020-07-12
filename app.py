@@ -61,6 +61,7 @@ def changeDetails():
     else:   
         changeType = request.form['changeType']
         salt = os.urandom(32)
+        currentEmail = session.get("USERNAME")
         if changeType == 'password':
             updated_password = request.form['updatePassword']
             while True:   
@@ -97,13 +98,15 @@ def changeDetails():
             100000, # It is recommended to use at least 100,000 iterations of SHA-256 
             dklen=128 # Get a 128 byte key
             ) 
+
+            mongo.db.user_credentials.update_one({"user_email": currentEmail},{"$set": {"user_password": hash_updated_password, "salt": salt}})
             return "user wants to update their password" 
 
 
 
-            
+
         if changeType == 'email':
-            currentEmail = session.get("USERNAME")
+            
             print(currentEmail)
             updated_email = request.form['updateEmail']
             regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
