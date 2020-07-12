@@ -44,7 +44,7 @@ def userSetting():
         current_user = session.get('USERNAME')
         user = mongo.db.user_credentials.find_one({"user_email": current_user})
         for k,v in user.items():
-            if k == 'user_password':
+            if k == 'user_email':
                 user_email = v
             if k == 'user_password':
                 user_password = v
