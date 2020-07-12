@@ -63,10 +63,10 @@ def changeDetails():
         if changeType == 'password':
             updated_password = request.form['updatePassword'] 
             return "user wants to update their password" 
-        if changeType == 'password':
+        if changeType == 'email':
             updated_email = request.form['updateEmail'] 
             return "user wants to update their email"
-        if changeType == 'email':
+        if changeType == 'name':
             updated_name = request.form['updateName']        
             return "user wants to update their name"
     
