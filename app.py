@@ -98,9 +98,13 @@ def changeDetails():
             100000, # It is recommended to use at least 100,000 iterations of SHA-256 
             dklen=128 # Get a 128 byte key
             ) 
-
-            mongo.db.user_credentials.update_one({"user_email": currentEmail},{"$set": {"user_password": hash_updated_password, "salt": salt}})
-            return "user wants to update their password" 
+            current_password = request.form['confirmCurrentPass']
+            check_password_record = mongo.db.user_credentials.find_one({"user_password": current_password})
+            if check_password_record == None:
+                mongo.db.user_credentials.update_one({"user_email": currentEmail},{"$set": {"user_password": hash_updated_password, "salt": salt}})
+                return "user wants to update their password"
+            else: 
+                return "incorrect password"
 
 
 
