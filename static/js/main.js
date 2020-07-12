@@ -81,9 +81,11 @@ $("#seeConfirmedPassword").click(function(){
 
 
 // There is a console error on this. 
-var confirmPassword = document.getElementById('confirmedPassword');
+
 
 // In here add the code to put a tick next to the password box once it is a certain length.
+
+
 
 password, confirmPassword.onkeyup = function(){
     var password = document.getElementById('password');
@@ -103,6 +105,7 @@ password, confirmPassword.onkeyup = function(){
     }
 
 
+
      // Live validating the password
     password = document.getElementById('password')
     password.onkeyup = function(){
@@ -117,3 +120,11 @@ password, confirmPassword.onkeyup = function(){
             $("#validatedPassword").addClass('hidden');
             }
     }
+
+
+
+    // Unhiding the confirm delete button
+
+    $("#deleteAccount").click(function(){
+        $("#confirmDeleteUser").removeClass("hidden");
+    });
