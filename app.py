@@ -64,8 +64,21 @@ def changeDetails():
             updated_password = request.form['updatePassword'] 
             return "user wants to update their password" 
         if changeType == 'email':
-            updated_email = request.form['updateEmail'] 
-            return "user wants to update their email"
+            currentEmail = session.get("USERNAME")
+            print(currentEmail)
+            updated_email = request.form['updateEmail']
+            regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
+            if(re.search(regex,updated_email)):  
+                print("Valid Email")  
+                
+                check_username_availibility = mongo.db.user_credentials.find_one({"user_email": updated_email})
+                print(check_username_availibility)
+                if check_username_availibility == None: 
+                    return "user wants to update their email"
+                else:
+                    return "email taken"
+            else: 
+                return "Email not valid."
         if changeType == 'name':
             updated_name = request.form['updateName']        
             return "user wants to update their name"
