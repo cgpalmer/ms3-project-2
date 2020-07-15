@@ -496,9 +496,12 @@ def search_all_by_parameter():
 def add_report():
     currentUserEmail = session.get("USERNAME")
     if currentUserEmail == None:
-        print("no user logged in")
-        return "done"
-    else: 
+        currentUserEmail = "anonymous"
+        print(currentUserEmail)
+        return render_template("add_report.html", currentUserEmail=currentUserEmail, categories=mongo.db.categories.find(),
+                           sub_category=mongo.db.sub_category.find(),
+                           )
+    else:
         return render_template("add_report.html", currentUserEmail=currentUserEmail, categories=mongo.db.categories.find(),
                            sub_category=mongo.db.sub_category.find(),
                            )
