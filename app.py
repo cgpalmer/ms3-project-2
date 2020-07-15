@@ -322,12 +322,12 @@ def creating_user():
         flash('Please use a valid email format. For example - email@test.com')
         return redirect(url_for('signup'))
 
-@app.route('/insert_name')
+@app.route('/insert_name', methods=['POST'])
 def insert_name():
     currentUserEmail = session.get("USERNAME")
     preferred_name = request.form['preferredNameInput'].lower()
     mongo.db.user_credentials.update_one({"user_email": currentUserEmail},{"$set": {"name": preferred_name}})
-    return render_template('preferredName.html')
+    return redirect(url_for('dashboard'))
 
 # Reading reports
 
