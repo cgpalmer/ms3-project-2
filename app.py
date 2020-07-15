@@ -272,8 +272,6 @@ def creating_user():
     new_username= request.form['new_username']
     print(new_username)
     new_password = request.form['new_password']
-    
-    print(preferred_name)
     regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
     if(re.search(regex,new_username)):  
         print("Valid Email")  
@@ -315,7 +313,8 @@ def creating_user():
             100000, # It is recommended to use at least 100,000 iterations of SHA-256 
             dklen=128 # Get a 128 byte key
             )
-            mongo.db.user_credentials.insert_one({"user_email": new_username, "user_password": hash_new_password, "salt": salt, "name": preferred_name})
+            mongo.db.user_credentials.insert_one({"user_email": new_username, "user_password": hash_new_password, "salt": salt})
+            session["USERNAME"] = new_username
             return redirect(url_for('insert_name'))
         else:
             return redirect(url_for('signup'))
@@ -325,8 +324,9 @@ def creating_user():
 
 @app.route('/insert_name')
 def insert_name():
-    preferred_name = request.form['preferred_name'].lower()
-    mongo.db.user_credentials.insert_one({"name": preferred_name})
+    currentUserEmail = session.get("USERNAME")
+    preferred_name = request.form['preferredNameInput'].lower()
+    mongo.db.user_credentials.update_one({"user_email": currentUserEmail},{"$set": {"name": preferred_name}})
     return render_template('preferredName.html')
 
 # Reading reports
