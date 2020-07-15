@@ -35,6 +35,7 @@ def developer():
     session["USERNAME"] = "developer"
     return render_template("home.html")
 
+
 @app.route('/userSetting')
 def userSetting():
     if session.get("USERNAME") is None:
@@ -315,13 +316,16 @@ def creating_user():
             dklen=128 # Get a 128 byte key
             )
             mongo.db.user_credentials.insert_one({"user_email": new_username, "user_password": hash_new_password, "salt": salt, "name": preferred_name})
-            return redirect(url_for('dashboard'))
+            return redirect(url_for('insert_name'))
         else:
             return redirect(url_for('signup'))
     else:  
         flash('Please use a valid email format. For example - email@test.com')
         return redirect(url_for('signup'))
 
+@app.route('/insert_name')
+def insert_name():
+    return render_template('preferredName.html')
 
 # Reading reports
 
