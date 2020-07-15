@@ -62,18 +62,6 @@ $("#seePassword").click(function(){
     
 })
 
-$("#seeConfirmedPassword").click(function(){
-         var seeConfirmedPassword = document.getElementById('confirmedPassword');
-        seeConfirmedPassword.type = "text";
-    var confirmedPasswordTimeout = setTimeout(confirmedPasswordReveal, 2000);
-    function confirmedPasswordReveal() {
-        seeConfirmedPassword.type = "password";
-    }
-    clearTimeout();
-    
-})
-
-
 
 
 //   Matching passwords
@@ -84,26 +72,6 @@ $("#seeConfirmedPassword").click(function(){
 
 
 // In here add the code to put a tick next to the password box once it is a certain length.
-
-
-
-password, confirmPassword.onkeyup = function(){
-    var password = document.getElementById('password');
-    if (confirmedPassword.value == password.value){
-        console.log("match")
-        $("#passwordMatch").removeClass("hidden");
-        document.getElementById("signupButton").disabled = false;
-        // In here add the code to put a tick next to the password box.
-        
-    } else {
-        $("#passwordMatch").addClass("hidden");
-        console.log("no match")
-        document.getElementById("signupButton").disabled = true;
-    }
-    // Add in a loop here that checks for each array.
-    
-    }
-
 
 
      // Live validating the password
