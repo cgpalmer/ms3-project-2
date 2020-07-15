@@ -494,7 +494,8 @@ def search_all_by_parameter():
 
 @app.route('/add_report')
 def add_report():
-    return render_template("add_report.html", categories=mongo.db.categories.find(),
+    currentUserEmail = session.get("USERNAME")
+    return render_template("add_report.html", currentUserEmail=currentUserEmail, categories=mongo.db.categories.find(),
                            sub_category=mongo.db.sub_category.find(),
                            )
 
