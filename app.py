@@ -272,7 +272,7 @@ def creating_user():
     new_username= request.form['new_username']
     print(new_username)
     new_password = request.form['new_password']
-    preferred_name = request.form['preferred_name'].lower()
+    
     print(preferred_name)
     regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
     if(re.search(regex,new_username)):  
@@ -325,6 +325,8 @@ def creating_user():
 
 @app.route('/insert_name')
 def insert_name():
+    preferred_name = request.form['preferred_name'].lower()
+    mongo.db.user_credentials.insert_one({"name": preferred_name})
     return render_template('preferredName.html')
 
 # Reading reports
