@@ -4,9 +4,9 @@
       <div class="modal-body">
         
        <p>Please enter your preferred name!</p>
-        <form method="POST" action=""  >
+        <form method="POST" action="{{url_for('insert_name')}}">
             <label for="preferredNameInput"></label>
-            <input id="preferredNameInput" type="text">        
+            <input id="preferredNameInput" name="preferredNameInput" type="text">        
             <button type="submit"> Get started </button>       
         </form>
       </div>
