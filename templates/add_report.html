@@ -2,7 +2,7 @@
 
 <h1>Your journey to making a difference starts here.</h1>
     <form method="POST" action="{{ url_for('insert_report') }}">
-        <div class="form-group">
+        <div class="form-group hidden">
             <label for="email"></label>
             <input type="text" class="form-control" id="email" name="email" value="{{currentUserEmail}}" placeholder="Email">
         </div>         
