@@ -495,7 +495,11 @@ def search_all_by_parameter():
 @app.route('/add_report')
 def add_report():
     currentUserEmail = session.get("USERNAME")
-    return render_template("add_report.html", currentUserEmail=currentUserEmail, categories=mongo.db.categories.find(),
+    if currentUserEmail == None:
+        print("no user logged in")
+        return "done"
+    else: 
+        return render_template("add_report.html", currentUserEmail=currentUserEmail, categories=mongo.db.categories.find(),
                            sub_category=mongo.db.sub_category.find(),
                            )
 
