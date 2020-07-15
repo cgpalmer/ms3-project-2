@@ -5,25 +5,18 @@
     <h2><em>For a better future</em></h2>
 </header>
 <body>
-    <div>
-        <a href="{{url_for('get_report')}}">Search for statistics</a>
-    </div>
-    <div>
-        <a href="{{url_for('add_report')}}">Report discrimination</a>
-    </div>
     
-    <h3>Latest reports</h3>
+    <h1>Current amount of reports.</h1>
     
-    {% for report in report  %}
-    <div class="card bg-primary text-white">
-            <p>User: {{report.username}}</p>
-            <p>Category: {{report.category_name}}</p>
-            <p>Sub-category: {{report.sub_category}}</p>
-            <p>Description: {{report.incident_description}}</p>
-            <p>Location: {{report.location}}</p>
-            <p>Reported to the authorities: {{report.report_to_authorities}}</p>
-    </div>
-    {% endfor %}
+<h1>Purpose</h1>
+
+   <h1>About us</h1>
+
+   <h1>Disclaimer and usage policy</h1>
+
+   
+
+   
 
 </body>
 {% endblock %}
