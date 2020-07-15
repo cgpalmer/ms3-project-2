@@ -21,17 +21,15 @@
             <input type="password" class="form-control" id="password" name="new_password" placeholder="Password" required>
             <span class="hidden" id="validatedPassword">Tick!</span>
         </div>
+           
         <div class="form-group">
-            <div class="btn btn-secondary" id="seeConfirmedPassword">See password</div>
-            <label for="confirmedPassword" class="">Confirm password</label>
-            <input type="password" class="form-control" id="confirmedPassword" placeholder="Confirm password" required><span class="hidden" id="passwordMatch">Tick!</span>
+            <label for="confirmPassword">Checked password?</label>
+            <input id="confirmPassword" type="checkbox" required>
         </div>
-        <div class="form-group">
-            <label for="preferredName" class="">Preferred Name </label>
-            <input type="text" class="form-control" id="preferredName" name="preferred_name" placeholder="Preferred Name">
-        </div>
-        <button id="signupButton" type="submit" name="action">Sign Up!</button>
+        <button id="signupButton" type="submit" name="action" data-toggle="modal" data-target="#exampleModal">Sign Up!</button>
     </form>
+
+
 
 <script> 
 var v = {{list_existing_emails|tojson}}
