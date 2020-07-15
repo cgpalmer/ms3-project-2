@@ -315,7 +315,7 @@ def creating_user():
             )
             mongo.db.user_credentials.insert_one({"user_email": new_username, "user_password": hash_new_password, "salt": salt})
             session["USERNAME"] = new_username
-            return redirect(url_for('insert_name'))
+            return render_template("preferredName.html")
         else:
             return redirect(url_for('signup'))
     else:  
