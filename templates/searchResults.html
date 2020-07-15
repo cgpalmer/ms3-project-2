@@ -1,11 +1,33 @@
 {% extends 'base.html'%} {% block content %}
 
 <h1>Search our database</h1>
-<h3 id="basic">Basic search</h3>
-<div id="orSearch">
-    <h3>Search by any checked value</h3>
-    <p>This will search for any reports that have one, or more, of the checked values.</p>
-    <form method="POST" action="{{ url_for('search_report_parameter') }}">
+<div class="container-fluid">
+<div class="row">
+    <div class="col-4">
+        <div id="orSearch">
+            <h3 id="basic">Basic search</h3>
+            <h3>Search by any checked value</h3>
+            <p>This will search for any reports that have one, or more, of the checked values.</p>
+        </div>
+    </div>
+
+    <div class="col-4">
+        <h3 id="filtered">Filtered</h3>
+        <div id="filteredSearch">
+            <p> Any searches return will include all checked boxes. Click "Add another" field if you would like to compare up to three searches.</p>
+        </div>
+    </div>
+    <div class="col-4">
+        <h1>Compare</h1>
+        <p>Here you can search for a type of report in any location filter.</p>
+    </div>
+</div>
+</div>
+
+
+
+<div>
+        <form method="POST" action="{{ url_for('search_report_parameter') }}">
         <!-- This can also be a loop -->
         <input type="checkbox" id="checkBuilding" value="building" name="searchParameter">
         <label for="checkBuilding">Building</label>
@@ -41,10 +63,8 @@
 
 <!-- This is a comparison route -->
 
-<h3 id="filtered">Filtered</h3>
-<div class="hidden" id="filteredSearch">
-<p> Any searches return will include all checked boxes. Click "Add another" field if you would like to compare up to three searches.</p>
 
+<div>
 <form method="POST" action="{{ url_for('and_filter_parameters') }}">
 
     <input class="hidden" type="text" id="comparisonNumber" value="{{comparison_number}}" name="comparison_number">
@@ -66,8 +86,7 @@
 </div>
 
 
-<h1>Compare</h1>
-<p>Here you can search for a type of report in any location filter.</p>
+<div>
 <form method="POST" action="{{ url_for('compare_by_all') }}">
 
     <input class="hidden" type="text" id="comparisonNumber" value="{{comparison_number}}" name="comparison_number">
@@ -88,7 +107,7 @@
 <button type="submit">Go</button>
 </form>
 
-
+</div>
 
 
 
