@@ -27,7 +27,7 @@
 
 <div class="container-fluid">
 <div class="row">
-    <div class="col-4">
+    <div class="col-4 searchForm">
 
         <form method="POST" action="{{ url_for('search_report_parameter') }}">
         <!-- This can also be a loop -->
@@ -66,7 +66,7 @@
 <!-- This is a comparison route -->
 
 
- <div class="col-4">
+ <div class="col-4 searchForm">
 <form method="POST" action="{{ url_for('and_filter_parameters') }}">
 
     <input class="hidden" type="text" id="comparisonNumber" value="{{comparison_number}}" name="comparison_number">
@@ -82,13 +82,26 @@
 
     <input type="checkbox" id="comparisonCheckReported" value="reported_to_authorities" name="searchParameter">
     <label for="comparisonCheckReported">Reported to authorities?</label>
-
+    <div class="dropdown">
+    <div class=" dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Location</div>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <!-- This can be a for loop. -->
+        <input type="radio" id="checkStreetAnd" value="street" name="searchParameter">
+        <label for="checkStreet">Street</label>
+        <input type="radio" id="checkCityAnd" value="city" name="searchParameter">
+        <label for="checkCity">City</label>
+        <input type="radio" id="checkCountyAnd" value="county" name="searchParameter">
+        <label for="checkCounty">County</label>
+        <input type="radio" id="countyAnd" value="county" name="searchParameter">
+        <label for="checkPostcode">Postcode</label>
+    </div>
+    </div>
 <button type="submit">Go</button>
 </form>
 </div>
 
 
- <div class="col-4">
+ <div class="col-4 searchForm">
 <form method="POST" action="{{ url_for('compare_by_all') }}">
 
     <input class="hidden" type="text" id="comparisonNumber" value="{{comparison_number}}" name="comparison_number">
