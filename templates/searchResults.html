@@ -8,7 +8,7 @@
             <h3 id="basic">Basic search</h3>
             <h3>Search by any checked value</h3>
             <p>This will search for any reports that have one, or more, of the checked values.</p>
-            <a href="#basicSearch">Search</a>
+            <a id="searchLinkBasic" href="#basicSearch">Search</a>
         </div>
     </div>
 
@@ -16,7 +16,7 @@
         <h3 id="filtered">Filtered</h3>
         <div id="filteredSearch">
             <p> Any searches return will include all checked boxes.</p>
-            <a id="searchLink" href="#basicSearch">Search</a>
+            <a id="searchLinkFilter" href="#basicSearch">Search</a>
         </div>
     </div>
     <div class="col-12 col-lg-4 card">
@@ -94,7 +94,7 @@
 
 
  <div id="filterSearch" class="col-12 col-lg-4  searchForm">
-<form method="POST" action="{{ url_for('and_filter_parameters') }}">
+<form id="filterSearchForm" method="POST" action="{{ url_for('and_filter_parameters') }}">
 
     <input class="hidden" type="text" id="comparisonNumber" value="{{comparison_number}}" name="comparison_number">
     <!-- This can also be a loop -->
