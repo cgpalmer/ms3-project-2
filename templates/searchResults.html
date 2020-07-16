@@ -31,30 +31,54 @@
 
         <form method="POST" action="{{ url_for('search_report_parameter') }}">
         <!-- This can also be a loop -->
-        <input type="checkbox" id="checkBuilding" value="building" name="searchParameter">
-        <label for="checkBuilding">Building</label>
+        
+        <label for="checkBuilding">
+            <input type="checkbox" id="checkBuilding" value="building" name="searchParameter">
+            Building
+        </label>
 
-        <input type="checkbox" id="checkCategory" value="category_name" name="searchParameter">
-        <label for="checkCategory">Category</label>
+        
+        <label for="checkCategory">
+            <input type="checkbox" id="checkCategory" value="category_name" name="searchParameter">
+            Category
+        </label>
 
-        <input type="checkbox" id="checkSubcategory" value="sub_category" name="searchParameter">
-        <label for="checkSubcategory">Sub-category</label>
+       
+        <label for="checkSubcategory"> 
+            <input type="checkbox" id="checkSubcategory" value="sub_category" name="searchParameter">
+            Sub-category
+        </label>
 
-        <input type="checkbox" id="checkReported" value="reported_to_authorities" name="searchParameter">
-        <label for="checkReported">Reported to authorities?</label>
+        
+        <label for="checkReported">
+            <input type="checkbox" id="checkReported" value="reported_to_authorities" name="searchParameter">
+            Reported to authorities?
+        </label>
 
     <div class="dropdown">
     <div class=" dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Location</div>
     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
     <!-- This can be a for loop. -->
-        <input type="radio" id="checkStreet" value="street" name="searchParameter">
-        <label for="checkStreet">Street</label>
-        <input type="radio" id="checkCity" value="city" name="searchParameter">
-        <label for="checkCity">City</label>
-        <input type="radio" id="checkCounty" value="county" name="searchParameter">
-        <label for="checkCounty">County</label>
-        <input type="radio" id="county" value="county" name="searchParameter">
-        <label for="checkPostcode">Postcode</label>
+        
+        <label for="checkStreet">
+            <input type="radio" id="checkStreet" value="street" name="searchParameter">
+            Street
+        </label>
+        
+        <label for="checkCity">
+            <input type="radio" id="checkCity" value="city" name="searchParameter">
+            City
+        </label>
+        
+        <label for="checkCounty">
+            <input type="radio" id="checkCounty" value="county" name="searchParameter">
+            County
+        </label>
+        
+        <label for="checkPostcode">
+            <input type="radio" id="county" value="county" name="searchParameter">
+            Postcode
+        </label>
     </div>
     </div>
 
@@ -71,29 +95,52 @@
 
     <input class="hidden" type="text" id="comparisonNumber" value="{{comparison_number}}" name="comparison_number">
     <!-- This can also be a loop -->
-    <input type="checkbox" id="comparisonCheckBuilding" value="building" name="searchParameter">
-    <label for="comparisonCheckBuilding">Building</label>
+    
+    <label for="comparisonCheckBuilding">
+        <input type="checkbox" id="comparisonCheckBuilding" value="building" name="searchParameter">
+        Building 
+    </label>
 
-    <input type="checkbox" id="comparisonCheckCategory" value="category_name" name="searchParameter">
-    <label for="comparisonCheckCategory">Category</label>
+    
+    <label for="comparisonCheckCategory">
+        <input type="checkbox" id="comparisonCheckCategory" value="category_name" name="searchParameter">
+        Category
+    </label>
 
-    <input type="checkbox" id="comparisonCheckSubcategory" value="sub_category" name="searchParameter">
-    <label for="comparisonCheckSubcategory">Sub-category</label>
+    
+    <label for="comparisonCheckSubcategory">
+        <input type="checkbox" id="comparisonCheckSubcategory" value="sub_category" name="searchParameter">
+        Sub-category
+    </label>
 
-    <input type="checkbox" id="comparisonCheckReported" value="reported_to_authorities" name="searchParameter">
-    <label for="comparisonCheckReported">Reported to authorities?</label>
+    
+    <label for="comparisonCheckReported">
+        <input type="checkbox" id="comparisonCheckReported" value="reported_to_authorities" name="searchParameter">
+        Reported to authorities?
+    </label>
     <div class="dropdown">
     <div class=" dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Location</div>
     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
     <!-- This can be a for loop. -->
-        <input type="radio" id="checkStreetAnd" value="street" name="searchParameter">
-        <label for="checkStreet">Street</label>
-        <input type="radio" id="checkCityAnd" value="city" name="searchParameter">
-        <label for="checkCity">City</label>
-        <input type="radio" id="checkCountyAnd" value="county" name="searchParameter">
-        <label for="checkCounty">County</label>
-        <input type="radio" id="countyAnd" value="county" name="searchParameter">
-        <label for="checkPostcode">Postcode</label>
+        
+        <label for="checkStreet"> 
+            <input type="radio" id="checkStreetAnd" value="street" name="searchParameter">
+            Street
+        </label>
+        
+        <label for="checkCity">
+            <input type="radio" id="checkCityAnd" value="city" name="searchParameter">
+            City
+        </label>
+        
+        <label for="checkCounty">
+            <input type="radio" id="checkCountyAnd" value="county" name="searchParameter">
+            County
+        </label>
+        <label for="checkPostcode">
+            <input type="radio" id="countyAnd" value="county" name="searchParameter">
+            Postcode
+        </label>
     </div>
     </div>
 <button type="submit">Go</button>
@@ -106,17 +153,29 @@
 
     <input class="hidden" type="text" id="comparisonNumber" value="{{comparison_number}}" name="comparison_number">
     <!-- This can also be a loop -->
-    <input type="radio" id="allBuilding" value="building" name="searchParameter">
-    <label for="allkBuilding">Building</label>
+    
+    <label for="allkBuilding">
+        <input type="radio" id="allBuilding" value="building" name="searchParameter">
+        Building
+    </label>
 
-    <input type="radio" id="allCategory" value="category_name" name="searchParameter">
-    <label for="comparisonCheckCategory">Category</label>
+    
+    <label for="comparisonCheckCategory">
+        <input type="radio" id="allCategory" value="category_name" name="searchParameter">
+        Category
+    </label>
 
-    <input type="radio" id="allSubcategory" value="sub_category" name="searchParameter">
-    <label for="comparisonCheckSubcategory">Sub-category</label>
+    
+    <label for="comparisonCheckSubcategory">
+        <input type="radio" id="allSubcategory" value="sub_category" name="searchParameter">
+        Sub-category
+    </label>
 
-    <input type="radio" id="allReported" value="reported_to_authorities" name="searchParameter">
-    <label for="comparisonCheckReported">Reported to authorities?</label>
+    
+    <label for="comparisonCheckReported">
+        <input type="radio" id="allReported" value="reported_to_authorities" name="searchParameter">
+        Reported to authorities?
+    </label>
 
 
 <button type="submit">Go</button>
