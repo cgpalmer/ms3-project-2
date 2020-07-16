@@ -16,7 +16,7 @@
         <h3 id="filtered">Filtered</h3>
         <div id="filteredSearch">
             <p> Any searches return will include all checked boxes.</p>
-            <a href="#filterSearch">Search</a>
+            <a id="searchLink" href="#basicSearch">Search</a>
         </div>
     </div>
     <div class="col-12 col-lg-4 card">
@@ -32,7 +32,7 @@
 <div class="row">
     <div  class="col-12 col-lg-4 searchForm">
 
-        <form method="POST" action="{{ url_for('search_report_parameter') }}">
+        <form id="basicSearchForm" method="POST" action="{{ url_for('search_report_parameter') }}">
         <!-- This can also be a loop -->
         
         <label for="checkBuilding">
