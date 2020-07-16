@@ -106,9 +106,10 @@ $("#searchLinkBasic").click(function(){
     $('#basicSearchForm'). attr('action', "/search_report_parameter");
     $('#basicSearchForm').css('display', 'block');
     $('#compareSearch').css('display', 'none');
-    $('#orSearch').removeClass('order-1').addClass('order-3');
-    $('#comparedSearch').removeClass('order-3').addClass('order-2');
-    $('#filteredSearch').removeClass('order-2').addClass('order-1');
+    $('#orSearch').removeClass('order-1').removeClass('order-2').addClass('order-3');
+    $('#filteredSearch').removeClass('order-2').removeClass('order-3').addClass('order-1');
+    $('#comparedSearch').removeClass('order-3').removeClass('order-1').addClass('order-2');
+   
 
 
 });
@@ -117,9 +118,16 @@ $("#searchLinkFilter").click(function(){
     $('#basicSearchForm'). attr('action', "/and_filter_parameters"); 
     $('#basicSearchForm').css('display', 'block');
      $('#compareSearch').css('display', 'none');
+    $('#orSearch').removeClass('order-3').removeClass('order-2').addClass('order-1');
+    $('#comparedSearch').removeClass('order-3').removeClass('order-1').addClass('order-2');
+    $('#filteredSearch').removeClass('order-2').removeClass('order-1').addClass('order-3');
 });
 
 $("#searchLinkCompare").click(function(){ 
     $('#compareSearch').css('display', 'block');
     $('#basicSearchForm').css('display', 'none');
+    $('#orSearch').removeClass('order-3').removeClass('order-2').addClass('order-1');
+    $('#filteredSearch').removeClass('order-2').removeClass('order-1').addClass('order-3');
+    $('#comparedSearch').removeClass('order-2').removeClass('order-1').addClass('order-3');
+    
 });
