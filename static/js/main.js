@@ -102,7 +102,15 @@
 // Animations
 // Search page
 
-$("#searchLink").click(function(){ 
+$("#searchLinkBasic").click(function(){ 
     alert("reached")
-    $('#basicSearchForm'). attr('action', ''); 
+    $('#basicSearchForm'). attr('action', "{{ url_for('search_report_parameter') }}");
+    $('#basicSearchForm').css('display', 'block');
+});
+
+
+$("#searchLinkFilter").click(function(){ 
+    alert("reached")
+    $('#basicSearchForm'). attr('action', "{{ url_for('and_filter_parameters') }}"); 
+    $('#basicSearchForm').css('display', 'block');
 });
