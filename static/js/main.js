@@ -103,13 +103,19 @@
 // Search page
 
 $("#searchLinkBasic").click(function(){ 
-
     $('#basicSearchForm'). attr('action', "/search_report_parameter");
     $('#basicSearchForm').css('display', 'block');
-});
+         $('#compareSearch').css('display', 'none');
 
+});
 
 $("#searchLinkFilter").click(function(){ 
     $('#basicSearchForm'). attr('action', "/and_filter_parameters"); 
     $('#basicSearchForm').css('display', 'block');
+     $('#compareSearch').css('display', 'none');
+});
+
+$("#searchLinkFilter").click(function(){ 
+    $('#compareSearch').css('display', 'block');
+    $('#basicSearchForm').css('display', 'none');
 });
