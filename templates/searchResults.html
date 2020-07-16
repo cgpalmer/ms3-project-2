@@ -8,7 +8,7 @@
             <h3 id="basic">Basic search</h3>
             <h3>Search by any checked value</h3>
             <p>This will search for any reports that have one, or more, of the checked values.</p>
-            <p>Search</p>
+            <a href="#basicSearch">Search</a>
         </div>
     </div>
 
@@ -16,21 +16,21 @@
         <h3 id="filtered">Filtered</h3>
         <div id="filteredSearch">
             <p> Any searches return will include all checked boxes.</p>
-            <p>Search</p>
+            <a href="#filterSearch">Search</a>
         </div>
     </div>
     <div class="col-12 col-lg-4 card">
         <h1>Compare</h1>
         <p>Here you can search for a type of report in any location filter.</p>
-        <p>Search</p>
+        <a href="#compareSearch">Search</a>
     </div>
 </div>
 </div>
 
 
-<div class="container-fluid">
+<div id="basicSearch" class="container-fluid">
 <div class="row">
-    <div class="col-12 col-lg-4 searchForm">
+    <div  class="col-12 col-lg-4 searchForm">
 
         <form method="POST" action="{{ url_for('search_report_parameter') }}">
         <!-- This can also be a loop -->
@@ -93,7 +93,7 @@
 <!-- This is a comparison route -->
 
 
- <div class="col-12 col-lg-4  searchForm">
+ <div id="filterSearch" class="col-12 col-lg-4  searchForm">
 <form method="POST" action="{{ url_for('and_filter_parameters') }}">
 
     <input class="hidden" type="text" id="comparisonNumber" value="{{comparison_number}}" name="comparison_number">
@@ -151,7 +151,7 @@
 </div>
 
 
- <div class="col-12 col-lg-4 searchForm">
+ <div id="compareSearch"  class="col-12 col-lg-4 searchForm">
 <form method="POST" action="{{ url_for('compare_by_all') }}">
 
     <input class="hidden" type="text" id="comparisonNumber" value="{{comparison_number}}" name="comparison_number">
