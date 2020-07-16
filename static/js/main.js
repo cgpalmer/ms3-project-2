@@ -104,12 +104,12 @@
 
 $("#searchLinkBasic").click(function(){ 
 
-    $('#basicSearchForm'). attr('action', "{{ url_for('search_report_parameter') }}");
+    $('#basicSearchForm'). attr('action', "/search_report_parameter");
     $('#basicSearchForm').css('display', 'block');
 });
 
 
 $("#searchLinkFilter").click(function(){ 
-    $('#basicSearchForm'). attr('action', "{{ url_for('and_filter_parameters') }}"); 
+    $('#basicSearchForm'). attr('action', "/and_filter_parameters"); 
     $('#basicSearchForm').css('display', 'block');
 });
