@@ -3,8 +3,8 @@
 <h1>Search our database</h1>
 <div class="container-fluid">
 <div class="row">
-    <div class="col-12 col-lg-4 card">
-        <div id="orSearch">
+    <div id="orSearch" class="col-12 col-lg-4 order-1 card">
+        <div >
             <h3 id="basic">Basic search</h3>
             <h3>Search by any checked value</h3>
             <p>This will search for any reports that have one, or more, of the checked values.</p>
@@ -12,14 +12,14 @@
         </div>
     </div>
 
-    <div class="col-12 col-lg-4 card">
+    <div class="col-12 col-lg-4 order-2 card">
         <h3 id="filtered">Filtered</h3>
         <div id="filteredSearch">
             <p> Any searches return will include all checked boxes.</p>
             <a id="searchLinkFilter" href="#basicSearch">Search</a>
         </div>
     </div>
-    <div class="col-12 col-lg-4 card">
+    <div id="comparedSearch" class="col-12 col-lg-4 order-3 card">
         <h1>Compare</h1>
         <p>Here you can search for a type of report in any location filter.</p>
         <a id="searchLinkCompare" href="#compareSearch">Search</a>
