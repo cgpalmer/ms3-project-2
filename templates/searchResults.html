@@ -93,62 +93,6 @@
 <!-- This is a comparison route -->
 
 
- <div id="filterSearch" class="col-12 col-lg-4  searchForm">
-<form id="filterSearchForm" method="POST" action="{{ url_for('and_filter_parameters') }}">
-
-    <input class="hidden" type="text" id="comparisonNumber" value="{{comparison_number}}" name="comparison_number">
-    <!-- This can also be a loop -->
-    
-    <label for="comparisonCheckBuilding">
-        <input type="checkbox" id="comparisonCheckBuilding" value="building" name="searchParameter">
-        Building 
-    </label>
-
-    
-    <label for="comparisonCheckCategory">
-        <input type="checkbox" id="comparisonCheckCategory" value="category_name" name="searchParameter">
-        Category
-    </label>
-
-    
-    <label for="comparisonCheckSubcategory">
-        <input type="checkbox" id="comparisonCheckSubcategory" value="sub_category" name="searchParameter">
-        Sub-category
-    </label>
-
-    
-    <label for="comparisonCheckReported">
-        <input type="checkbox" id="comparisonCheckReported" value="reported_to_authorities" name="searchParameter">
-        Reported to authorities?
-    </label>
-    <div class="dropdown">
-    <div class=" dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Location</div>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <!-- This can be a for loop. -->
-        
-        <label for="checkStreet"> 
-            <input type="radio" id="checkStreetAnd" value="street" name="searchParameter">
-            Street
-        </label>
-        
-        <label for="checkCity">
-            <input type="radio" id="checkCityAnd" value="city" name="searchParameter">
-            City
-        </label>
-        
-        <label for="checkCounty">
-            <input type="radio" id="checkCountyAnd" value="county" name="searchParameter">
-            County
-        </label>
-        <label for="checkPostcode">
-            <input type="radio" id="countyAnd" value="county" name="searchParameter">
-            Postcode
-        </label>
-    </div>
-    </div>
-<button type="submit">Go</button>
-</form>
-</div>
 
 
  <div id="compareSearch"  class="col-12 col-lg-4 searchForm">
