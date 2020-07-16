@@ -115,7 +115,7 @@ $("#searchLinkFilter").click(function(){
      $('#compareSearch').css('display', 'none');
 });
 
-$("#searchLinkFilter").click(function(){ 
+$("#searchLinkCompare").click(function(){ 
     $('#compareSearch').css('display', 'block');
     $('#basicSearchForm').css('display', 'none');
 });
