@@ -15,3 +15,18 @@ header {
 .comparisonPickValues{
     margin: 30px;
 }
+
+
+.searchForm label{
+    display: block;
+}
+
+
+
+
+/* Search db reports page */
+
+#compareSearch{
+    background-color: blue;
+    display: none;
+}
