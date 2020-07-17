@@ -131,3 +131,9 @@ $("#searchLinkCompare").click(function(){
     $('#comparedSearch').removeClass('order-sm-2').removeClass('order-sm-1').addClass('order-sm-3');
     
 });
+
+// Materialize
+
+ $(document).ready(function(){
+    $('.collapsible').collapsible();
+  });
