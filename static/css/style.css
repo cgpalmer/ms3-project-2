@@ -50,3 +50,26 @@ header {
     background-color: orange;
     
 }
+
+
+/* User dash page */
+
+#previousReport{
+    background-color: violet;
+    
+}
+
+#makeReport{
+    background-color: rgb(233, 238, 169);
+    
+}
+
+#searchDatabase{
+    background-color: rgb(143, 149, 184);
+    
+}
+
+#ammendReport{
+    background-color: rgb(158, 240, 192);
+    
+}
