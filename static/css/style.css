@@ -33,5 +33,20 @@ header {
 
 #basicSearchForm{
     background-color: yellow;
+
+}
+
+#orSearch{
+    background-color: green;
+    
+}
+
+#filteredSearch{
+    background-color: purple;
+    
+}
+
+#comparedSearch{
+    background-color: orange;
     
 }
