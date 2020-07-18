@@ -1,3 +1,25 @@
+.body{
+    background-color: #f49f05;
+}
+
+
+.navbar{
+    background-color: #36688d;
+}
+
+.navbar-light .navbar-brand{
+    color: #f3dc05;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: #f3dc05;
+}
+
+#homepageHeader{
+    background-color: #BDA589;
+}
+
+
 .hidden{
     display: none;
 }
