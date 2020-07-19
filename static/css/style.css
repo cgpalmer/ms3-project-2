@@ -90,9 +90,12 @@ header {
     color: #f3cd05;
 }
 
+ .input-field input[type=text]:focus {
+     border-bottom: 1px solid #f3cd05;
+     box-shadow: 0 1px 0 0 #f3cd05;
+   }
 
-
-.select-wrapper input.select-dropdown {
+.select-wrapper input.select-dropdown, textarea.materialize-textarea, input[type=text]:not(.browser-default) {
     border-bottom: 1px solid #f3cd05;
 }
 
