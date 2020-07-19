@@ -1,5 +1,7 @@
 
-
+.body{
+    font-family: 'Alegreya', serif;
+}
 
 .nav-wrapper, .sidenav{
     background-color: #36688d;
