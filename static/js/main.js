@@ -147,3 +147,7 @@ $("#searchLinkCompare").click(function(){
     $('.datepicker').datepicker();
   });
        
+
+ $(document).ready(function(){
+    $('.sidenav').sidenav();
+  });
