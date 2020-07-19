@@ -47,7 +47,7 @@ header {
 /* Dashboard */
 
 .dashboard{
-    background-color: #c25d05; 
+    background-color: #f18904; 
 }
 .collapsible-header{
     background-color:#f3cd05;
@@ -56,7 +56,13 @@ header {
 }
 
 .collapsible-body{
-    background-color: #f18904;
+    background-color:#36688d;
+}
+
+#settingButton{
+    float: right;
+    color: #36688d;
+
 }
 
 
