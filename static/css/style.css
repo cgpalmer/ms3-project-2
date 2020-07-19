@@ -16,6 +16,10 @@ nav ul a, nav .brand-logo, nav .sidenav-trigger i, .sidenav li>a{
     color: #f3dc05;
 }
 
+nav .sidenav-trigger i{
+    font-size: 2.1rem;
+}
+
 .navbar-light .navbar-nav .nav-link {
     color: #f3dc05;
 }
