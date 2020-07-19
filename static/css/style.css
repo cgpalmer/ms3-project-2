@@ -73,6 +73,10 @@ header {
     border-bottom: 1px solid #36688d;
 }
 
+.collapsible-header a{
+     color: #36688d;
+}
+
 .collapsible-body{
     background-color:#36688d;
 }
