@@ -137,3 +137,13 @@ $("#searchLinkCompare").click(function(){
  $(document).ready(function(){
     $('.collapsible').collapsible();
   });
+
+
+   $(document).ready(function(){
+    $('select').formSelect();
+  });
+
+   $(document).ready(function(){
+    $('.datepicker').datepicker();
+  });
+       
