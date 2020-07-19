@@ -86,8 +86,14 @@ header {
     background-color:#36688d;
 }
 
-.input-field textarea, input {
+.input-field, .input-field textarea, input {
     color: #f3cd05;
+}
+
+
+
+.select-wrapper input.select-dropdown{
+    border-bottom: 1px solid #f3cd05;
 }
 
 #settingButton{
