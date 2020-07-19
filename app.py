@@ -246,7 +246,8 @@ def dashboard():
             if k == 'name':
                 userName = v
                 print(userName)
-                return render_template('user_dash.html', userName=userName)
+                return render_template('user_dash.html', userName=userName, categories=mongo.db.categories.find(),
+                           sub_category=mongo.db.sub_category.find(),)
 
 #dashboard
 @app.route('/logout')
