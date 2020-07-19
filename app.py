@@ -240,7 +240,13 @@ def dashboard():
         flash('Please login to see all of our amazing features')
         return redirect(url_for('login'))
     else: 
-        return render_template('user_dash.html')
+        user = session.get("USERNAME")
+        findUser = mongo.db.user_credentials.find_one({"user_email": user})
+        for k,v in findUser.items():
+            if k == 'name':
+                userName = v
+                print(userName)
+                return render_template('user_dash.html', userName=userName)
 
 #dashboard
 @app.route('/logout')
