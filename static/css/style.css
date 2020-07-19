@@ -1,11 +1,11 @@
 
 
 
-.nav-wrapper{
+.nav-wrapper, .sidenav{
     background-color: #36688d;
 }
 
-nav ul a, nav .brand-logo{
+nav ul a, nav .brand-logo, nav .sidenav-trigger i, .sidenav li>a{
     color: #f3dc05;
 }
 
