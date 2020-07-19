@@ -11,24 +11,24 @@
       <div class="collapsible-header"><i class="material-icons">add_circle</i>Create a new report</div>
       <div class="collapsible-body">
         <form method="POST" action="{{ url_for('insert_report') }}">
-            <div class="form-group hidden">
+            <div class="input-field hidden">
                 <label for="email"></label>
-                <input type="text" class="form-control" id="email" name="email" value="{{currentUserEmail}}" placeholder="Email">
+                <input type="text" class="" id="email" name="email" value="{{currentUserEmail}}" placeholder="Email">
             </div>         
-            <div class="form-group">
-                <select class="form-control" id="category" name="category_name">
+            <div class="input-field">
+                <select class="" id="category" name="category_name">
                 <option disabled selected value="">Choose category</option> 
                 {% for category in categories %}
                         <option id="{{category.category_name}}" value="{{category.category_name}}">{{category.category_name}}</option>
                 {% endfor %}
                 </select>
             </div>
-            <div id="addCategoryChoice" class="form-group">
-                <textarea class="form-control" id="otherCategory" name="new_category_name" placeholder="Please enter a new category"></textarea>
+            <div id="addCategoryChoice" class="input-field">
+                <textarea class="materialize-textarea" rows="10" id="otherCategory" name="new_category_name" placeholder="Please enter a new category"></textarea>
             </div>
-            <div id="subCategoryChoices" class="form-group">
+            <div id="subCategoryChoices" class="input-field">
             
-                <select class="form-control" id="sub_category" name="sub_category">
+                <select class="" id="sub_category" name="sub_category">
                     <option disabled selected value="">If Xenophobia then choose sub-category</option>
 
                     {% for sub in sub_category %}
@@ -36,22 +36,22 @@
                     {% endfor %}
                 </select>
             </div>
-            <div id="addSubCategoryChoice" class="form-group">
-                <textarea class="form-control" id="otherSubCategory" name="new_sub_category" placeholder="Please enter a new sub category"></textarea>
+            <div id="addSubCategoryChoice" class="input-field">
+                <textarea class="materialize-textarea" id="otherSubCategory" name="new_sub_category" placeholder="Please enter a new sub category"></textarea>
             </div>
-            <div class="form-group">
-                <textarea class="form-control" id="incident_description" name="incident_description" placeholder="Incident description"></textarea>
+            <div class="input-field">
+                <textarea class="materialize-textarea" id="incident_description" name="incident_description" placeholder="Incident description"></textarea>
             </div>
-            <div class="form-group">
-                <input type="text" class="form-control" id="building" name="building" placeholder="Building">
-                <input type="text" class="form-control" id="street" name="street" placeholder="Street">
-                <input type="text" class="form-control" id="city" name="city" placeholder="City" required>
-                <input type="text" class="form-control" id="county" name="county" placeholder="County">
-                <input type="postal" class="form-control" id="postcode" name="postcode" placeholder="Postcode">
+            <div class="input-field">
+                <input type="text" class="" id="building" name="building" placeholder="Building">
+                <input type="text" class="" id="street" name="street" placeholder="Street">
+                <input type="text" class="" id="city" name="city" placeholder="City" required>
+                <input type="text" class="" id="county" name="county" placeholder="County">
+                <input type="postal" class="" id="postcode" name="postcode" placeholder="Postcode">
             </div>
             <div>
             <label for="authorities">Reported to the authorities?</label>
-                <select class="form-control" id="update_report_to_authorities" name="report_to_authorities" required>
+                <select class="" id="update_report_to_authorities" name="report_to_authorities" required>
                     <option disabled selected value="">Please choose</option>
                     
                         <option value="Yes">Yes</option>
