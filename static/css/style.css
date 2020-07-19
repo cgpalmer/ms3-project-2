@@ -78,7 +78,7 @@ header {
     border-bottom: 1px solid #36688d;
 }
 
-.collapsible-header a{
+.collapsible-header a, .dropdown-content li>span{
      color: #36688d;
 }
 
@@ -86,7 +86,7 @@ header {
     background-color:#36688d;
 }
 
-.input-field textarea{
+.input-field textarea, input {
     color: #f3cd05;
 }
 
