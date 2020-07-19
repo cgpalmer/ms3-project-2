@@ -76,6 +76,8 @@ header {
 #settingButton{
     float: right;
     color: #36688d;
+    padding: 3vw;
+    font-size: 36px;
 
 }
 
