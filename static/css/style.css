@@ -68,6 +68,10 @@ header {
     padding: 24px 0 0 16px;
 }
 
+.collapsible {
+    margin: 0;
+}
+
 .collapsible-header{
     background-color:#f3cd05;
     color: #36688d;
@@ -80,6 +84,10 @@ header {
 
 .collapsible-body{
     background-color:#36688d;
+}
+
+.input-field textarea{
+    color: #f3cd05;
 }
 
 #settingButton{
