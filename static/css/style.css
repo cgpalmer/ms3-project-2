@@ -1,11 +1,11 @@
 
 
 
-.navbar{
+.nav-wrapper{
     background-color: #36688d;
 }
 
-.navbar-light .navbar-brand{
+nav ul a, nav .brand-logo{
     color: #f3dc05;
 }
 
