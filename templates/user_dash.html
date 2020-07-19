@@ -76,7 +76,11 @@
                 <form method="POST" action="{{ url_for('insert_report') }}">
                     <label for="userSearchOwnSeeAll">
                             <input id="userSearchOwnSeeAll" type="radio" name="userSearchOwnReports" value="seeAllReports">
-                            <span>See all of my reports</span>
+                            <span>Show all of my reports</span>
+                    </label>
+                    <label for="userSearchOwnbyLocation">
+                            <input id="userSearchOwnbyLocation" type="radio" name="userSearchOwnReports" value="seeAllReports">
+                            <span>Search my reports by location</span>
                     </label>
                 </form>
                 </div>
