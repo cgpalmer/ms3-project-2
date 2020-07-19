@@ -1,7 +1,8 @@
 {% extends 'base.html'%} {% block content %}
 
+<section class="dashboard">
 <div class="btn btn-secondary"><a href="{{url_for('logout')}}"> Logout</a></div> 
-<a href="{{url_for('userSetting')}}">Settings</a> 
+<a id="settingButton" href="{{url_for('userSetting')}}"><i class="material-icons">settings</i></a>
 
 <h1>Welcome back</h1>
 
@@ -132,7 +133,7 @@
     </li>
   </ul>
   
-
+</section>
   
 
 {% endblock %}
