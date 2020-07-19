@@ -44,6 +44,19 @@ header {
 }
 
 
+/* Dashboard */
+
+.dashboard{
+    background-color: #f18904;
+}
+.collapsible-header{
+    background-color:#f3cd05;
+    color: #36688d;
+}
+
+.collapsible-body{
+    background-color: #f49f05; 
+}
 
 
 /* Search db reports page */
