@@ -66,13 +66,9 @@
     </li>
     <li>
       <div class="collapsible-header"><i class="material-icons">edit</i>Manage old reports</div>
-      <div class="collapsible-body">
-        
-        <div class="row">
-            <div class="col s12 m6">
-            <div class="card ">
-                <div class="card-content white-text">
-                <span class="card-title">Managing reports</span>
+      <div class="collapsible-body">       
+        <div class="">
+            <span class="card-title">Managing reports</span>
                 <form method="POST" action="{{ url_for('insert_report') }}">
                     <label for="userSearchOwnSeeAll">
                             <input id="userSearchOwnSeeAll" type="radio" name="userSearchOwnReports" value="seeAllReports">
@@ -91,15 +87,15 @@
                             <span>Search my reports by discrimination</span>
                     </label>
                 
-                </div>
+            
                 <div class="card-action">
                 <a href="#"><i class="material-icons">text_snippet</i>Read reports</a>
                 <a href="#"><i class="material-icons">edit</i>Edit reports</a>
                 </div>
                 </form>
             </div>
-            </div>
-        </div>
+
+         
         
         <div class="input-field col s12">
             <select>
