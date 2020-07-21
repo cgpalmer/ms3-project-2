@@ -86,7 +86,7 @@ header {
     background-color:#36688d;
 }
 
-.input-field, .input-field textarea, input, ::placeholder {
+.input-field, .input-field textarea, input, ::placeholder, .input-field label {
     color: #f3cd05;
 }
 
