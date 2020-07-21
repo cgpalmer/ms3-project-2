@@ -101,6 +101,14 @@ header {
     border-bottom: 1px solid #f3cd05;
 }
 
+
+.btn{
+   
+    color: #36688d;
+    background-color: #f3cd05;
+   
+}
+
 #settingButton{
     float: right;
     color: #36688d;
