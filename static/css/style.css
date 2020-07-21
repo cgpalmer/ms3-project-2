@@ -101,6 +101,15 @@ header {
     border-bottom: 1px solid #f3cd05;
 }
 
+[type="radio"]:not(:checked)+span:before, [type="radio"]:not(:checked)+span:after {
+    border: 2px solid #f3cd05;
+}
+
+[type="radio"]:checked+span:after, [type="radio"].with-gap:checked+span:after {
+    background-color: #f3cd05;
+    border: 2px solid #f3cd05;
+}
+
 
 .btn{
    
