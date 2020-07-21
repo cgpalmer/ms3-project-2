@@ -51,7 +51,7 @@
             </div>
             <div>
             
-                <select class="" id="update_report_to_authorities" name="report_to_authorities"required>
+                <select class="" id="update_report_to_authorities" name="report_to_authorities" required>
                     <option disabled selected value="">Reported to authorities?</option>
                     
                         <option value="Yes">Yes</option>
@@ -59,17 +59,16 @@
                 
                 </select>
             </div>
-            <button type="submit" name="action">Add report</button>
+            <button class="btn" type="submit" name="action">Add report</button>
         </form>
       
       </div>
     </li>
+    <!-- Managing reports -->
     <li>
       <div class="collapsible-header"><i class="material-icons">edit</i>Manage old reports</div>
       <div class="collapsible-body">       
-        <div class="">
-            <span class="card-title">Managing reports</span>
-                <form method="POST" action="{{ url_for('insert_report') }}">
+            <form method="POST" action="{{ url_for('insert_report') }}">
                     <label for="userSearchOwnSeeAll">
                             <input id="userSearchOwnSeeAll" type="radio" name="userSearchOwnReports" value="seeAllReports">
                             <span>Show all of my reports</span>
@@ -86,44 +85,44 @@
                             <input id="userSearchOwnbyDiscrimination" type="radio" name="userSearchOwnReports" value="seeReportByDiscrimination">
                             <span>Search my reports by discrimination</span>
                     </label>
-                
+                    <div class="input-field col s12">
+                        <select>
+                            <option value="" disabled selected>Type of discrimination</option>
+                            <option value="1">Option 1</option>
+                            <option value="2">Option 2</option>
+                            <option value="3">Option 3</option>
+                        </select>
+                    
+                    </div>
+
+                    <div class="input-field col s12">
+                        <select>
+                            <option value="" disabled selected>Location</option>
+                            <option value="1">Option 1</option>
+                            <option value="2">Option 2</option>
+                            <option value="3">Option 3</option>
+                        </select>
+                    
+                    </div>
+
+                    <div class="input-field">
+                        <label for="Date">Date</label>
+                        <input type="text" id="date" class="datepicker">
+                    </div>
             
-                <div class="card-action">
-                <a href="#"><i class="material-icons">text_snippet</i>Read reports</a>
-                <a href="#"><i class="material-icons">edit</i>Edit reports</a>
-                </div>
+                    <div class="card-action">
+                        <a href="#"><i class="material-icons">text_snippet</i>Read reports</a>
+                        <a href="#"><i class="material-icons">edit</i>Edit reports</a>
+                    </div>
                 </form>
             </div>
 
          
         
-        <div class="input-field col s12">
-            <select>
-                <option value="" disabled selected>Type of discrimination</option>
-                <option value="1">Option 1</option>
-                <option value="2">Option 2</option>
-                <option value="3">Option 3</option>
-            </select>
-           
-        </div>
-
-        <div class="input-field col s12">
-            <select>
-                <option value="" disabled selected>Location</option>
-                <option value="1">Option 1</option>
-                <option value="2">Option 2</option>
-                <option value="3">Option 3</option>
-            </select>
-           
-        </div>
-
-        <div class="input-field">
-            <label for="Date">Date</label>
-            <input type="text" id="date" class="datepicker">
-        </div>
+        
 
 
-      </div>
+     
     </li>
     <li>
       <div class="collapsible-header"><i class="material-icons">search</i><a href="{{url_for('search_report')}}"> Search our database</a></div>
