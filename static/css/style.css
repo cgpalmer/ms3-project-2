@@ -88,6 +88,8 @@ header {
 
 .input-field, .input-field textarea, input, ::placeholder, .input-field label {
     color: #f3cd05;
+    font-family: 'Alegreya', serif;
+
 }
 
  .input-field input[type=text]:focus {
