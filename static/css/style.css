@@ -86,7 +86,7 @@ header {
     background-color:#36688d;
 }
 
-.input-field, .input-field textarea, input, ::placeholder, .input-field label {
+.input-field, .input-field textarea, input, ::placeholder, .input-field label, form label {
     color: #f3cd05;
     font-family: 'Alegreya', serif;
 
