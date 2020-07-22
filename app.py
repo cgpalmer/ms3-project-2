@@ -243,6 +243,7 @@ def dashboard():
         user = session.get("USERNAME")
         findUser = mongo.db.user_credentials.find_one({"user_email": user})
         for k,v in findUser.items():
+            print("found one")
             if k == 'name':
                 userName = v
                 print(userName)
