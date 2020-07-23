@@ -32,13 +32,13 @@ def homepage():
 
 @app.route('/developer')
 def developer():
-    session["USERNAME"] = "developer"
+    session["email"] = "developer"
     return render_template("home.html")
 
 
 @app.route('/userSetting')
 def userSetting():
-    if session.get("USERNAME") is None:
+    if session.get("email") is None:
         flash('Please login to see all of our amazing features')
         return redirect(url_for('login'))
     else:
@@ -56,13 +56,13 @@ def userSetting():
 
 @app.route('/changeDetails', methods=['POST'])
 def changeDetails():
-    if session.get("USERNAME") is None:
+    if session.get("email") is None:
         flash('Please login to see all of our amazing features')
         return redirect(url_for('login'))
     else:   
         changeType = request.form['changeType']
         salt = os.urandom(32)
-        currentEmail = session.get("USERNAME")
+        currentEmail = session.get("email")
         if changeType == 'password':
             # Validating the new password
             updated_password = request.form['updatePassword']
@@ -158,11 +158,11 @@ def changeDetails():
 
 @app.route('/delete_user', methods=['POST'])
 def delete_user():
-    if session.get("USERNAME") is None:
+    if session.get("email") is None:
         flash('Please login to see all of our amazing features')
         return redirect(url_for('login'))
     else:
-        current_user = session.get('USERNAME')
+        current_user = session.get('email')
         deletePassword = request.form['deletePassword']
         print(deletePassword)
         user = mongo.db.user_credentials.find_one({"user_email": current_user})
@@ -214,6 +214,10 @@ def check_password():
                 stored_salt = v
                 print("this is the salt")
                 print(stored_salt)
+            if k == 'name':
+                login_name = v
+                print("this is the salt")
+                print(login_name)
   
                 hash_login_password = hashlib.pbkdf2_hmac(
                 'sha256', # The hash digest algorithm for HMAC
@@ -226,9 +230,10 @@ def check_password():
         
                 if stored_password == hash_login_password:
                     print("match")
-                    session["USERNAME"] = login_email
-                    username = session.get("USERNAME")
-                    return render_template('user_dash.html', username=username )
+                    session["email"] = login_email
+                    username = session.get("email")
+                    session["name"] = login_name
+                    return render_template('user_dash.html', username=username, name=name )
                 else:
                     print("no match")
                     return render_template('login.html')
@@ -236,11 +241,11 @@ def check_password():
 #dashboard
 @app.route('/dashboard')
 def dashboard():
-    if session.get("USERNAME") is None:
+    if session.get("email") is None:
         flash('Please login to see all of our amazing features')
         return redirect(url_for('login'))
     else: 
-        user = session.get("USERNAME")
+        user = session.get("email")
         findUser = mongo.db.user_credentials.find_one({"user_email": user})
         for k,v in findUser.items():
             print("found one")
@@ -322,7 +327,7 @@ def creating_user():
             dklen=128 # Get a 128 byte key
             )
             mongo.db.user_credentials.insert_one({"user_email": new_username, "user_password": hash_new_password, "salt": salt})
-            session["USERNAME"] = new_username
+            session["email"] = new_username
             return render_template("preferredName.html")
         else:
             return redirect(url_for('signup'))
@@ -332,7 +337,7 @@ def creating_user():
 
 @app.route('/insert_name', methods=['POST'])
 def insert_name():
-    currentUserEmail = session.get("USERNAME")
+    currentUserEmail = session.get("email")
     preferred_name = request.form['preferredNameInput'].lower()
     mongo.db.user_credentials.update_one({"user_email": currentUserEmail},{"$set": {"name": preferred_name}})
     return redirect(url_for('dashboard'))
@@ -502,7 +507,7 @@ def search_all_by_parameter():
 
 @app.route('/add_report')
 def add_report():
-    currentUserEmail = session.get("USERNAME")
+    currentUserEmail = session.get("email")
     if currentUserEmail == None:
         currentUserEmail = "anonymous"
         print(currentUserEmail)
