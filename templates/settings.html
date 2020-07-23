@@ -66,8 +66,7 @@
                 <h5>Delete account</h5>
             </div>
             <div class="collapsible-body">
-                <button id="deleteAccount">Delete account</button>
-                <div class="hidden" id="confirmDeleteUser">
+                <div id="confirmDeleteUser">
                     <form action="{{(url_for('delete_user'))}}" method="POST">
                         <input type="password" name="deletePassword" placeholder="Enter password to delete account" />
                         <button class="btn" type="submit">Confirm delete</button>
