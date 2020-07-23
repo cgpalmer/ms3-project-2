@@ -253,7 +253,7 @@ def dashboard():
 #dashboard
 @app.route('/logout')
 def logout():
-    session.pop("USERNAME", None)
+    session.pop("email", None)
     return redirect(url_for('homepage'))
   
     
