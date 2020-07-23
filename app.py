@@ -233,7 +233,7 @@ def check_password():
                     session["email"] = login_email
                     username = session.get("email")
                     session["name"] = login_name
-                    return render_template('user_dash.html', username=username, name=name )
+                    return render_template('user_dash.html', username=username, name=login_name )
                 else:
                     print("no match")
                     return render_template('login.html')
