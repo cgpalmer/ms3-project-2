@@ -42,16 +42,14 @@ def userSetting():
         flash('Please login to see all of our amazing features')
         return redirect(url_for('login'))
     else:
-        current_user = session.get('USERNAME')
+        current_user = session.get("email")
         user = mongo.db.user_credentials.find_one({"user_email": current_user})
         for k,v in user.items():
-            if k == 'user_email':
-                user_email = v
             if k == 'user_password':
                 user_password = v
-            if k == 'name':
-                preferred_name = v
 
+                user_email = session.get('email') 
+                preferred_name = session.get('name')    
                 return render_template("settings.html", user_email=user_email, user_password=user_password, preferred_name=preferred_name)
 
 @app.route('/changeDetails', methods=['POST'])
