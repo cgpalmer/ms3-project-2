@@ -188,6 +188,8 @@ def delete_user():
                 if hash_delete_password == user_password:
                     mongo.db.user_credentials.delete_one({"user_email": current_user})
                     flash('We are sorry to see you go, but come back any time!')
+                    session.pop("email", None)
+                    session.pop("name", None)
                     return redirect(url_for('signup'))
                 else:
                     flash('Password incorrect')
