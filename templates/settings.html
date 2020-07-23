@@ -2,54 +2,39 @@
 
 <h1>Settings</h1>
 
-<div class="accordion md-accordion" id="changeDetailsAccordian" role="tablist" aria-multiselectable="true">
-  <div class="card">
 
-    <!-- Card header -->
-    <div class="card-header" role="tab" id="changePassword">
-      <a data-toggle="collapse" data-parent="#changeDetailsAccordian" href="#changePasswordForm" aria-expanded="false"
-        aria-controls="collapseOne1">
-        <h5 class="mb-0">
-          Change password <i class="fas fa-angle-down rotate-icon"></i>
-        </h5>
-      </a>
-    </div>
-
-    <!-- Card body -->
-    <div id="changePasswordForm" class="collapse" role="tabpanel" aria-labelledby="headingOne1"
-      data-parent="#changeDetailsAccordian">
-      <div class="card-body">
-         <form action="{{url_for('changeDetails')}}" method="POST">
+<div>
+    <ul class="collapsible">
+        <li>
+        <div class="collapsible-header">
+            <h5 class="mb-0">
+            Change password <i class="fas fa-angle-down rotate-icon"></i>
+            </h5>
+        </div>
+        <div class="collapsible-body">
+            <form action="{{url_for('changeDetails')}}" method="POST">
             <div class="form-group">
                 <input type="text" name="changeType" value="password">
                 <label for="confirmCurrentPass">Current password</label>
                 <input type="password" class="form-control" id="confirmCurrentPass" name="confirmCurrentPass" placeholder="Please enter your current password" required>
                 <label for="updatePassword">New password</label>
                 <input type="password" class="form-control" id="updatePassword" name="updatePassword" placeholder="Please enter your new password" required>
-                <button type="submit">Change</button>
+                <button class="btn" type="submit">Change</button>
             </div> 
           </form>
-      </div>
-    </div>
 
-  </div>
-  <!-- Accordion card -->
-
-  <!-- Accordion card -->
-  <div class="card">
-
-    <!-- Card header -->
-    <div class="card-header" role="tab" id="changeEmail">
-      <a class="collapsed" data-toggle="collapse" data-parent="#changeDetailsAccordian" href="#changeEmailForm"
-        aria-expanded="false" aria-controls="collapseTwo2">
+        
+        </div>
+        
+        </li>
+        <li>
+           <div class="collapsible-header">
         <h5 class="mb-0">
           Change email <i class="fas fa-angle-down rotate-icon"></i>
         </h5>
-      </a>
-    </div>
-
-    <!-- Card body -->
-    <div id="changeEmailForm" class="collapse" role="tabpanel" aria-labelledby="headingTwo2"
+        </div>
+         <div class="collapsible-body">
+            <div id="changeEmailForm" class="collapse" role="tabpanel" aria-labelledby="headingTwo2"
       data-parent="#changeDetailsAccordian">
       <div class="card-body">
         <p>Current email: {{ user_email }}</p>
@@ -58,58 +43,48 @@
                 <label for="updateEmail">New email</label>
                 <input type="text" name="changeType" value="email">
                 <input type="email" class="form-control" id="updateEmail" name="updateEmail" placeholder="Please enter your new email" required>
-                <button type="submit">Change</button>
+                <button class="btn" type="submit">Change</button>
             </div> 
           </form>
       </div>
     </div>
 
-  </div>
-  <!-- Accordion card -->
-
-  <!-- Accordion card -->
-  <div class="card">
-
-    <!-- Card header -->
-    <div class="card-header" role="tab" id="changeName">
-      <a class="collapsed" data-toggle="collapse" data-parent="#changeDetailsAccordian" href="#changeNameForm"
-        aria-expanded="false" aria-controls="collapseThree3">
-        <h5 class="mb-0">
+         </div>
+        </li>
+        <li>
+             <div class="collapsible-header">
+            <h5 class="mb-0">
           Change preferred name <i class="fas fa-angle-down rotate-icon"></i>
         </h5>
-      </a>
-    </div>
+            </div>
 
-    <!-- Card body -->
-    <div id="changeNameForm" class="collapse" role="tabpanel" aria-labelledby="headingThree3"
-      data-parent="#changeDeatilsAccordian">
-      <div class="card-body">
-        <form action="{{url_for('changeDetails')}}" method="POST">
+         <div class="collapsible-body">
+            <form action="{{url_for('changeDetails')}}" method="POST">
             <div class="form-group">
                 <p>Current preferred name: {{ preferred_name.capitalize() }}</p>
                 <label for="updateName">New preferred name</label>
                 <input type="text" name="changeType" value="name">
                 <input type="text" class="form-control" id="updateName" name="updateName" placeholder="Please enter your new preferred name" required>
-                <button type="submit">Change</button>
+                <button class="btn" type="submit">Change</button>
             </div> 
         </form>
-        
-      </div>
-    </div>
-
-  </div>
-  <!-- Accordion card -->
-
-</div>
-<!-- Accordion wrapper -->
-
-<button id="deleteAccount">Delete account</button>
+        </div>
+        </li>
+        <li>
+        <div class="collapsible-header">
+        <h5>Delete account</h5>
+        </div>
+        <div class="collapsible-body">
+        <button id="deleteAccount">Delete account</button>
 <div class="hidden" id="confirmDeleteUser">
     <form action="{{(url_for('delete_user'))}}" method="POST"> 
         <input type="password" name="deletePassword" placeholder="Enter password to delete account">
-        <button type="submit">Confirm delete</button>
+        <button class="btn" type="submit">Confirm delete</button>
     </form>
 </div>
-
+</div>
+        </li>
+    </ul>
+</div>
 
 {% endblock %}
