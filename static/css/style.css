@@ -44,6 +44,9 @@ header {
 
 .purpose-wrapper {
     font-size: 18px;
+    background-color: #36688d;
+    font:#f3cd05;
+    margin: 4vw; 
 }
 
 #compareSearch, #orSearch{
