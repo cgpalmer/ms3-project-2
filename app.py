@@ -254,6 +254,7 @@ def dashboard():
 @app.route('/logout')
 def logout():
     session.pop("email", None)
+    session.pop("name", None)
     return redirect(url_for('homepage'))
   
     
