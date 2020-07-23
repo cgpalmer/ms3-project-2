@@ -40,7 +40,11 @@ header {
 
 /* Home */
 
+/* Purpose */
 
+.purpose-wrapper {
+    font-size: 18px;
+}
 
 #compareSearch, #orSearch{
     display: block;
