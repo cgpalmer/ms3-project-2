@@ -54,8 +54,7 @@
                 <form action="{{url_for('changeDetails')}}" method="POST">
                     <div class="form-group">
                         <p>Current preferred name: {{ preferred_name.capitalize() }}</p>
-                        <label for="updateName">New preferred name</label>
-                        <input type="text" name="changeType" value="name" />
+                        <input class="hidden" type="text" name="changeType" value="name" />
                         <input type="text" class="form-control" id="updateName" name="updateName" placeholder="Please enter your new preferred name" required />
                         <button class="btn" type="submit">Change</button>
                     </div>
