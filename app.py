@@ -88,7 +88,7 @@ def changeDetails():
             if flag ==-1: 
                 print("Not a Valid Password")
                 flash('Please use a valid password')
-                return "not valid password"
+                return redirect(url_for('userSetting'))
 
             # Hashing the new password ready for the database
             print(updated_password)
@@ -123,10 +123,12 @@ def changeDetails():
                         )
                         if hash_current_password == stored_password:
                             mongo.db.user_credentials.update_one({"user_email": currentEmail},{"$set": {"user_password": hash_updated_password, "salt": salt}})
-                            return "user wants to update their password"
+                            flash("Password updated")
+                            return redirect(url_for('userSetting'))
 
                         else: 
-                            return "incorrect password"
+                            flash("Incorrect password")
+                            return redirect(url_for('userSetting'))
 
 
 
@@ -188,7 +190,8 @@ def delete_user():
                     flash('We are sorry to see you go, but come back any time!')
                     return redirect(url_for('signup'))
                 else:
-                    return "not the right password"
+                    flash('Password incorrect')
+                    return redirect(url_for('dashboard'))
                 
 
 
