@@ -12,7 +12,7 @@
                 <form action="{{url_for('changeDetails')}}" method="POST">
                     <div class="form-group">
                         <input class="hidden" type="text" name="changeType" value="password" />
-                        
+
                         <label for="confirmCurrentPass">Current password
                         <input type="password" class="form-control" id="confirmCurrentPass" name="confirmCurrentPass" placeholder="Please enter your current password" required />
                         </label>
@@ -35,8 +35,8 @@
                         <p>Current email: {{ user_email }}</p>
                         <form action="{{url_for('changeDetails')}}" method="POST">
                             <div class="form-group">
-                                <label for="updateEmail">New email</label>
-                                <input type="text" name="changeType" value="email" />
+                            
+                                <input class="hidden" type="text" name="changeType" value="email" />
                                 <input type="email" class="form-control" id="updateEmail" name="updateEmail" placeholder="Please enter your new email" required />
                                 <button class="btn" type="submit">Change</button>
                             </div>
