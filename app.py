@@ -246,13 +246,8 @@ def dashboard():
         return redirect(url_for('login'))
     else: 
         user = session.get("email")
-        findUser = mongo.db.user_credentials.find_one({"user_email": user})
-        for k,v in findUser.items():
-            print("found one")
-            if k == 'name':
-                userName = v
-                print(userName)
-                return render_template('user_dash.html', userName=userName, categories=mongo.db.categories.find(),
+        userName = session.get("name")
+        return render_template('user_dash.html', name=userName, categories=mongo.db.categories.find(),
                            sub_category=mongo.db.sub_category.find(),)
 
 #dashboard
