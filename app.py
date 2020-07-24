@@ -28,7 +28,8 @@ mongo = PyMongo(app)
 @app.route('/')
 @app.route('/homepage')
 def homepage():
-    return render_template("home.html", report=mongo.db.report.find().limit(5))
+    report=mongo.db.report.find().count()
+    return render_template("home.html", report=report)
 
 @app.route('/developer')
 def developer():
