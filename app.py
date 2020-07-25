@@ -366,6 +366,10 @@ def search_reports():
     typeOfSearch = request.form['userSearchOwnReports']
     if typeOfSearch == "seeAllReports":
         print("see All")
+        user_email = session.get("email")
+        report = mongo.db.report.find({"email": user_email})
+        for report in report:
+            print(report)
     elif typeOfSearch == "seeReportByLocation":
          print("see location")
     elif typeOfSearch == "seeReportByDate":
