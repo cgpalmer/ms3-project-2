@@ -364,7 +364,14 @@ def logout():
 @app.route('/search_reports', methods=['GET', 'POST'])
 def search_reports():
     typeOfSearch = request.form['userSearchOwnReports']
-    print(typeOfSearch)
+    if typeOfSearch == "seeAllReports":
+        print("see All")
+    elif typeOfSearch == "seeReportByLocation":
+         print("see location")
+    elif typeOfSearch == "seeReportByDate":
+         print("see date")
+    else:
+          print("see discrimin")
     return "done"
 
 
