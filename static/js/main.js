@@ -127,7 +127,11 @@ $("#searchLinkCompare").click(function(){
   });
 
    $(document).ready(function(){
-    $('.datepicker').datepicker();
+    $('.datepicker').datepicker(
+        {
+            format: "dd/mm/yyyy"
+        }
+    );
   });
 
 
