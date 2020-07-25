@@ -38,6 +38,7 @@ Councils to be able to upload reports of discrimination via their own CSV
 Be able to log into their own area
 
 ### Tutorials
+https://stackoverflow.com/questions/58160212/how-to-save-date-from-datepicker-into-database-in-sqlalchemy-flask-application
 https://www.w3resource.com/javascript/form/password-validation.php
 
 https://www.geeksforgeeks.org/check-if-email-address-valid-or-not-in-python/
