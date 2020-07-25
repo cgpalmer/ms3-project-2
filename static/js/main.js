@@ -67,20 +67,20 @@ $("#seePassword").click(function(){
 // // In here add the code to put a tick next to the password box once it is a certain length.
 
 
-     // Live validating the password
-    password = document.getElementById('password')
-    password.onkeyup = function(){
-    var passw = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}$/;
-    var input = document.getElementById('password')
-        if(input.value.match(passw))
-            {
-            $("#validatedPassword").removeClass('hidden');
-            }
-        else
-            {
-            $("#validatedPassword").addClass('hidden');
-            }
-    }
+    //  // Live validating the password
+    // var password = document.getElementById('password')
+    // password.onkeyup = function(){
+    // var passw = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}$/;
+    // var input = document.getElementById('password')
+    //     if(input.value.match(passw))
+    //         {
+    //         $("#validatedPassword").removeClass('hidden');
+    //         }
+    //     else
+    //         {
+    //         $("#validatedPassword").addClass('hidden');
+    //         }
+    // }
 
 
 
