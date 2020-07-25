@@ -129,6 +129,10 @@ header {
    
 }
 
+.btn:hover{
+    background-color: #000;
+}
+
 #settingButton{
     float: right;
     color: #36688d;
