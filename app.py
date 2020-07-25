@@ -36,6 +36,153 @@ def developer():
     session["email"] = "developer"
     return render_template("home.html")
 
+######################################################################
+# User controls
+
+
+#signup
+@app.route('/signup')
+def signup():
+    list_existing_emails = []
+    used_email = mongo.db.user_credentials.find()
+    print(used_email)
+    for x in used_email:
+        print(x["user_email"])
+        list_existing_emails.append(x["user_email"])
+        print(list_existing_emails)
+    return render_template("signup.html", list_existing_emails=list_existing_emails)
+
+#signup
+@app.route('/creating_user', methods=['POST'])
+def creating_user():
+    salt = os.urandom(32)
+    new_username= request.form['new_username']
+    print(new_username)
+    new_password = request.form['new_password']
+    regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
+    if(re.search(regex,new_username)):  
+        print("Valid Email")  
+        
+        check_username_availibility = mongo.db.user_credentials.find_one({"user_email": new_username})
+        print(check_username_availibility)
+        if check_username_availibility == None:
+            while True:   
+                if (len(new_password)<8): 
+                    flag = -1
+                    break
+                elif not re.search("[a-z]", new_password): 
+                    flag = -1
+                    break
+                elif not re.search("[A-Z]", new_password): 
+                    flag = -1
+                    break
+                elif not re.search("[0-9]", new_password): 
+                    flag = -1
+                    break
+                elif re.search("\s", new_password): 
+                    flag = -1
+                    break
+                else:
+                    flag = 0
+                    print("Valid Password") 
+                    break
+        
+            if flag ==-1: 
+                print("Not a Valid Password")
+                flash('Please use a valid password')
+                return redirect(url_for('signup'))
+
+            print(new_password)
+            hash_new_password = hashlib.pbkdf2_hmac(
+            'sha256', # The hash digest algorithm for HMAC
+            new_password.encode('utf-8'), # Convert the password to bytes
+            salt, # Provide the salt
+            100000, # It is recommended to use at least 100,000 iterations of SHA-256 
+            dklen=128 # Get a 128 byte key
+            )
+            mongo.db.user_credentials.insert_one({"user_email": new_username, "user_password": hash_new_password, "salt": salt})
+            session["email"] = new_username
+            return render_template("preferredName.html")
+        else:
+            return redirect(url_for('signup'))
+    else:  
+        flash('Please use a valid email format. For example - email@test.com')
+        return redirect(url_for('signup'))
+
+
+@app.route('/insert_name', methods=['POST'])
+def insert_name():
+    currentUserEmail = session.get("email")
+    preferred_name = request.form['preferredNameInput'].lower()
+    mongo.db.user_credentials.update_one({"user_email": currentUserEmail},{"$set": {"name": preferred_name}})
+    return redirect(url_for('dashboard'))
+
+######################################################################
+
+#login page
+@app.route('/login')
+def login():
+    return render_template("login.html")
+    
+@app.route('/check_password', methods=['POST'])
+def check_password():
+    login_email = request.form['login_username']  
+    login_password = request.form['login_password']
+    print(login_password)
+    user = mongo.db.user_credentials.find_one({"user_email": login_email})
+    for k,v in user.items():
+        if k != "_id":
+            if k == 'user_password':
+                stored_password = v
+                print(stored_password)
+            if k == 'salt':
+                stored_salt = v
+                print("this is the salt")
+                print(stored_salt)
+            if k == 'name':
+                login_name = v
+                print("this is the salt")
+                print(login_name)
+  
+                hash_login_password = hashlib.pbkdf2_hmac(
+                'sha256', # The hash digest algorithm for HMAC
+                login_password.encode('utf-8'), # Convert the password to bytes
+                stored_salt, # Provide the salt
+                100000, # It is recommended to use at least 100,000 iterations of SHA-256 
+                dklen=128 # Get a 128 byte key
+                )
+                print(hash_login_password)
+        
+                if stored_password == hash_login_password:
+                    print("match")
+                    session["email"] = login_email
+                    username = session.get("email")
+                    session["name"] = login_name
+                    return render_template('user_dash.html', username=username, name=login_name )
+                else:
+                    print("no match")
+                    return render_template('login.html')
+
+############################################################
+# Dashboard
+
+#dashboard
+@app.route('/dashboard')
+def dashboard():
+    if session.get("email") is None:
+        flash('Please login to see all of our amazing features')
+        return redirect(url_for('login'))
+    else: 
+        user = session.get("email")
+        userName = session.get("name")
+        return render_template('user_dash.html', name=userName, categories=mongo.db.categories.find(),
+                           sub_category=mongo.db.sub_category.find(),)
+
+
+#####################################################
+
+# User preferences
+
 
 @app.route('/userSetting')
 def userSetting():
@@ -197,64 +344,9 @@ def delete_user():
                     return redirect(url_for('dashboard'))
                 
 
+###################################################################
+# Logout
 
-#login page
-@app.route('/login')
-def login():
-    return render_template("login.html")
-    
-@app.route('/check_password', methods=['POST'])
-def check_password():
-    login_email = request.form['login_username']  
-    login_password = request.form['login_password']
-    print(login_password)
-    user = mongo.db.user_credentials.find_one({"user_email": login_email})
-    for k,v in user.items():
-        if k != "_id":
-            if k == 'user_password':
-                stored_password = v
-                print(stored_password)
-            if k == 'salt':
-                stored_salt = v
-                print("this is the salt")
-                print(stored_salt)
-            if k == 'name':
-                login_name = v
-                print("this is the salt")
-                print(login_name)
-  
-                hash_login_password = hashlib.pbkdf2_hmac(
-                'sha256', # The hash digest algorithm for HMAC
-                login_password.encode('utf-8'), # Convert the password to bytes
-                stored_salt, # Provide the salt
-                100000, # It is recommended to use at least 100,000 iterations of SHA-256 
-                dklen=128 # Get a 128 byte key
-                )
-                print(hash_login_password)
-        
-                if stored_password == hash_login_password:
-                    print("match")
-                    session["email"] = login_email
-                    username = session.get("email")
-                    session["name"] = login_name
-                    return render_template('user_dash.html', username=username, name=login_name )
-                else:
-                    print("no match")
-                    return render_template('login.html')
-
-#dashboard
-@app.route('/dashboard')
-def dashboard():
-    if session.get("email") is None:
-        flash('Please login to see all of our amazing features')
-        return redirect(url_for('login'))
-    else: 
-        user = session.get("email")
-        userName = session.get("name")
-        return render_template('user_dash.html', name=userName, categories=mongo.db.categories.find(),
-                           sub_category=mongo.db.sub_category.find(),)
-
-#dashboard
 @app.route('/logout')
 def logout():
     session.pop("email", None)
@@ -264,83 +356,7 @@ def logout():
     
 
 
-
-
-#signup
-@app.route('/signup')
-def signup():
-    list_existing_emails = []
-    used_email = mongo.db.user_credentials.find()
-    print(used_email)
-    for x in used_email:
-        print(x["user_email"])
-        list_existing_emails.append(x["user_email"])
-        print(list_existing_emails)
-    return render_template("signup.html", list_existing_emails=list_existing_emails)
-
-#signup
-@app.route('/creating_user', methods=['POST'])
-def creating_user():
-    salt = os.urandom(32)
-    new_username= request.form['new_username']
-    print(new_username)
-    new_password = request.form['new_password']
-    regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
-    if(re.search(regex,new_username)):  
-        print("Valid Email")  
-        
-        check_username_availibility = mongo.db.user_credentials.find_one({"user_email": new_username})
-        print(check_username_availibility)
-        if check_username_availibility == None:
-            while True:   
-                if (len(new_password)<8): 
-                    flag = -1
-                    break
-                elif not re.search("[a-z]", new_password): 
-                    flag = -1
-                    break
-                elif not re.search("[A-Z]", new_password): 
-                    flag = -1
-                    break
-                elif not re.search("[0-9]", new_password): 
-                    flag = -1
-                    break
-                elif re.search("\s", new_password): 
-                    flag = -1
-                    break
-                else:
-                    flag = 0
-                    print("Valid Password") 
-                    break
-        
-            if flag ==-1: 
-                print("Not a Valid Password")
-                flash('Please use a valid password')
-                return redirect(url_for('signup'))
-
-            print(new_password)
-            hash_new_password = hashlib.pbkdf2_hmac(
-            'sha256', # The hash digest algorithm for HMAC
-            new_password.encode('utf-8'), # Convert the password to bytes
-            salt, # Provide the salt
-            100000, # It is recommended to use at least 100,000 iterations of SHA-256 
-            dklen=128 # Get a 128 byte key
-            )
-            mongo.db.user_credentials.insert_one({"user_email": new_username, "user_password": hash_new_password, "salt": salt})
-            session["email"] = new_username
-            return render_template("preferredName.html")
-        else:
-            return redirect(url_for('signup'))
-    else:  
-        flash('Please use a valid email format. For example - email@test.com')
-        return redirect(url_for('signup'))
-
-@app.route('/insert_name', methods=['POST'])
-def insert_name():
-    currentUserEmail = session.get("email")
-    preferred_name = request.form['preferredNameInput'].lower()
-    mongo.db.user_credentials.update_one({"user_email": currentUserEmail},{"$set": {"name": preferred_name}})
-    return redirect(url_for('dashboard'))
+##############################################
 
 # Reading reports
 
@@ -499,11 +515,8 @@ def search_all_by_parameter():
 
 
 
-
-
-
-
-# Adding reports
+#######################################################################
+# Creating reports
 
 @app.route('/add_report')
 def add_report():
