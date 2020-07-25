@@ -532,14 +532,14 @@ def add_report():
                            sub_category=mongo.db.sub_category.find(),
                            )
 
-@app.route('/insert_report', methods=['POST'])
+@app.route('/insert_report', methods=['GET','POST'])
 def insert_report():
     report = mongo.db.report
     report.insert_one(request.form.to_dict())
     return redirect(url_for('homepage'))
 
 
-
+#####################################################################################
 # Updating reports
 @app.route('/user_modify/<report_id>')
 def user_modify(report_id):
@@ -569,7 +569,7 @@ def edit_report(report_id):
                   })
     return redirect(url_for('get_report'))
 
-
+##################################################################
 # Deleting reports
 
 @app.route('/confirm_delete_report/<report_id>')
