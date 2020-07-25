@@ -361,6 +361,33 @@ def logout():
 
 # Reading reports
 
+@app.route('/search_reports', methods=['GET', 'POST'])
+def search_reports():
+    typeOfSearch = request.form['userSearchOwnReports']
+    print(typeOfSearch)
+    return "done"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @app.route('/get_report')
 def get_report():
     return render_template("report.html", report=mongo.db.report.find())    
