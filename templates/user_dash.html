@@ -117,9 +117,10 @@
                     </div>
 
                     <div class="input-field col s12">
-                        <select>
+                        <select name="extraLocationSearchWithBuilding">
                             <option value="" disabled selected>Extra option for when building is selected.</option>
                             {% for building in building %}
+                                <option value="all">All</option>
                                 <option>City</option>
                                 <option>County</option>
                                 <option>Postcode</option>
