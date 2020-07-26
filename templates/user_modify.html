@@ -2,79 +2,72 @@
 
 <h3>This is the report you have chosen to edit</h3>
     <div class="card bg-primary text-white">
-            <p>Email: {{report.email}}</p>
             <p>Category: {{report.category_name}}</p>
-            <p>New Category: {{report.new_category_name}}</p>
-            <p>Sub-category: {{report.sub_category}}</p>
-            <p>New Sub-category: {{report.new_sub_category}}</p>
-            <p>Description: {{report.incident_description}}</p>
+            <p>Sub-category: {{report.sub_category}}</p>           
+            <p>Incident Description: {{report.incident_description}}</p>
             <p>Building: {{report.building}}</p>
             <p>Street: {{report.street}}</p>
             <p>City: {{report.city}}</p>
             <p>County: {{report.county}}</p>
             <p>Postcode: {{report.postcode}}</p>
+            <p>Date: {{report.date}}</p>
             <p>Reported to the authorities: {{report.report_to_authorities}}</p>
     </div>
     
 <form method="POST" action="{{ url_for('edit_report', report_id=report._id) }}">
-        <div class="form-group">
-            <label for="updateEmail">Email</label>
-            <input type="text" class="form-control" id="updateEmail" name="email" value="{{report.email}}">
-        </div> 
-        <div class="form-group">
-            <label for="updateUsername">Username</label>
-            <input type="text" class="form-control" id="updateUsername" name="username" value="{{report.username}}">
-        </div>        
-        <div class="form-group">
-            <label for="updateCategory">Categories</label>
-            <select class="form-control" id="updateCategory" name="category_name">
-            <option selected value="{{report.category_name}}">{{report.category_name}}</option> 
-            {% for category in categories %}
-                      <option id="{{category.category_name}}" value="{{category.category_name}}">{{category.category_name}}</option>
-            {% endfor %}
-            </select>
-        </div>
-        <div id="updateAddCategoryChoice" class="form-group">
-            <label for="updateOtherCategory">New Category</label>
-            <textarea class="form-control" id="updateOtherCategory" name="new_category_name">{{report.new_category_name}}</textarea>
-        </div>
-        <div id="updateSubCategoryChoices" class="form-group">
-            <label for="updateSub_category">Sub-categories</label>
-            <select class="form-control" id="updateSub_category" name="sub_category">
-                <option  selected value="">No sub-category</option>
-
-                 {% for sub in sub_category %}
-                    <option value="{{sub.sub_category}}">{{sub.sub_category}}</option>
+        <div class="input-field hidden">
+                <label for="email"></label>
+                <input type="text" class="" id="email" name="email" value="{{currentUserEmail}}" placeholder="Email">
+            </div>         
+            <div class="input-field">
+                <select class="" id="category" name="category_name">
+                <option disabled selected value="">Choose category</option> 
+                {% for category in categories %}
+                        <option id="{{category.category_name}}" value="{{category.category_name}}">{{category.category_name}}</option>
                 {% endfor %}
-            </select>
-        </div>
-        <div id="updateAddSubCategoryChoice" class="form-group">
-            <label for="updateOtherSubCategory">New Sub-category</label>
-            <textarea class="form-control" id="updateOtherSubCategory" name="new_sub_category">{{report.new_sub_category}}</textarea>
-        </div>
-        <div class="form-group">
-            <label for="updateIncident_description">Incident Description</label>
-            <textarea name="incident_description" id="updateIncident_description" class="form-control">{{report.incident_description}}</textarea>
-        </div>
-         <div class="form-group">
-            <label for="updateLocation">Location</label>
-            <input type="text" class="form-control" id="building" name="building" value="{{report.building}}">
-            <input type="text" class="form-control" id="street" name="street" value="{{report.street}}">
-            <input type="text" class="form-control" id="city" name="city" value="{{report.city}}" required>
-            <input type="text" class="form-control" id="county" name="county" value="{{report.county}}">
-            <input type="postal" class="form-control" id="postcode" name="postcode" value="{{report.postcode}}">
-        </div>
-        <div>
-            <label for="authorities">Reported to the authorities?</label>
-             <select class="form-control" id="update_report_to_authorities" name="report_to_authorities" required>
-                <option disabled selected value=""></option>
+                </select>
+            </div>
+            <div id="addCategoryChoice" class="input-field">
+                <input type="text" class="" rows="10" id="otherCategory" name="new_category_name" placeholder="Please enter a new category"></textarea>
+            </div>
+            <div id="subCategoryChoices" class="input-field">
+            
+                <select class="" id="sub_category" name="sub_category">
+                    <option disabled selected value="">If Xenophobia then choose sub-category</option>
+
+                    {% for sub in sub_category %}
+                        <option value="{{sub.sub_category}}">{{sub.sub_category}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div id="addSubCategoryChoice" class="input-field">
+                <input type="text" class="" id="otherSubCategory" name="new_sub_category" placeholder="Please enter a new sub category"></textarea>
+            </div>
+            <div class="input-field">
+                <textarea class="materialize-textarea" id="incident_description" name="incident_description" placeholder="Incident description"></textarea>
+            </div>
+            <div class="input-field">
+                <input type="text" class="" id="building" name="building" placeholder="Building">
+                <input type="text" class="" id="street" name="street" placeholder="Street">
+                <input type="text" class="" id="city" name="city" placeholder="City" required>
+                <input type="text" class="" id="county" name="county" placeholder="County">
+                <input type="text" class="" id="postcode" name="postcode" placeholder="Postcode">
+            </div>
+             <div class="input-field">
+                        <label for="Date">Date</label>
+                        <input type="text" name="date" id="date" class="datepicker">
+                    </div>
+            <div>
+            
+                <select class="" id="update_report_to_authorities" name="report_to_authorities" required>
+                    <option disabled selected value="">Reported to authorities?</option>
+                    
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
                 
-                    <option value="Yes">Yes</option>
-                    <option value="No">No</option>
-              
-            </select>
-        </div>
-        <button type="submit" name="action">Finished</button>
+                </select>
+            </div>
+            <button class="btn" type="submit" name="action">Add report</button>
     </form>
 
 
