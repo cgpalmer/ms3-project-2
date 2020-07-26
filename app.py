@@ -175,9 +175,12 @@ def dashboard():
         return redirect(url_for('login'))
     else: 
         user = session.get("email")
+        print(user)
         userName = session.get("name")
+        report = mongo.db.report.find({"email": user}).distinct("category_name")
+        print(report)        
         return render_template('user_dash.html', name=userName, categories=mongo.db.categories.find(),
-                           sub_category=mongo.db.sub_category.find(),)
+                           sub_category=mongo.db.sub_category.find(), userReports=report)
 
 
 #####################################################
