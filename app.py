@@ -385,13 +385,19 @@ def search_reports():
         locationType = request.form['locationType']
         if locationType == 'locationType':
             building_name = request.form['building']
-        city_name = request.form['city']
-        county_name = request.form['county']
-        postcode = request.form['postcode']
-        the_report = mongo.db.report.find( { "$and": [ {"email": user_email}, { "building":building_name }, { "city" : city_name} ] } )
-        print(the_report)
-        for report in the_report:
-            print(report)        
+            extraLocation = request.form['extraLocationSearchWithBuilding']
+            if extraLocation == "city":
+                extraLocationValue = request.form['city']
+            elif extraLocation == "county":
+                extraLocationValue = request.form['county']
+            elif extraLocation == "postcode":
+                postcode = request.form['postcode']
+            else:
+                print("No extra location needed.")
+            the_report = mongo.db.report.find( { "$and": [ {"email": user_email}, { "building":building_name }, { extraLocation : extraLocationValue} ] } )
+            print(the_report)
+            for report in the_report:
+                print(report)        
 
 
 
