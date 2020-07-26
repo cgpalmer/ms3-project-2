@@ -94,7 +94,7 @@
                             <span>Search my reports by discrimination</span>
                     </label>
                     <div class="input-field col s12">
-                        <select>
+                        <select name="category">
                             <option value="" disabled selected>Category</option>
                             {% for category in category %}
                                 <option>{{category}}</option>
@@ -105,7 +105,7 @@
 
 
                     <div class="input-field col s12">
-                        <select>
+                        <select name="locationType">
                             <option value="" disabled selected>Choose location type</option>
                             {% for building in building %}
                                 <option>Building</option>
@@ -129,7 +129,7 @@
 
 
                     <div class="input-field col s12">
-                        <select>
+                        <select name="building">
                             <option value="" disabled selected>Building</option>
                             {% for building in building %}
                                 <option>{{building}}</option>
@@ -137,7 +137,7 @@
                         </select>
                     </div>
                     <div class="input-field col s12">
-                        <select>
+                        <select name="city">
                             <option value="" disabled selected>City</option>
                             {% for cities in city %}
                                 <option>{{cities}}</option>
@@ -145,7 +145,7 @@
                         </select>
                     </div>
                     <div class="input-field col s12">
-                        <select>
+                        <select name="county">
                             <option value="" disabled selected>County</option>
                             {% for county in county %}
                                 <option>{{county}}</option>
@@ -153,7 +153,7 @@
                         </select>
                     </div>
                     <div class="input-field col s12">
-                        <select>
+                        <select name="postcode">
                             <option value="" disabled selected>Postcode</option>
                             {% for postcode in postcode %}
                                 <option>{{postcode}}</option>
