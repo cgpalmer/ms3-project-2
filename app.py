@@ -378,6 +378,7 @@ def search_reports():
         report = mongo.db.report.find({"email": user_email})
         for report in report:
             print(report)
+        return render_template('userSearchResult.html', report=report)
 
 
     elif typeOfSearch == "seeReportByLocation":
@@ -390,10 +391,10 @@ def search_reports():
             extraLocation = request.form['extraLocationSearchWithBuilding']
             print(extraLocation)      
             extraLocationValue = request.form[extraLocation]        
-            the_report = mongo.db.report.find( { "$and": [ {"email": user_email}, { "building":building_name }, { extraLocation : extraLocationValue} ] } )
-            for report in the_report:
+            report = mongo.db.report.find( { "$and": [ {"email": user_email}, { "building":building_name }, { extraLocation : extraLocationValue} ] } )
+            for report in report:
                 print(report) 
-        return "doni"  
+            return return render_template('userSearchResult.html', report=report)  
                   
     elif typeOfSearch == "seeReportByDate":
         print("see date")
@@ -403,16 +404,16 @@ def search_reports():
         print(report)
         for report in report:
                 print(report) 
-        return "done"
+        return render_template('userSearchResult.html', report=report)
     else:
         print("see discrimin")
         category = request.form['category']
         print(category)
-        the_report = mongo.db.report.find( { "$and": [ {"email": user_email}, { "category_name":category } ] } )
-        for report in the_report:
+        report = mongo.db.report.find( { "$and": [ {"email": user_email}, { "category_name":category } ] } )
+        for report in report:
                 print(report) 
 
-        return "done"
+        return render_template('userSearchResult.html', report=report)
 
 
 
