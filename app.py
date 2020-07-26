@@ -383,7 +383,8 @@ def search_reports():
     elif typeOfSearch == "seeReportByLocation":
         print("see location")
         locationType = request.form['locationType']
-        building_name = request.form['building']
+        if locationType == 'locationType':
+            building_name = request.form['building']
         city_name = request.form['city']
         county_name = request.form['county']
         postcode = request.form['postcode']
