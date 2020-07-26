@@ -103,6 +103,31 @@
                     
                     </div>
 
+
+                    <div class="input-field col s12">
+                        <select>
+                            <option value="" disabled selected>Choose location type</option>
+                            {% for building in building %}
+                                <option>Building</option>
+                                <option>City</option>
+                                <option>County</option>
+                                <option>Postcode</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="input-field col s12">
+                        <select>
+                            <option value="" disabled selected>Extra option for when building is selected.</option>
+                            {% for building in building %}
+                                <option>City</option>
+                                <option>County</option>
+                                <option>Postcode</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+
                     <div class="input-field col s12">
                         <select>
                             <option value="" disabled selected>Building</option>
