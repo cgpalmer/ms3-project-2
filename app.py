@@ -177,10 +177,15 @@ def dashboard():
         user = session.get("email")
         print(user)
         userName = session.get("name")
-        report = mongo.db.report.find({"email": user}).distinct("category_name")
-        print(report)        
+        category = mongo.db.report.find({"email": user}).distinct("category_name")
+        building = mongo.db.report.find({"email": user}).distinct("building")
+        sub_category = mongo.db.report.find({"email": user}).distinct("sub_category")
+        city = mongo.db.report.find({"email": user}).distinct("city")
+        county = mongo.db.report.find({"email": user}).distinct("county")
+        postcode = mongo.db.report.find({"email": user}).distinct("postcode")
+                
         return render_template('user_dash.html', name=userName, categories=mongo.db.categories.find(),
-                           sub_category=mongo.db.sub_category.find(), userReports=report)
+                           sub_category=mongo.db.sub_category.find(), postcode=postcode, city=city, county=county, building=building, sub_category=sub_category, category=category)
 
 
 #####################################################
