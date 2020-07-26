@@ -395,15 +395,17 @@ def search_reports():
                 print(report) 
         return "doni"  
                   
-
-
-
-
     elif typeOfSearch == "seeReportByDate":
-         print("see date")
+        print("see date")
     else:
-          print("see discrimin")
-    return "done"
+        print("see discrimin")
+        category = request.form['category']
+        print(category)
+        the_report = mongo.db.report.find( { "$and": [ {"email": user_email}, { "category_name":category } ] } )
+        for report in the_report:
+                print(report) 
+
+        return "done"
 
 
 
