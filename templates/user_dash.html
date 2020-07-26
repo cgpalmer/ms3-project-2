@@ -8,7 +8,6 @@
 <h6>Thank you for all of your contributions!</h6>
 <p>So far you have made x reports</p>
 
-
   <ul class="collapsible ">
     <li>
       <div class="collapsible-header"><i class="material-icons">add_circle</i>Create a new report</div>
@@ -96,10 +95,10 @@
                     </label>
                     <div class="input-field col s12">
                         <select>
-                            <option value="" disabled selected>Type of discrimination</option>
-                            <option value="1">Option 1</option>
-                            <option value="2">Option 2</option>
-                            <option value="3">Option 3</option>
+                            <option value="" disabled selected>Category</option>
+                            {% for category in category %}
+                                <option>{{category}}</option>
+                            {% endfor %}
                         </select>
                     
                     </div>
@@ -107,33 +106,33 @@
                     <div class="input-field col s12">
                         <select>
                             <option value="" disabled selected>Building</option>
-                            <option value="1">Option 1</option>
-                            <option value="2">Option 2</option>
-                            <option value="3">Option 3</option>
+                            {% for building in building %}
+                                <option>{{building}}</option>
+                            {% endfor %}
                         </select>
                     </div>
                     <div class="input-field col s12">
                         <select>
                             <option value="" disabled selected>City</option>
-                            <option value="1">Option 1</option>
-                            <option value="2">Option 2</option>
-                            <option value="3">Option 3</option>
+                            {% for cities in city %}
+                                <option>{{cities}}</option>
+                            {% endfor %}
                         </select>
                     </div>
                     <div class="input-field col s12">
                         <select>
                             <option value="" disabled selected>County</option>
-                            <option value="1">Option 1</option>
-                            <option value="2">Option 2</option>
-                            <option value="3">Option 3</option>
+                            {% for county in county %}
+                                <option>{{county}}</option>
+                            {% endfor %}
                         </select>
                     </div>
                     <div class="input-field col s12">
                         <select>
                             <option value="" disabled selected>Postcode</option>
-                            <option value="1">Option 1</option>
-                            <option value="2">Option 2</option>
-                            <option value="3">Option 3</option>
+                            {% for postcode in postcode %}
+                                <option>{{postcode}}</option>
+                            {% endfor %}
                         </select>
                     </div>
 
