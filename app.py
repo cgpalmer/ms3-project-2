@@ -397,6 +397,13 @@ def search_reports():
                   
     elif typeOfSearch == "seeReportByDate":
         print("see date")
+        startDate = request.form['startDate']
+        endDate = request.form['endDate']
+        report = mongo.db.report.find({"date":{ "$gte": startDate,"$lt":endDate }})
+        print(report)
+        for report in report:
+                print(report) 
+        return "done"
     else:
         print("see discrimin")
         category = request.form['category']
