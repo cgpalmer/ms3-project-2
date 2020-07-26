@@ -372,9 +372,9 @@ def logout():
 @app.route('/search_reports', methods=['GET', 'POST'])
 def search_reports():
     typeOfSearch = request.form['userSearchOwnReports']
+    user_email = session.get("email")
     if typeOfSearch == "seeAllReports":
         print("see All")
-        user_email = session.get("email")
         report = mongo.db.report.find({"email": user_email})
         for report in report:
             print(report)
@@ -382,9 +382,12 @@ def search_reports():
         print("see location")
         building_name = request.form['building']
         city_name = request.form['city']
-        county_name = request.form['county']
-        postcode = request.form['postcode']
-
+        # county_name = request.form['county']
+        # postcode = request.form['postcode']
+        the_report = mongo.db.report.find( { "$and": [ {"email": user_email}, { "building":building_name }, { "city" : city_name} ] } )
+        print(the_report)
+        for report in the_report:
+            print(report)        
     elif typeOfSearch == "seeReportByDate":
          print("see date")
     else:
