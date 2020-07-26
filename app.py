@@ -379,7 +379,12 @@ def search_reports():
         for report in report:
             print(report)
     elif typeOfSearch == "seeReportByLocation":
-         print("see location")
+        print("see location")
+        building_name = request.form['building']
+        city_name = request.form['city']
+        county_name = request.form['county']
+        postcode = request.form['postcode']
+
     elif typeOfSearch == "seeReportByDate":
          print("see date")
     else:
