@@ -388,32 +388,11 @@ def search_reports():
             building_name = request.form['building']
             print(building_name)
             extraLocation = request.form['extraLocationSearchWithBuilding']
-            print(extraLocation)
-
-
-
-
-
-            if extraLocation == "city":
-                extraLocationValue = request.form['city']
-                the_report = mongo.db.report.find( { "$and": [ {"email": user_email}, { "building":building_name }, { extraLocation : extraLocationValue} ] } )
-                for report in the_report:
-                    print(report)  
-            elif extraLocation == "county":
-                extraLocationValue = request.form['county']
-                the_report = mongo.db.report.find( { "$and": [ {"email": user_email}, { "building":building_name }, { extraLocation : extraLocationValue} ] } )
-                for report in the_report:
-                    print(report)  
-            elif extraLocation == "postcode":
-                postcode = request.form['postcode']
-                the_report = mongo.db.report.find( { "$and": [ {"email": user_email}, { "building":building_name }, { extraLocation : extraLocationValue} ] } )
-                for report in the_report:
-                    print(report)  
-            else:
-                print("No extra location needed.")
-                the_report = mongo.db.report.find( { "$and": [ {"email": user_email}, { "building":building_name }, { extraLocation : extraLocationValue} ] } )
-                for report in the_report:
-                    print(report)
+            print(extraLocation)      
+            extraLocationValue = request.form[extraLocation]        
+            the_report = mongo.db.report.find( { "$and": [ {"email": user_email}, { "building":building_name }, { extraLocation : extraLocationValue} ] } )
+            for report in the_report:
+                print(report) 
         return "doni"  
                   
 
