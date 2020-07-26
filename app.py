@@ -383,21 +383,39 @@ def search_reports():
     elif typeOfSearch == "seeReportByLocation":
         print("see location")
         locationType = request.form['locationType']
-        if locationType == 'locationType':
+        print(locationType)
+        if locationType == 'Building':
             building_name = request.form['building']
+            print(building_name)
             extraLocation = request.form['extraLocationSearchWithBuilding']
+            print(extraLocation)
+
+
+
+
+
             if extraLocation == "city":
                 extraLocationValue = request.form['city']
+                the_report = mongo.db.report.find( { "$and": [ {"email": user_email}, { "building":building_name }, { extraLocation : extraLocationValue} ] } )
+                for report in the_report:
+                    print(report)  
             elif extraLocation == "county":
                 extraLocationValue = request.form['county']
+                the_report = mongo.db.report.find( { "$and": [ {"email": user_email}, { "building":building_name }, { extraLocation : extraLocationValue} ] } )
+                for report in the_report:
+                    print(report)  
             elif extraLocation == "postcode":
                 postcode = request.form['postcode']
+                the_report = mongo.db.report.find( { "$and": [ {"email": user_email}, { "building":building_name }, { extraLocation : extraLocationValue} ] } )
+                for report in the_report:
+                    print(report)  
             else:
                 print("No extra location needed.")
-            the_report = mongo.db.report.find( { "$and": [ {"email": user_email}, { "building":building_name }, { extraLocation : extraLocationValue} ] } )
-            print(the_report)
-            for report in the_report:
-                print(report)        
+                the_report = mongo.db.report.find( { "$and": [ {"email": user_email}, { "building":building_name }, { extraLocation : extraLocationValue} ] } )
+                for report in the_report:
+                    print(report)
+        return "doni"  
+                  
 
 
 
