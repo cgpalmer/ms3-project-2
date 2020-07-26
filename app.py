@@ -384,7 +384,7 @@ def search_reports():
         print("see location")
         locationType = request.form['locationType']
         print(locationType)
-        if locationType == 'Building':
+        if locationType == 'building':
             building_name = request.form['building']
             print(building_name)
             extraLocation = request.form['extraLocationSearchWithBuilding']
@@ -392,6 +392,13 @@ def search_reports():
             extraLocationValue = request.form[extraLocation]        
             report = mongo.db.report.find( { "$and": [ {"email": user_email}, { "building":building_name }, { extraLocation : extraLocationValue} ] } )
             return render_template('userSearchResult.html', report=report)
+        else:
+            value = request.form[locationType]
+            report = mongo.db.report.find( { "$and": [ {"email": user_email}, { locationType : value } ] } )
+            return render_template('userSearchResult.html', report=report)
+
+    
+
                   
     elif typeOfSearch == "seeReportByDate":
         print("see date")
