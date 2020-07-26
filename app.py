@@ -29,6 +29,8 @@ mongo = PyMongo(app)
 @app.route('/homepage')
 def homepage():
     report=mongo.db.report.find().count()
+    user = session.get("email")
+    print(user)
     return render_template("home.html", report=report)
 
 @app.route('/developer')
@@ -183,10 +185,9 @@ def dashboard():
         userSub_category = mongo.db.report.find({"email": user}).distinct("sub_category")
         city = mongo.db.report.find({"email": user}).distinct("city")
         county = mongo.db.report.find({"email": user}).distinct("county")
-        postcode = mongo.db.report.find({"email": user}).distinct("postcode")
-                
+        postcode = mongo.db.report.find({"email": user}).distinct("postcode")        
         return render_template('user_dash.html', name=userName, categories=mongo.db.categories.find(),
-                           sub_category=mongo.db.sub_category.find(), postcode=postcode, city=city, county=county, building=building, userSub_category=userSub_category, category=category, total=total)
+                           sub_category=mongo.db.sub_category.find(), currentUserEmail=user, postcode=postcode, city=city, county=county, building=building, userSub_category=userSub_category, category=category, total=total)
 
 
 #####################################################
@@ -611,6 +612,7 @@ def add_report():
 def insert_report():
     report = mongo.db.report
     report.insert_one(request.form.to_dict())
+    print(report)
     return redirect(url_for('homepage'))
 
 
