@@ -615,7 +615,8 @@ def user_modify(report_id):
     print(the_report)
     available_categories = mongo.db.categories.find()
     available_sub_categories = mongo.db.sub_category.find()
-    return render_template('user_modify.html', report=the_report, categories=available_categories, sub_category=available_sub_categories)
+    currentUserEmail = session.get("email")
+    return render_template('user_modify.html', currentUserEmail=currentUserEmail, report=the_report, categories=available_categories, sub_category=available_sub_categories)
 
 @app.route('/edit_report/<report_id>', methods=["POST"])
 def edit_report(report_id):
