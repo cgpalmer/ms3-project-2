@@ -612,12 +612,14 @@ def insert_report():
 @app.route('/user_modify/<report_id>')
 def user_modify(report_id):
     the_report = mongo.db.report.find_one({"_id": ObjectId(report_id)})
+    print(the_report)
     available_categories = mongo.db.categories.find()
     available_sub_categories = mongo.db.sub_category.find()
     return render_template('user_modify.html', report=the_report, categories=available_categories, sub_category=available_sub_categories)
 
 @app.route('/edit_report/<report_id>', methods=["POST"])
 def edit_report(report_id):
+    print("accessed")
     report = mongo.db.report
     report.update({'_id': ObjectId(report_id)},
                   {
@@ -635,7 +637,7 @@ def edit_report(report_id):
                   'postcode': request.form.get('postcode'),
                   'report_to_authorities': request.form.get('report_to_authorities')
                   })
-    return redirect(url_for('get_report'))
+    return redirect(url_for('dashboard'))
 
 ##################################################################
 # Deleting reports
