@@ -399,7 +399,7 @@ def search_reports():
         print("see date")
         startDate = request.form['startDate']
         endDate = request.form['endDate']
-        report = mongo.db.report.find({"date":{ "$gte": startDate,"$lt":endDate }})
+        report = mongo.db.report.find( { "$and": [ {"email": user_email}, {"date":{ "$gte": startDate,"$lt":endDate }}  ] } )
         print(report)
         for report in report:
                 print(report) 
