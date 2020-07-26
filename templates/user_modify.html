@@ -21,9 +21,9 @@
             </div>         
             <div class="input-field">
                 <select class="" id="category" name="category_name">
-                <option disabled selected value="">Choose category</option> 
+                <option selected value="{{report.category_name}}">{{report.category_name}}</option> 
                 {% for category in categories %}
-                        <option id="{{category.category_name}}" value="{{report.category_name}}">{{category.category_name}}</option>
+                        <option id="{{category.category_name}}" value="{{category.category_name}}">{{category.category_name}}</option>
                 {% endfor %}
                 </select>
             </div>
@@ -33,10 +33,10 @@
             <div id="subCategoryChoices" class="input-field">
             
                 <select class="" id="sub_category" name="sub_category">
-                    <option disabled selected value="">If Xenophobia then choose sub-category</option>
+                    <option selected value="{{report.sub_category}}">If Xenophobia then choose sub-category</option>
 
                     {% for sub in sub_category %}
-                        <option value="{{report.sub_category}}">{{sub.sub_category}}</option>
+                        <option value="{{sub.sub_category}}">{{sub.sub_category}}</option>
                     {% endfor %}
                 </select>
             </div>
