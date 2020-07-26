@@ -177,6 +177,7 @@ def dashboard():
         user = session.get("email")
         print(user)
         userName = session.get("name")
+        total=mongo.db.report.find({"email": user}).count()
         category = mongo.db.report.find({"email": user}).distinct("category_name")
         building = mongo.db.report.find({"email": user}).distinct("building")
         userSub_category = mongo.db.report.find({"email": user}).distinct("sub_category")
@@ -185,7 +186,7 @@ def dashboard():
         postcode = mongo.db.report.find({"email": user}).distinct("postcode")
                 
         return render_template('user_dash.html', name=userName, categories=mongo.db.categories.find(),
-                           sub_category=mongo.db.sub_category.find(), postcode=postcode, city=city, county=county, building=building, userSub_category=userSub_category, category=category)
+                           sub_category=mongo.db.sub_category.find(), postcode=postcode, city=city, county=county, building=building, userSub_category=userSub_category, category=category, total=total)
 
 
 #####################################################
@@ -376,8 +377,6 @@ def search_reports():
     if typeOfSearch == "seeAllReports":
         print("see All")
         report = mongo.db.report.find({"email": user_email})
-        for report in report:
-            print(report)
         return render_template('userSearchResult.html', report=report)
 
 
@@ -392,8 +391,6 @@ def search_reports():
             print(extraLocation)      
             extraLocationValue = request.form[extraLocation]        
             report = mongo.db.report.find( { "$and": [ {"email": user_email}, { "building":building_name }, { extraLocation : extraLocationValue} ] } )
-            for report in report:
-                print(report) 
             return render_template('userSearchResult.html', report=report)
                   
     elif typeOfSearch == "seeReportByDate":
@@ -402,17 +399,12 @@ def search_reports():
         endDate = request.form['endDate']
         report = mongo.db.report.find( { "$and": [ {"email": user_email}, {"date":{ "$gte": startDate,"$lt":endDate }}  ] } )
         print(report)
-        for report in report:
-                print(report) 
         return render_template('userSearchResult.html', report=report)
     else:
         print("see discrimin")
         category = request.form['category']
         print(category)
-        report = mongo.db.report.find( { "$and": [ {"email": user_email}, { "category_name":category } ] } )
-        for report in report:
-                print(report) 
-
+        report = mongo.db.report.find( { "$and": [ {"email": user_email}, { "category_name":category } ] } ) 
         return render_template('userSearchResult.html', report=report)
 
 
