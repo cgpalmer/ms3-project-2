@@ -378,16 +378,23 @@ def search_reports():
         report = mongo.db.report.find({"email": user_email})
         for report in report:
             print(report)
+
+
     elif typeOfSearch == "seeReportByLocation":
         print("see location")
+        locationType = request.form['locationType']
         building_name = request.form['building']
         city_name = request.form['city']
-        # county_name = request.form['county']
-        # postcode = request.form['postcode']
+        county_name = request.form['county']
+        postcode = request.form['postcode']
         the_report = mongo.db.report.find( { "$and": [ {"email": user_email}, { "building":building_name }, { "city" : city_name} ] } )
         print(the_report)
         for report in the_report:
             print(report)        
+
+
+
+
     elif typeOfSearch == "seeReportByDate":
          print("see date")
     else:
