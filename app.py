@@ -394,7 +394,7 @@ def search_reports():
             report = mongo.db.report.find( { "$and": [ {"email": user_email}, { "building":building_name }, { extraLocation : extraLocationValue} ] } )
             for report in report:
                 print(report) 
-            return return render_template('userSearchResult.html', report=report)  
+            return render_template('userSearchResult.html', report=report)
                   
     elif typeOfSearch == "seeReportByDate":
         print("see date")
