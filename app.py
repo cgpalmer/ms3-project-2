@@ -117,6 +117,7 @@ def creating_user():
 def insert_name():
     currentUserEmail = session.get("email")
     preferred_name = request.form['preferredNameInput'].lower()
+    session["name"] = preferred_name
     mongo.db.user_credentials.update_one({"user_email": currentUserEmail},{"$set": {"name": preferred_name}})
     return redirect(url_for('dashboard'))
 
