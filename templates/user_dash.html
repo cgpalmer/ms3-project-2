@@ -109,24 +109,24 @@
                     <div class="input-field col s12">
                         <select name="locationType">
                             <option value="" disabled selected>Choose location type</option>
-                            {% for building in building %}
+                            
                                 <option>building</option>
                                 <option>city</option>
                                 <option>county</option>
                                 <option>postcode</option>
-                            {% endfor %}
+                         
                         </select>
                     </div>
 
                     <div class="input-field col s12">
                         <select name="extraLocationSearchWithBuilding">
                             <option value="" disabled selected>Extra option for when building is selected.</option>
-                            {% for building in building %}
+                           
                                 <option value="all">All</option>
                                 <option value="city">City</option>
                                 <option value="county">County</option>
                                 <option vaule="postcode">Postcode</option>
-                            {% endfor %}
+                    
                         </select>
                     </div>
 
