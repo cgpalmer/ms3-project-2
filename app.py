@@ -389,10 +389,14 @@ def search_reports():
             building_name = request.form['building']
             print(building_name)
             extraLocation = request.form['extraLocationSearchWithBuilding']
-            print(extraLocation)      
-            extraLocationValue = request.form[extraLocation]        
-            report = mongo.db.report.find( { "$and": [ {"email": user_email}, { "building":building_name }, { extraLocation : extraLocationValue} ] } )
-            return render_template('userSearchResult.html', report=report)
+            print(extraLocation)
+            if extraLocation == "all":
+                report = mongo.db.report.find( { "$and": [ {"email": user_email}, { "building":building_name } ] } )
+                return render_template('userSearchResult.html', report=report)
+            else:
+                extraLocationValue = request.form[extraLocation]        
+                report = mongo.db.report.find( { "$and": [ {"email": user_email}, { "building":building_name }, { extraLocation : extraLocationValue} ] } )
+                return render_template('userSearchResult.html', report=report)
         else:
             value = request.form[locationType]
             report = mongo.db.report.find( { "$and": [ {"email": user_email}, { locationType : value } ] } )
