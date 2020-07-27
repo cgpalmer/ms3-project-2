@@ -5,6 +5,8 @@
 
 <h3>Welcome back, {{name.capitalize()}}</h3>
 
+<h1>{{currentUserEmail}}</h1>
+
 <h6>Thank you for all of your contributions!</h6>
 <p>So far you have made {{total}} reports</p>
 
@@ -15,7 +17,7 @@
         <form method="POST" action="{{ url_for('insert_report') }}">
             <div class="input-field hidden">
                 <label for="email"></label>
-                <input type="text" class="" id="email" name="email" value="{{currentUserEmail}}" placeholder="Email">
+                <input type="email" class="" id="email" name="email" value="{{currentUserEmail}}" placeholder="Email">
             </div>         
             <div class="input-field">
                 <select class="" id="category" name="category_name">
@@ -108,10 +110,10 @@
                         <select name="locationType">
                             <option value="" disabled selected>Choose location type</option>
                             {% for building in building %}
-                                <option>Building</option>
-                                <option>City</option>
-                                <option>County</option>
-                                <option>Postcode</option>
+                                <option>building</option>
+                                <option>city</option>
+                                <option>county</option>
+                                <option>postcode</option>
                             {% endfor %}
                         </select>
                     </div>
