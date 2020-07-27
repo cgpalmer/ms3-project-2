@@ -161,7 +161,8 @@ def check_password():
                     session["email"] = login_email
                     username = session.get("email")
                     session["name"] = login_name
-                    return render_template('user_dash.html', username=username, name=login_name )
+                   
+                    return redirect(url_for('dashboard'))
                 else:
                     print("no match")
                     return render_template('login.html')
@@ -617,7 +618,10 @@ def insert_report():
     report = mongo.db.report
     report.insert_one(request.form.to_dict())
     print(report)
-    return redirect(url_for('homepage'))
+    if session.get("email") is None:
+        return redirect(url_for('add_report'))
+    else:
+        return redirect(url_for('dashboard'))
 
 
 #####################################################################################
