@@ -1,13 +1,74 @@
 {% extends 'base.html'%} {% block content %}
 
 
-<section class="dashboard"> 
-<a id="settingButton" href="{{url_for('userSetting')}}"><i id="settingButtonIcon" class="material-icons">settings</i></a>
+  <ul class="collapsible ">
+    <li>
+      <div class="collapsible-header"><i class="material-icons">add_circle</i>Search by discrimination</div>
+      <div class="collapsible-body">
+        <form method="POST" action="{{ url_for('insert_report') }}">
+            <div class="input-field hidden">
+                <label for="email"></label>
+                <input type="email" class="" id="email" name="email" value="{{currentUserEmail}}" placeholder="Email">
+            </div>         
+            <div class="input-field">
+                <select class="" id="category" name="category_name">
+                <option disabled selected value="">Choose category</option> 
+                {% for category in categories %}
+                        <option id="{{category.category_name}}" value="{{category.category_name}}">{{category.category_name}}</option>
+                {% endfor %}
+                </select>
+            </div>
+            <div id="addCategoryChoice" class="input-field">
+                <input type="text" class="" rows="10" id="otherCategory" name="new_category_name" placeholder="Please enter a new category"></textarea>
+            </div>
+            <div id="subCategoryChoices" class="input-field">
+            
+                <select class="" id="sub_category" name="sub_category">
+                    <option disabled selected value="">If Xenophobia then choose sub-category</option>
 
+                    {% for sub in sub_category %}
+                        <option value="{{sub.sub_category}}">{{sub.sub_category}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div id="addSubCategoryChoice" class="input-field">
+                <input type="text" class="" id="otherSubCategory" name="new_sub_category" placeholder="Please enter a new sub category"></textarea>
+            </div>
+            <div class="input-field">
+                <textarea class="materialize-textarea" id="incident_description" name="incident_description" placeholder="Incident description"></textarea>
+            </div>
+            <div class="input-field">
+                <input type="text" class="" id="building" name="building" placeholder="Building">
+                <input type="text" class="" id="street" name="street" placeholder="Street">
+                <input type="text" class="" id="city" name="city" placeholder="City" required>
+                <input type="text" class="" id="county" name="county" placeholder="County">
+                <input type="text" class="" id="postcode" name="postcode" placeholder="Postcode">
+            </div>
+           
 
-
+             <div class="input-field">
+                        <label for="Date">Date</label>
+                        <input type="text" name="date" id="date" class="datepicker">
+                    </div>
+            <div>
+            
+                <select class="" id="update_report_to_authorities" name="report_to_authorities" required>
+                    <option disabled selected value="">Reported to authorities?</option>
+                    
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                
+                </select>
+            </div>
+            <button class="btn" type="submit" name="action">Add report</button>
+        </form>
+      
+      </div>
+    </li>
     <!-- Managing reports -->
-     
+    <li>
+      <div class="collapsible-header"><i class="material-icons">edit</i>Manage old reports</div>
+      <div class="collapsible-body">       
             <form method="POST" action="{{ url_for('search_reports') }}">
                     <label for="userSearchOwnSeeAll">
                             <input id="userSearchOwnSeeAll" type="radio" name="userSearchOwnReports" value="seeAllReports" required>
@@ -108,16 +169,18 @@
                         
              
                 </form>
-           
+            </div>
 
          
         
         
 
 
-    
-  
-</section>
-  
+     
+    </li>
+    <li>
+      <div class="collapsible-header"><i class="material-icons">search</i><a href="{{url_for('search_report')}}"> Search our database</a></div>
+    </li>
+  </ul>
 
 {% endblock %}
