@@ -127,11 +127,11 @@
                  
                     <div class="input-field col s12">
                         <label for="startDate">Start Date</label>
-                        <input type="text" id="date" name="startDate" class="datepicker">
+                        <input type="text" id="date" name="startDateSearchDB" class="datepicker">
                     </div>
                     <div class="input-field col s12">
                         <label for="endDate">End Date</label>
-                        <input type="text" name="endDate" id="date" class="datepicker">
+                        <input type="text" name="endDate" id="endDateSearchDB" class="datepicker">
                     </div>
             
                 
@@ -144,108 +144,7 @@
 
       <li>
       <div class="collapsible-header"><i class="material-icons">search</i>Search all</div>
-        <div class="collapsible-body"> 
-            <form method="POST" action="{{ url_for('search_reports') }}">
-                    <label for="userSearchOwnSeeAll">
-                            <input id="userSearchOwnSeeAll" type="radio" name="userSearchOwnReports" value="seeAllReports" required>
-                            <span>Show all of my reports</span>
-                    </label>
-                    <label for="userSearchOwnbyLocation">
-                            <input id="userSearchOwnbyLocation" type="radio" name="userSearchOwnReports" value="seeReportByLocation">
-                            <span>Search my reports by location</span>
-                    </label>
-                    <label for="userSearchOwnbyDate">
-                            <input id="userSearchOwnbyDate" type="radio" name="userSearchOwnReports" value="seeReportByDate">
-                            <span>Search my reports by date</span>
-                    </label>
-                    <label for="userSearchOwnbyDiscrimination">
-                            <input id="userSearchOwnbyDiscrimination" type="radio" name="userSearchOwnReports" value="seeReportByDiscrimination">
-                            <span>Search my reports by discrimination</span>
-                    </label>
-                    <div class="input-field col s12">
-                        <select name="category">
-                            <option value="" disabled selected>Category</option>
-                            {% for category in category %}
-                                <option value="{{category}}">{{category}}</option>
-                            {% endfor %}
-                        </select>
-                    
-                    </div>
-
-
-                    <div class="input-field col s12">
-                        <select name="locationType">
-                            <option value="" disabled selected>Choose location type</option>
-                            
-                                <option>building</option>
-                                <option>city</option>
-                                <option>county</option>
-                                <option>postcode</option>
-                         
-                        </select>
-                    </div>
-
-                    <div class="input-field col s12">
-                        <select name="extraLocationSearchWithBuilding">
-                            <option value="" disabled selected>Extra option for when building is selected.</option>
-                           
-                                <option value="all">All</option>
-                                <option value="city">City</option>
-                                <option value="county">County</option>
-                                <option vaule="postcode">Postcode</option>
-                    
-                        </select>
-                    </div>
-
-
-                    <div class="input-field col s12">
-                        <select name="building">
-                            <option value="" disabled selected>Building</option>
-                            {% for building in building %}
-                                <option>{{building}}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
-                    <div class="input-field col s12">
-                        <select name="city">
-                            <option value="" disabled selected>City</option>
-                            {% for cities in city %}
-                                <option>{{cities}}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
-                    <div class="input-field col s12">
-                        <select name="county">
-                            <option value="" disabled selected>County</option>
-                            {% for county in county %}
-                                <option>{{county}}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
-                    <div class="input-field col s12">
-                        <select name="postcode">
-                            <option value="" disabled selected>Postcode</option>
-                            {% for postcode in postcode %}
-                                <option>{{postcode}}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
-
-                    <div class="input-field col s12">
-                        <label for="startDate">Start Date</label>
-                        <input type="text" id="date" name="startDate" class="datepicker">
-                    </div>
-                    <div class="input-field col s12">
-                        <label for="endDate">End Date</label>
-                        <input type="text" name="endDate" id="date" class="datepicker">
-                    </div>
-            
-                
-                        <button type="submit"><i class="material-icons">text_snippet</i>Find reports</button>
-                        
-             
-                </form> 
-        </div>
+        
     </li>
   </ul>
 
