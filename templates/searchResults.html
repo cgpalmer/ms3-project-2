@@ -5,63 +5,30 @@
     <li>
       <div class="collapsible-header"><i class="material-icons">add_circle</i>Search by discrimination</div>
       <div class="collapsible-body">
-        <form method="POST" action="{{ url_for('insert_report') }}">
-            <div class="input-field hidden">
-                <label for="email"></label>
-                <input type="email" class="" id="email" name="email" value="{{currentUserEmail}}" placeholder="Email">
-            </div>         
-            <div class="input-field">
-                <select class="" id="category" name="category_name">
-                <option disabled selected value="">Choose category</option> 
-                {% for category in categories %}
-                        <option id="{{category.category_name}}" value="{{category.category_name}}">{{category.category_name}}</option>
-                {% endfor %}
-                </select>
-            </div>
-            <div id="addCategoryChoice" class="input-field">
-                <input type="text" class="" rows="10" id="otherCategory" name="new_category_name" placeholder="Please enter a new category"></textarea>
-            </div>
-            <div id="subCategoryChoices" class="input-field">
-            
-                <select class="" id="sub_category" name="sub_category">
-                    <option disabled selected value="">If Xenophobia then choose sub-category</option>
-
-                    {% for sub in sub_category %}
-                        <option value="{{sub.sub_category}}">{{sub.sub_category}}</option>
-                    {% endfor %}
-                </select>
-            </div>
-            <div id="addSubCategoryChoice" class="input-field">
-                <input type="text" class="" id="otherSubCategory" name="new_sub_category" placeholder="Please enter a new sub category"></textarea>
-            </div>
-            <div class="input-field">
-                <textarea class="materialize-textarea" id="incident_description" name="incident_description" placeholder="Incident description"></textarea>
-            </div>
-            <div class="input-field">
-                <input type="text" class="" id="building" name="building" placeholder="Building">
-                <input type="text" class="" id="street" name="street" placeholder="Street">
-                <input type="text" class="" id="city" name="city" placeholder="City" required>
-                <input type="text" class="" id="county" name="county" placeholder="County">
-                <input type="text" class="" id="postcode" name="postcode" placeholder="Postcode">
-            </div>
-           
-
-             <div class="input-field">
-                        <label for="Date">Date</label>
-                        <input type="text" name="date" id="date" class="datepicker">
-                    </div>
-            <div>
-            
-                <select class="" id="update_report_to_authorities" name="report_to_authorities" required>
-                    <option disabled selected value="">Reported to authorities?</option>
+        <form method="POST" action="{{ url_for('search_reports') }}">
+                  
+                 
+                    <label for="userSearchOwnbyDiscrimination">
+                            <input id="userSearchOwnbyDiscrimination" type="radio" name="userSearchOwnReports" value="seeReportByDiscrimination">
+                            <span>Search my reports by discrimination</span>
+                    </label>
+                    <div class="input-field col s12">
+                        <select name="category">
+                            <option value="" disabled selected>Category</option>
+                            {% for category in category %}
+                                <option value="{{category}}">{{category}}</option>
+                            {% endfor %}
+                        </select>
                     
-                        <option value="Yes">Yes</option>
-                        <option value="No">No</option>
+                    </div>
+
+
+            
                 
-                </select>
-            </div>
-            <button class="btn" type="submit" name="action">Add report</button>
-        </form>
+                        <button type="submit"><i class="material-icons">text_snippet</i>Find reports</button>
+                        
+             
+                </form>
       
       </div>
     </li>
@@ -69,6 +36,115 @@
     <li>
       <div class="collapsible-header"><i class="material-icons">edit</i>Search by Location</div>
       <div class="collapsible-body">       
+            <form method="POST" action="{{ url_for('search_reports') }}">
+                    
+                    <label for="userSearchOwnbyLocation">
+                            <input id="userSearchOwnbyLocation" type="radio" name="userSearchOwnReports" value="seeReportByLocation">
+                            <span>Search my reports by location</span>
+                    </label>
+                                      
+                    <div class="input-field col s12">
+                        <select name="locationType">
+                            <option value="" disabled selected>Choose location type</option>
+                            
+                                <option>building</option>
+                                <option>city</option>
+                                <option>county</option>
+                                <option>postcode</option>
+                         
+                        </select>
+                    </div>
+
+                    <div class="input-field col s12">
+                        <select name="extraLocationSearchWithBuilding">
+                            <option value="" disabled selected>Extra option for when building is selected.</option>
+                           
+                                <option value="all">All</option>
+                                <option value="city">City</option>
+                                <option value="county">County</option>
+                                <option vaule="postcode">Postcode</option>
+                    
+                        </select>
+                    </div>
+
+
+                    <div class="input-field col s12">
+                        <select name="building">
+                            <option value="" disabled selected>Building</option>
+                            {% for building in building %}
+                                <option>{{building}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="input-field col s12">
+                        <select name="city">
+                            <option value="" disabled selected>City</option>
+                            {% for cities in city %}
+                                <option>{{cities}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="input-field col s12">
+                        <select name="county">
+                            <option value="" disabled selected>County</option>
+                            {% for county in county %}
+                                <option>{{county}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="input-field col s12">
+                        <select name="postcode">
+                            <option value="" disabled selected>Postcode</option>
+                            {% for postcode in postcode %}
+                                <option>{{postcode}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+           
+                
+                        <button type="submit"><i class="material-icons">text_snippet</i>Find reports</button>
+                        
+             
+                </form>
+            </div>
+
+         
+        
+        
+
+
+     
+    </li>
+    <li>
+      <div class="collapsible-header"><i class="material-icons">search</i>Search by date</div>
+        <div class="collapsible-body">  
+            <form method="POST" action="{{ url_for('search_reports') }}">
+                
+                    <label for="userSearchOwnbyDate">
+                            <input id="userSearchOwnbyDate" type="radio" name="userSearchOwnReports" value="seeReportByDate">
+                            <span>Search my reports by date</span>
+                    </label>
+                 
+                    <div class="input-field col s12">
+                        <label for="startDate">Start Date</label>
+                        <input type="text" id="date" name="startDate" class="datepicker">
+                    </div>
+                    <div class="input-field col s12">
+                        <label for="endDate">End Date</label>
+                        <input type="text" name="endDate" id="date" class="datepicker">
+                    </div>
+            
+                
+                        <button type="submit"><i class="material-icons">text_snippet</i>Find reports</button>
+                        
+             
+                </form>
+        </div>
+    </li>
+
+      <li>
+      <div class="collapsible-header"><i class="material-icons">search</i>Search all</div>
+        <div class="collapsible-body"> 
             <form method="POST" action="{{ url_for('search_reports') }}">
                     <label for="userSearchOwnSeeAll">
                             <input id="userSearchOwnSeeAll" type="radio" name="userSearchOwnReports" value="seeAllReports" required>
@@ -168,25 +244,7 @@
                         <button type="submit"><i class="material-icons">text_snippet</i>Find reports</button>
                         
              
-                </form>
-            </div>
-
-         
-        
-        
-
-
-     
-    </li>
-    <li>
-      <div class="collapsible-header"><i class="material-icons">search</i>Search by date</div>
-        <div class="collapsible-body">  
-        </div>
-    </li>
-
-      <li>
-      <div class="collapsible-header"><i class="material-icons">search</i>Search all</div>
-        <div class="collapsible-body">  
+                </form> 
         </div>
     </li>
   </ul>
