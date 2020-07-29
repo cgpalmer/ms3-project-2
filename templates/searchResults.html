@@ -67,7 +67,7 @@
     </li>
     <!-- Managing reports -->
     <li>
-      <div class="collapsible-header"><i class="material-icons">edit</i>Manage old reports</div>
+      <div class="collapsible-header"><i class="material-icons">edit</i>Search by Location</div>
       <div class="collapsible-body">       
             <form method="POST" action="{{ url_for('search_reports') }}">
                     <label for="userSearchOwnSeeAll">
@@ -179,7 +179,15 @@
      
     </li>
     <li>
-      <div class="collapsible-header"><i class="material-icons">search</i><a href="{{url_for('search_report')}}"> Search our database</a></div>
+      <div class="collapsible-header"><i class="material-icons">search</i><a href="{{url_for('search_report')}}"> Search by date</a></div>
+        <div class="collapsible-body">  
+        </div>
+    </li>
+
+      <li>
+      <div class="collapsible-header"><i class="material-icons">search</i><a href="{{url_for('search_report')}}"> Search all</a></div>
+        <div class="collapsible-body">  
+        </div>
     </li>
   </ul>
 
