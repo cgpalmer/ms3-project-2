@@ -9,7 +9,7 @@
                   
                  
                     <label for="userSearchOwnbyDiscrimination">
-                            <input id="userSearchOwnbyDiscrimination" type="text" name="userSearchOwnReports" value="seeReportByDiscrimination">
+                            <input id="userSearchOwnbyDiscrimination" class="hidden" type="text" name="userSearchOwnReports" value="seeReportByDiscrimination">
                             <span>Search my reports by discrimination</span>
                     </label>
                     <div class="input-field col s12">
@@ -39,7 +39,7 @@
             <form method="POST" action="{{ url_for('search_reports') }}">
                     
                     <label for="userSearchOwnbyLocation">
-                            <input id="userSearchOwnbyLocation" type="text" name="userSearchOwnReports" value="seeReportByLocation">
+                            <input id="userSearchOwnbyLocation" class="hidden"  type="text" name="userSearchOwnReports" value="seeReportByLocation">
                             <span>Search my reports by location</span>
                     </label>
                                       
@@ -121,7 +121,7 @@
             <form method="POST" action="{{ url_for('search_reports') }}">
                 
                     <label for="userSearchOwnbyDate">
-                            <input id="userSearchOwnbyDate" type="text" name="userSearchOwnReports" value="seeReportByDate">
+                            <input id="userSearchOwnbyDate" class="hidden" type="text" name="userSearchOwnReports" value="seeReportByDate">
                             <span>Search my reports by date</span>
                     </label>
                  
