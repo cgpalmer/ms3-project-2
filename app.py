@@ -425,7 +425,7 @@ def search_reports():
 
 
 
-@app.route('/search_reports', methods=['GET', 'POST'])
+@app.route('/search_db_reports', methods=['GET', 'POST'])
 def search_db_reports():
 
     typeOfSearch = request.form['userSearchReports']
