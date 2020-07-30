@@ -429,12 +429,41 @@ def search_reports():
 def search_reports():
     typeOfSearch = request.form['userSearchOwnReports']
     if typeOfSearch == "searchAll":
+        print("see All")
+        report = mongo.db.report.find()
+        return render_template('userSearchResult.html', report=report)
+
 
     elif typeOfSearch == "searchByLocation":
+        print("see location")
+        locationType = request.form['locationType']
+        print(locationType)
+        if locationType == 'building':
+            building_name = request.form['building']
+            print(building_name)
+            extraLocation = request.form['extraLocationSearchWithBuilding']
+            print(extraLocation)
+            if extraLocation == "all":
+                report = mongo.db.report.find( {"building":building_name } )
+                return render_template('userSearchResult.html', report=report)
+            else:
+                extraLocationValue = request.form[extraLocation]        
+                report = mongo.db.report.find( { "$and": [ {"building":building_name }, { extraLocation : extraLocationValue} ] } )
+                return render_template('userSearchResult.html', report=report)
 
     elif typeOfSearch == "searchByDiscrimination":
-
+        print("see discrimin")
+        category = request.form['category']
+        print(category)
+        report = mongo.db.report.find( { "category_name":category }) 
+        return render_template('userSearchResult.html', report=report)
     else:
+        print("see date")
+        startDate = request.form['startDate']
+        endDate = request.form['endDate']
+        report = mongo.db.report.find(  {"date":{ "$gte": startDate,"$lt":endDate }} )
+        print(report)
+        return render_template('userSearchResult.html', report=report)
 
 
 
