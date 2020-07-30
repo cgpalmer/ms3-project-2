@@ -427,7 +427,7 @@ def search_reports():
 
 @app.route('/search_reports', methods=['GET', 'POST'])
 def search_db_reports():
-    
+
     typeOfSearch = request.form['userSearchReports']
     if typeOfSearch == "searchAll":
         print("see All")
@@ -491,11 +491,15 @@ def get_report():
 # This is the OG screen with one search box as default.
 @app.route('/search_report')
 def search_report():
-    parameter = "Not chosen"
-    global comparison_number
-    comparison_number = 1
-    search_parameter1=mongo.db.search_parameters.find()
-    return render_template("searchResults.html", search_parameter1=search_parameter1, parameter=parameter, comparison_number=comparison_number)
+    total=mongo.db.report.find().count()
+    category = mongo.db.report.find().distinct("category_name")
+    building = mongo.db.report.find().distinct("building")
+    userSub_category = mongo.db.report.find().distinct("sub_category")
+    city = mongo.db.report.find().distinct("city")
+    county = mongo.db.report.find().distinct("county")
+    postcode = mongo.db.report.find().distinct("postcode")        
+    return render_template('searchResults.html', categories=mongo.db.categories.find(),
+                           sub_category=mongo.db.sub_category.find(), postcode=postcode, city=city, county=county, building=building, userSub_category=userSub_category, category=category, total=total) 
 
 # Will search the basic parameters.
 @app.route('/search_report_parameter',  methods=["POST"])
