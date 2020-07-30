@@ -9,7 +9,7 @@
                   
                  
                     <label for="userSearchbyDiscrimination">
-                            <input id="userSearchbyDiscrimination" class="hidden" type="text" name="userSearchReports" value="seeReportByDiscrimination">
+                            <input id="userSearchbyDiscrimination" class="hidden" type="text" name="userSearchReports" value="searchByDiscrimination">
                            
                     </label>
                     <div class="input-field col s12">
@@ -60,7 +60,7 @@
             <form method="POST" action="{{ url_for('search_db_reports') }}">
                     
                     <label for="userSearchbyLocation">
-                            <input id="userSearchbyLocation" class="hidden"  type="text" name="userSearchReports" value="seeReportByLocation">
+                            <input id="userSearchbyLocation" class="hidden"  type="text" name="userSearchReports" value="searchByLocation">
                             
                     </label>
                                       
@@ -161,7 +161,7 @@
         <div class="collapsible-body">  
             <form method="POST" action="{{ url_for('search_db_reports') }}">
        
-                            <input id="userSearchReport" class="hidden" type="text" name="userSearchReports" value="seeReported">
+                            <input id="userSearchReport" class="hidden" type="text" name="userSearchReports" value="searchByReported">
                     
                     <div class="input-field col s12">
                          
@@ -206,7 +206,7 @@
       <div class="collapsible-body">  
             <form method="POST" action="{{ url_for('search_db_reports') }}">
        
-                            <input id="userSearchbyAll" class="hidden" type="text" name="userSearchReports" value="seeAll">
+                            <input id="userSearchbyAll" class="hidden" type="text" name="userSearchReports" value="searchAll">
                 
                     <div class="input-field col s12">
                          <p>Would you like to search within a time frame?</p>
