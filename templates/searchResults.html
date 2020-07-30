@@ -8,8 +8,8 @@
         <form method="POST" action="{{ url_for('search_reports') }}">
                   
                  
-                    <label for="userSearchOwnbyDiscrimination">
-                            <input id="userSearchOwnbyDiscrimination" class="hidden" type="text" name="userSearchOwnReports" value="seeReportByDiscrimination">
+                    <label for="userSearchbyDiscrimination">
+                            <input id="userSearchbyDiscrimination" class="hidden" type="text" name="userSearchReports" value="seeReportByDiscrimination">
                            
                     </label>
                     <div class="input-field col s12">
@@ -59,8 +59,8 @@
       <div class="collapsible-body">       
             <form method="POST" action="{{ url_for('search_reports') }}">
                     
-                    <label for="userSearchOwnbyLocation">
-                            <input id="userSearchOwnbyLocation" class="hidden"  type="text" name="userSearchOwnReports" value="seeReportByLocation">
+                    <label for="userSearchbyLocation">
+                            <input id="userSearchbyLocation" class="hidden"  type="text" name="userSearchReports" value="seeReportByLocation">
                             
                     </label>
                                       
@@ -158,7 +158,37 @@
     </li>
     <li>
       <div class="collapsible-header"><i class="material-icons">search</i>Search by date</div>
-        
+        <div class="collapsible-body">  
+            <form method="POST" action="{{ url_for('search_reports') }}">
+       
+                            <input id="userSearchReport" class="hidden" type="text" name="userSearchReports" value="seeReported">
+                
+                    <div class="input-field col s12">
+                         <p>Would you like to search within a time frame?</p>
+                        <select id="allTimeFrame" name="useTimeFrame">
+                            
+                                <option value="" disabled></option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                         
+                        </select>
+                    </div>
+
+                    <div class="input-field col s12">
+                        <label for="startDate">Start Date</label>
+                        <input type="text" id="allStartDateFrame" name="startDate" class="datepicker">
+                    </div>
+                    <div class="input-field col s12">
+                        <label for="endDate">End Date</label>
+                        <input type="text" name="endDate" id="allEndDateFrame" class="datepicker">
+                    </div>
+            
+                
+                        <button type="submit"><i class="material-icons">text_snippet</i>Find reports</button>
+                        
+             
+                </form>
+        </div>
     </li>
 
       <li>
@@ -166,7 +196,7 @@
       <div class="collapsible-body">  
             <form method="POST" action="{{ url_for('search_reports') }}">
        
-                            <input id="userSearchOwnbyDate" class="hidden" type="text" name="userSearchOwnReports" value="seeAll">
+                            <input id="userSearchbyAll" class="hidden" type="text" name="userSearchReports" value="seeAll">
                 
                     <div class="input-field col s12">
                          <p>Would you like to search within a time frame?</p>
