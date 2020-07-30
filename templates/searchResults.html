@@ -5,7 +5,7 @@
     <li>
       <div class="collapsible-header"><i class="material-icons">add_circle</i>Search by discrimination</div>
       <div class="collapsible-body">
-        <form method="POST" action="{{ url_for('search_reports') }}">
+        <form method="POST" action="{{ url_for('search_db_reports') }}">
                   
                  
                     <label for="userSearchbyDiscrimination">
@@ -57,7 +57,7 @@
     <li>
       <div class="collapsible-header"><i class="material-icons">edit</i>Search by Location</div>
       <div class="collapsible-body">       
-            <form method="POST" action="{{ url_for('search_reports') }}">
+            <form method="POST" action="{{ url_for('search_db_reports') }}">
                     
                     <label for="userSearchbyLocation">
                             <input id="userSearchbyLocation" class="hidden"  type="text" name="userSearchReports" value="seeReportByLocation">
@@ -157,9 +157,9 @@
      
     </li>
     <li>
-      <div class="collapsible-header"><i class="material-icons">search</i>Search by reported incidents.</div>
+      <div class="collapsible-header"><i class="material-icons">search</i>Search by reported incidents</div>
         <div class="collapsible-body">  
-            <form method="POST" action="{{ url_for('search_reports') }}">
+            <form method="POST" action="{{ url_for('search_db_reports') }}">
        
                             <input id="userSearchReport" class="hidden" type="text" name="userSearchReports" value="seeReported">
                     
@@ -204,7 +204,7 @@
       <li>
       <div class="collapsible-header"><i class="material-icons">search</i>Search all</div>
       <div class="collapsible-body">  
-            <form method="POST" action="{{ url_for('search_reports') }}">
+            <form method="POST" action="{{ url_for('search_db_reports') }}">
        
                             <input id="userSearchbyAll" class="hidden" type="text" name="userSearchReports" value="seeAll">
                 
