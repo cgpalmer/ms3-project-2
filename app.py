@@ -426,8 +426,9 @@ def search_reports():
 
 
 @app.route('/search_reports', methods=['GET', 'POST'])
-def search_reports():
-    typeOfSearch = request.form['userSearchOwnReports']
+def search_db_reports():
+    
+    typeOfSearch = request.form['userSearchReports']
     if typeOfSearch == "searchAll":
         print("see All")
         report = mongo.db.report.find()
@@ -458,10 +459,9 @@ def search_reports():
         report = mongo.db.report.find( { "category_name":category }) 
         return render_template('userSearchResult.html', report=report)
     else:
-        print("see date")
-        startDate = request.form['startDate']
-        endDate = request.form['endDate']
-        report = mongo.db.report.find(  {"date":{ "$gte": startDate,"$lt":endDate }} )
+        print("see reported")
+        reportedToAuthorities = request.form['searchReported']
+        report = mongo.db.report.find(  {"report_to_authorities": reportedToAuthorities } )
         print(report)
         return render_template('userSearchResult.html', report=report)
 
