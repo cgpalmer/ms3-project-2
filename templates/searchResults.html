@@ -162,12 +162,22 @@
             <form method="POST" action="{{ url_for('search_reports') }}">
        
                             <input id="userSearchReport" class="hidden" type="text" name="userSearchReports" value="seeReported">
-                
+                    
+                    <div class="input-field col s12">
+                         
+                        <select id="allTimeFrame" name="useTimeFrame">
+                            
+                                <option value="" selected disabled>Search by whether incidents have been reported or not.</option>
+                                <option value="Yes">Search reported</option>
+                                <option value="No">Search unreported</option>
+                         
+                        </select>
+                    </div>
                     <div class="input-field col s12">
                          <p>Would you like to search within a time frame?</p>
                         <select id="allTimeFrame" name="useTimeFrame">
                             
-                                <option value="" disabled></option>
+                                <option value="" selected disabled></option>
                                 <option value="Yes">Yes</option>
                                 <option value="No">No</option>
                          
