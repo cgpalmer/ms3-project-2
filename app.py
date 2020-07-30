@@ -425,6 +425,18 @@ def search_reports():
 
 
 
+@app.route('/search_reports', methods=['GET', 'POST'])
+def search_reports():
+    typeOfSearch = request.form['userSearchOwnReports']
+    if typeOfSearch == "searchAll":
+
+    elif typeOfSearch == "searchByLocation":
+
+    elif typeOfSearch == "searchByDiscrimination":
+
+    else:
+
+
 
 
 
