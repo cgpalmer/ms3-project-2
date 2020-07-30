@@ -22,6 +22,27 @@
                     
                     </div>
 
+                    <div class="input-field col s12">
+                         <p>Would you like to search within a time frame?</p>
+                        <select id="allTimeFrame" name="useTimeFrame">
+                            
+                                <option value="" disabled></option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                         
+                        </select>
+                    </div>
+
+                    <div class="input-field col s12">
+                        <label for="startDate">Start Date</label>
+                        <input type="text" id="date" name="startDateSearchDB" class="datepicker">
+                    </div>
+                    <div class="input-field col s12">
+                        <label for="endDate">End Date</label>
+                        <input type="text" name="endDate" id="endDateSearchDB" class="datepicker">
+                    </div>
+            
+
 
             
                 
@@ -101,6 +122,26 @@
                         </select>
                     </div>
            
+                    <div class="input-field col s12">
+                         <p>Would you like to search within a time frame?</p>
+                        <select id="allTimeFrame" name="useTimeFrame">
+                            
+                                <option value="" disabled></option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                         
+                        </select>
+                    </div>
+
+                    <div class="input-field col s12">
+                        <label for="startDate">Start Date</label>
+                        <input type="text" id="date" name="startDateSearchDB" class="datepicker">
+                    </div>
+                    <div class="input-field col s12">
+                        <label for="endDate">End Date</label>
+                        <input type="text" name="endDate" id="endDateSearchDB" class="datepicker">
+                    </div>
+            
                 
                         <button type="submit"><i class="material-icons">text_snippet</i>Find reports</button>
                         
@@ -117,14 +158,27 @@
     </li>
     <li>
       <div class="collapsible-header"><i class="material-icons">search</i>Search by date</div>
-        <div class="collapsible-body">  
+        
+    </li>
+
+      <li>
+      <div class="collapsible-header"><i class="material-icons">search</i>Search all</div>
+      <div class="collapsible-body">  
             <form method="POST" action="{{ url_for('search_reports') }}">
+       
+                            <input id="userSearchOwnbyDate" class="hidden" type="text" name="userSearchOwnReports" value="seeAll">
                 
-                    <label for="userSearchOwnbyDate">
-                            <input id="userSearchOwnbyDate" class="hidden" type="text" name="userSearchOwnReports" value="seeReportByDate">
-                       
-                    </label>
-                 
+                    <div class="input-field col s12">
+                         <p>Would you like to search within a time frame?</p>
+                        <select id="allTimeFrame" name="useTimeFrame">
+                            
+                                <option value="" disabled></option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                         
+                        </select>
+                    </div>
+
                     <div class="input-field col s12">
                         <label for="startDate">Start Date</label>
                         <input type="text" id="date" name="startDateSearchDB" class="datepicker">
@@ -140,12 +194,10 @@
              
                 </form>
         </div>
-    </li>
-
-      <li>
-      <div class="collapsible-header"><i class="material-icons">search</i>Search all</div>
         
     </li>
+
+    
   </ul>
 
 {% endblock %}
