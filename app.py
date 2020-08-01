@@ -434,10 +434,12 @@ def search_db_reports():
         report = mongo.db.report.find()
         number_of_reports = report.count()
         print(number_of_reports)
-        numOfPages = number_of_reports/5
+        page_size = 5
+        numOfPages = number_of_reports/page_size
         numOfPagesRounded = math.ceil(numOfPages)
         print(numOfPages)
         print(numOfPagesRounded)
+        page1 = mongo.db.report.find().skip(skips).limit(page_size)
         return render_template('userSearchResult.html', report=report)
 
 
