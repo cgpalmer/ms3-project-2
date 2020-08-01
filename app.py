@@ -424,7 +424,6 @@ def search_reports():
 
 
 
-
 @app.route('/search_db_reports', methods=['GET', 'POST'])
 def search_db_reports():
 
@@ -441,7 +440,11 @@ def search_db_reports():
         print(numOfPagesRounded)
         page1 = mongo.db.report.find().skip(0).limit(page_size)
         page2 = mongo.db.report.find().skip(5).limit(page_size)
-        return render_template('userSearchResult.html', page1=page1, page2=page2)
+        pages = []
+        for x in range(numOfPagesRounded):
+            page = mongo.db.report.find().skip(int(x)+5).limit(page_size)
+            pages.append(page)
+        return render_template('userSearchResult.html', pages=pages)
 
 
     elif typeOfSearch == "searchByLocation":
