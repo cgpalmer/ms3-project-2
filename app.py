@@ -439,8 +439,9 @@ def search_db_reports():
         numOfPagesRounded = math.ceil(numOfPages)
         print(numOfPages)
         print(numOfPagesRounded)
-        page1 = mongo.db.report.find().skip(skips).limit(page_size)
-        return render_template('userSearchResult.html', report=report)
+        page1 = mongo.db.report.find().skip(0).limit(page_size)
+        page2 = mongo.db.report.find().skip(5).limit(page_size)
+        # return render_template('userSearchResult.html', report=report)
 
 
     elif typeOfSearch == "searchByLocation":
