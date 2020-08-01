@@ -441,7 +441,7 @@ def search_db_reports():
         print(numOfPagesRounded)
         page1 = mongo.db.report.find().skip(0).limit(page_size)
         page2 = mongo.db.report.find().skip(5).limit(page_size)
-        # return render_template('userSearchResult.html', report=report)
+        return render_template('userSearchResult.html', page1=page1, page2=page2)
 
 
     elif typeOfSearch == "searchByLocation":
@@ -473,22 +473,6 @@ def search_db_reports():
         report = mongo.db.report.find(  {"report_to_authorities": reportedToAuthorities } )
         print(report)
         return render_template('userSearchResult.html', report=report)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
