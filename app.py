@@ -1,5 +1,5 @@
 # import pymongo
-import os
+import os, math
 import hashlib
 from flask import Flask, render_template, url_for, request, redirect, session, flash
 from os import path
@@ -432,6 +432,12 @@ def search_db_reports():
     if typeOfSearch == "searchAll":
         print("see All")
         report = mongo.db.report.find()
+        number_of_reports = report.count()
+        print(number_of_reports)
+        numOfPages = number_of_reports/5
+        numOfPagesRounded = math.ceil(numOfPages)
+        print(numOfPages)
+        print(numOfPagesRounded)
         return render_template('userSearchResult.html', report=report)
 
 
