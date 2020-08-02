@@ -1,8 +1,17 @@
 {% extends 'base.html'%} {% block content %}
-    
+
+
+  <ul class="collapsible ">
+
+     
 {% for x in range(collapsibles)%}
-  
+   <li>
+      <div class="collapsible-header"><i class="material-icons">add_circle</i>Create a new report</div>
+      <div class="collapsible-body">  
+      </div>
+    </li>
 {% endfor %}
+</ul>
 
 {% for report in report %}
     
