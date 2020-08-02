@@ -1,9 +1,9 @@
 # import pymongo
 import os, math
 import hashlib
-from flask import Flask, render_template, url_for, request, redirect, session, flash
+from flask import Flask, render_template, url_for, request, redirect, session, flash, jsonify
 from os import path
-from flask_pymongo import PyMongo
+from flask_pymongo import PyMongo, pymongo
 from bson.objectid import ObjectId
 import re
 from validate_email import validate_email
@@ -431,11 +431,18 @@ def search_db_reports():
     if typeOfSearch == "searchAll":
         print("see All")
         report = mongo.db.report.find()
-        reportCount = report.count()
-        carouselSize = 10
-        numOfCollapsibles = reportCount/carouselSize
-        numOfCollapsiblesRounded = math.ceil(numOfCollapsibles)       
-        return render_template('userSearchResult.html', report=report, collapsibles=numOfCollapsiblesRounded)
+        number_of_reports = report.count()
+        print(number_of_reports)
+        page_size = 10
+        numOfPages = number_of_reports/page_size
+        numOfPagesRounded = math.ceil(numOfPages)
+        print(numOfPages)
+        print(numOfPagesRounded)
+        pages = []
+        for x in range(numOfPagesRounded):
+            page = mongo.db.report.find().skip(int(x)+9).limit(page_size)
+            pages.append(page)
+        return render_template('userSearchResult.html', report=report, collapsibles=numOfPagesRounded, pages=pages)
 
 
     elif typeOfSearch == "searchByLocation":
@@ -708,11 +715,6 @@ def delete_report(report_id):
     report = mongo.db.report
     report.update({'_id': ObjectId(report_id)}, {"$set": {"archive_report": request.form.get('archive')}})
     return redirect(url_for('get_report'))
-
-
-
-
-
 
 
 
