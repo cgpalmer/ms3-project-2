@@ -380,7 +380,21 @@ def search_reports():
     if typeOfSearch == "seeAllReports":
         print("see All")
         report = mongo.db.report.find({"email": user_email})
-        return render_template('userSearchResult.html', report=report)
+        number_of_reports = report.count()
+        print(number_of_reports)
+        page_size = 10
+        numOfPages = number_of_reports/page_size
+        numOfPagesRounded = math.ceil(numOfPages)
+        print(numOfPages)
+        print(numOfPagesRounded)
+        pages = []
+        page1 = mongo.db.report.find().limit(page_size)
+        pages.append(page1)
+        for x in range(numOfPagesRounded):
+            page = mongo.db.report.find().skip(int(x+1)*10).limit(page_size)
+            pages.append(page)
+        return render_template('userSearchResult.html', report=report, collapsibles=numOfPagesRounded, pages=pages)
+        
 
 
     elif typeOfSearch == "seeReportByLocation":
@@ -394,32 +408,81 @@ def search_reports():
             print(extraLocation)
             if extraLocation == "all":
                 report = mongo.db.report.find( { "$and": [ {"email": user_email}, { "building":building_name } ] } )
-                return render_template('userSearchResult.html', report=report)
+                number_of_reports = report.count()
+                print(number_of_reports)
+                page_size = 10
+                numOfPages = number_of_reports/page_size
+                numOfPagesRounded = math.ceil(numOfPages)
+                print(numOfPages)
+                print(numOfPagesRounded)
+                pages = []
+                page1 = mongo.db.report.find().limit(page_size)
+                pages.append(page1)
+                for x in range(numOfPagesRounded):
+                    page = mongo.db.report.find().skip(int(x+1)*10).limit(page_size)
+                    pages.append(page)
+                return render_template('userSearchResult.html', report=report, collapsibles=numOfPagesRounded, pages=pages)
             else:
                 extraLocationValue = request.form[extraLocation]        
                 report = mongo.db.report.find( { "$and": [ {"email": user_email}, { "building":building_name }, { extraLocation : extraLocationValue} ] } )
-                return render_template('userSearchResult.html', report=report)
+                number_of_reports = report.count()
+                print(number_of_reports)
+                page_size = 10
+                numOfPages = number_of_reports/page_size
+                numOfPagesRounded = math.ceil(numOfPages)
+                print(numOfPages)
+                print(numOfPagesRounded)
+                pages = []
+                page1 = mongo.db.report.find().limit(page_size)
+                pages.append(page1)
+                for x in range(numOfPagesRounded):
+                    page = mongo.db.report.find().skip(int(x+1)*10).limit(page_size)
+                    pages.append(page)
+                return render_template('userSearchResult.html', report=report, collapsibles=numOfPagesRounded, pages=pages)
         else:
             value = request.form[locationType]
             report = mongo.db.report.find( { "$and": [ {"email": user_email}, { locationType : value } ] } )
-            return render_template('userSearchResult.html', report=report)
+            return render_template('userSearchResult.html', report=report) 
 
-    
-
-                  
     elif typeOfSearch == "seeReportByDate":
         print("see date")
         startDate = request.form['startDate']
         endDate = request.form['endDate']
         report = mongo.db.report.find( { "$and": [ {"email": user_email}, {"date":{ "$gte": startDate,"$lt":endDate }}  ] } )
         print(report)
-        return render_template('userSearchResult.html', report=report)
+        number_of_reports = report.count()
+        print(number_of_reports)
+        page_size = 10
+        numOfPages = number_of_reports/page_size
+        numOfPagesRounded = math.ceil(numOfPages)
+        print(numOfPages)
+        print(numOfPagesRounded)
+        pages = []
+        page1 = mongo.db.report.find().limit(page_size)
+        pages.append(page1)
+        for x in range(numOfPagesRounded):
+            page = mongo.db.report.find().skip(int(x+1)*10).limit(page_size)
+            pages.append(page)
+        return render_template('userSearchResult.html', report=report, collapsibles=numOfPagesRounded, pages=pages)
     else:
         print("see discrimin")
         category = request.form['category']
         print(category)
         report = mongo.db.report.find( { "$and": [ {"email": user_email}, { "category_name":category } ] } ) 
-        return render_template('userSearchResult.html', report=report)
+        number_of_reports = report.count()
+        print(number_of_reports)
+        page_size = 10
+        numOfPages = number_of_reports/page_size
+        numOfPagesRounded = math.ceil(numOfPages)
+        print(numOfPages)
+        print(numOfPagesRounded)
+        pages = []
+        page1 = mongo.db.report.find().limit(page_size)
+        pages.append(page1)
+        for x in range(numOfPagesRounded):
+            page = mongo.db.report.find().skip(int(x+1)*10).limit(page_size)
+            pages.append(page)
+        return render_template('userSearchResult.html', report=report, collapsibles=numOfPagesRounded, pages=pages)
 
 
 
