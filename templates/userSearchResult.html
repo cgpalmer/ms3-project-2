@@ -7,13 +7,9 @@
 {% for x in range(collapsibles)%}
    <li>
       <div class="collapsible-header"><i class="material-icons">add_circle</i>Create a new report</div>
-      <div class="collapsible-body">  
-      </div>
-    </li>
-{% endfor %}
-</ul>
-
-{% for report in report %}
+      <div class="collapsible-body"> 
+         
+{% for report in pages[x] %}
     
    
     <div class="card bg-primary text-white report batch{{x}}">
@@ -34,5 +30,12 @@
             <a class="btn btn-danger" href="{{url_for('confirm_delete_report', report_id=report._id)}}">Delete</a>
             </div>
     {% endfor %}
+      </div>
+    </li>
+{% endfor %}
+</ul>
+
+
+
 
 {% endblock %}
