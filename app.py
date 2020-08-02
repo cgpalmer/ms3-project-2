@@ -442,7 +442,7 @@ def search_db_reports():
         page1 = mongo.db.report.find().limit(page_size)
         pages.append(page1)
         for x in range(numOfPagesRounded):
-            page = mongo.db.report.find().skip(int(x)+9).limit(page_size)
+            page = mongo.db.report.find().skip(int(x+1)*10).limit(page_size)
             pages.append(page)
         return render_template('userSearchResult.html', report=report, collapsibles=numOfPagesRounded, pages=pages)
 
