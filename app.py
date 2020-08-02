@@ -393,7 +393,7 @@ def search_reports():
         for x in range(numOfPagesRounded):
             page = mongo.db.report.find().skip(int(x+1)*10).limit(page_size)
             pages.append(page)
-        return render_template('userSearchResult.html', report=report, collapsibles=numOfPagesRounded, pages=pages)
+        return render_template('userSearchResult.html', collapsibles=numOfPagesRounded, pages=pages)
         
 
 
@@ -416,10 +416,10 @@ def search_reports():
                 print(numOfPages)
                 print(numOfPagesRounded)
                 pages = []
-                page1 = mongo.db.report.find().limit(page_size)
+                page1 = report.limit(page_size)
                 pages.append(page1)
                 for x in range(numOfPagesRounded):
-                    page = mongo.db.report.find().skip(int(x+1)*10).limit(page_size)
+                    page = report.skip(int(x+1)*10).limit(page_size)
                     pages.append(page)
                 return render_template('userSearchResult.html', report=report, collapsibles=numOfPagesRounded, pages=pages)
             else:
@@ -529,10 +529,10 @@ def search_db_reports():
                 print(numOfPages)
                 print(numOfPagesRounded)
                 pages = []
-                page1 = mongo.db.report.find().limit(page_size)
+                page1 = mongo.db.report.find( {"building":building_name } ).limit(page_size)
                 pages.append(page1)
                 for x in range(numOfPagesRounded):
-                    page = mongo.db.report.find().skip(int(x+1)*10).limit(page_size)
+                    page = mongo.db.report.find( {"building":building_name } ).skip(int(x+1)*10).limit(page_size)
                     pages.append(page)
                 return render_template('userSearchResult.html', report=report, collapsibles=numOfPagesRounded, pages=pages)
             else:
@@ -546,17 +546,17 @@ def search_db_reports():
                 print(numOfPages)
                 print(numOfPagesRounded)
                 pages = []
-                page1 = mongo.db.report.find().limit(page_size)
+                page1 = mongo.db.report.find( { "$and": [ {"building":building_name }, { extraLocation : extraLocationValue} ] } ).limit(page_size)
                 pages.append(page1)
                 for x in range(numOfPagesRounded):
-                    page = mongo.db.report.find().skip(int(x+1)*10).limit(page_size)
+                    page = mongo.db.report.find( { "$and": [ {"building":building_name }, { extraLocation : extraLocationValue} ] } ).skip(int(x+1)*10).limit(page_size)
                     pages.append(page)
                 return render_template('userSearchResult.html', report=report, collapsibles=numOfPagesRounded, pages=pages)
         else:
             if locationType == 'city':
-                value = request.form['city']                
+                value = request.form['city']  
             elif locationType == 'county':
-                value = request.form['county']               
+                value = request.form['county']    
             else:
                 value = request.form['postcode']
             report = mongo.db.report.find( {locationType:value } )
@@ -569,32 +569,31 @@ def search_db_reports():
             print(numOfPages)
             print(numOfPagesRounded)
             pages = []
-            page1 = mongo.db.report.find().limit(page_size)
+            page1 = mongo.db.report.find( {locationType:value } ).limit(page_size)
             pages.append(page1)
             for x in range(numOfPagesRounded):
-                page = mongo.db.report.find().skip(int(x+1)*10).limit(page_size)
+                page = mongo.db.report.find( {locationType:value } ).skip(int(x+1)*10).limit(page_size)
                 pages.append(page)
-            return render_template('userSearchResult.html', report=report, collapsibles=numOfPagesRounded, pages=pages)
-   
+                print(pages)
+            return render_template('userSearchResult.html', report=report, collapsibles=numOfPagesRounded, pages=pages)              
               
 
     elif typeOfSearch == "searchByDiscrimination":
         print("see discrimin")
         category = request.form['category']
-        print(category)
-        report = mongo.db.report.find( { "category_name":category }) 
+        report = mongo.db.report.find( { "category_name":category })
         number_of_reports = report.count()
-        print(number_of_reports)
         page_size = 10
         numOfPages = number_of_reports/page_size
         numOfPagesRounded = math.ceil(numOfPages)
         print(numOfPages)
         print(numOfPagesRounded)
+        print(category)
         pages = []
-        page1 = mongo.db.report.find().limit(page_size)
+        page1 = mongo.db.report.find( { "category_name":category }).limit(page_size)
         pages.append(page1)
         for x in range(numOfPagesRounded):
-            page = mongo.db.report.find().skip(int(x+1)*10).limit(page_size)
+            page = mongo.db.report.find( { "category_name":category }).skip(int(x+1)*10).limit(page_size)
             pages.append(page)
         return render_template('userSearchResult.html', report=report, collapsibles=numOfPagesRounded, pages=pages)
     else:
@@ -610,10 +609,10 @@ def search_db_reports():
         print(numOfPages)
         print(numOfPagesRounded)
         pages = []
-        page1 = mongo.db.report.find().limit(page_size)
+        page1 = mongo.db.report.find(  {"report_to_authorities": reportedToAuthorities } ).limit(page_size)
         pages.append(page1)
         for x in range(numOfPagesRounded):
-            page = mongo.db.report.find().skip(int(x+1)*10).limit(page_size)
+            page = mongo.db.report.find(  {"report_to_authorities": reportedToAuthorities } ).skip(int(x+1)*10).limit(page_size)
             pages.append(page)
         return render_template('userSearchResult.html', report=report, collapsibles=numOfPagesRounded, pages=pages)
 
