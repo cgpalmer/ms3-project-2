@@ -432,6 +432,7 @@ def search_db_reports():
         print("see All")
         report = mongo.db.report.find()
         reportCount = report.count()
+       
         return render_template('userSearchResult.html', report=report)
 
 
