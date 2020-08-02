@@ -6,7 +6,7 @@
      
 {% for x in range(collapsibles)%}
    <li>
-      <div class="collapsible-header"><i class="material-icons">add_circle</i>Create a new report</div>
+      <div class="collapsible-header"><i class="material-icons">add_circle</i>Reports {{x*10+1}} - {{x+1}}0</div>
       <div class="collapsible-body"> 
          
 {% for report in pages[x] %}
