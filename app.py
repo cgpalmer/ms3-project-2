@@ -458,11 +458,38 @@ def search_db_reports():
             print(extraLocation)
             if extraLocation == "all":
                 report = mongo.db.report.find( {"building":building_name } )
-                return render_template('userSearchResult.html', report=report)
+                number_of_reports = report.count()
+                print(number_of_reports)
+                page_size = 10
+                numOfPages = number_of_reports/page_size
+                numOfPagesRounded = math.ceil(numOfPages)
+                print(numOfPages)
+                print(numOfPagesRounded)
+                pages = []
+                page1 = mongo.db.report.find().limit(page_size)
+                pages.append(page1)
+                for x in range(numOfPagesRounded):
+                    page = mongo.db.report.find().skip(int(x+1)*10).limit(page_size)
+                    pages.append(page)
+                return render_template('userSearchResult.html', report=report, collapsibles=numOfPagesRounded, pages=pages)
             else:
                 extraLocationValue = request.form[extraLocation]        
                 report = mongo.db.report.find( { "$and": [ {"building":building_name }, { extraLocation : extraLocationValue} ] } )
-                return render_template('userSearchResult.html', report=report)
+                number_of_reports = report.count()
+                print(number_of_reports)
+                page_size = 10
+                numOfPages = number_of_reports/page_size
+                numOfPagesRounded = math.ceil(numOfPages)
+                print(numOfPages)
+                print(numOfPagesRounded)
+                pages = []
+                page1 = mongo.db.report.find().limit(page_size)
+                pages.append(page1)
+                for x in range(numOfPagesRounded):
+                    page = mongo.db.report.find().skip(int(x+1)*10).limit(page_size)
+                    pages.append(page)
+                return render_template('userSearchResult.html', report=report, collapsibles=numOfPagesRounded, pages=pages)
+                
 
     elif typeOfSearch == "searchByDiscrimination":
         print("see discrimin")
