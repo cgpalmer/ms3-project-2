@@ -439,6 +439,8 @@ def search_db_reports():
         print(numOfPages)
         print(numOfPagesRounded)
         pages = []
+        page1 = mongo.db.report.find().limit(page_size)
+        pages.append(page1)
         for x in range(numOfPagesRounded):
             page = mongo.db.report.find().skip(int(x)+9).limit(page_size)
             pages.append(page)
