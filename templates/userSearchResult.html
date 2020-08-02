@@ -1,9 +1,13 @@
 {% extends 'base.html'%} {% block content %}
     
+{% for x in range(collapsibles)%}
+  
+{% endfor %}
+
 {% for report in report %}
     
    
-    <div class="card bg-primary text-white">
+    <div class="card bg-primary text-white report batch{{x}}">
                     <p>Category: {{report.category_name}}</p>
                     {% if report.sub_category %}
                         <p>Sub-category: {{report.sub_category}}</p>
@@ -16,10 +20,10 @@
                     <p>Postcode: {{report.postcode}}</p>
                     <p>Date: {{report.date}}</p>
                     <p>Reported to the authorities: {{report.report_to_authorities}}</p>
-            </div>
+            
             <a class="btn btn-success" href="{{url_for('user_modify', report_id=report._id)}}">Edit</a>
             <a class="btn btn-danger" href="{{url_for('confirm_delete_report', report_id=report._id)}}">Delete</a>
-
+            </div>
     {% endfor %}
 
 {% endblock %}
