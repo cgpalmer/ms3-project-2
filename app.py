@@ -615,7 +615,17 @@ def search_db_reports():
     elif typeOfSearch == "searchByDiscrimination":
         print("see discrimin")
         category = request.form['category']
-        report = mongo.db.report.find( { "category_name":category })
+        useTimeFrame = request.form['useTimeFrame']
+        print(useTimeFrame)
+        if useTimeFrame == "No":
+            print("see All")
+            report = mongo.db.report.find( { "category_name":category } )
+        else:
+            startDate = request.form['categoryStartDateFrame']
+            print(startDate)
+            endDate = request.form['categoryEndDateFrame']
+            print(endDate)
+            report = mongo.db.report.find( {"$and":[{ "category_name":category }, {"date":{ "$gte": startDate,"$lt":endDate }}]})           
         number_of_reports = report.count()
         page_size = 10
         numOfPages = number_of_reports/page_size
