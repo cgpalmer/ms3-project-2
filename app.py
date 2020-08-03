@@ -542,7 +542,16 @@ def search_db_reports():
             extraLocation = request.form['extraLocationSearchWithBuilding']
             print(extraLocation)
             if extraLocation == "all":
-                report = mongo.db.report.find( {"building":building_name } )
+                useTimeFrame = request.form['useTimeFrame']
+                if useTimeFrame == "No":
+                    print("see All")
+                    report = mongo.db.report.find( {"building":building_name } )
+                else:
+                    startDate = request.form['StartDateLocation']
+                    print(startDate)
+                    endDate = request.form['allEndDateLocation']
+                    print(endDate)
+                    report = mongo.db.report.find({"$and": [{"building":building_name }, {"date":{ "$gte": startDate,"$lt":endDate }}]})                
                 number_of_reports = report.count()
                 print(number_of_reports)
                 page_size = 10
@@ -558,8 +567,17 @@ def search_db_reports():
                     pages.append(page)
                 return render_template('userSearchResult.html', report=report, collapsibles=numOfPagesRounded, pages=pages)
             else:
-                extraLocationValue = request.form[extraLocation]        
-                report = mongo.db.report.find( { "$and": [ {"building":building_name }, { extraLocation : extraLocationValue} ] } )
+                extraLocationValue = request.form[extraLocation]   
+                useTimeFrame = request.form['useTimeFrame']
+                if useTimeFrame == "No":
+                    print("see All")
+                    report = mongo.db.report.find( { "$and": [ {"building":building_name }, { extraLocation : extraLocationValue} ] } )
+                else:
+                    startDate = request.form['StartDateLocation']
+                    print(startDate)
+                    endDate = request.form['allEndDateLocation']
+                    print(endDate)
+                    report = mongo.db.report.find( { "$and": [ {"building":building_name }, { extraLocation : extraLocationValue},{"date":{ "$gte": startDate,"$lt":endDate }} ] } )
                 number_of_reports = report.count()
                 print(number_of_reports)
                 page_size = 10
