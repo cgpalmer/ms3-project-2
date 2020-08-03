@@ -511,9 +511,9 @@ def search_db_reports():
             print("see All")
             report = mongo.db.report.find()
         else:
-            startDate = request.form['categoryStartDateFrame']
+            startDate = request.form['allStartDateFrame']
             print(startDate)
-            endDate = request.form['categoryEndDateFrame']
+            endDate = request.form['allEndDateFrame']
             print(endDate)
             report = mongo.db.report.find({"date":{ "$gte": startDate,"$lt":endDate }})
         number_of_reports = report.count()
