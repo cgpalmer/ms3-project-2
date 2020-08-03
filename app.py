@@ -581,7 +581,19 @@ def search_db_reports():
                 value = request.form['county']    
             else:
                 value = request.form['postcode']
-            report = mongo.db.report.find( {locationType:value } )
+            
+
+            useTimeFrame = request.form['useTimeFrame']
+            print(useTimeFrame)
+            if useTimeFrame == "No":
+                print("see All")
+                report = mongo.db.report.find( {locationType:value } )
+            else:
+                startDate = request.form['startDateLocation']
+                print(startDate)
+                endDate = request.form['endDateLocation']
+                print(endDate)
+                report = mongo.db.report.find( {"$and":[{locationType:value }, {"date":{ "$gte": startDate,"$lt":endDate }}]})           
             print(value)
             number_of_reports = report.count()
             print(number_of_reports)
