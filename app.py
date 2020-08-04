@@ -388,7 +388,7 @@ def logout():
 def search_reports():
     typeOfSearch = request.form['userSearchOwnReports']
     user_email = session.get("email")
-    if typeOfSearch == "seeAllReports":
+    if typeOfSearch == "all":
         print("see All")
         report = mongo.db.report.find({"email": user_email})
         number_of_reports = report.count()
@@ -408,7 +408,7 @@ def search_reports():
         
 
 
-    elif typeOfSearch == "seeReportByLocation":
+    elif typeOfSearch == "location":
         print("see location")
         locationType = request.form['locationType']
         print(locationType)
@@ -468,7 +468,7 @@ def search_reports():
                 pages.append(page)
             return render_template('userSearchResult.html', report=report, collapsibles=numOfPagesRounded, pages=pages)
 
-    elif typeOfSearch == "seeReportByDate":
+    elif typeOfSearch == "date":
         print("see date")
         startDate = request.form['startDate']
         endDate = request.form['endDate']
