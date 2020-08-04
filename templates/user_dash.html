@@ -65,23 +65,18 @@
     <li>
       <div class="collapsible-header"><i class="material-icons">edit</i>Manage old reports</div>
       <div class="collapsible-body">       
-            <form method="POST" action="{{ url_for('search_reports') }}">
-                    <label for="userSearchOwnSeeAll">
-                            <input id="userSearchOwnSeeAll" type="radio" name="userSearchOwnReports" value="seeAllReports" required>
-                            <span>Show all of my reports</span>
-                    </label>
-                    <label for="userSearchOwnbyLocation">
-                            <input id="userSearchOwnbyLocation" type="radio" name="userSearchOwnReports" value="seeReportByLocation">
-                            <span>Search my reports by location</span>
-                    </label>
-                    <label for="userSearchOwnbyDate">
-                            <input id="userSearchOwnbyDate" type="radio" name="userSearchOwnReports" value="seeReportByDate">
-                            <span>Search my reports by date</span>
-                    </label>
-                    <label for="userSearchOwnbyDiscrimination">
-                            <input id="userSearchOwnbyDiscrimination" type="radio" name="userSearchOwnReports" value="seeReportByDiscrimination">
-                            <span>Search my reports by discrimination</span>
-                    </label>
+            <form id="userSearchForm" method="POST" action="{{ url_for('search_reports') }}">
+            <div class="input-field col s12">
+                        <select name="userSearchOwnReports" required>
+                            <option value="" disabled selected>Choose a search type</option>
+                            
+                                <option>Show all of my reports</option>
+                                <option>Search my reports by location</option>
+                                <option>Search my reports by date</option>
+                                <option>Search my reports by discrimination</option>
+                         
+                        </select>
+                    </div>
                     <div class="input-field col s12">
                         <select name="category">
                             <option value="" disabled selected>Category</option>
