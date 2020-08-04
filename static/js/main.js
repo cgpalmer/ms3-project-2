@@ -56,8 +56,8 @@ $('#userSearchType').change(function(){
         }
     else {
         console.log("discrimination");
-        $(".userSearchCategory").removeClass('hidden');
-        $("#userSearchExtraLocation, .locationOptions, .dateOptions").addClass('hidden');
+        $("#userSearchCategory").removeClass('hidden');
+        $("#userSearchExtraLocation, #userSearchLocationType, .locationOptions, .dateOptions").addClass('hidden');
     }
 						
 });
