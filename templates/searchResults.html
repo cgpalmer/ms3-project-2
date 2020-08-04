@@ -3,7 +3,7 @@
 
   <ul class="collapsible ">
     <li>
-      <div class="collapsible-header"><i class="material-icons">add_circle</i>Search by discrimination</div>
+      <div class="collapsible-header searchDbCollapsible"><i class="material-icons">add_circle</i>Search by discrimination</div>
       <div class="collapsible-body">
         <form method="POST" action="{{ url_for('search_db_reports') }}">
                   
@@ -24,7 +24,7 @@
 
                     <div class="input-field col s12">
                          <p>Would you like to search within a time frame?</p>
-                        <select id="categoryTimeFrame" name="useTimeFrame">
+                        <select id="categoryTimeFrame" class="timeFrameChoice" name="useTimeFrame">
                             
                                 
                                 <option value="Yes">Yes</option>
@@ -55,7 +55,7 @@
     </li>
   
     <li>
-      <div class="collapsible-header"><i class="material-icons">edit</i>Search by Location</div>
+      <div class="collapsible-header searchDbCollapsible"><i class="material-icons">edit</i>Search by Location</div>
       <div class="collapsible-body">       
             <form method="POST" action="{{ url_for('search_db_reports') }}">
                     
@@ -157,7 +157,7 @@
      
     </li>
     <li>
-      <div class="collapsible-header"><i class="material-icons">search</i>Search by reported incidents</div>
+      <div class="collapsible-header searchDbCollapsible"><i class="material-icons">search</i>Search by reported incidents</div>
         <div class="collapsible-body">  
             <form method="POST" action="{{ url_for('search_db_reports') }}">
        
@@ -202,7 +202,7 @@
     </li>
 
       <li>
-      <div class="collapsible-header"><i class="material-icons">search</i>Search all</div>
+      <div class="collapsible-header searchDbCollapsible"><i class="material-icons">search</i>Search all</div>
       <div class="collapsible-body">  
             <form method="POST" action="{{ url_for('search_db_reports') }}">
        
