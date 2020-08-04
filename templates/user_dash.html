@@ -20,31 +20,18 @@
                 <input type="email" class="" id="email" name="email" value="{{currentUserEmail}}" placeholder="Email">
             </div>         
             <div class="input-field">
-                <select class="" id="category" name="category_name">
+                <select class="" id="category" name="category_name" required>
                 <option disabled selected value="">Choose category</option> 
                 {% for category in categories %}
                         <option id="{{category.category_name}}" value="{{category.category_name}}">{{category.category_name}}</option>
                 {% endfor %}
                 </select>
             </div>
-            <div id="addCategoryChoice" class="input-field">
-                <input type="text" class="" rows="10" id="otherCategory" name="new_category_name" placeholder="Please enter a new category"></textarea>
-            </div>
-            <div id="subCategoryChoices" class="input-field">
-            
-                <select class="" id="sub_category" name="sub_category">
-                    <option disabled selected value="">If Xenophobia then choose sub-category</option>
-
-                    {% for sub in sub_category %}
-                        <option value="{{sub.sub_category}}">{{sub.sub_category}}</option>
-                    {% endfor %}
-                </select>
-            </div>
-            <div id="addSubCategoryChoice" class="input-field">
-                <input type="text" class="" id="otherSubCategory" name="new_sub_category" placeholder="Please enter a new sub category"></textarea>
-            </div>
+           
+           
+           
             <div class="input-field">
-                <textarea class="materialize-textarea" id="incident_description" name="incident_description" placeholder="Incident description"></textarea>
+                <textarea class="materialize-textarea" id="incident_description" name="incident_description" placeholder="Incident description" required></textarea>
             </div>
             <div class="input-field">
                 <input type="text" class="" id="building" name="building" placeholder="Building">
@@ -107,7 +94,7 @@
 
 
                     <div class="input-field col s12">
-                        <select name="locationType">
+                        <select name="locationType" required>
                             <option value="" disabled selected>Choose location type</option>
                             
                                 <option>building</option>
