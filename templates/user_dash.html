@@ -67,7 +67,7 @@
       <div class="collapsible-body">       
             <form id="userSearchForm" method="POST" action="{{ url_for('search_reports') }}">
             <div class="input-field col s12">
-                        <select name="userSearchOwnReports" required>
+                        <select id="userSearchType" name="userSearchOwnReports" required>
                             <option value="" disabled selected>Choose a search type</option>
                             
                                 <option>Show all of my reports</option>
@@ -77,7 +77,7 @@
                          
                         </select>
                     </div>
-                    <div class="input-field col s12">
+                    <div class="input-field col s12 hidden">
                         <select name="category">
                             <option value="" disabled selected>Category</option>
                             {% for category in category %}
@@ -88,7 +88,7 @@
                     </div>
 
 
-                    <div class="input-field col s12">
+                    <div class="input-field col s12 hidden">
                         <select name="locationType" required>
                             <option value="" disabled selected>Choose location type</option>
                             
@@ -100,7 +100,7 @@
                         </select>
                     </div>
 
-                    <div class="input-field col s12">
+                    <div class="input-field col s12 hidden">
                         <select name="extraLocationSearchWithBuilding">
                             <option value="" disabled selected>Extra option for when building is selected.</option>
                            
@@ -113,7 +113,7 @@
                     </div>
 
 
-                    <div class="input-field col s12">
+                    <div class="input-field col s12 hidden">
                         <select name="building">
                             <option value="" disabled selected>Building</option>
                             {% for building in building %}
@@ -121,7 +121,7 @@
                             {% endfor %}
                         </select>
                     </div>
-                    <div class="input-field col s12">
+                    <div class="input-field col s12 hidden">
                         <select name="city">
                             <option value="" disabled selected>City</option>
                             {% for cities in city %}
@@ -129,7 +129,7 @@
                             {% endfor %}
                         </select>
                     </div>
-                    <div class="input-field col s12">
+                    <div class="input-field col s12 hidden">
                         <select name="county">
                             <option value="" disabled selected>County</option>
                             {% for county in county %}
@@ -137,7 +137,7 @@
                             {% endfor %}
                         </select>
                     </div>
-                    <div class="input-field col s12">
+                    <div class="input-field col s12 hidden">
                         <select name="postcode">
                             <option value="" disabled selected>Postcode</option>
                             {% for postcode in postcode %}
@@ -146,11 +146,11 @@
                         </select>
                     </div>
 
-                    <div class="input-field col s12">
+                    <div class="input-field col s12 hidden">
                         <label for="startDate">Start Date</label>
                         <input type="text" id="date" name="startDate" class="datepicker">
                     </div>
-                    <div class="input-field col s12">
+                    <div class="input-field col s12 hidden">
                         <label for="endDate">End Date</label>
                         <input type="text" name="endDate" id="date" class="datepicker">
                     </div>
