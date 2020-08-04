@@ -113,7 +113,7 @@
                     </div>
 
 
-                    <div class="input-field col s12 hidden locationOptions">
+                    <div id="buildingLocation" class="input-field col s12 hidden locationOptions ">
                         <select name="building">
                             <option value="" disabled selected>Building</option>
                             {% for building in building %}
@@ -121,7 +121,7 @@
                             {% endfor %}
                         </select>
                     </div>
-                    <div class="input-field col s12 hidden locationOptions">
+                    <div id="cityLocation" class="input-field col s12 hidden locationOptions">
                         <select name="city">
                             <option value="" disabled selected>City</option>
                             {% for cities in city %}
@@ -129,7 +129,7 @@
                             {% endfor %}
                         </select>
                     </div>
-                    <div class="input-field col s12 hidden locationOptions">
+                    <div id="countyLocation" class="input-field col s12 hidden locationOptions">
                         <select name="county">
                             <option value="" disabled selected>County</option>
                             {% for county in county %}
@@ -137,7 +137,7 @@
                             {% endfor %}
                         </select>
                     </div>
-                    <div class="input-field col s12 hidden locationOptions">
+                    <div id="postcodeLocation" class="input-field col s12 hidden locationOptions">
                         <select name="postcode">
                             <option value="" disabled selected>Postcode</option>
                             {% for postcode in postcode %}
