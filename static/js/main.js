@@ -9,15 +9,15 @@ $("#categoryCollapsible").click(function(){
  });
 
 $("#locationCollapsible").click(function(){
-    collapsibleChoice = "location"
+    collapsibleChoice = ".locationTimeFrameDisplay"
  });
 
 $("#reportedCollapsible").click(function(){
-    collapsibleChoice = "reported"
+    collapsibleChoice = ".reportedTimeFrameDisplay"
  });
 
  $("#allCollapsible").click(function(){
-    collapsibleChoice = "all"
+    collapsibleChoice = ".allTimeFrameDisplay"
     
  });
 
