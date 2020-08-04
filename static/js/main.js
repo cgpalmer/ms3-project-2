@@ -50,10 +50,14 @@ $('#userSearchType').change(function(){
             console.log("location");
         }
     else if (val == "date") {
+        $(".dateOptions").removeClass('hidden');
+        $("#userSearchCategory, #userSearchLocationType, #userSearchExtraLocation, .locationOptions").addClass('hidden');
             console.log("date");
         }
     else {
         console.log("discrimination");
+        $(".userSearchCategory").removeClass('hidden');
+        $("#userSearchExtraLocation, .locationOptions, .dateOptions").addClass('hidden');
     }
 						
 });
