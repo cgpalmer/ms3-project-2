@@ -638,15 +638,19 @@ def search_db_reports():
         if useTimeFrame == "No":
             print("see All")
             report = mongo.db.report.find( { "category_name":category } )
+            reportedReportsCount = mongo.db.report.find( {"$and":[{ "category_name":category }, {"report_to_authorities": "Yes"}] }).count()
         else:
             startDate = request.form['categoryStartDateFrame']
             print(startDate)
             endDate = request.form['categoryEndDateFrame']
             print(endDate)
-            report = mongo.db.report.find( {"$and":[{ "category_name":category }, {"date":{ "$gte": startDate,"$lte":endDate }}]})           
+            report = mongo.db.report.find( {"$and":[{ "category_name":category }, {"date":{ "$gte": startDate,"$lte":endDate }}]}) 
+            reportedReportsCount = mongo.db.report.find( {"$and":[{ "category_name":category }, {"report_to_authorities": "Yes"}, {"date":{ "$gte": startDate,"$lte":endDate }}]}).count()           
         number_of_reports = report.count()
         calculatePercentageDb = (number_of_reports/totalReportsCount)*100
         percentageOfDb = round(calculatePercentageDb)
+        reportedReportsPercentage = (reportedReportsCount/number_of_reports)*100
+        reportedReports = round(reportedReportsPercentage)
         page_size = 10
         numOfPages = number_of_reports/page_size
         numOfPagesRounded = math.ceil(numOfPages)
@@ -659,7 +663,7 @@ def search_db_reports():
         for x in range(numOfPagesRounded):
             page = mongo.db.report.find( { "category_name":category }).skip(int(x+1)*10).limit(page_size)
             pages.append(page)
-        return render_template('userSearchResult.html',  percentageOfDb=percentageOfDb, report=report, collapsibles=numOfPagesRounded, pages=pages)
+        return render_template('userSearchResult.html', reportedReports=reportedReports, percentageOfDb=percentageOfDb, report=report, collapsibles=numOfPagesRounded, pages=pages)
     else:
         print("see reported")
         reportedToAuthorities = request.form['searchReported']
