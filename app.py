@@ -196,12 +196,11 @@ def dashboard():
         total=mongo.db.report.find({"email": user}).count()
         category = mongo.db.report.find({"email": user}).distinct("category_name")
         building = mongo.db.report.find({"email": user}).distinct("building")
-        userSub_category = mongo.db.report.find({"email": user}).distinct("sub_category")
         city = mongo.db.report.find({"email": user}).distinct("city")
         county = mongo.db.report.find({"email": user}).distinct("county")
         postcode = mongo.db.report.find({"email": user}).distinct("postcode")        
         return render_template('user_dash.html', name=userName, categories=mongo.db.categories.find(),
-                           sub_category=mongo.db.sub_category.find(), currentUserEmail=user, postcode=postcode, city=city, county=county, building=building, userSub_category=userSub_category, category=category, total=total)
+                           currentUserEmail=user, postcode=postcode, city=city, county=county, building=building, category=category, total=total)
 
 
 #####################################################
@@ -721,12 +720,12 @@ def search_report():
     total=mongo.db.report.find().count()
     category = mongo.db.report.find().distinct("category_name")
     building = mongo.db.report.find().distinct("building")
-    userSub_category = mongo.db.report.find().distinct("sub_category")
+    
     city = mongo.db.report.find().distinct("city")
     county = mongo.db.report.find().distinct("county")
     postcode = mongo.db.report.find().distinct("postcode")        
     return render_template('searchResults.html', categories=mongo.db.categories.find(),
-                           sub_category=mongo.db.sub_category.find(), postcode=postcode, city=city, county=county, building=building, userSub_category=userSub_category, category=category, total=total) 
+                            postcode=postcode, city=city, county=county, building=building, category=category, total=total) 
 
 
 #######################################################################
@@ -739,11 +738,11 @@ def add_report():
         currentUserEmail = "anonymous"
         print(currentUserEmail)
         return render_template("add_report.html", currentUserEmail=currentUserEmail, categories=mongo.db.categories.find(),
-                           sub_category=mongo.db.sub_category.find(),
+                           
                            )
     else:
         return render_template("add_report.html", currentUserEmail=currentUserEmail, categories=mongo.db.categories.find(),
-                           sub_category=mongo.db.sub_category.find(),
+                           
                            )
 
 @app.route('/insert_report', methods=['GET','POST'])
@@ -764,9 +763,9 @@ def user_modify(report_id):
     the_report = mongo.db.report.find_one({"_id": ObjectId(report_id)})
     print(the_report)
     available_categories = mongo.db.categories.find()
-    available_sub_categories = mongo.db.sub_category.find()
+    
     currentUserEmail = session.get("email")
-    return render_template('user_modify.html', currentUserEmail=currentUserEmail, report=the_report, categories=available_categories, sub_category=available_sub_categories)
+    return render_template('user_modify.html', currentUserEmail=currentUserEmail, report=the_report, categories=available_categories)
 
 @app.route('/edit_report/<report_id>', methods=["POST"])
 def edit_report(report_id):
@@ -777,9 +776,6 @@ def edit_report(report_id):
                   'email': request.form.get('email'),
                   'username': request.form.get('username'),
                   'category_name': request.form.get('category_name'),
-                  'new_category_name': request.form.get('new_category_name'),
-                  'sub_category': request.form.get('sub_category'),
-                  'new_sub_category': request.form.get('new_sub_category'),
                   'incident_description': request.form.get('incident_description'),
                   'building': request.form.get('building'),
                   'street': request.form.get('street'),
@@ -796,10 +792,11 @@ def edit_report(report_id):
 @app.route('/confirm_delete_report/<report_id>')
 def confirm_delete_report(report_id):
     the_report = mongo.db.report.find_one({"_id": ObjectId(report_id)})
+    ###################### Check this is needed?
     available_categories = mongo.db.categories.find()
-    available_sub_categories = mongo.db.sub_category.find()
+    
 
-    return render_template('confirm_delete.html', report=the_report, categories=available_categories, sub_category=available_sub_categories)
+    return render_template('confirm_delete.html', report=the_report, categories=available_categories)
 
 
 @app.route('/delete_report/<report_id>', methods=["POST"])
