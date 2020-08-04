@@ -1,5 +1,17 @@
 //  Js to narrow down user choice when submitting forms.
  
+ $(".timeFrameChoice").change(function() {
+     var val = $(this).val();
+     if (val == "Yes") {
+            $(".timeFrame").removeClass('hidden');
+        }
+    else {
+            $(".timeFrame").addClass('hidden');
+        }
+ });
+
+
+
  $("#category").change(function() {
         var val = $(this).val();
         if (val == "Xenophobia") {
@@ -14,6 +26,8 @@
             $("#subCategoryChoices, #addCategoryChoice, #addSubCategoryChoice").css("display", "none");
         }
  });
+
+ 
 
  $("#sub_category").change(function() {
         var val = $(this).val();
@@ -60,16 +74,9 @@ $("#seePassword").click(function(){
 
 
 // //   Matching passwords
-
-
-
-// // There is a console error on this. 
-
-
+ 
 // In here add the code to put a tick next to the password box once it is a certain length.
-
-
-     // Live validating the password
+    // Live validating the password
     $("#password").click(function(){  
     var password = document.getElementById('password')
     password.onkeyup = function(){
