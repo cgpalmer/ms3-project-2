@@ -86,10 +86,28 @@ $('#locationType').change(function(){
      }
 });
 
-$('#locationType').change(function(){
+$('#extraLocationChoice').change(function(){
     var val = $(this).val();
-     
+     if (val == "postcode") {
+        $("#postcodeLocation").removeClass('hidden');
+        $("#countyLocation, #cityLocation").addClass('hidden');
+     }
+     else {
+         if (val == "city") {
+            $("#cityLocation").removeClass('hidden');
+            $("#countyLocation, #postcodeLocation").addClass('hidden');
+        }
+        else if (val == "county"){
+            $("#countyLocation").removeClass('hidden');
+            $("#cityLocation, #postcodeLocation").addClass('hidden');
+        }
+
+        else{
+             $("#postcodeLocation, #cityLocation, #postcodeLocation").addClass('hidden');                        
+        }
+     }
 });
+
 
 // //  Signup page
 
