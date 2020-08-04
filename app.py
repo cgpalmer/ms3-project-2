@@ -148,14 +148,14 @@ def check_password():
                 print("this is the salt")
                 print(login_name)
                 hashPassword(login_password, stored_salt)
-                # hash_login_password = hashlib.pbkdf2_hmac(
-                # 'sha256', # The hash digest algorithm for HMAC
-                # login_password.encode('utf-8'), # Convert the password to bytes
-                # stored_salt, # Provide the salt
-                # 100000, # It is recommended to use at least 100,000 iterations of SHA-256 
-                # dklen=128 # Get a 128 byte key
-                # )
-                # print(hash_login_password)
+                hash_login_password = hashlib.pbkdf2_hmac(
+                    'sha256', # The hash digest algorithm for HMAC
+                    login_password.encode('utf-8'), # Convert the password to bytes
+                    stored_salt, # Provide the salt
+                    100000, # It is recommended to use at least 100,000 iterations of SHA-256 
+                    dklen=128 # Get a 128 byte key
+                )
+                print(hash_login_password)
         
                 if stored_password == hash_login_password:
                     print("match")
@@ -720,7 +720,6 @@ def search_report():
     total=mongo.db.report.find().count()
     category = mongo.db.report.find().distinct("category_name")
     building = mongo.db.report.find().distinct("building")
-    
     city = mongo.db.report.find().distinct("city")
     county = mongo.db.report.find().distinct("county")
     postcode = mongo.db.report.find().distinct("postcode")        
