@@ -46,6 +46,7 @@ $('#userSearchType').change(function(){
          }
     else if (val == "location") {
         $("#userSearchLocationType").removeClass('hidden');
+        $("#userSearchCategory, #userSearchExtraLocation, .locationOptions, .dateOptions").addClass('hidden');
             console.log("location");
         }
     else if (val == "date") {
