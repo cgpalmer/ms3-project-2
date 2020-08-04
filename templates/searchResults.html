@@ -3,7 +3,7 @@
 
   <ul class="collapsible ">
     <li>
-      <div class="collapsible-header searchDbCollapsible"><i class="material-icons">add_circle</i>Search by discrimination</div>
+      <div id="categoryCollapsible" class="collapsible-header "><i class="material-icons">add_circle</i>Search by discrimination</div>
       <div class="collapsible-body">
         <form method="POST" action="{{ url_for('search_db_reports') }}">
                   
@@ -33,11 +33,11 @@
                         </select>
                     </div>
 
-                    <div class="input-field col s12 timeFrame hidden">
+                    <div class="input-field col s12 catTimeFrameDisplay hidden">
                         <label for="startDate">Start Date</label>
                         <input type="text" id="date" name="categoryStartDateFrame" class="datepicker">
                     </div>
-                    <div class="input-field col s12 timeFrame hidden">
+                    <div class="input-field col s12 catTimeFrameDisplay hidden">
                         <label for="endDate">End Date</label>
                         <input type="text" name="categoryEndDateFrame" id="categoryEndDateFrame" class="datepicker">
                     </div>
