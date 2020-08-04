@@ -1,3 +1,5 @@
+//  Js to narrow down user choice when submitting forms.
+ 
  $("#category").change(function() {
         var val = $(this).val();
         if (val == "Xenophobia") {
@@ -64,24 +66,25 @@ $("#seePassword").click(function(){
 // // There is a console error on this. 
 
 
-// // In here add the code to put a tick next to the password box once it is a certain length.
+// In here add the code to put a tick next to the password box once it is a certain length.
 
 
-    //  // Live validating the password
-    // var password = document.getElementById('password')
-    // password.onkeyup = function(){
-    // var passw = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}$/;
-    // var input = document.getElementById('password')
-    //     if(input.value.match(passw))
-    //         {
-    //         $("#validatedPassword").removeClass('hidden');
-    //         }
-    //     else
-    //         {
-    //         $("#validatedPassword").addClass('hidden');
-    //         }
-    // }
-
+     // Live validating the password
+    $("#password").click(function(){  
+    var password = document.getElementById('password')
+    password.onkeyup = function(){
+    var passw = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}$/;
+    var input = document.getElementById('password')
+        if(input.value.match(passw))
+            {
+            $("#validatedPassword").removeClass('hidden');
+            }
+        else
+            {
+            $("#validatedPassword").addClass('hidden');
+            }
+    }
+ });
 
 
 // Animations
