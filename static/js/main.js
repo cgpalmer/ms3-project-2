@@ -87,33 +87,10 @@ $("#seePassword").click(function(){
 // Animations
 // Search page
 
-$("#searchLinkBasic").click(function(){ 
-    $('#basicSearchForm'). attr('action', "/search_report_parameter");
-    $('#basicSearchForm').css('display', 'block');
-    $('#compareSearch').css('display', 'none');
-    $('#orSearch').removeClass('order-sm-1').removeClass('order-sm-2').addClass('order-sm-3');
-    $('#filteredSearch').removeClass('order-sm-2').removeClass('order-sm-3').addClass('order-sm-1');
-    $('#comparedSearch').removeClass('order-sm-3').removeClass('order-sm-1').addClass('order-sm-2');
 
-});
 
-$("#searchLinkFilter").click(function(){ 
-    $('#basicSearchForm'). attr('action', "/and_filter_parameters"); 
-    $('#basicSearchForm').css('display', 'block');
-     $('#compareSearch').css('display', 'none');
-    $('#orSearch').removeClass('order-sm-3').removeClass('order-sm-2').addClass('order-sm-1');
-    $('#comparedSearch').removeClass('order-sm-3').removeClass('order-sm-1').addClass('order-sm-2');
-    $('#filteredSearch').removeClass('order-sm-2').removeClass('order-sm-1').addClass('order-sm-3');
-});
 
-$("#searchLinkCompare").click(function(){ 
-    $('#compareSearch').css('display', 'block');
-    $('#basicSearchForm').css('display', 'none');
-    $('#orSearch').removeClass('order-sm-3').removeClass('order-sm-2').addClass('order-sm-1');
-    $('#filteredSearch').removeClass('order-sm-2').removeClass('order-sm-1').addClass('order-sm-3');
-    $('#comparedSearch').removeClass('order-sm-2').removeClass('order-sm-1').addClass('order-sm-3');
-    
-});
+
 
 // Materialize
 
@@ -133,11 +110,7 @@ $("#searchLinkCompare").click(function(){
         }
     );
   });
-
-
-
- 
-       
+   
 
  $(document).ready(function(){
     $('.sidenav').sidenav();
