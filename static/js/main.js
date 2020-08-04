@@ -62,7 +62,16 @@ $('#userSearchType').change(function(){
 						
 });
 
-
+$('#locationType').change(function(){
+    var val = $(this).val();
+     if (val == "building") {
+         console.log("building");
+         $("#userSearchExtraLocation").removeClass('hidden');
+     }
+     else {
+         $("#userSearchExtraLocation").addClass('hidden');
+     }
+});
 
 // //  Signup page
 
