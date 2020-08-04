@@ -502,7 +502,7 @@ def search_reports():
 
 @app.route('/search_db_reports', methods=['GET', 'POST'])
 def search_db_reports():
-
+    totalReportsCount = mongo.db.report.find().count()
     typeOfSearch = request.form['userSearchReports']
     if typeOfSearch == "searchAll":
         useTimeFrame = request.form['useTimeFrame']
@@ -643,8 +643,10 @@ def search_db_reports():
             print(startDate)
             endDate = request.form['categoryEndDateFrame']
             print(endDate)
-            report = mongo.db.report.find( {"$and":[{ "category_name":category }, {"date":{ "$gte": startDate,"$lt":endDate }}]})           
+            report = mongo.db.report.find( {"$and":[{ "category_name":category }, {"date":{ "$gte": startDate,"$lte":endDate }}]})           
         number_of_reports = report.count()
+        calculatePercentageDb = (number_of_reports/totalReportsCount)*100
+        percentageOfDb = round(calculatePercentageDb)
         page_size = 10
         numOfPages = number_of_reports/page_size
         numOfPagesRounded = math.ceil(numOfPages)
@@ -657,7 +659,7 @@ def search_db_reports():
         for x in range(numOfPagesRounded):
             page = mongo.db.report.find( { "category_name":category }).skip(int(x+1)*10).limit(page_size)
             pages.append(page)
-        return render_template('userSearchResult.html', report=report, collapsibles=numOfPagesRounded, pages=pages)
+        return render_template('userSearchResult.html',  percentageOfDb=percentageOfDb, report=report, collapsibles=numOfPagesRounded, pages=pages)
     else:
         print("see reported")
         reportedToAuthorities = request.form['searchReported']
