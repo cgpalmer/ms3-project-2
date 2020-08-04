@@ -1,7 +1,9 @@
-//  Js to narrow down user choice when submitting forms.
+
 let collapsibleChoice;
 let timeFrame;
 
+//  Js to narrow down user choice when submitting forms.
+// Searching the db
 $("#categoryCollapsible").click(function(){
     collapsibleChoice = "category"
     timeFrame = ".catTimeFrameDisplay"
@@ -34,7 +36,26 @@ $("#reportedCollapsible").click(function(){
  });
 
 
+// User dash - search js
 
+$('#userSearchType').change(function(){
+     var val = $(this).val();
+     if (val == "all") {
+     $("#userSearchCategory, #userSearchLocationType, #userSearchExtraLocation, .locationOptions, .dateOptions").addClass('hidden');
+
+         }
+    else if (val == "location") {
+        $("#userSearchLocationType").removeClass('hidden');
+            console.log("location");
+        }
+    else if (val == "date") {
+            console.log("date");
+        }
+    else {
+        console.log("discrimination");
+    }
+						
+});
 
 
 
