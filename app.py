@@ -661,6 +661,18 @@ def search_db_reports():
     else:
         print("see reported")
         reportedToAuthorities = request.form['searchReported']
+        useTimeFrame = request.form['useTimeFrame']
+        print(useTimeFrame)
+        if useTimeFrame == "No":
+            print("see All")
+            report = mongo.db.report.find({"report_to_authorities": reportedToAuthorities }  )
+        else:
+            startDate = request.form['reportedStartDateFrame']
+            print(startDate)
+            endDate = request.form['reportedEndDateFrame']
+            print(endDate)
+            report = mongo.db.report.find( {"$and":[{"report_to_authorities": reportedToAuthorities } , {"date":{ "$gte": startDate,"$lt":endDate }}]})           
+
         report = mongo.db.report.find(  {"report_to_authorities": reportedToAuthorities } )
         print(report)
         number_of_reports = report.count()
