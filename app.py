@@ -663,7 +663,7 @@ def search_db_reports():
         for x in range(numOfPagesRounded):
             page = mongo.db.report.find( { "category_name":category }).skip(int(x+1)*10).limit(page_size)
             pages.append(page)
-        return render_template('userSearchResult.html', reportedReports=reportedReports, percentageOfDb=percentageOfDb, report=report, collapsibles=numOfPagesRounded, pages=pages)
+        return render_template('userSearchResult.html', number_of_reports=number_of_reports, reportedReports=reportedReports, percentageOfDb=percentageOfDb, report=report, collapsibles=numOfPagesRounded, pages=pages)
     else:
         print("see reported")
         reportedToAuthorities = request.form['searchReported']
