@@ -67,10 +67,28 @@ $('#locationType').change(function(){
      if (val == "building") {
          console.log("building");
          $("#userSearchExtraLocation").removeClass('hidden');
+         $("#postcodeLocation, #countyLocation, #cityLocation").addClass('hidden');
      }
      else {
-         $("#userSearchExtraLocation").addClass('hidden');
+         if (val == "city") {
+            $("#cityLocation").removeClass('hidden');
+            $("#userSearchExtraLocation, #countyLocation, #postcodeLocation").addClass('hidden');
+        }
+        else if (val == "county"){
+            $("#countyLocation").removeClass('hidden');
+            $("#userSearchExtraLocation, #cityLocation, #postcodeLocation").addClass('hidden');
+        }
+
+        else{
+            $("#postcodeLocation").removeClass('hidden');
+            $("#userSearchExtraLocation, #countyLocation, #cityLocation").addClass('hidden');
+        }
      }
+});
+
+$('#locationType').change(function(){
+    var val = $(this).val();
+     
 });
 
 // //  Signup page
