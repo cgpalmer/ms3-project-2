@@ -127,6 +127,9 @@ def insert_name():
 @app.route('/login')
 def login():
     return render_template("login.html")
+
+def hash_a_password_to_check_it_is_correct(stored_salt, login_password):
+      
     
 @app.route('/check_password', methods=['POST'])
 def check_password():
