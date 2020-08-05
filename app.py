@@ -384,6 +384,9 @@ def logout():
 
 # Reading reports
 
+
+
+
 @app.route('/search_reports', methods=['GET', 'POST'])
 def search_reports():
     typeOfSearch = request.form['userSearchOwnReports']
@@ -392,12 +395,7 @@ def search_reports():
         print("see All")
         report = mongo.db.report.find({"email": user_email})
         number_of_reports = report.count()
-        print(number_of_reports)
-        page_size = 10
-        numOfPages = number_of_reports/page_size
-        numOfPagesRounded = math.ceil(numOfPages)
-        print(numOfPages)
-        print(numOfPagesRounded)
+        numOfPagesRounded = percentage(report)
         pages = []
         page1 = mongo.db.report.find({"email": user_email}).limit(page_size)
         pages.append(page1)
@@ -509,6 +507,16 @@ def search_reports():
         return render_template('userSearchResult.html', report=report, collapsibles=numOfPagesRounded, pages=pages)
 
 
+def get_number_of_pages_from_search(report):
+    print("function called")
+    number_of_reports = report.count()
+    print(number_of_reports)
+    page_size = 10
+    numOfPages = number_of_reports/page_size
+    numOfPagesRounded = math.ceil(numOfPages)
+    print(numOfPages)
+    print(numOfPagesRounded)
+    return numOfPagesRounded
 
 
 @app.route('/search_db_reports', methods=['GET', 'POST'])
@@ -527,14 +535,10 @@ def search_db_reports():
             endDate = request.form['allEndDateFrame']
             print(endDate)
             report = mongo.db.report.find({"date":{ "$gte": startDate,"$lt":endDate }})
-        number_of_reports = report.count()
-        print(number_of_reports)
-        page_size = 10
-        numOfPages = number_of_reports/page_size
-        numOfPagesRounded = math.ceil(numOfPages)
-        print(numOfPages)
-        print(numOfPagesRounded)
+       
+        numOfPagesRounded = get_number_of_pages_from_search(report)        
         pages = []
+        page_size = 10
         page1 = mongo.db.report.find().limit(page_size)
         pages.append(page1)
         for x in range(numOfPagesRounded):
