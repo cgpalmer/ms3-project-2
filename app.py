@@ -220,13 +220,10 @@ def userSetting():
         return redirect(url_for('login'))
     else:
         current_user = session.get("email")
-        user = mongo.db.user_credentials.find_one({"user_email": current_user})
-        for k,v in user.items():
-            if k == 'user_password':
-                user_password = v
-                user_email = session.get('email') 
-                preferred_name = session.get('name')    
-                return render_template("settings.html", user_email=user_email, user_password=user_password, preferred_name=preferred_name)
+        user_password = get_user_password(current_user)
+        user_email = session.get('email') 
+        preferred_name = session.get('name')    
+        return render_template("settings.html", user_email=user_email, user_password=user_password, preferred_name=preferred_name)
 
 def hashing_a_new_password(new_password, salt):
     hash_new_password = hashlib.pbkdf2_hmac(
