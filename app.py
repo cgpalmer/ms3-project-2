@@ -24,6 +24,36 @@ app.config["MONGO_DBNAME"] = "projectDB"
 comparison_number = None
 
 mongo = PyMongo(app)
+
+def is_new_password_valid(new_password):
+    print("function activated")
+    while True:   
+        if (len(new_password)<8): 
+            flag = -1
+            break
+        elif not re.search("[a-z]", new_password): 
+            flag = -1
+            break
+        elif not re.search("[A-Z]", new_password): 
+            flag = -1
+            break
+        elif not re.search("[0-9]", new_password): 
+            flag = -1
+            break
+        elif re.search("\s", new_password): 
+            flag = -1
+            break
+        else:
+            flag = 0
+            print("Valid Password") 
+            break
+    print("flag value in function")
+    print(flag)
+    return flag
+
+
+
+
 # Initial home page
 @app.route('/')
 @app.route('/homepage')
@@ -69,27 +99,8 @@ def creating_user():
         check_username_availibility = mongo.db.user_credentials.find_one({"user_email": new_username})
         print(check_username_availibility)
         if check_username_availibility == None:
-            while True:   
-                if (len(new_password)<8): 
-                    flag = -1
-                    break
-                elif not re.search("[a-z]", new_password): 
-                    flag = -1
-                    break
-                elif not re.search("[A-Z]", new_password): 
-                    flag = -1
-                    break
-                elif not re.search("[0-9]", new_password): 
-                    flag = -1
-                    break
-                elif re.search("\s", new_password): 
-                    flag = -1
-                    break
-                else:
-                    flag = 0
-                    print("Valid Password") 
-                    break
-        
+            flag = is_new_password_valid(new_password) 
+            print(flag)       
             if flag ==-1: 
                 print("Not a Valid Password")
                 flash('Please use a valid password')
@@ -205,7 +216,6 @@ def userSetting():
         for k,v in user.items():
             if k == 'user_password':
                 user_password = v
-
                 user_email = session.get('email') 
                 preferred_name = session.get('name')    
                 return render_template("settings.html", user_email=user_email, user_password=user_password, preferred_name=preferred_name)
@@ -221,6 +231,7 @@ def hashing_a_new_password(new_password, salt):
     return hash_new_password
 
 
+
 @app.route('/changeDetails', methods=['POST'])
 def changeDetails():
     if session.get("email") is None:
@@ -233,27 +244,9 @@ def changeDetails():
             salt = os.urandom(32)
             # Validating the new password
             new_password = request.form['updatePassword']
-            while True:   
-                if (len(new_password)<8): 
-                    flag = -1
-                    break
-                elif not re.search("[a-z]", new_password): 
-                    flag = -1
-                    break
-                elif not re.search("[A-Z]", new_password): 
-                    flag = -1
-                    break
-                elif not re.search("[0-9]", new_password): 
-                    flag = -1
-                    break
-                elif re.search("\s", new_password): 
-                    flag = -1
-                    break
-                else:
-                    flag = 0
-                    print("Valid Password") 
-                    break
-        
+            flag = is_new_password_valid(new_password)
+            print("This is the flag")
+            print(flag)
             if flag ==-1: 
                 print("Not a Valid Password")
                 flash('Please use a valid password')
