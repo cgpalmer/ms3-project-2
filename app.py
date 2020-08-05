@@ -314,8 +314,8 @@ def delete_user():
         return redirect(url_for('login'))
     else:
         current_user = session.get('email')
-        deletePassword = request.form['deletePassword']
-        print(deletePassword)
+        login_password = request.form['deletePassword']
+    
         user = mongo.db.user_credentials.find_one({"user_email": current_user})
         for k,v in user.items():
             if k == 'user_password':
@@ -326,17 +326,10 @@ def delete_user():
                 stored_salt = v
                 print("this is the salt")
                 print(stored_salt)
-                    
-                hash_delete_password = hashlib.pbkdf2_hmac(
-                'sha256', # The hash digest algorithm for HMAC
-                deletePassword.encode('utf-8'), # Convert the password to bytes
-                stored_salt, # Provide the salt
-                100000, # It is recommended to use at least 100,000 iterations of SHA-256 
-                dklen=128 # Get a 128 byte key
-                )
-                print(hash_delete_password)
 
-                if hash_delete_password == user_password:
+
+                hash_login_password = hash_a_password_to_check_it_is_correct(stored_salt, login_password)
+                if hash_login_password == user_password:
                     mongo.db.user_credentials.delete_one({"user_email": current_user})
                     flash('We are sorry to see you go, but come back any time!')
                     session.pop("email", None)
