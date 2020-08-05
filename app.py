@@ -52,8 +52,7 @@ def is_new_password_valid(new_password):
     return flag
 
 def get_user_password(current_user):
-    user = mongo.db.user_credentials.find_one({"user_email": current_user})
-    for k,v in user.items():
+    for k,v in current_user.items():
         if k == 'user_password':
             user_password = v
             print("this has been reach")
@@ -61,8 +60,7 @@ def get_user_password(current_user):
     return user_password
 
 def get_user_password_salt(current_user):
-    user = mongo.db.user_credentials.find_one({"user_email": current_user})
-    for k,v in user.items():
+    for k,v in current_user.items():
         if k == 'salt':
             stored_salt = v
             print("this is the salt")
@@ -70,8 +68,7 @@ def get_user_password_salt(current_user):
     return stored_salt
 
 def get_user_login_name(current_user):
-    user = mongo.db.user_credentials.find_one({"user_email": current_user})
-    for k,v in user.items():
+    for k,v in current_user.items():
         login_name = v
     return login_name
 
