@@ -417,13 +417,10 @@ def search_reports():
             print(extraLocation)
             if extraLocation == "all":
                 report = mongo.db.report.find( { "$and": [ {"email": user_email}, { "building":building_name } ] } )
-                number_of_reports = report.count()
+                
                 print(number_of_reports)
                 page_size = 10
-                numOfPages = number_of_reports/page_size
-                numOfPagesRounded = math.ceil(numOfPages)
-                print(numOfPages)
-                print(numOfPagesRounded)
+                numOfPagesRounded = percentage(report)
                 pages = []
                 page1 = mongo.db.report.find( { "$and": [ {"email": user_email}, { "building":building_name } ] } ).limit(page_size)
                 pages.append(page1)
@@ -434,13 +431,10 @@ def search_reports():
             else:
                 extraLocationValue = request.form[extraLocation]        
                 report = mongo.db.report.find( { "$and": [ {"email": user_email}, { "building":building_name }, { extraLocation : extraLocationValue} ] } )
-                number_of_reports = report.count()
+              
                 print(number_of_reports)
                 page_size = 10
-                numOfPages = number_of_reports/page_size
-                numOfPagesRounded = math.ceil(numOfPages)
-                print(numOfPages)
-                print(numOfPagesRounded)
+                numOfPagesRounded = percentage(report)
                 pages = []
                 page1 = mongo.db.report.find( { "$and": [ {"email": user_email}, { "building":building_name }, { extraLocation : extraLocationValue} ] } ).limit(page_size)
                 pages.append(page1)
@@ -567,13 +561,9 @@ def search_db_reports():
                     endDate = request.form['allEndDateLocation']
                     print(endDate)
                     report = mongo.db.report.find({"$and": [{"building":building_name }, {"date":{ "$gte": startDate,"$lt":endDate }}]})                
-                number_of_reports = report.count()
-                print(number_of_reports)
+               
                 page_size = 10
-                numOfPages = number_of_reports/page_size
-                numOfPagesRounded = math.ceil(numOfPages)
-                print(numOfPages)
-                print(numOfPagesRounded)
+                numOfPagesRounded = get_number_of_pages_from_search(report)        
                 pages = []
                 page1 = mongo.db.report.find( {"building":building_name } ).limit(page_size)
                 pages.append(page1)
@@ -593,13 +583,9 @@ def search_db_reports():
                     endDate = request.form['allEndDateLocation']
                     print(endDate)
                     report = mongo.db.report.find( { "$and": [ {"building":building_name }, { extraLocation : extraLocationValue},{"date":{ "$gte": startDate,"$lt":endDate }} ] } )
-                number_of_reports = report.count()
-                print(number_of_reports)
+                numOfPagesRounded = get_number_of_pages_from_search(report)        
                 page_size = 10
-                numOfPages = number_of_reports/page_size
-                numOfPagesRounded = math.ceil(numOfPages)
-                print(numOfPages)
-                print(numOfPagesRounded)
+               
                 pages = []
                 page1 = mongo.db.report.find( { "$and": [ {"building":building_name }, { extraLocation : extraLocationValue} ] } ).limit(page_size)
                 pages.append(page1)
@@ -627,14 +613,9 @@ def search_db_reports():
                 endDate = request.form['endDateLocation']
                 print(endDate)
                 report = mongo.db.report.find( {"$and":[{locationType:value }, {"date":{ "$gte": startDate,"$lt":endDate }}]})           
-            print(value)
-            number_of_reports = report.count()
-            print(number_of_reports)
+            numOfPagesRounded = get_number_of_pages_from_search(report)        
             page_size = 10
-            numOfPages = number_of_reports/page_size
-            numOfPagesRounded = math.ceil(numOfPages)
-            print(numOfPages)
-            print(numOfPagesRounded)
+           
             pages = []
             page1 = mongo.db.report.find( {locationType:value } ).limit(page_size)
             pages.append(page1)
@@ -667,11 +648,7 @@ def search_db_reports():
         reportedReportsPercentage = (reportedReportsCount/number_of_reports)*100
         reportedReports = round(reportedReportsPercentage)
         page_size = 10
-        numOfPages = number_of_reports/page_size
-        numOfPagesRounded = math.ceil(numOfPages)
-        print(numOfPages)
-        print(numOfPagesRounded)
-        print(category)
+        numOfPagesRounded = get_number_of_pages_from_search(report)        
         pages = []
         page1 = mongo.db.report.find( { "category_name":category }).limit(page_size)
         pages.append(page1)
@@ -696,13 +673,9 @@ def search_db_reports():
 
         report = mongo.db.report.find(  {"report_to_authorities": reportedToAuthorities } )
         print(report)
-        number_of_reports = report.count()
-        print(number_of_reports)
+        numOfPagesRounded = get_number_of_pages_from_search(report)  
         page_size = 10
-        numOfPages = number_of_reports/page_size
-        numOfPagesRounded = math.ceil(numOfPages)
-        print(numOfPages)
-        print(numOfPagesRounded)
+        
         pages = []
         page1 = mongo.db.report.find(  {"report_to_authorities": reportedToAuthorities } ).limit(page_size)
         pages.append(page1)
