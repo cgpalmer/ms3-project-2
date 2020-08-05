@@ -179,17 +179,6 @@ def check_password():
                     return render_template('login.html')
 
 
-def hashPassword(login_password, stored_salt):
-    hash_login_password = hashlib.pbkdf2_hmac(
-                'sha256', # The hash digest algorithm for HMAC
-                login_password.encode('utf-8'), # Convert the password to bytes
-                stored_salt, # Provide the salt
-                100000, # It is recommended to use at least 100,000 iterations of SHA-256 
-                dklen=128 # Get a 128 byte key
-                )
-    return redirect(url_for('check_password'))
-
-
 ############################################################
 # Dashboard
 
