@@ -129,7 +129,14 @@ def login():
     return render_template("login.html")
 
 def hash_a_password_to_check_it_is_correct(stored_salt, login_password):
-      
+    hash_login_password = hashlib.pbkdf2_hmac(
+                    'sha256', # The hash digest algorithm for HMAC
+                    login_password.encode('utf-8'), # Convert the password to bytes
+                    stored_salt, # Provide the salt
+                    100000, # It is recommended to use at least 100,000 iterations of SHA-256 
+                    dklen=128 # Get a 128 byte key
+                )
+    return hash_login_password
     
 @app.route('/check_password', methods=['POST'])
 def check_password():
@@ -150,15 +157,16 @@ def check_password():
                 login_name = v
                 print("this is the salt")
                 print(login_name)
-                hash_login_password = hashlib.pbkdf2_hmac(
-                    'sha256', # The hash digest algorithm for HMAC
-                    login_password.encode('utf-8'), # Convert the password to bytes
-                    stored_salt, # Provide the salt
-                    100000, # It is recommended to use at least 100,000 iterations of SHA-256 
-                    dklen=128 # Get a 128 byte key
-                )
-                print(hash_login_password)
+                # hash_login_password = hashlib.pbkdf2_hmac(
+                #     'sha256', # The hash digest algorithm for HMAC
+                #     login_password.encode('utf-8'), # Convert the password to bytes
+                #     stored_salt, # Provide the salt
+                #     100000, # It is recommended to use at least 100,000 iterations of SHA-256 
+                #     dklen=128 # Get a 128 byte key
+                # )
+                
                 hash_login_password = hash_a_password_to_check_it_is_correct(stored_salt, login_password)
+                print(hash_login_password)
                 if stored_password == hash_login_password:
                     print("match")
                     session["email"] = login_email
