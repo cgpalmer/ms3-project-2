@@ -156,15 +156,7 @@ def check_password():
             if k == 'name':
                 login_name = v
                 print("this is the salt")
-                print(login_name)
-                # hash_login_password = hashlib.pbkdf2_hmac(
-                #     'sha256', # The hash digest algorithm for HMAC
-                #     login_password.encode('utf-8'), # Convert the password to bytes
-                #     stored_salt, # Provide the salt
-                #     100000, # It is recommended to use at least 100,000 iterations of SHA-256 
-                #     dklen=128 # Get a 128 byte key
-                # )
-                
+                print(login_name)              
                 hash_login_password = hash_a_password_to_check_it_is_correct(stored_salt, login_password)
                 print(hash_login_password)
                 if stored_password == hash_login_password:
@@ -283,16 +275,10 @@ def changeDetails():
                         print("this is the salt")
                         print(stored_salt)
 
-                        current_password = request.form['confirmCurrentPass']
-        
-                        hash_current_password = hashlib.pbkdf2_hmac(
-                        'sha256', # The hash digest algorithm for HMAC
-                        current_password.encode('utf-8'), # Convert the password to bytes
-                        stored_salt, # Provide the salt
-                        100000, # It is recommended to use at least 100,000 iterations of SHA-256 
-                        dklen=128 # Get a 128 byte key
-                        )
-                        if hash_current_password == stored_password:
+                        login_password = request.form['confirmCurrentPass']
+
+                        hash_login_password = hash_a_password_to_check_it_is_correct(stored_salt, login_password)
+                        if hash_login_password == stored_password:
                             mongo.db.user_credentials.update_one({"user_email": currentEmail},{"$set": {"user_password": hash_updated_password, "salt": salt}})
                             flash("Password updated")
                             return redirect(url_for('userSetting'))
