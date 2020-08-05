@@ -51,7 +51,29 @@ def is_new_password_valid(new_password):
     print(flag)
     return flag
 
+def get_user_password(current_user):
+    user = mongo.db.user_credentials.find_one({"user_email": current_user})
+    for k,v in user.items():
+        if k == 'user_password':
+            user_password = v
+            print("this has been reach")
+            print(user_password)
+    return user_password
 
+def get_user_password_salt(current_user):
+    user = mongo.db.user_credentials.find_one({"user_email": current_user})
+    for k,v in user.items():
+        if k == 'salt':
+            stored_salt = v
+            print("this is the salt")
+            print(stored_salt)
+    return stored_salt
+
+def get_user_login_name(current_user):
+    user = mongo.db.user_credentials.find_one({"user_email": current_user})
+    for k,v in user.items():
+        login_name = v
+    return login_name
 
 
 # Initial home page
@@ -148,32 +170,21 @@ def check_password():
     login_email = request.form['login_username']  
     login_password = request.form['login_password']
     print(login_password)
-    user = mongo.db.user_credentials.find_one({"user_email": login_email})
-    for k,v in user.items():
-        if k != "_id":
-            if k == 'user_password':
-                stored_password = v
-                print(stored_password)
-            if k == 'salt':
-                stored_salt = v
-                print("this is the salt")
-                print(stored_salt)
-            if k == 'name':
-                login_name = v
-                print("this is the salt")
-                print(login_name)              
-                hash_login_password = hash_a_password_to_check_it_is_correct(stored_salt, login_password)
-                print(hash_login_password)
-                if stored_password == hash_login_password:
-                    print("match")
-                    session["email"] = login_email
-                    username = session.get("email")
-                    session["name"] = login_name
-                   
-                    return redirect(url_for('dashboard'))
-                else:
-                    print("no match")
-                    return render_template('login.html')
+    current_user = mongo.db.user_credentials.find_one({"user_email": login_email})
+    stored_password = get_user_password(current_user)
+    stored_salt = get_user_password_salt(current_user)
+    login_name = get_user_login_name(current_user)
+    hash_login_password = hash_a_password_to_check_it_is_correct(stored_salt, login_password)
+    print(hash_login_password)
+    if stored_password == hash_login_password:
+        print("match")
+        session["email"] = login_email
+        username = session.get("email")
+        session["name"] = login_name              
+        return redirect(url_for('dashboard'))
+    else:
+        print("no match")
+        return render_template('login.html')
 
 
 ############################################################
@@ -306,25 +317,6 @@ def changeDetails():
             mongo.db.user_credentials.update_one({"user_email": currentEmail},{"$set": {"name": updated_name}})        
             return "user wants to update their name"
     
-
-def get_user_password(current_user):
-    user = mongo.db.user_credentials.find_one({"user_email": current_user})
-    for k,v in user.items():
-        if k == 'user_password':
-            user_password = v
-            print("this has been reach")
-            print(user_password)
-    return user_password
-
-def get_user_password_salt(current_user):
-    user = mongo.db.user_credentials.find_one({"user_email": current_user})
-    for k,v in user.items():
-        if k == 'salt':
-                stored_salt = v
-                print("this is the salt")
-                print(stored_salt)
-    return stored_salt
-
 
 
 @app.route('/delete_user', methods=['POST'])
