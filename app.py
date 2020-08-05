@@ -168,10 +168,21 @@ def check_password():
 ############################################################
 # Dashboard
 
+def is_user_logged_in():
+    if session.get("email") is None:
+        logged_in = "no"
+        return logged_in
+    else: 
+        logged_in = "yes"
+        return logged_in
+
+
 #dashboard
 @app.route('/dashboard')
-def dashboard():
-    if session.get("email") is None:
+def dashboard(): 
+    logged_in = is_user_logged_in()
+    print(logged_in)
+    if logged_in == "no":
         flash('Please login to see all of our amazing features')
         return redirect(url_for('login'))
     else: 
@@ -185,7 +196,7 @@ def dashboard():
         county = mongo.db.report.find({"email": user}).distinct("county")
         postcode = mongo.db.report.find({"email": user}).distinct("postcode")        
         return render_template('user_dash.html', name=userName, categories=mongo.db.categories.find(),
-                           currentUserEmail=user, postcode=postcode, city=city, county=county, building=building, category=category, total=total)
+                        currentUserEmail=user, postcode=postcode, city=city, county=county, building=building, category=category, total=total)
 
 
 #####################################################
