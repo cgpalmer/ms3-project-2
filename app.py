@@ -512,6 +512,14 @@ def get_number_of_pages_from_search(report):
     print(numOfPagesRounded)
     return numOfPagesRounded
 
+def calculate_percentage_of_report_in_db(report, totalReportsCount):
+    print("calculate_percentage reached")
+    number_of_reports = report.count()
+    calculatePercentageDb = (number_of_reports/totalReportsCount)*100
+    percentageOfDb = round(calculatePercentageDb)
+    
+    return percentageOfDb
+
 
 @app.route('/search_db_reports', methods=['GET', 'POST'])
 def search_db_reports():
@@ -642,11 +650,10 @@ def search_db_reports():
             print(endDate)
             report = mongo.db.report.find( {"$and":[{ "category_name":category }, {"date":{ "$gte": startDate,"$lte":endDate }}]}) 
             reportedReportsCount = mongo.db.report.find( {"$and":[{ "category_name":category }, {"report_to_authorities": "Yes"}, {"date":{ "$gte": startDate,"$lte":endDate }}]}).count()           
-        number_of_reports = report.count()
-        calculatePercentageDb = (number_of_reports/totalReportsCount)*100
-        percentageOfDb = round(calculatePercentageDb)
-        reportedReportsPercentage = (reportedReportsCount/number_of_reports)*100
-        reportedReports = round(reportedReportsPercentage)
+        numberof_reports = report.count()
+        percentageOfDb = calculate_percentage_of_report_in_db(report, totalReportsCount)
+        # reportedReportsPercentage = (reportedReportsCount/number_of_reports)*100
+        # reportedReports = round(reportedReportsPercentage)
         page_size = 10
         numOfPagesRounded = get_number_of_pages_from_search(report)        
         pages = []
