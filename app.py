@@ -147,7 +147,6 @@ def check_password():
                 login_name = v
                 print("this is the salt")
                 print(login_name)
-                hashPassword(login_password, stored_salt)
                 hash_login_password = hashlib.pbkdf2_hmac(
                     'sha256', # The hash digest algorithm for HMAC
                     login_password.encode('utf-8'), # Convert the password to bytes
@@ -156,7 +155,7 @@ def check_password():
                     dklen=128 # Get a 128 byte key
                 )
                 print(hash_login_password)
-        
+                hash_login_password = hash_a_password_to_check_it_is_correct(stored_salt, login_password)
                 if stored_password == hash_login_password:
                     print("match")
                     session["email"] = login_email
@@ -500,6 +499,8 @@ def search_reports():
             pages.append(page)
         return render_template('userSearchResult.html', report=report, collapsibles=numOfPagesRounded, pages=pages)
 
+#####################################################
+# Functions
 
 def get_number_of_pages_from_search(report):
     print("function called")
