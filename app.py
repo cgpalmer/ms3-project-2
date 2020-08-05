@@ -316,6 +316,15 @@ def get_user_password(current_user):
             print(user_password)
     return user_password
 
+def get_user_password_salt(current_user):
+    user = mongo.db.user_credentials.find_one({"user_email": current_user})
+    for k,v in user.items():
+        if k == 'salt':
+                stored_salt = v
+                print("this is the salt")
+                print(stored_salt)
+    return stored_salt
+
 
 
 @app.route('/delete_user', methods=['POST'])
@@ -326,29 +335,20 @@ def delete_user():
     else:
         current_user = session.get('email')
         login_password = request.form['deletePassword']
-        user_password = get_user_password(current_user)
+        
         user = mongo.db.user_credentials.find_one({"user_email": current_user})
-        for k,v in user.items():
-            # if k == 'user_password':
-            #     user_password = v
-            #     print("this has been reach")
-            #     print(user_password)
-            if k == 'salt':
-                stored_salt = v
-                print("this is the salt")
-                print(stored_salt)
-
-
-                hash_login_password = hash_a_password_to_check_it_is_correct(stored_salt, login_password)
-                if hash_login_password == user_password:
-                    mongo.db.user_credentials.delete_one({"user_email": current_user})
-                    flash('We are sorry to see you go, but come back any time!')
-                    session.pop("email", None)
-                    session.pop("name", None)
-                    return redirect(url_for('signup'))
-                else:
-                    flash('Password incorrect')
-                    return redirect(url_for('dashboard'))
+        stored_salt = get_user_password_salt(current_user)
+        user_password = get_user_password(current_user)
+        hash_login_password = hash_a_password_to_check_it_is_correct(stored_salt, login_password)
+        if hash_login_password == user_password:
+            mongo.db.user_credentials.delete_one({"user_email": current_user})
+            flash('We are sorry to see you go, but come back any time!')
+            session.pop("email", None)
+            session.pop("name", None)
+            return redirect(url_for('signup'))
+        else:
+            flash('Password incorrect')
+            return redirect(url_for('dashboard'))
                 
 
 ###################################################################
