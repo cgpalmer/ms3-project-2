@@ -94,15 +94,9 @@ def creating_user():
                 print("Not a Valid Password")
                 flash('Please use a valid password')
                 return redirect(url_for('signup'))
-
-            print(new_password)
-            hash_new_password = hashlib.pbkdf2_hmac(
-            'sha256', # The hash digest algorithm for HMAC
-            new_password.encode('utf-8'), # Convert the password to bytes
-            salt, # Provide the salt
-            100000, # It is recommended to use at least 100,000 iterations of SHA-256 
-            dklen=128 # Get a 128 byte key
-            )
+            
+            hash_new_password = hashing_a_new_password(new_password, salt)
+            
             mongo.db.user_credentials.insert_one({"user_email": new_username, "user_password": hash_new_password, "salt": salt})
             session["email"] = new_username
             return render_template("preferredName.html")
