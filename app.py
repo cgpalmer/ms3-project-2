@@ -307,6 +307,17 @@ def changeDetails():
             return "user wants to update their name"
     
 
+def get_user_password(current_user):
+    user = mongo.db.user_credentials.find_one({"user_email": current_user})
+    for k,v in user.items():
+        if k == 'user_password':
+            user_password = v
+            print("this has been reach")
+            print(user_password)
+    return user_password
+
+
+
 @app.route('/delete_user', methods=['POST'])
 def delete_user():
     if session.get("email") is None:
@@ -315,13 +326,13 @@ def delete_user():
     else:
         current_user = session.get('email')
         login_password = request.form['deletePassword']
-    
+        user_password = get_user_password(current_user)
         user = mongo.db.user_credentials.find_one({"user_email": current_user})
         for k,v in user.items():
-            if k == 'user_password':
-                user_password = v
-                print("this has been reach")
-                print(user_password)
+            # if k == 'user_password':
+            #     user_password = v
+            #     print("this has been reach")
+            #     print(user_password)
             if k == 'salt':
                 stored_salt = v
                 print("this is the salt")
