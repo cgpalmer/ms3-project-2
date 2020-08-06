@@ -328,6 +328,7 @@ def changeDetails():
                 print(check_username_availibility)
                 if check_username_availibility == None: 
                     mongo.db.user_credentials.update_one({"user_email": currentEmail},{"$set": {"user_email": updated_email}})
+                    mongo.db.report.update_many({"email": currentEmail},{"$set": {"email": updated_email}})
                     flash("Email updated.")
                     session.pop("email", None)
                     session["email"] = updated_email
