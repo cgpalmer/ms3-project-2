@@ -705,7 +705,7 @@ def get_report():
 # This is the OG screen with one search box as default.
 @app.route('/search_report')
 def search_report():
-    
+    total = mongo.db.report.find().count()
     category = mongo.db.report.find().distinct("category_name")
     building = mongo.db.report.find().distinct("building")
     city = mongo.db.report.find().distinct("city")
