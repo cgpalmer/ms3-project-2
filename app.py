@@ -683,8 +683,13 @@ def search_db_reports():
             print(endDate)
             report = mongo.db.report.find( {"$and":[{"report_to_authorities": reportedToAuthorities } , {"date":{ "$gte": startDate,"$lt":endDate }}]})           
             reportedReportsCount = mongo.db.report.find( {"$and":[{"report_to_authorities": reportedToAuthorities }, {"report_to_authorities": "Yes"}, {"date":{ "$gte": startDate,"$lte":endDate }}]}).count()           
-        report = mongo.db.report.find(  {"report_to_authorities": reportedToAuthorities } )
+        
         print(report)
+        # Statistics 
+        number_of_reports = report.count()
+        percentageOfDb = calculate_percentage_of_report_in_db(report, totalReportsCount)
+        reportedReports = calculate_percentage_of_search_reported_to_authorities(report, reportedReportsCount)
+        # Pagination
         numOfPagesRounded = get_number_of_pages_from_search(report)  
         page_size = 10
         
@@ -694,7 +699,7 @@ def search_db_reports():
         for x in range(numOfPagesRounded):
             page = mongo.db.report.find(  {"report_to_authorities": reportedToAuthorities } ).skip(int(x+1)*10).limit(page_size)
             pages.append(page)
-        return render_template('userSearchResult.html', report=report, collapsibles=numOfPagesRounded, pages=pages)
+        return render_template('userSearchResult.html', reportedReports=reportedReports, percentageOfDb=percentageOfDb, number_of_reports=number_of_reports, report=report, collapsibles=numOfPagesRounded, pages=pages)
 
 
 
