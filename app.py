@@ -675,13 +675,14 @@ def search_db_reports():
         if useTimeFrame == "No":
             print("see All")
             report = mongo.db.report.find({"report_to_authorities": reportedToAuthorities }  )
+            reportedReportsCount = mongo.db.report.find( {"$and":[{"report_to_authorities": reportedToAuthorities }, {"report_to_authorities": "Yes"}]}).count() 
         else:
             startDate = request.form['reportedStartDateFrame']
             print(startDate)
             endDate = request.form['reportedEndDateFrame']
             print(endDate)
             report = mongo.db.report.find( {"$and":[{"report_to_authorities": reportedToAuthorities } , {"date":{ "$gte": startDate,"$lt":endDate }}]})           
-
+            reportedReportsCount = mongo.db.report.find( {"$and":[{"report_to_authorities": reportedToAuthorities }, {"report_to_authorities": "Yes"}, {"date":{ "$gte": startDate,"$lte":endDate }}]}).count()           
         report = mongo.db.report.find(  {"report_to_authorities": reportedToAuthorities } )
         print(report)
         numOfPagesRounded = get_number_of_pages_from_search(report)  
