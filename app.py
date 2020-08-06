@@ -499,6 +499,7 @@ def search_reports():
 def search_db_reports():
     totalReportsCount = mongo.db.report.find().count()
     typeOfSearch = request.form['userSearchReports']
+    # Search entire db
     if typeOfSearch == "searchAll":
         useTimeFrame = request.form['useTimeFrame']
         print(useTimeFrame)
@@ -507,6 +508,7 @@ def search_db_reports():
             report = mongo.db.report.find()
             reportedReportsCount = mongo.db.report.find({"report_to_authorities": "Yes"}).count()
         else:
+            # Search entire db with time frame
             startDate = request.form['allStartDateFrame']
             print(startDate)
             endDate = request.form['allEndDateFrame']
@@ -514,9 +516,11 @@ def search_db_reports():
             report = mongo.db.report.find({"date":{ "$gte": startDate,"$lt":endDate }})
             reportedReportsCount = mongo.db.report.find( {"$and":[{"date":{ "$gte": startDate,"$lt":endDate }}, {"report_to_authorities": "Yes"}] }).count()
         number_of_reports = report.count()
+        # Statistics for the top of the search page.
         percentageOfDb = calculate_percentage_of_report_in_db(report, totalReportsCount)
         numOfPagesRounded = get_number_of_pages_from_search(report)      
         reportedReports = calculate_percentage_of_search_reported_to_authorities(report, reportedReportsCount) 
+        # Pagination
         pages = []
         page_size = 10
         page1 = mongo.db.report.find().limit(page_size)
@@ -526,30 +530,35 @@ def search_db_reports():
             pages.append(page)
         return render_template('userSearchResult.html', percentageOfDb=percentageOfDb, reportedReports=reportedReports, number_of_reports=number_of_reports, report=report, collapsibles=numOfPagesRounded, pages=pages)
 
-
+    # Search db by Location
     elif typeOfSearch == "searchByLocation":
         print("see location")
         locationType = request.form['locationType']
         print(locationType)
+        # Search by building
         if locationType == 'building':
             building_name = request.form['building']
             print(building_name)
             extraLocation = request.form['extraLocationSearchWithBuilding']
             print(extraLocation)
             if extraLocation == "all":
+                # Search buildings in all locations with no time frame
                 useTimeFrame = request.form['useTimeFrame']
                 if useTimeFrame == "No":
                     print("see All")
                     report = mongo.db.report.find( {"building":building_name } )
                 else:
+                    # Search buildings in all locations with time frame
                     startDate = request.form['StartDateLocation']
                     print(startDate)
                     endDate = request.form['allEndDateLocation']
                     print(endDate)
                     report = mongo.db.report.find({"$and": [{"building":building_name }, {"date":{ "$gte": startDate,"$lt":endDate }}]})                
-               
+                    
                 page_size = 10
-                numOfPagesRounded = get_number_of_pages_from_search(report)        
+                percentageOfDb = calculate_percentage_of_report_in_db(report, totalReportsCount)
+                numOfPagesRounded = get_number_of_pages_from_search(report)      
+                reportedReports = calculate_percentage_of_search_reported_to_authorities(report, reportedReportsCount)        
                 pages = []
                 page1 = mongo.db.report.find( {"building":building_name } ).limit(page_size)
                 pages.append(page1)
