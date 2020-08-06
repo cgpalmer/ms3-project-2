@@ -328,15 +328,19 @@ def changeDetails():
                 print(check_username_availibility)
                 if check_username_availibility == None: 
                     mongo.db.user_credentials.update_one({"user_email": currentEmail},{"$set": {"user_email": updated_email}})
-                    return "user wants to update their email"
+                    flash("Email updated.")
+                    return redirect(url_for('userSetting'))
                 else:
-                    return "email taken"
+                    flash("Sorry, that email is taken.")
+                    return redirect(url_for('userSetting'))
             else: 
-                return "Email not valid."
+                flash("Please use a valid email.")
+                return redirect(url_for('userSetting'))
         if changeType == 'name':
             updated_name = request.form['updateName']
-            mongo.db.user_credentials.update_one({"user_email": currentEmail},{"$set": {"name": updated_name}})        
-            return "user wants to update their name"
+            mongo.db.user_credentials.update_one({"user_email": currentEmail},{"$set": {"name": updated_name}})
+            flash("Name updated.")        
+            return redirect(url_for('userSetting'))
     
 
 
@@ -484,7 +488,7 @@ def search_reports():
         number_of_reports = report.count()
         searchingUserDb = "yes"
         page_size = 10
-       
+        numOfPagesRounded = get_number_of_pages_from_search(report)      
         pages = []
         page1 = mongo.db.report.find( { "$and": [ {"email": user_email}, { "category_name":category } ] } ).limit(page_size)
         pages.append(page1)
