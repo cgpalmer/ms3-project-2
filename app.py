@@ -236,8 +236,7 @@ def userSetting():
     else:
         user_email = session.get('email')
         current_user = mongo.db.user_credentials.find_one({"user_email": user_email}) 
-        user_password = get_user_password(current_user)
-    
+        user_password = get_user_password(current_user)   
         preferred_name = session.get('name')    
         return render_template("settings.html", user_email=user_email, user_password=user_password, preferred_name=preferred_name)
 
@@ -361,6 +360,7 @@ def search_reports():
         print("see All")
         report = mongo.db.report.find({"email": user_email})
         number_of_reports = report.count()
+        page_size = 10
         numOfPagesRounded = percentage(report)
         pages = []
         page1 = mongo.db.report.find({"email": user_email}).limit(page_size)
@@ -414,8 +414,7 @@ def search_reports():
             number_of_reports = report.count()
             print(number_of_reports)
             page_size = 10
-            numOfPages = number_of_reports/page_size
-            numOfPagesRounded = math.ceil(numOfPages)
+            
             print(numOfPages)
             print(numOfPagesRounded)
             pages = []
@@ -467,33 +466,6 @@ def search_reports():
         return render_template('userSearchResult.html', report=report, collapsibles=numOfPagesRounded, pages=pages)
 
 #####################################################
-# Functions
-
-def get_number_of_pages_from_search(report):
-    print("function called")
-    number_of_reports = report.count()
-    print(number_of_reports)
-    page_size = 10
-    numOfPages = number_of_reports/page_size
-    numOfPagesRounded = math.ceil(numOfPages)
-    print(numOfPages)
-    print(numOfPagesRounded)
-    return numOfPagesRounded
-
-def calculate_percentage_of_report_in_db(report, totalReportsCount):
-    print("calculate_percentage reached")
-    number_of_reports = report.count()
-    calculatePercentageDb = (number_of_reports/totalReportsCount)*100
-    percentageOfDb = round(calculatePercentageDb)
-    return percentageOfDb
-
-def calculate_percentage_of_search_reported_to_authorities(report, reportedReportsCount):
-    print("calculate_percentage reached for reported")
-    number_of_reports = report.count()
-    reportedReportsPercentage = (reportedReportsCount/number_of_reports)*100
-    reportedReports = round(reportedReportsPercentage)
-    return reportedReports
-
 
 @app.route('/search_db_reports', methods=['GET', 'POST'])
 def search_db_reports():
