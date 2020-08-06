@@ -95,7 +95,6 @@ def hashing_a_new_password(new_password, salt):
 def get_number_of_pages_from_search(report):
     print("function called")
     number_of_reports = report.count()
-    
     page_size = 10
     numOfPages = number_of_reports/page_size
     numOfPagesRounded = math.ceil(numOfPages)
@@ -106,15 +105,22 @@ def get_number_of_pages_from_search(report):
 def calculate_percentage_of_report_in_db(report, totalReportsCount):
     print("calculate_percentage reached")
     number_of_reports = report.count()
-    calculatePercentageDb = (number_of_reports/totalReportsCount)*100
-    percentageOfDb = round(calculatePercentageDb)
+    print(number_of_reports)
+    if number_of_reports == 0:
+        percentageOfDb = "0"
+    else:
+        calculatePercentageDb = (number_of_reports/totalReportsCount)*100
+        percentageOfDb = round(calculatePercentageDb)
     return percentageOfDb
 
 def calculate_percentage_of_search_reported_to_authorities(report, reportedReportsCount):
     print("calculate_percentage reached for reported")
     number_of_reports = report.count()
-    reportedReportsPercentage = (reportedReportsCount/number_of_reports)*100
-    reportedReports = round(reportedReportsPercentage)
+    if number_of_reports == 0:
+        reportedReports = "0"
+    else:
+        reportedReportsPercentage = (reportedReportsCount/number_of_reports)*100
+        reportedReports = round(reportedReportsPercentage)
     return reportedReports
 
 ##########################################
