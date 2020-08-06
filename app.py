@@ -619,9 +619,14 @@ def search_db_reports():
                 print(endDate)
                 report = mongo.db.report.find( {"$and":[{locationType:value }, {"date":{ "$gte": startDate,"$lt":endDate }}]})           
                 reportedReportsCount = mongo.db.report.find( {"$and":[{locationType:value }, {"date":{ "$gte": startDate,"$lt":endDate }}, {"report_to_authorities": "Yes"}] }).count()
+            # Statistics for search results pages
+            number_of_reports = report.count()
+            percentageOfDb = calculate_percentage_of_report_in_db(report, totalReportsCount) 
+            reportedReports = calculate_percentage_of_search_reported_to_authorities(report, reportedReportsCount)        
+             # Pagination
             numOfPagesRounded = get_number_of_pages_from_search(report)        
-            page_size = 10
            
+            page_size = 10
             pages = []
             page1 = mongo.db.report.find( {locationType:value } ).limit(page_size)
             pages.append(page1)
@@ -629,7 +634,7 @@ def search_db_reports():
                 page = mongo.db.report.find( {locationType:value } ).skip(int(x+1)*10).limit(page_size)
                 pages.append(page)
                 print(pages)
-            return render_template('userSearchResult.html', report=report, collapsibles=numOfPagesRounded, pages=pages)              
+            return render_template('userSearchResult.html', reportedReports=reportedReports, percentageOfDb=percentageOfDb, number_of_reports=number_of_reports, report=report, collapsibles=numOfPagesRounded, pages=pages)              
               
 
     elif typeOfSearch == "searchByDiscrimination":
@@ -786,18 +791,7 @@ def delete_report(report_id):
     report.update({'_id': ObjectId(report_id)}, {"$set": {"archive_report": request.form.get('archive')}})
     return redirect(url_for('get_report'))
 
-
-
-
-
-
-
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
     port=int(os.environ.get('PORT')),
     debug=True)
-
-
-
-
-
