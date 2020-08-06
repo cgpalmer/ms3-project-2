@@ -598,7 +598,7 @@ def search_db_reports():
                 for x in range(numOfPagesRounded):
                     page = mongo.db.report.find( { "$and": [ {"building":building_name }, { extraLocation : extraLocationValue} ] } ).skip(int(x+1)*10).limit(page_size)
                     pages.append(page)
-                return render_template('userSearchResult.html', number_of_reports=number_of_reports, percentageOfDb=percentageOfDb, reportedReports=reportedReports report=report, collapsibles=numOfPagesRounded, pages=pages)
+                return render_template('userSearchResult.html', number_of_reports=number_of_reports, percentageOfDb=percentageOfDb, reportedReports=reportedReports, report=report, collapsibles=numOfPagesRounded, pages=pages)
         else:
             if locationType == 'city':
                 value = request.form['city']  
@@ -611,12 +611,14 @@ def search_db_reports():
             if useTimeFrame == "No":
                 print("see All")
                 report = mongo.db.report.find( {locationType:value } )
+                reportedReportsCount = mongo.db.report.find( {"$and":[{locationType:value }, {"report_to_authorities": "Yes"}] }).count()
             else:
                 startDate = request.form['startDateLocation']
                 print(startDate)
                 endDate = request.form['endDateLocation']
                 print(endDate)
                 report = mongo.db.report.find( {"$and":[{locationType:value }, {"date":{ "$gte": startDate,"$lt":endDate }}]})           
+                reportedReportsCount = mongo.db.report.find( {"$and":[{locationType:value }, {"date":{ "$gte": startDate,"$lt":endDate }}, {"report_to_authorities": "Yes"}] }).count()
             numOfPagesRounded = get_number_of_pages_from_search(report)        
             page_size = 10
            
