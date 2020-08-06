@@ -92,6 +92,31 @@ def hashing_a_new_password(new_password, salt):
             ) 
     return hash_new_password
 
+def get_number_of_pages_from_search(report):
+    print("function called")
+    number_of_reports = report.count()
+    
+    page_size = 10
+    numOfPages = number_of_reports/page_size
+    numOfPagesRounded = math.ceil(numOfPages)
+    print(numOfPages)
+    print(numOfPagesRounded)
+    return numOfPagesRounded
+
+def calculate_percentage_of_report_in_db(report, totalReportsCount):
+    print("calculate_percentage reached")
+    number_of_reports = report.count()
+    calculatePercentageDb = (number_of_reports/totalReportsCount)*100
+    percentageOfDb = round(calculatePercentageDb)
+    return percentageOfDb
+
+def calculate_percentage_of_search_reported_to_authorities(report, reportedReportsCount):
+    print("calculate_percentage reached for reported")
+    number_of_reports = report.count()
+    reportedReportsPercentage = (reportedReportsCount/number_of_reports)*100
+    reportedReports = round(reportedReportsPercentage)
+    return reportedReports
+
 ##########################################
 # Routes
 
@@ -356,12 +381,13 @@ def logout():
 def search_reports():
     typeOfSearch = request.form['userSearchOwnReports']
     user_email = session.get("email")
+    totalReportsCount = mongo.db.report.find().count()
     if typeOfSearch == "all":
         print("see All")
         report = mongo.db.report.find({"email": user_email})
         number_of_reports = report.count()
         page_size = 10
-        numOfPagesRounded = percentage(report)
+        numOfPagesRounded = get_number_of_pages_from_search(report)
         pages = []
         page1 = mongo.db.report.find({"email": user_email}).limit(page_size)
         pages.append(page1)
@@ -384,7 +410,7 @@ def search_reports():
             if extraLocation == "all":
                 report = mongo.db.report.find( { "$and": [ {"email": user_email}, { "building":building_name } ] } )
                 
-                print(number_of_reports)
+                
                 page_size = 10
                 numOfPagesRounded = percentage(report)
                 pages = []
@@ -398,7 +424,7 @@ def search_reports():
                 extraLocationValue = request.form[extraLocation]        
                 report = mongo.db.report.find( { "$and": [ {"email": user_email}, { "building":building_name }, { extraLocation : extraLocationValue} ] } )
               
-                print(number_of_reports)
+                
                 page_size = 10
                 numOfPagesRounded = percentage(report)
                 pages = []
@@ -412,18 +438,20 @@ def search_reports():
             value = request.form[locationType]
             report = mongo.db.report.find( { "$and": [ {"email": user_email}, { locationType : value } ] } )
             number_of_reports = report.count()
-            print(number_of_reports)
+            
             page_size = 10
             
-            print(numOfPages)
-            print(numOfPagesRounded)
+            numOfPagesRounded = get_number_of_pages_from_search(report)
+            percentageOfDb = calculate_percentage_of_report_in_db(report, totalReportsCount)
+            reportedReports = calculate_percentage_of_search_reported_to_authorities(report, reportedReportsCount)
+
             pages = []
             page1 = mongo.db.report.find( { "$and": [ {"email": user_email}, { locationType : value } ] } ).limit(page_size)
             pages.append(page1)
             for x in range(numOfPagesRounded):
                 page = mongo.db.report.find( { "$and": [ {"email": user_email}, { locationType : value } ] } ).skip(int(x+1)*10).limit(page_size)
                 pages.append(page)
-            return render_template('userSearchResult.html', report=report, collapsibles=numOfPagesRounded, pages=pages)
+            return render_template('userSearchResult.html', reportedReports=reportedReports, percentageOfDb=percentageOfDb, number_of_reports = number_of_reports, report=report, collapsibles=numOfPagesRounded, pages=pages)
 
     elif typeOfSearch == "date":
         print("see date")
@@ -432,7 +460,7 @@ def search_reports():
         report = mongo.db.report.find( { "$and": [ {"email": user_email}, {"date":{ "$gte": startDate,"$lt":endDate }}  ] } )
         print(report)
         number_of_reports = report.count()
-        print(number_of_reports)
+        
         page_size = 10
         numOfPages = number_of_reports/page_size
         numOfPagesRounded = math.ceil(numOfPages)
@@ -451,7 +479,7 @@ def search_reports():
         print(category)
         report = mongo.db.report.find( { "$and": [ {"email": user_email}, { "category_name":category } ] } ) 
         number_of_reports = report.count()
-        print(number_of_reports)
+        
         page_size = 10
         numOfPages = number_of_reports/page_size
         numOfPagesRounded = math.ceil(numOfPages)
@@ -483,7 +511,7 @@ def search_db_reports():
             endDate = request.form['allEndDateFrame']
             print(endDate)
             report = mongo.db.report.find({"date":{ "$gte": startDate,"$lt":endDate }})
-       
+        
         numOfPagesRounded = get_number_of_pages_from_search(report)        
         pages = []
         page_size = 10
