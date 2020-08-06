@@ -547,6 +547,7 @@ def search_db_reports():
                 if useTimeFrame == "No":
                     print("see All")
                     report = mongo.db.report.find( {"building":building_name } )
+                    reportedReportsCount = mongo.db.report.find( {"$and":[{"building":building_name }, {"report_to_authorities": "Yes"}] }).count()
                 else:
                     # Search buildings in all locations with time frame
                     startDate = request.form['StartDateLocation']
@@ -554,18 +555,22 @@ def search_db_reports():
                     endDate = request.form['allEndDateLocation']
                     print(endDate)
                     report = mongo.db.report.find({"$and": [{"building":building_name }, {"date":{ "$gte": startDate,"$lt":endDate }}]})                
-                    
+                    reportedReportsCount = mongo.db.report.find( {"$and":[{"building":building_name }, {"date":{ "$gte": startDate,"$lt":endDate }}, {"report_to_authorities": "Yes"}] }).count()
+                # Statistics for results page
                 page_size = 10
+                number_of_reports = report.count()
                 percentageOfDb = calculate_percentage_of_report_in_db(report, totalReportsCount)
-                numOfPagesRounded = get_number_of_pages_from_search(report)      
+                    
                 reportedReports = calculate_percentage_of_search_reported_to_authorities(report, reportedReportsCount)        
+                # Pagination
+                numOfPagesRounded = get_number_of_pages_from_search(report)
                 pages = []
                 page1 = mongo.db.report.find( {"building":building_name } ).limit(page_size)
                 pages.append(page1)
                 for x in range(numOfPagesRounded):
                     page = mongo.db.report.find( {"building":building_name } ).skip(int(x+1)*10).limit(page_size)
                     pages.append(page)
-                return render_template('userSearchResult.html', report=report, collapsibles=numOfPagesRounded, pages=pages)
+                return render_template('userSearchResult.html', percentageOfDb=percentageOfDb, number_of_reports=number_of_reports, reportedReports=reportedReports, report=report, collapsibles=numOfPagesRounded, pages=pages)
             else:
                 extraLocationValue = request.form[extraLocation]   
                 useTimeFrame = request.form['useTimeFrame']
