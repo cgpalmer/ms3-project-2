@@ -653,9 +653,11 @@ def search_db_reports():
             print(endDate)
             report = mongo.db.report.find( {"$and":[{ "category_name":category }, {"date":{ "$gte": startDate,"$lte":endDate }}]}) 
             reportedReportsCount = mongo.db.report.find( {"$and":[{ "category_name":category }, {"report_to_authorities": "Yes"}, {"date":{ "$gte": startDate,"$lte":endDate }}]}).count()           
+        # Statistics
         number_of_reports = report.count()
         percentageOfDb = calculate_percentage_of_report_in_db(report, totalReportsCount)
         reportedReports = calculate_percentage_of_search_reported_to_authorities(report, reportedReportsCount)
+        # Pagination
         page_size = 10
         numOfPagesRounded = get_number_of_pages_from_search(report)        
         pages = []
