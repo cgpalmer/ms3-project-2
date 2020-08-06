@@ -414,7 +414,7 @@ def search_reports():
                 searchingUserDb = "yes"
                 
                 page_size = 10
-                numOfPagesRounded = percentage(report)
+                numOfPagesRounded = get_number_of_pages_from_search(report)
                 pages = []
                 page1 = mongo.db.report.find( { "$and": [ {"email": user_email}, { "building":building_name } ] } ).limit(page_size)
                 pages.append(page1)
@@ -429,7 +429,7 @@ def search_reports():
                 searchingUserDb = "yes"
                 
                 page_size = 10
-                numOfPagesRounded = percentage(report)
+                numOfPagesRounded = get_number_of_pages_from_search(report)
                 pages = []
                 page1 = mongo.db.report.find( { "$and": [ {"email": user_email}, { "building":building_name }, { extraLocation : extraLocationValue} ] } ).limit(page_size)
                 pages.append(page1)
@@ -462,10 +462,7 @@ def search_reports():
         number_of_reports = report.count()
         searchingUserDb = "yes"
         page_size = 10
-        numOfPages = number_of_reports/page_size
-        numOfPagesRounded = math.ceil(numOfPages)
-        print(numOfPages)
-        print(numOfPagesRounded)
+        
         pages = []
         page1 = mongo.db.report.find( { "$and": [ {"email": user_email}, {"date":{ "$gte": startDate,"$lt":endDate }}  ] } ).limit(page_size)
         pages.append(page1)
@@ -481,10 +478,7 @@ def search_reports():
         number_of_reports = report.count()
         searchingUserDb = "yes"
         page_size = 10
-        numOfPages = number_of_reports/page_size
-        numOfPagesRounded = math.ceil(numOfPages)
-        print(numOfPages)
-        print(numOfPagesRounded)
+       
         pages = []
         page1 = mongo.db.report.find( { "$and": [ {"email": user_email}, { "category_name":category } ] } ).limit(page_size)
         pages.append(page1)
