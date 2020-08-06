@@ -577,15 +577,18 @@ def search_db_reports():
                 if useTimeFrame == "No":
                     print("see All")
                     report = mongo.db.report.find( { "$and": [ {"building":building_name }, { extraLocation : extraLocationValue} ] } )
+                    reportedReportsCount = mongo.db.report.find( {"$and":[{"building":building_name }, { extraLocation : extraLocationValue}, {"report_to_authorities": "Yes"}] }).count()
                 else:
                     startDate = request.form['StartDateLocation']
                     print(startDate)
                     endDate = request.form['allEndDateLocation']
                     print(endDate)
                     report = mongo.db.report.find( { "$and": [ {"building":building_name }, { extraLocation : extraLocationValue},{"date":{ "$gte": startDate,"$lt":endDate }} ] } )
+                    reportedReportsCount = mongo.db.report.find( {"$and":[{"building":building_name }, { extraLocation : extraLocationValue}, {"date":{ "$gte": startDate,"$lt":endDate }}, {"report_to_authorities": "Yes"}] }).count()
+                
+                
                 numOfPagesRounded = get_number_of_pages_from_search(report)        
                 page_size = 10
-               
                 pages = []
                 page1 = mongo.db.report.find( { "$and": [ {"building":building_name }, { extraLocation : extraLocationValue} ] } ).limit(page_size)
                 pages.append(page1)
@@ -600,8 +603,6 @@ def search_db_reports():
                 value = request.form['county']    
             else:
                 value = request.form['postcode']
-            
-
             useTimeFrame = request.form['useTimeFrame']
             print(useTimeFrame)
             if useTimeFrame == "No":
