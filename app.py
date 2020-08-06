@@ -72,6 +72,29 @@ def get_user_login_name(current_user):
         login_name = v
     return login_name
 
+def hash_a_password_to_check_it_is_correct(stored_salt, login_password):
+    hash_login_password = hashlib.pbkdf2_hmac(
+                    'sha256', # The hash digest algorithm for HMAC
+                    login_password.encode('utf-8'), # Convert the password to bytes
+                    stored_salt, # Provide the salt
+                    100000, # It is recommended to use at least 100,000 iterations of SHA-256 
+                    dklen=128 # Get a 128 byte key
+                )
+    return hash_login_password
+
+def hashing_a_new_password(new_password, salt):
+    hash_new_password = hashlib.pbkdf2_hmac(
+            'sha256', # The hash digest algorithm for HMAC
+            new_password.encode('utf-8'), # Convert the password to bytes
+            salt, # Provide the salt
+            100000, # It is recommended to use at least 100,000 iterations of SHA-256 
+            dklen=128 # Get a 128 byte key
+            ) 
+    return hash_new_password
+
+##########################################
+# Routes
+
 
 # Initial home page
 @app.route('/')
@@ -152,15 +175,7 @@ def insert_name():
 def login():
     return render_template("login.html")
 
-def hash_a_password_to_check_it_is_correct(stored_salt, login_password):
-    hash_login_password = hashlib.pbkdf2_hmac(
-                    'sha256', # The hash digest algorithm for HMAC
-                    login_password.encode('utf-8'), # Convert the password to bytes
-                    stored_salt, # Provide the salt
-                    100000, # It is recommended to use at least 100,000 iterations of SHA-256 
-                    dklen=128 # Get a 128 byte key
-                )
-    return hash_login_password
+
     
 @app.route('/check_password', methods=['POST'])
 def check_password():
@@ -220,21 +235,10 @@ def userSetting():
         return redirect(url_for('login'))
     else:
         current_user = session.get("email")
-        user_password = get_user_password(current_user)
+        user_password = get_user_password(current_user) # fix this with mongo.db.report.find({"email": current_user})  
         user_email = session.get('email') 
         preferred_name = session.get('name')    
         return render_template("settings.html", user_email=user_email, user_password=user_password, preferred_name=preferred_name)
-
-def hashing_a_new_password(new_password, salt):
-    hash_new_password = hashlib.pbkdf2_hmac(
-            'sha256', # The hash digest algorithm for HMAC
-            new_password.encode('utf-8'), # Convert the password to bytes
-            salt, # Provide the salt
-            100000, # It is recommended to use at least 100,000 iterations of SHA-256 
-            dklen=128 # Get a 128 byte key
-            ) 
-    return hash_new_password
-
 
 
 @app.route('/changeDetails', methods=['POST'])
@@ -263,28 +267,20 @@ def changeDetails():
                       
 
             # Checking the current password is correct.
-            user = mongo.db.user_credentials.find_one({"user_email": currentEmail})
-            for k,v in user.items():
-                if k != "_id":
-                    if k == 'user_password':
-                        stored_password = v
-                        print(stored_password)
-                    if k == 'salt':
-                        stored_salt = v
-                        print("this is the salt")
-                        print(stored_salt)
+            current_user = mongo.db.user_credentials.find_one({"user_email": currentEmail})
+            stored_password = get_user_password(current_user)
+            stored_salt = get_user_password_salt(current_user)
+            login_password = request.form['confirmCurrentPass']
+            hash_new_password = hashing_a_new_password(new_password, salt)
+            hash_login_password = hash_a_password_to_check_it_is_correct(stored_salt, login_password)
+            if hash_login_password == stored_password:
+                mongo.db.user_credentials.update_one({"user_email": currentEmail},{"$set": {"user_password": hash_new_password, "salt": salt}})
+                flash("Password updated")
+                return redirect(url_for('userSetting'))
 
-                        login_password = request.form['confirmCurrentPass']
-                        hash_new_password = hashing_a_new_password(new_password, salt)
-                        hash_login_password = hash_a_password_to_check_it_is_correct(stored_salt, login_password)
-                        if hash_login_password == stored_password:
-                            mongo.db.user_credentials.update_one({"user_email": currentEmail},{"$set": {"user_password": hash_new_password, "salt": salt}})
-                            flash("Password updated")
-                            return redirect(url_for('userSetting'))
-
-                        else: 
-                            flash("Incorrect password")
-                            return redirect(url_for('userSetting'))
+            else: 
+                flash("Incorrect password")
+                return redirect(url_for('userSetting'))
 
 
 
