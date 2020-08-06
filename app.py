@@ -234,9 +234,10 @@ def userSetting():
         flash('Please login to see all of our amazing features')
         return redirect(url_for('login'))
     else:
-        current_user = session.get("email")
-        user_password = get_user_password(current_user) # fix this with mongo.db.report.find({"email": current_user})  
-        user_email = session.get('email') 
+        user_email = session.get('email')
+        current_user = mongo.db.user_credentials.find_one({"user_email": user_email}) 
+        user_password = get_user_password(current_user)
+    
         preferred_name = session.get('name')    
         return render_template("settings.html", user_email=user_email, user_password=user_password, preferred_name=preferred_name)
 
