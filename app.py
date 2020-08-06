@@ -329,6 +329,8 @@ def changeDetails():
                 if check_username_availibility == None: 
                     mongo.db.user_credentials.update_one({"user_email": currentEmail},{"$set": {"user_email": updated_email}})
                     flash("Email updated.")
+                    session.pop("email", None)
+                    session["email"] = updated_email
                     return redirect(url_for('userSetting'))
                 else:
                     flash("Sorry, that email is taken.")
@@ -339,7 +341,9 @@ def changeDetails():
         if changeType == 'name':
             updated_name = request.form['updateName']
             mongo.db.user_credentials.update_one({"user_email": currentEmail},{"$set": {"name": updated_name}})
-            flash("Name updated.")        
+            flash("Name updated.") 
+            session.pop("name", None)  
+            session["name"] = updated_name    
             return redirect(url_for('userSetting'))
     
 
