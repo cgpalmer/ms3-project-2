@@ -494,7 +494,7 @@ def search_reports():
         return render_template('userSearchResult.html', report=report, collapsibles=numOfPagesRounded, pages=pages)
 
 #####################################################
-
+# current working
 @app.route('/search_db_reports', methods=['GET', 'POST'])
 def search_db_reports():
     totalReportsCount = mongo.db.report.find().count()
@@ -505,14 +505,18 @@ def search_db_reports():
         if useTimeFrame == "No":
             print("see All")
             report = mongo.db.report.find()
+            reportedReportsCount = mongo.db.report.find({"report_to_authorities": "Yes"}).count()
         else:
             startDate = request.form['allStartDateFrame']
             print(startDate)
             endDate = request.form['allEndDateFrame']
             print(endDate)
             report = mongo.db.report.find({"date":{ "$gte": startDate,"$lt":endDate }})
-        
-        numOfPagesRounded = get_number_of_pages_from_search(report)        
+            reportedReportsCount = mongo.db.report.find( {"$and":[{"date":{ "$gte": startDate,"$lt":endDate }}, {"report_to_authorities": "Yes"}] }).count()
+        number_of_reports = report.count()
+        percentageOfDb = calculate_percentage_of_report_in_db(report, totalReportsCount)
+        numOfPagesRounded = get_number_of_pages_from_search(report)      
+        reportedReports = calculate_percentage_of_search_reported_to_authorities(report, reportedReportsCount) 
         pages = []
         page_size = 10
         page1 = mongo.db.report.find().limit(page_size)
@@ -520,7 +524,7 @@ def search_db_reports():
         for x in range(numOfPagesRounded):
             page = mongo.db.report.find().skip(int(x+1)*10).limit(page_size)
             pages.append(page)
-        return render_template('userSearchResult.html', report=report, collapsibles=numOfPagesRounded, pages=pages)
+        return render_template('userSearchResult.html', percentageOfDb=percentageOfDb, reportedReports=reportedReports, number_of_reports=number_of_reports, report=report, collapsibles=numOfPagesRounded, pages=pages)
 
 
     elif typeOfSearch == "searchByLocation":
