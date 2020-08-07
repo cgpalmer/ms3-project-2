@@ -781,11 +781,11 @@ def insert_report():
 @app.route('/addLocationToReport', methods=['GET','POST'])
 def addLocationToReport():
     reportTimeStamp = request.form['reportTimeStamp']
-    addBuilding = request.form['reportTimeStamp']
-    addStreet = request.form['reportTimeStamp']
-    addCity = request.form['reportTimeStamp']
-    addCounty = request.form['reportTimeStamp']
-    addPostcode = request.form['reportTimeStamp']
+    addBuilding = request.form['building']
+    addStreet = request.form['street']
+    addCity = request.form['city']
+    addCounty = request.form['county']
+    addPostcode = request.form['postcode']
     return render_template('addDateToReport.html', reportTimeStamp=reportTimeStamp)
 
 
