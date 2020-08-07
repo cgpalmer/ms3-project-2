@@ -780,6 +780,12 @@ def insert_report():
 
 @app.route('/addLocationToReport', methods=['GET','POST'])
 def addLocationToReport():
+      
+    currentUserEmail = session.get("email")
+    if currentUserEmail == None:
+        currentUserEmail = "anonymous"
+    else: 
+        currentUserEmail = session.get('email')
     reportTimeStamp = request.form['reportTimeStamp']
     addBuilding = request.form['building']
     addStreet = request.form['street']
