@@ -755,6 +755,10 @@ def add_report():
 @app.route('/insert_report', methods=['GET','POST'])
 def insert_report():
     report = mongo.db.report
+    my_string = str(request.form['date'])
+    print(my_string)
+    my_date = datetime.strptime(my_string, "%Y-%m-%d")
+    print(my_date)
     report.insert_one(request.form.to_dict())
     print(report)
     if session.get("email") is None:
