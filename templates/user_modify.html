@@ -26,35 +26,19 @@
                 {% endfor %}
                 </select>
             </div>
-            <div id="addCategoryChoice" class="input-field">
-                <input type="text" class="" rows="10" id="otherCategory" name="new_category_name" placeholder="Please enter a new category"></textarea>
-            </div>
-            <div id="subCategoryChoices" class="input-field">
-            
-                <select class="" id="sub_category" name="sub_category">
-                    <option selected value="{{report.sub_category}}">If Xenophobia then choose sub-category</option>
-
-                    {% for sub in sub_category %}
-                        <option value="{{sub.sub_category}}">{{sub.sub_category}}</option>
-                    {% endfor %}
-                </select>
-            </div>
-            <div id="addSubCategoryChoice" class="input-field">
-                <input type="text" class="" id="otherSubCategory" name="new_sub_category" placeholder="Please enter a new sub category"></textarea>
+            <div class="input-field">
+                <textarea class="materialize-textarea" id="incident_description" name="incident_description" placeholder="Incident description">{{report.incident_description}}</textarea>
             </div>
             <div class="input-field">
-                <textarea class="materialize-textarea" id="incident_description" name="incident_description" placeholder="Incident description"></textarea>
-            </div>
-            <div class="input-field">
-                <input type="text" class="" id="building" name="building" placeholder="Building">
-                <input type="text" class="" id="street" name="street" placeholder="Street">
-                <input type="text" class="" id="city" name="city" placeholder="City" required>
-                <input type="text" class="" id="county" name="county" placeholder="County">
-                <input type="text" class="" id="postcode" name="postcode" placeholder="Postcode">
+                <input type="text" value="{{report.building}}" class="" id="building" name="building" placeholder="Building">
+                <input type="text" value="{{report.street}}" class="" id="street" name="street" placeholder="Street">
+                <input type="text" value="{{report.city}}" class="" id="city" name="city" placeholder="City" required>
+                <input type="text" value="{{report.county}}" class="" id="county" name="county" placeholder="County">
+                <input type="text" value="{{report.postcode}}" class="" id="postcode" name="postcode" placeholder="Postcode">
             </div>
              <div class="input-field">
                         <label for="Date">Date</label>
-                        <input type="text" name="date" id="date" class="datepicker">
+                        <input type="text" name="date" id="date" value="{{report.date}}" class="datepicker">
                     </div>
             <div>
             
