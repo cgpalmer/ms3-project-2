@@ -124,16 +124,19 @@ $('#searchDbLocationType').change(function(){
      else {
          if (val == "city") {
             $("#searchDbCity").removeClass('hidden');
-            $("#searchDbLocationExtraType, #searchDbCounty, #searchDbPostcode").addClass('hidden');
+            $("#searchDbLocationExtraType, #searchDbCounty, #searchDbPostcode, #searchDbBuilding").addClass('hidden');
+            $('#searchDbLocationExtraTypeOptions').val("");
         }
         else if (val == "county"){
             $("#searchDbCounty").removeClass('hidden');
-            $("#searchDbLocationExtraType, #searchDbCity, #searchDbPostcode").addClass('hidden');
+            $("#searchDbLocationExtraType, #searchDbCity, #searchDbPostcode, #searchDbBuilding").addClass('hidden');
+            $('#searchDbLocationExtraTypeOptions').val("");
         }
 
         else{
             $("#searchDbPostcode").removeClass('hidden');
-            $("#searchDbLocationExtraType, #searchDbCounty, #searchDbCity").addClass('hidden');
+            $("#searchDbLocationExtraType, #searchDbCounty, #searchDbCity, #searchDbBuilding").addClass('hidden');
+            $('#searchDbLocationExtraTypeOptions').val("");
         }
      }
 });
@@ -142,21 +145,21 @@ $('#searchDbLocationExtraTypeOptions').change(function(){
     var val = $(this).val();
      if (val == "postcode") {
          console.log("postcode reached")
-        $("#searchDbPostcode").removeClass('hidden');
+        $("#searchDbPostcode, #searchDbBuilding").removeClass('hidden');
         $("#searchDbCounty, #searchDbCity").addClass('hidden');
      }
      else {
          if (val == "city") {
-            $("#searchDbCity").removeClass('hidden');
+            $("#searchDbCity, #searchDbBuilding").removeClass('hidden');
             $("#searchDbCounty, #searchDbPostcode").addClass('hidden');
         }
         else if (val == "county"){
-            $("#searchDbCounty").removeClass('hidden');
+            $("#searchDbCounty, #searchDbBuilding").removeClass('hidden');
             $("#searchDbCity, #searchDbPostcode").addClass('hidden');
         }
 
         else{
-             $("#searchDbCounty, #searchDbCity, #searchDbPostcode").addClass('hidden');                        
+             $("#searchDbCounty, #searchDbCity, #searchDbPostcode, #searchDbBuilding").addClass('hidden');                        
         }
      }
 });
