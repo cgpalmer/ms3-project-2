@@ -23,15 +23,23 @@
     
    
     <div class="card bg-primary text-white report batch{{x}}">
-                    <p>Category: {{report.category_name}}</p>
-                    <p>Description: {{report.incident_description}}</p>
-                    <p>Building: {{report.building}}</p>
-                    <p>Street: {{report.street}}</p>
-                    <p>City: {{report.city}}</p>
-                    <p>County: {{report.county}}</p>
-                    <p>Postcode: {{report.postcode}}</p>
-                    <p>Date: {{report.date}}</p>
-                    <p>Reported to the authorities: {{report.report_to_authorities}}</p>
+            <p>Category: {{report.category_name}}</p> 
+            <p>Incident Description: {{report.incident_description}}</p>
+            {% if report.building != "" %}
+                <p>Building: {{report.building}}</p>
+            {% endif %} 
+            {% if report.street != "" %}
+                <p>Street: {{report.street}}</p>
+            {% endif %} 
+                <p>City: {{report.city}}</p>
+            {% if report.county != "" %}
+                <p>County: {{report.county}}</p>
+            {% endif %} 
+            {% if report.postcode != "" %}
+                <p>Postcode: {{report.postcode}}</p>
+            {% endif %} 
+            <p>Date: {{report.date}}</p>
+            <p>Reported to the authorities: {{report.report_to_authorities}}</p>
             
             <a class="btn btn-success" href="{{url_for('user_modify', report_id=report._id)}}">Edit</a>
             <a class="btn btn-danger" href="{{url_for('confirm_delete_report', report_id=report._id)}}">Delete</a>
