@@ -809,7 +809,7 @@ def confirm_delete_report(report_id):
 def delete_report(report_id):
     # Trigger a modal of some kind where the user has to input the correct email.
     report = mongo.db.report
-    report.update({'_id': ObjectId(report_id)}, {"$set": {"archive_report": request.form.get('archive')}})
+    report.delete_one({'_id': ObjectId(report_id)})
     return redirect(url_for('dashboard'))
 
 if __name__ == '__main__':
