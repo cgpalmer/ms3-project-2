@@ -761,6 +761,14 @@ def insert_report():
     print(my_string)
     my_date = datetime.strptime(my_string, "%Y-%m-%d")
     print(my_date)
+    timestamp = datetime.timestamp(now)
+    print(timestamp)
+    timestamp2 = datetime.timestamp(my_date)
+    print(timestamp2)
+    if timestamp >= timestamp2:
+        print("This is fine")
+    else: 
+        print("You can't have a date in the future")
     report.insert_one(request.form.to_dict())
     print(report)
     if session.get("email") is None:
