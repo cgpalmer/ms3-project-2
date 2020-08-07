@@ -755,6 +755,8 @@ def add_report():
 @app.route('/insert_report', methods=['GET','POST'])
 def insert_report():
     report = mongo.db.report
+    now = datetime.now()
+    print(now)
     my_string = str(request.form['date'])
     print(my_string)
     my_date = datetime.strptime(my_string, "%Y-%m-%d")
