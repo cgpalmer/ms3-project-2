@@ -103,7 +103,7 @@ $('#extraLocationChoice').change(function(){
         }
 
         else{
-             $("#postcodeLocation, #cityLocation, #postcodeLocation").addClass('hidden');                        
+             $("#countyLocation, #cityLocation, #postcodeLocation").addClass('hidden');                        
         }
      }
 });
