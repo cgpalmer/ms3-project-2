@@ -135,9 +135,10 @@ $('#searchDbLocationType').change(function(){
      }
 });
 
-$('#extraLocationChoice').change(function(){
+$('#searchDbLocationExtraTypeOptions').change(function(){
     var val = $(this).val();
      if (val == "postcode") {
+         console.log("postcode reached")
         $("#searchDbPostcode").removeClass('hidden');
         $("#searchDbCounty, #searchDbCity").addClass('hidden');
      }
@@ -152,7 +153,7 @@ $('#extraLocationChoice').change(function(){
         }
 
         else{
-             $("#searchDbPostcode, #searchDbCity, #searchDbPostcode").addClass('hidden');                        
+             $("#searchDbCounty, #searchDbCity, #searchDbPostcode").addClass('hidden');                        
         }
      }
 });
