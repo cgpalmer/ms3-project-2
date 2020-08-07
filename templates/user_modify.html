@@ -2,13 +2,22 @@
 
 <h3>This is the report you have chosen to edit</h3>
     <div class="card bg-primary text-white">
-            <p>Category: {{report.category_name}}</p>          
+        
+            <p>Category: {{report.category_name}}</p> 
             <p>Incident Description: {{report.incident_description}}</p>
-            <p>Building: {{report.building}}</p>
-            <p>Street: {{report.street}}</p>
-            <p>City: {{report.city}}</p>
-            <p>County: {{report.county}}</p>
-            <p>Postcode: {{report.postcode}}</p>
+            {% if report.building != "" %}
+                <p>Building: {{report.building}}</p>
+            {% endif %} 
+            {% if report.street != "" %}
+                <p>Street: {{report.street}}</p>
+            {% endif %} 
+                <p>City: {{report.city}}</p>
+            {% if report.county != "" %}
+                <p>County: {{report.county}}</p>
+            {% endif %} 
+            {% if report.postcode != "" %}
+                <p>Postcode: {{report.postcode}}</p>
+            {% endif %} 
             <p>Date: {{report.date}}</p>
             <p>Reported to the authorities: {{report.report_to_authorities}}</p>
     </div>
@@ -30,7 +39,9 @@
                 <textarea class="materialize-textarea" id="incident_description" name="incident_description" placeholder="Incident description">{{report.incident_description}}</textarea>
             </div>
             <div class="input-field">
+                
                 <input type="text" value="{{report.building}}" class="" id="building" name="building" placeholder="Building">
+          
                 <input type="text" value="{{report.street}}" class="" id="street" name="street" placeholder="Street">
                 <input type="text" value="{{report.city}}" class="" id="city" name="city" placeholder="City" required>
                 <input type="text" value="{{report.county}}" class="" id="county" name="county" placeholder="County">
