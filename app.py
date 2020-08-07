@@ -765,16 +765,17 @@ def insert_report():
     print(timestamp)
     timestamp2 = datetime.timestamp(my_date)
     print(timestamp2)
-    if timestamp >= timestamp2:
-        print("This is fine")
+    if timestamp2 > timestamp:
+        flash("Please select a date that is not in the future")
+        return redirect(url_for('add_report'))
     else: 
         print("You can't have a date in the future")
-    report.insert_one(request.form.to_dict())
-    print(report)
-    if session.get("email") is None:
-        return redirect(url_for('add_report'))
-    else:
-        return redirect(url_for('dashboard'))
+        report.insert_one(request.form.to_dict())
+        print(report)
+        if session.get("email") is None:
+            return redirect(url_for('add_report'))
+        else:
+            return redirect(url_for('dashboard'))
 
 
 #####################################################################################
