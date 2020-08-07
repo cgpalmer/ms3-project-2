@@ -1,0 +1,27 @@
+{% extends 'base.html'%} {% block content %}
+
+<h1>Test site</h1>
+
+{{now}}
+
+<form method="POST" action="{{ url_for('addLocationToReport') }}">
+            <div class="input-field hidden">
+                <input type="text" class="" id="email" name="email" value="{{currentUserEmail}}" placeholder="Email">
+            </div>  
+            <div class="input-field">
+                <input type="text" class="" id="reportTimeStamp" name="reportTimeStamp" value="{{now}}" placeholder="">
+            </div>         
+          
+             <div class="input-field">
+                        <label for="Date">Date</label>
+                        <input type="text" name="date" id="date" class="datepicker" required>
+                    </div>
+            <div>
+            
+            
+            
+            <button class="btn" type="submit" name="action">Add report</button>
+        </form>
+
+
+{% endblock %}
