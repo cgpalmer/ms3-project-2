@@ -109,6 +109,55 @@ $('#extraLocationChoice').change(function(){
 });
 
 
+// Search entire db
+
+$('#searchDbLocationType').change(function(){
+    var val = $(this).val();
+     if (val == "building") {
+         console.log("building");
+         $("#searchDbLocationExtraType").removeClass('hidden');
+         $("#searchDbPostcode, #searchDbCity, #searchDbCounty").addClass('hidden');
+     }
+     else {
+         if (val == "city") {
+            $("#cityLocation").removeClass('hidden');
+            $("#userSearchExtraLocation, #countyLocation, #postcodeLocation").addClass('hidden');
+        }
+        else if (val == "county"){
+            $("#countyLocation").removeClass('hidden');
+            $("#userSearchExtraLocation, #cityLocation, #postcodeLocation").addClass('hidden');
+        }
+
+        else{
+            $("#postcodeLocation").removeClass('hidden');
+            $("#userSearchExtraLocation, #countyLocation, #cityLocation").addClass('hidden');
+        }
+     }
+});
+
+$('#extraLocationChoice').change(function(){
+    var val = $(this).val();
+     if (val == "postcode") {
+        $("#postcodeLocation").removeClass('hidden');
+        $("#countyLocation, #cityLocation").addClass('hidden');
+     }
+     else {
+         if (val == "city") {
+            $("#cityLocation").removeClass('hidden');
+            $("#countyLocation, #postcodeLocation").addClass('hidden');
+        }
+        else if (val == "county"){
+            $("#countyLocation").removeClass('hidden');
+            $("#cityLocation, #postcodeLocation").addClass('hidden');
+        }
+
+        else{
+             $("#postcodeLocation, #cityLocation, #postcodeLocation").addClass('hidden');                        
+        }
+     }
+});
+
+
 // //  Signup page
 
 // // Temporarily seeing passwords.
