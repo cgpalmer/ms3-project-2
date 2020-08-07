@@ -72,16 +72,16 @@ $('#locationType').change(function(){
      else {
          if (val == "city") {
             $("#cityLocation").removeClass('hidden');
-            $("#userSearchExtraLocation, #countyLocation, #postcodeLocation").addClass('hidden');
+            $("#userSearchExtraLocation, #countyLocation, #postcodeLocation, #buildingLocation").addClass('hidden');
         }
         else if (val == "county"){
             $("#countyLocation").removeClass('hidden');
-            $("#userSearchExtraLocation, #cityLocation, #postcodeLocation").addClass('hidden');
+            $("#userSearchExtraLocation, #cityLocation, #postcodeLocation, #buildingLocation").addClass('hidden');
         }
 
         else{
             $("#postcodeLocation").removeClass('hidden');
-            $("#userSearchExtraLocation, #countyLocation, #cityLocation").addClass('hidden');
+            $("#userSearchExtraLocation, #countyLocation, #cityLocation, #buildingLocation").addClass('hidden');
         }
      }
 });
@@ -89,21 +89,21 @@ $('#locationType').change(function(){
 $('#extraLocationChoice').change(function(){
     var val = $(this).val();
      if (val == "postcode") {
-        $("#postcodeLocation").removeClass('hidden');
+        $("#postcodeLocation, #buildingLocation").removeClass('hidden');
         $("#countyLocation, #cityLocation").addClass('hidden');
      }
      else {
          if (val == "city") {
-            $("#cityLocation").removeClass('hidden');
+            $("#cityLocation, #buildingLocation").removeClass('hidden');
             $("#countyLocation, #postcodeLocation").addClass('hidden');
         }
         else if (val == "county"){
-            $("#countyLocation").removeClass('hidden');
+            $("#countyLocation, #buildingLocation").removeClass('hidden');
             $("#cityLocation, #postcodeLocation").addClass('hidden');
         }
 
         else{
-             $("#countyLocation, #cityLocation, #postcodeLocation").addClass('hidden');                        
+             $("#countyLocation, #cityLocation, #postcodeLocation, #buildingLocation").addClass('hidden');                        
         }
      }
 });
