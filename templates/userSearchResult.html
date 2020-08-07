@@ -7,6 +7,10 @@
 {% endif %}
 
 
+<a href="{{url_for('search_report')}}"> <h6>Search our database</h6></a>
+{% if session.get("email") != None %}
+<a href="{{url_for('dashboard')}}"> <h6>Search your database</h6></a>
+{% endif %}
 
   <ul class="collapsible ">
   
