@@ -4,6 +4,26 @@
 
 {{now}}
 
+<form method="POST" action="{{ url_for('insert_report') }}">
+            <div class="input-field hidden">
+                <input type="text" class="" id="email" name="email" value="{{currentUserEmail}}" placeholder="Email">
+            </div>  
+            <div class="input-field">
+                <input type="text" class="" id="reportTimeStamp" name="reportTimeStamp" value="{{now}}" placeholder="Email">
+            </div>         
+          
+            <div class="input-field">
+                <input type="text" class="" id="building" name="building" placeholder="Building">
+                <input type="text" class="" id="street" name="street" placeholder="Street">
+                <input type="text" class="" id="city" name="city" placeholder="City" required>
+                <input type="text" class="" id="county" name="county" placeholder="County">
+                <input type="text" class="" id="postcode" name="postcode" placeholder="Postcode">
+            </div>
+            
+            
+            
+            <button class="btn" type="submit" name="action">Add report</button>
+        </form>
 
 
 {% endblock %}
