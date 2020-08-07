@@ -159,7 +159,8 @@ $('#searchDbLocationExtraTypeOptions').change(function(){
         }
 
         else{
-             $("#searchDbCounty, #searchDbCity, #searchDbPostcode, #searchDbBuilding").addClass('hidden');                        
+             $("#searchDbCounty, #searchDbCity, #searchDbPostcode").addClass('hidden');
+             $("#searchDbBuilding").removeClass('hidden');                        
         }
      }
 });
