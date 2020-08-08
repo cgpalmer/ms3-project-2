@@ -757,26 +757,9 @@ def insert_report():
     report = mongo.db.report
     now = datetime.now()
     print(now)
-    my_string = str(request.form['date'])
-    print(my_string)
-    my_date = datetime.strptime(my_string, "%Y-%m-%d")
-    print(my_date)
     timestamp = datetime.timestamp(now)
     print(timestamp)
-    timestamp2 = datetime.timestamp(my_date)
-    print(timestamp2)
-    if timestamp2 > timestamp:
-        flash("Please select a date that is not in the future")
-        return redirect(url_for('add_report'))
-    else: 
-        # print("You can't have a date in the future")
-        # report.insert_one(request.form.to_dict())
-        # print(report)
-        # if session.get("email") is None:
-        #     return redirect(url_for('add_report'))
-        # else:
-        #     return redirect(url_for('dashboard'))
-        return render_template('addLocationToNewReport.html', now=now)
+    return render_template('addLocationToNewReport.html', now=now)
 
 @app.route('/addLocationToReport', methods=['GET','POST'])
 def addLocationToReport():
