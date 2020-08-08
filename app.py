@@ -767,7 +767,10 @@ def insert_report():
     print(now)
     timestamp = datetime.timestamp(now)
     print(timestamp)
-    report.insert( { "email": currentUserEmail, "time": timestamp } )
+    category = request.form['category_name']
+    incident = request.form['incident_description']
+    reported = request.form['report_to_authorities']
+    report.insert( { "email": currentUserEmail, "time": timestamp, "category_name": category, "incident_description": incident, "report_to_authorities": reported } )
     return render_template('addLocationToNewReport.html', now=timestamp)
 
 @app.route('/addLocationToReport', methods=['GET','POST'])
