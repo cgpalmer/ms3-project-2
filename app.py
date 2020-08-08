@@ -792,9 +792,18 @@ def addLocationToReport():
     addCity = request.form['city']
     addCounty = request.form['county']
     addPostcode = request.form['postcode']
-    return render_template('addDateToReport.html', reportTimeStamp=reportTimeStamp)
+    return render_template('addDateToReport.html', reportTimeStamp=reportTimeStamp, currentUserEmail=currentUserEmail)
 
-
+@app.route('/addDateToReport', methods=['GET','POST'])
+def addDateToReport():
+      
+    currentUserEmail = session.get("email")
+    if currentUserEmail == None:
+        currentUserEmail = "anonymous"
+    else: 
+        currentUserEmail = session.get('email')
+    reportTimeStamp = request.form['reportTimeStamp']
+    return render_template('addDateToReport', reportTimeStamp=reportTimeStamp, currentUserEmail=currentUserEmail)
 
 #####################################################################################
 # Updating reports
