@@ -803,6 +803,7 @@ def addDateToReport():
     else: 
         currentUserEmail = session.get('email')
     reportTimeStamp = request.form['reportTimeStamp']
+    date = request.form['date']
     return render_template('addDateToReport', reportTimeStamp=reportTimeStamp, currentUserEmail=currentUserEmail)
 
 #####################################################################################
