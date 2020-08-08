@@ -787,8 +787,6 @@ def addLocationToReport():
     addCity = request.form['city']
     addCounty = request.form['county']
     addPostcode = request.form['postcode']
-    test = mongo.db.report.find({"time": float(reportTimeStamp)}).count()
-    print(test)
     mongo.db.report.update_one({ "$and": [ {"email": currentUserEmail}, {"time": float(reportTimeStamp)}]}, {"$set": {"building": addBuilding, "city": addCity, "street": addStreet, "county": addCounty, "postcode": addPostcode}})
     return render_template('addDateToReport.html', reportTimeStamp=reportTimeStamp, currentUserEmail=currentUserEmail)
 
@@ -813,6 +811,7 @@ def addDateToReport():
         flash("Please select a date that is not in the future")
         return render_template('addDateToReport.html', reportTimeStamp=reportTimeStamp, currentUserEmail=currentUserEmail)
     else: 
+        mongo.db.report.update_one({ "$and": [ {"email": currentUserEmail}, {"time": float(reportTimeStamp)}]}, {"$set": {"date": timestamp2 }})
         if session.get("email") is None:
             flash("Thank you for your report!")
             return redirect(url_for('add_report'))
