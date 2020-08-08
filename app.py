@@ -754,6 +754,11 @@ def add_report():
 
 @app.route('/insert_report', methods=['GET','POST'])
 def insert_report():
+    currentUserEmail = session.get("email")
+    if currentUserEmail == None:
+        currentUserEmail = "anonymous"
+    else: 
+        currentUserEmail = session.get('email')
     report = mongo.db.report
     now = datetime.now()
     dateObj = now.date()
@@ -762,11 +767,11 @@ def insert_report():
     print(now)
     timestamp = datetime.timestamp(now)
     print(timestamp)
+    report.insert( { "email": currentUserEmail, "time": timestamp } )
     return render_template('addLocationToNewReport.html', now=timestamp)
 
 @app.route('/addLocationToReport', methods=['GET','POST'])
 def addLocationToReport():
-      
     currentUserEmail = session.get("email")
     if currentUserEmail == None:
         currentUserEmail = "anonymous"
