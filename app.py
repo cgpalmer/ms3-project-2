@@ -801,14 +801,12 @@ def addDateToReport():
         flash("Please select a date that is not in the future")
         return render_template('addDateToReport.html', reportTimeStamp=reportTimeStamp, currentUserEmail=currentUserEmail)
     else: 
-        print("You can't have a date in the future")
         if session.get("email") is None:
+            flash("Thank you for your report!")
             return redirect(url_for('add_report'))
         else:
             return redirect(url_for('dashboard'))
-        date = request.form['date']
-        flash("Thank you for your report.")    
-        return render_template('addDateToReport', reportTimeStamp=reportTimeStamp, currentUserEmail=currentUserEmail)
+        
 
 #####################################################################################
 # Updating reports
