@@ -780,12 +780,16 @@ def addLocationToReport():
         currentUserEmail = "anonymous"
     else: 
         currentUserEmail = session.get('email')
+    print("add location has been reached.")
     reportTimeStamp = request.form['reportTimeStamp']
     addBuilding = request.form['building']
     addStreet = request.form['street']
     addCity = request.form['city']
     addCounty = request.form['county']
     addPostcode = request.form['postcode']
+    test = mongo.db.report.find({"time": float(reportTimeStamp)}).count()
+    print(test)
+    mongo.db.report.update_one({"time": reportTimeStamp},{"$set": {"city": addCity}})
     return render_template('addDateToReport.html', reportTimeStamp=reportTimeStamp, currentUserEmail=currentUserEmail)
 
 @app.route('/addDateToReport', methods=['GET','POST'])
