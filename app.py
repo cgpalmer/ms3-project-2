@@ -779,15 +779,30 @@ def addLocationToReport():
 
 @app.route('/addDateToReport', methods=['GET','POST'])
 def addDateToReport():
-      
     currentUserEmail = session.get("email")
     if currentUserEmail == None:
         currentUserEmail = "anonymous"
     else: 
         currentUserEmail = session.get('email')
     reportTimeStamp = request.form['reportTimeStamp']
-    date = request.form['date']
-    return render_template('addDateToReport', reportTimeStamp=reportTimeStamp, currentUserEmail=currentUserEmail)
+    my_string = str(request.form['date'])
+    print(my_string)
+    my_date = datetime.strptime(my_string, "%Y-%m-%d")
+    print(my_date)
+    timestamp2 = datetime.timestamp(my_date)
+    print(timestamp2)
+    if timestamp2 > reportTimeStamp:
+        flash("Please select a date that is not in the future")
+        return render_template('addDateToReport.html', reportTimeStamp=reportTimeStamp, currentUserEmail=currentUserEmail)
+    else: 
+        print("You can't have a date in the future")
+        if session.get("email") is None:
+            return redirect(url_for('add_report'))
+        else:
+            return redirect(url_for('dashboard'))
+        date = request.form['date']
+        flash("Thank you for your report.")    
+        return render_template('addDateToReport', reportTimeStamp=reportTimeStamp, currentUserEmail=currentUserEmail)
 
 #####################################################################################
 # Updating reports
