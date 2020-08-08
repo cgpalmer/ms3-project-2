@@ -789,7 +789,7 @@ def addLocationToReport():
     addPostcode = request.form['postcode']
     test = mongo.db.report.find({"time": float(reportTimeStamp)}).count()
     print(test)
-    mongo.db.report.update_one({"time": reportTimeStamp},{"$set": {"city": addCity}})
+    mongo.db.report.update_one({ "$and": [ {"email": currentUserEmail}, {"time": float(reportTimeStamp)}]}, {"$set": {"building": addBuilding, "city": addCity, "street": addStreet, "county": addCounty, "postcode": addPostcode}})
     return render_template('addDateToReport.html', reportTimeStamp=reportTimeStamp, currentUserEmail=currentUserEmail)
 
 @app.route('/addDateToReport', methods=['GET','POST'])
