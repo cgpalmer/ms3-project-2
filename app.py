@@ -756,10 +756,13 @@ def add_report():
 def insert_report():
     report = mongo.db.report
     now = datetime.now()
+    dateObj = now.date()
+    print("below is the dateobj")
+    print(dateObj)
     print(now)
     timestamp = datetime.timestamp(now)
     print(timestamp)
-    return render_template('addLocationToNewReport.html', now=now)
+    return render_template('addLocationToNewReport.html', now=timestamp)
 
 @app.route('/addLocationToReport', methods=['GET','POST'])
 def addLocationToReport():
@@ -784,14 +787,17 @@ def addDateToReport():
         currentUserEmail = "anonymous"
     else: 
         currentUserEmail = session.get('email')
-    reportTimeStamp = request.form['reportTimeStamp']
+    reportTimeStamp = (request.form['reportTimeStamp'])
+    print(reportTimeStamp)
     my_string = str(request.form['date'])
     print(my_string)
-    my_date = datetime.strptime(my_string, "%Y-%m-%d")
-    print(my_date)
-    timestamp2 = datetime.timestamp(my_date)
+    my_date2 = datetime.strptime(my_string, "%Y-%m-%d")
+  
+    timestamp2 = datetime.timestamp(my_date2)
+
     print(timestamp2)
-    if timestamp2 > reportTimeStamp:
+    if timestamp2 > float(reportTimeStamp):
+        print("date is in the future")
         flash("Please select a date that is not in the future")
         return render_template('addDateToReport.html', reportTimeStamp=reportTimeStamp, currentUserEmail=currentUserEmail)
     else: 
