@@ -2,6 +2,8 @@
 
 <h1>Test site</h1>
 
+<h5>Would you like to add a date to your report?</h5>
+
 {% with messages = get_flashed_messages() %}
     {% if messages%}
         {% for message in messages %}
@@ -29,6 +31,7 @@
             
             <button class="btn" type="submit" name="action">Add report</button>
         </form>
+
 
 
 {% endblock %}
