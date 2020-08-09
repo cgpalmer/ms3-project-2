@@ -11,56 +11,7 @@
 <p>So far you have made {{total}} reports</p>
 
   <ul class="collapsible ">
-    <li>
-      <div class="collapsible-header"><i class="material-icons">add_circle</i>Create a new report</div>
-      <div class="collapsible-body">
-        <form method="POST" action="{{ url_for('insert_report') }}">
-            <div class="input-field hidden">
-                <label for="email"></label>
-                <input type="email" class="" id="email" name="email" value="{{currentUserEmail}}" placeholder="Email">
-            </div>         
-            <div class="input-field">
-                <select class="" id="category" name="category_name" required>
-                <option disabled selected value="">Choose category</option> 
-                {% for category in categories %}
-                        <option id="{{category.category_name}}" value="{{category.category_name}}">{{category.category_name}}</option>
-                {% endfor %}
-                </select>
-            </div>
-           
-           
-           
-            <div class="input-field">
-                <textarea class="materialize-textarea" id="incident_description" name="incident_description" placeholder="Incident description" required></textarea>
-            </div>
-            <div class="input-field">
-                <input type="text" class="" id="building" name="building" placeholder="Building">
-                <input type="text" class="" id="street" name="street" placeholder="Street">
-                <input type="text" class="" id="city" name="city" placeholder="City" required>
-                <input type="text" class="" id="county" name="county" placeholder="County">
-                <input type="text" class="" id="postcode" name="postcode" placeholder="Postcode">
-            </div>
-           
-
-             <div class="input-field">
-                        <label for="Date">Date</label>
-                        <input type="text" name="date" id="date" class="datepicker">
-                    </div>
-            <div>
-            
-                <select class="" id="update_report_to_authorities" name="report_to_authorities" required>
-                    <option disabled selected value="">Reported to authorities?</option>
-                    
-                        <option value="Yes">Yes</option>
-                        <option value="No">No</option>
-                
-                </select>
-            </div>
-            <button class="btn" type="submit" name="action">Add report</button>
-        </form>
-      
-      </div>
-    </li>
+    
     <!-- Managing reports -->
     <li>
       <div class="collapsible-header"><i class="material-icons">edit</i>Manage old reports</div>
@@ -170,7 +121,12 @@
      
     </li>
     <li>
-      <div class="collapsible-header"><i class="material-icons">search</i><a href="{{url_for('search_report')}}"> Search our database</a></div>
+      <a class="collapsible-header" href="{{url_for('add_report')}}"> <i class="material-icons">add_circle</i>Create a new report</a>
+      
+      
+    </li>
+    <li>
+      <a class="collapsible-header" href="{{url_for('search_report')}}"><i class="material-icons">search</i> Search our database</a>
     </li>
   </ul>
   
