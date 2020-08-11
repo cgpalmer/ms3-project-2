@@ -731,7 +731,7 @@ def search_report():
     city = mongo.db.report.find().distinct("city")
     county = mongo.db.report.find().distinct("county")
     postcode = mongo.db.report.find().distinct("postcode")        
-    return render_template('searchResults.html', categories=mongo.db.categories.find(),
+    return render_template('searchReports.html', categories=mongo.db.categories.find(),
                             postcode=postcode, city=city, county=county, building=building, category=category, total=total) 
 
 
