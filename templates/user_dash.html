@@ -67,7 +67,7 @@
                     <div id="buildingLocation" class="input-field col s12 hidden locationOptions ">
                         <select name="building">
                             <option value="" disabled selected>Building</option>
-                            {% for building in building %}
+                            {% for building in building|sort %}
                                  {% if building != "" %}
                                 <option value="{{building}}">{{building}}</option>
                                 {% endif %}
@@ -77,7 +77,7 @@
                     <div id="cityLocation" class="input-field col s12 hidden locationOptions">
                         <select name="city">
                             <option value="" disabled selected>City</option>
-                            {% for cities in city %}
+                            {% for cities in city|sort %}
                                 {% if cities != "" %}
                                
                                 <option value="{{cities}}">{{cities}}</option>
@@ -88,7 +88,7 @@
                     <div id="countyLocation" class="input-field col s12 hidden locationOptions">
                         <select name="county">
                             <option value="" disabled selected>County</option>
-                            {% for county in county %}
+                            {% for county in county|sort %}
                                 {% if county != "" %}
                                 
                                 <option value="{{county}}">{{county}}</option>
@@ -99,10 +99,10 @@
                     <div id="postcodeLocation" class="input-field col s12 hidden locationOptions">
                         <select name="postcode">
                             <option value="" disabled selected>Postcode</option>
-                            {% for postcode in postcode %}
-                                 {% if cities != "" %}
+                            {% for postcode in postcode|sort %}
+                                 {% if postcode != "" %}
                                
-                                <option value="{{cities}}">{{cities}}</option>
+                                <option value="{{postcode}}">{{postcode}}</option>
                                  {% endif %}
                             {% endfor %}
                         </select>
