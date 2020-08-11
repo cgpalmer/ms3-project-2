@@ -31,7 +31,7 @@
                     <div id="userSearchCategory" class="input-field col s12 hidden">
                         <select name="category">
                             <option value="" disabled selected>Category</option>
-                            {% for category in category %}
+                            {% for category in category|sort %}
                                 <option value="{{category}}">{{category}}</option>
                             {% endfor %}
                         </select>
