@@ -16,7 +16,7 @@
             <div class="input-field">
                 <select class="" id="category" name="category_name" required>
                 <option disabled selected value="">Choose category</option> 
-                {% for category in categories %}
+                {% for category in categories|sort(attribute='category_name') %}
                         <option id="{{category.category_name}}" value="{{category.category_name}}">{{category.category_name}}</option>
                 {% endfor %}
                 </select>
