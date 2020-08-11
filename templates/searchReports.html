@@ -1,0 +1,243 @@
+{% extends 'base.html'%} {% block content %}
+
+
+  <ul class="collapsible ">
+    <li>
+      <div id="categoryCollapsible" class="collapsible-header "><i class="material-icons">description</i>Search by discrimination</div>
+      <div class="collapsible-body">
+        <form method="POST" action="{{ url_for('search_db_reports') }}">
+                  
+                 
+                    <label for="userSearchbyDiscrimination">
+                            <input id="userSearchbyDiscrimination" class="hidden" type="text" name="userSearchReports" value="searchByDiscrimination">
+                           
+                    </label>
+                    <div class="input-field col s12">
+                        <select name="category">
+                            <option value="" disabled selected>Category</option>
+                            {% for category in category %}
+                                <option value="{{category}}">{{category}}</option>
+                            {% endfor %}
+                        </select>
+                    
+                    </div>
+
+                    <div class="input-field col s12">
+                         <p>Would you like to search within a time frame?</p>
+                        <select id="categoryTimeFrame" class="timeFrameChoice" name="useTimeFrame">
+                            
+                                
+                                <option value="Yes">Yes</option>
+                                <option selected value="No">No</option>
+                         
+                        </select>
+                    </div>
+
+                    <div class="input-field col s12 catTimeFrameDisplay hidden">
+                        <label for="startDate">Start Date</label>
+                        <input type="text" id="date" name="categoryStartDateFrame" class="datepicker">
+                    </div>
+                    <div class="input-field col s12 catTimeFrameDisplay hidden">
+                        <label for="endDate">End Date</label>
+                        <input type="text" name="categoryEndDateFrame" id="categoryEndDateFrame" class="datepicker">
+                    </div>
+            
+
+
+            
+                
+                        <button type="submit"><i class="material-icons">text_snippet</i>Find reports</button>
+                        
+             
+                </form>
+      
+      </div>
+    </li>
+  
+    <li>
+      <div id="locationCollapsible" class="collapsible-header searchDbCollapsible"><i class="material-icons">location_on</i>Search by Location</div>
+      <div class="collapsible-body">       
+            <form method="POST" action="{{ url_for('search_db_reports') }}">
+                    
+                    <label for="searchbyLocation">
+                            <input id="searchbyLocation" class="hidden"  type="text" name="userSearchReports" value="searchByLocation">
+                            
+                    </label>
+                                      
+                    <div  class="input-field col s12">
+                        <select id="searchDbLocationType" name="locationType">
+                            <option value="" disabled selected>Choose location type</option>
+                            
+                                <option value="building">building</option>
+                                <option value="city">city</option>
+                                <option value="county">county</option>
+                                <option value="postcode">postcode</option>
+                         
+                        </select>
+                    </div>
+
+                    <div id="searchDbLocationExtraType" class="input-field col s12 hidden">
+                        <select id="searchDbLocationExtraTypeOptions" name="extraLocationSearchWithBuilding">
+                            <option value="" disabled selected>Extra option for when building is selected.</option>
+                           
+                                <option value="all">All</option>
+                                <option value="city">City</option>
+                                <option value="county">County</option>
+                                <option value="postcode">Postcode</option>
+                    
+                        </select>
+                    </div>
+
+
+                    <div id="searchDbBuilding" class="input-field col s12 hidden">
+                        <select name="building">
+                            <option value="" disabled selected>Building</option>
+                            {% for building in building %}
+                                <option value="{{building}}">{{building}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div id="searchDbCity" class="input-field col s12 hidden">
+                        <select name="city">
+                            <option value="" disabled selected>City</option>
+                            {% for cities in city %}
+                                <option value="{{cities}}">{{cities}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div id="searchDbCounty" class="input-field col s12 hidden">
+                        <select name="county">
+                            <option value="" disabled selected>County</option>
+                            {% for county in county %}
+                                <option value="{{county}}">{{county}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div id="searchDbPostcode" class="input-field col s12 hidden">
+                        <select name="postcode">
+                            <option value="" disabled selected>Postcode</option>
+                            {% for postcode in postcode %}
+                                <option value="{{postcode}}">{{postcode}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+           
+                    <div id="searchDbDate" class="input-field col s12 hidden">
+                         <p>Would you like to search within a time frame?</p>
+                        <select id="locationTimeFrame" name="useTimeFrame" class="timeFrameChoice">
+                            
+                                
+                                <option value="Yes">Yes</option>
+                                <option selected value="No">No</option>
+                         
+                        </select>
+                    </div>
+
+                    <div  class="input-field col s12 locationTimeFrameDisplay searchDbDateFrame hidden">
+                        <label for="startDate">Start Date</label>
+                        <input type="text" id="locationStartDateFrame" name="startDateLocation" class="datepicker">
+                    </div>
+                    <div class="input-field col s12 locationTimeFrameDisplay searchDbDateFrame  hidden">
+                        <label for="endDate">End Date</label>
+                        <input type="text" name="endDateLocation" id="locationEndDateFrame" class="datepicker">
+                    </div>
+            
+                
+                        <button type="submit"><i class="material-icons">text_snippet</i>Find reports</button>
+                        
+             
+                </form>
+            </div>
+
+         
+        
+        
+
+
+     
+    </li>
+    <li>
+      <div id="reportedCollapsible" class="collapsible-header searchDbCollapsible"><i class="material-icons">record_voice_over</i>Search by reported incidents</div>
+        <div class="collapsible-body">  
+            <form method="POST" action="{{ url_for('search_db_reports') }}">
+       
+                            <input id="userSearchReport" class="hidden" type="text" name="userSearchReports" value="searchByReported">
+                    
+                    <div class="input-field col s12">
+                         
+                        <select id="reportedToAuthorities" name="searchReported">
+                            
+                                <option value="" selected disabled>Search by whether incidents have been reported or not.</option>
+                                <option value="Yes">Search reported</option>
+                                <option value="No">Search unreported</option>
+                         
+                        </select>
+                    </div>
+                    <div class="input-field col s12">
+                         <p>Would you like to search within a time frame?</p>
+                        <select id="allTimeFrame" name="useTimeFrame" class="timeFrameChoice">
+                            
+                                
+                                <option value="Yes">Yes</option>
+                                <option selected value="No">No</option>
+                         
+                        </select>
+                    </div>
+
+                    <div class="input-field col s12 reportedTimeFrameDisplay hidden">
+                        <label for="startDate">Start Date</label>
+                        <input type="text" id="reportedStartDateFrame" name="reportedStartDateFrame" class="datepicker">
+                    </div>
+                    <div class="input-field col s12 reportedTimeFrameDisplay hidden">
+                        <label for="endDate">End Date</label>
+                        <input type="text" name="reportedEndDateFrame" id="allEndDateFrame" class="datepicker">
+                    </div>
+            
+                
+                        <button type="submit"><i class="material-icons">text_snippet</i>Find reports</button>
+                        
+             
+                </form>
+        </div>
+    </li>
+
+      <li>
+      <div id="allCollapsible" class="collapsible-header searchDbCollapsible"><i class="material-icons">search</i>Search all</div>
+      <div class="collapsible-body">  
+            <form method="POST" action="{{ url_for('search_db_reports') }}">
+       
+                            <input id="userSearchbyAll" class="hidden" type="text" name="userSearchReports" value="searchAll">
+                
+                    <div class="input-field col s12 hidden">
+                         <p>Would you like to search within a time frame?</p>
+                        <select id="allTimeFrame" class="timeFrameChoice" name="useTimeFrame">
+                            
+                                
+                                <option value="Yes">Yes</option>
+                                <option selected value="No">No</option>
+                         
+                        </select>
+                    </div>
+
+                    <div class="input-field col s12 allTimeFrameDisplay hidden">
+                        <label for="startDate">Start Date</label>
+                        <input type="text" id="allStartDateFrame" name="allStartDateFrame" class="datepicker">
+                    </div>
+                    <div class="input-field col s12 allTimeFrameDisplay hidden">
+                        <label for="endDate">End Date</label>
+                        <input type="text" name="allEndDateFrame" id="allEndDateFrame" class="datepicker">
+                    </div>
+            
+                
+                        <button type="submit"><i class="material-icons">text_snippet</i>Find reports</button>
+                        
+             
+                </form>
+        </div>
+        
+    </li>
+
+    
+  </ul>
+
+{% endblock %}
