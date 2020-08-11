@@ -39,6 +39,8 @@ Be able to log into their own area
 
 ### Tutorials
 
+https://stackoverflow.com/questions/1959386/how-do-you-sort-a-list-in-jinja2
+
 https://www.dataquest.io/blog/python-datetime-tutorial/
 https://devdojo.com/tnylea/how-to-detect-radio-box-change-with-jquery
 
