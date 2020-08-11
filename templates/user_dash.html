@@ -68,7 +68,9 @@
                         <select name="building">
                             <option value="" disabled selected>Building</option>
                             {% for building in building %}
-                                <option>{{building}}</option>
+                                 {% if building != "" %}
+                                <option value="{{building}}">{{building}}</option>
+                                {% endif %}
                             {% endfor %}
                         </select>
                     </div>
@@ -76,7 +78,10 @@
                         <select name="city">
                             <option value="" disabled selected>City</option>
                             {% for cities in city %}
-                                <option>{{cities}}</option>
+                                {% if cities != "" %}
+                               
+                                <option value="{{cities}}">{{cities}}</option>
+                                 {% endif %}
                             {% endfor %}
                         </select>
                     </div>
@@ -84,7 +89,10 @@
                         <select name="county">
                             <option value="" disabled selected>County</option>
                             {% for county in county %}
-                                <option>{{county}}</option>
+                                {% if county != "" %}
+                                
+                                <option value="{{county}}">{{county}}</option>
+                                {% endif %}
                             {% endfor %}
                         </select>
                     </div>
@@ -92,7 +100,10 @@
                         <select name="postcode">
                             <option value="" disabled selected>Postcode</option>
                             {% for postcode in postcode %}
-                                <option>{{postcode}}</option>
+                                 {% if cities != "" %}
+                               
+                                <option value="{{cities}}">{{cities}}</option>
+                                 {% endif %}
                             {% endfor %}
                         </select>
                     </div>
