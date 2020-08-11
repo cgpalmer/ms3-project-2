@@ -93,7 +93,9 @@
                         <select name="building">
                             <option value="" disabled selected>Building</option>
                             {% for building in building %}
+                                {% if building != "" %}
                                 <option value="{{building}}">{{building}}</option>
+                                {% endif %}
                             {% endfor %}
                         </select>
                     </div>
@@ -101,7 +103,10 @@
                         <select name="city">
                             <option value="" disabled selected>City</option>
                             {% for cities in city %}
+                                {% if cities != "" %}
+                               
                                 <option value="{{cities}}">{{cities}}</option>
+                                 {% endif %}
                             {% endfor %}
                         </select>
                     </div>
@@ -109,7 +114,10 @@
                         <select name="county">
                             <option value="" disabled selected>County</option>
                             {% for county in county %}
+                                 {% if county != "" %}
+                                
                                 <option value="{{county}}">{{county}}</option>
+                                {% endif %}
                             {% endfor %}
                         </select>
                     </div>
@@ -117,7 +125,10 @@
                         <select name="postcode">
                             <option value="" disabled selected>Postcode</option>
                             {% for postcode in postcode %}
+                                 {% if postcode != "" %}
+                                
                                 <option value="{{postcode}}">{{postcode}}</option>
+                                {% endif %}
                             {% endfor %}
                         </select>
                     </div>
