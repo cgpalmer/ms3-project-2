@@ -817,6 +817,15 @@ def addDateToReport():
             return redirect(url_for('add_report'))
         else:
             return redirect(url_for('dashboard'))
+
+@app.route('/skipDate', methods=['GET','POST'])
+def skipDate():
+    if session.get("email") is None:
+            flash("Thank you for your report!")
+            return redirect(url_for('add_report'))
+    else:
+        return redirect(url_for('dashboard'))
+
         
 
 #####################################################################################
