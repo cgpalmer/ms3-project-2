@@ -799,19 +799,19 @@ def addDateToReport():
         currentUserEmail = session.get('email')
     reportTimeStamp = (request.form['reportTimeStamp'])
     print(reportTimeStamp)
-    my_string = str(request.form['date'])
-    print(my_string)
-    my_date2 = datetime.strptime(my_string, "%Y-%m-%d")
+    strDate = str(request.form['date'])
+    print(strDate)
+    timeStamp = datetime.strptime(strDate, "%Y-%m-%d")
   
-    timestamp2 = datetime.timestamp(my_date2)
+    timestampDate = datetime.timestamp(timeStamp)
 
-    print(timestamp2)
-    if timestamp2 > float(reportTimeStamp):
+    print(timestampDate)
+    if timestampDate > float(reportTimeStamp):
         print("date is in the future")
         flash("Please select a date that is not in the future")
         return render_template('addDateToReport.html', reportTimeStamp=reportTimeStamp, currentUserEmail=currentUserEmail)
     else: 
-        mongo.db.report.update_one({ "$and": [ {"email": currentUserEmail}, {"time": float(reportTimeStamp)}]}, {"$set": {"date": timestamp2 }})
+        mongo.db.report.update_one({ "$and": [ {"email": currentUserEmail}, {"time": float(reportTimeStamp)}]}, {"$set": {"date": strDate, "timestamp": timestampDate }})
         if session.get("email") is None:
             flash("Thank you for your report!")
             return redirect(url_for('add_report'))
