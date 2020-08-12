@@ -475,19 +475,19 @@ def search_reports():
 
     elif typeOfSearch == "date":
         print("see date")
-        startDate = request.form['startDate']
-        endDate = request.form['endDate']
-        report = mongo.db.report.find( { "$and": [ {"email": user_email}, {"date":{ "$gte": startDate,"$lt":endDate }}  ] } )
+        startDatestr = request.form['startDate']
+        endDatestr = request.form['endDate']
+        report = mongo.db.report.find( { "$and": [ {"email": user_email}, {"timestamp":{ "$gte": startDateTimeStamp,"$lt":endDateTimeStamp }}  ] } )
         print(report)
         number_of_reports = report.count()
         searchingUserDb = "yes"
         page_size = 10
         
         pages = []
-        page1 = mongo.db.report.find( { "$and": [ {"email": user_email}, {"date":{ "$gte": startDate,"$lt":endDate }}  ] } ).limit(page_size)
+        page1 = mongo.db.report.find( { "$and": [ {"email": user_email}, {"timestamp":{ "$gte": startDateTimeStamp,"$lt":endDateTimeStamp }}  ] } ).limit(page_size)
         pages.append(page1)
         for x in range(numOfPagesRounded):
-            page = mongo.db.report.find( { "$and": [ {"email": user_email}, {"date":{ "$gte": startDate,"$lt":endDate }}  ] } ).skip(int(x+1)*10).limit(page_size)
+            page = mongo.db.report.find( { "$and": [ {"email": user_email}, {"timestamp":{ "$gte": startDateTimeStamp,"$lt":endDateTimeStamp }}  ] } ).skip(int(x+1)*10).limit(page_size)
             pages.append(page)
         return render_template('userSearchResult.html', searchingUserDb=searchingUserDb, number_of_reports=number_of_reports, report=report, collapsibles=numOfPagesRounded, pages=pages)
     else:
@@ -523,12 +523,16 @@ def search_db_reports():
             reportedReportsCount = mongo.db.report.find({"report_to_authorities": "Yes"}).count()
         else:
             # Search entire db with time frame
-            startDate = request.form['allStartDateFrame']
-            print(startDate)
-            endDate = request.form['allEndDateFrame']
-            print(endDate)
-            report = mongo.db.report.find({"date":{ "$gte": startDate,"$lt":endDate }})
-            reportedReportsCount = mongo.db.report.find( {"$and":[{"date":{ "$gte": startDate,"$lt":endDate }}, {"report_to_authorities": "Yes"}] }).count()
+            startDatestr = request.form['allStartDateFrame']
+            print(startDatestr)
+            endDatestr = request.form['allEndDateFrame']
+            print(endDatestr)
+            startDateConversion = datetime.strptime(startDatestr, "%Y-%m-%d")
+            endDateTimeConversion = datetime.strptime(endDatestr, "%Y-%m-%d")
+            startDateTimeStamp = datetime.timestamp(startDateConversion)
+            endDateTimeStamp = datetime.timestamp(endDateTimeConversion)
+            report = mongo.db.report.find({"timestamp":{ "$gte": startDateTimeStamp,"$lt":endDateTimeStamp }})
+            reportedReportsCount = mongo.db.report.find( {"$and":[{"timestamp":{ "$gte": startDateTimeStamp,"$lt":endDateTimeStamp }}, {"report_to_authorities": "Yes"}] }).count()
         number_of_reports = report.count()
         # Statistics for the top of the search page.
         percentageOfDb = calculate_percentage_of_report_in_db(report, totalReportsCount)
@@ -564,12 +568,17 @@ def search_db_reports():
                     reportedReportsCount = mongo.db.report.find( {"$and":[{"building":building_name }, {"report_to_authorities": "Yes"}] }).count()
                 else:
                     # Search buildings in all locations with time frame
-                    startDate = request.form['StartDateLocation']
-                    print(startDate)
-                    endDate = request.form['allEndDateLocation']
-                    print(endDate)
-                    report = mongo.db.report.find({"$and": [{"building":building_name }, {"date":{ "$gte": startDate,"$lt":endDate }}]})                
-                    reportedReportsCount = mongo.db.report.find( {"$and":[{"building":building_name }, {"date":{ "$gte": startDate,"$lt":endDate }}, {"report_to_authorities": "Yes"}] }).count()
+                    startDatestr = request.form['StartDateLocation']
+
+                    print(startDatestr)
+                    endDatestr = request.form['allEndDateLocation']
+                    print(endDatestr)
+                    startDateConversion = datetime.strptime(startDatestr, "%Y-%m-%d")
+                    endDateTimeConversion = datetime.strptime(endDatestr, "%Y-%m-%d")
+                    startDateTimeStamp = datetime.timestamp(startDateConversion)
+                    endDateTimeStamp = datetime.timestamp(endDateTimeConversion)
+                    report = mongo.db.report.find({"$and": [{"building":building_name }, {"timestamp":{ "$gte": startDateTimeStamp,"$lt":endDateTimeStamp }}]})                
+                    reportedReportsCount = mongo.db.report.find( {"$and":[{"building":building_name }, {"timestamp":{ "$gte": startDateTimeStamp,"$lt":endDateTimeStamp }}, {"report_to_authorities": "Yes"}] }).count()
                 # Statistics for results page
                 page_size = 10
                 number_of_reports = report.count()
@@ -593,12 +602,16 @@ def search_db_reports():
                     report = mongo.db.report.find( { "$and": [ {"building":building_name }, { extraLocation : extraLocationValue} ] } )
                     reportedReportsCount = mongo.db.report.find( {"$and":[{"building":building_name }, { extraLocation : extraLocationValue}, {"report_to_authorities": "Yes"}] }).count()
                 else:
-                    startDate = request.form['StartDateLocation']
-                    print(startDate)
-                    endDate = request.form['allEndDateLocation']
-                    print(endDate)
-                    report = mongo.db.report.find( { "$and": [ {"building":building_name }, { extraLocation : extraLocationValue},{"date":{ "$gte": startDate,"$lt":endDate }} ] } )
-                    reportedReportsCount = mongo.db.report.find( {"$and":[{"building":building_name }, { extraLocation : extraLocationValue}, {"date":{ "$gte": startDate,"$lt":endDate }}, {"report_to_authorities": "Yes"}] }).count()
+                    startDatestr = request.form['StartDateLocation']
+                    print(startDatestr)
+                    endDatestr = request.form['allEndDateLocation']
+                    print(endDatestr)
+                    startDateConversion = datetime.strptime(startDatestr, "%Y-%m-%d")
+                    endDateTimeConversion = datetime.strptime(endDatestr, "%Y-%m-%d")
+                    startDateTimeStamp = datetime.timestamp(startDateConversion)
+                    endDateTimeStamp = datetime.timestamp(endDateTimeConversion)
+                    report = mongo.db.report.find( { "$and": [ {"building":building_name }, { extraLocation : extraLocationValue},{"timestamp":{ "$gte": startDateTimeStamp,"$lt":endDateTimeStamp }} ] } )
+                    reportedReportsCount = mongo.db.report.find( {"$and":[{"building":building_name }, { extraLocation : extraLocationValue}, {"timestamp":{ "$gte": startDateTimeStamp,"$lt":endDateTimeStamp }}, {"report_to_authorities": "Yes"}] }).count()
                 # Statistics for search page
                 number_of_reports = report.count()
                 percentageOfDb = calculate_percentage_of_report_in_db(report, totalReportsCount) 
@@ -627,12 +640,16 @@ def search_db_reports():
                 report = mongo.db.report.find( {locationType:value } )
                 reportedReportsCount = mongo.db.report.find( {"$and":[{locationType:value }, {"report_to_authorities": "Yes"}] }).count()
             else:
-                startDate = request.form['startDateLocation']
-                print(startDate)
-                endDate = request.form['endDateLocation']
-                print(endDate)
-                report = mongo.db.report.find( {"$and":[{locationType:value }, {"date":{ "$gte": startDate,"$lt":endDate }}]})           
-                reportedReportsCount = mongo.db.report.find( {"$and":[{locationType:value }, {"date":{ "$gte": startDate,"$lt":endDate }}, {"report_to_authorities": "Yes"}] }).count()
+                startDatestr = request.form['startDateLocation']
+                print(startDatestr)
+                endDatestr = request.form['endDateLocation']
+                print(endDatestr)
+                startDateConversion = datetime.strptime(startDatestr, "%Y-%m-%d")
+                endDateTimeConversion = datetime.strptime(endDatestr, "%Y-%m-%d")
+                startDateTimeStamp = datetime.timestamp(startDateConversion)
+                endDateTimeStamp = datetime.timestamp(endDateTimeConversion)
+                report = mongo.db.report.find( {"$and":[{locationType:value }, {"timestamp":{ "$gte": startDateTimeStamp,"$lt":endDateTimeStamp }}]})           
+                reportedReportsCount = mongo.db.report.find( {"$and":[{locationType:value }, {"timestamp":{ "$gte": startDateTimeStamp,"$lt":endDateTimeStamp }}, {"report_to_authorities": "Yes"}] }).count()
             # Statistics for search results pages
             number_of_reports = report.count()
             percentageOfDb = calculate_percentage_of_report_in_db(report, totalReportsCount) 
@@ -661,10 +678,14 @@ def search_db_reports():
             report = mongo.db.report.find( { "category_name":category } )
             reportedReportsCount = mongo.db.report.find( {"$and":[{ "category_name":category }, {"report_to_authorities": "Yes"}] }).count()
         else:
-            startDate = request.form['categoryStartDateFrame']
-            print(startDate)
-            endDate = request.form['categoryEndDateFrame']
-            print(endDate)
+            startDatestr = request.form['categoryStartDateFrame']
+            print(startDatestr)
+            endDatestr = request.form['categoryEndDateFrame']
+            print(endDatestr)
+            startDateConversion = datetime.strptime(startDatestr, "%Y-%m-%d")
+            endDateTimeConversion = datetime.strptime(endDatestr, "%Y-%m-%d")
+            startDateTimeStamp = datetime.timestamp(startDateConversion)
+            endDateTimeStamp = datetime.timestamp(endDateTimeConversion)
             report = mongo.db.report.find( {"$and":[{ "category_name":category }, {"date":{ "$gte": startDate,"$lte":endDate }}]}) 
             reportedReportsCount = mongo.db.report.find( {"$and":[{ "category_name":category }, {"report_to_authorities": "Yes"}, {"date":{ "$gte": startDate,"$lte":endDate }}]}).count()           
         # Statistics
@@ -691,12 +712,16 @@ def search_db_reports():
             report = mongo.db.report.find({"report_to_authorities": reportedToAuthorities }  )
             reportedReportsCount = mongo.db.report.find( {"$and":[{"report_to_authorities": reportedToAuthorities }, {"report_to_authorities": "Yes"}]}).count() 
         else:
-            startDate = request.form['reportedStartDateFrame']
-            print(startDate)
-            endDate = request.form['reportedEndDateFrame']
-            print(endDate)
-            report = mongo.db.report.find( {"$and":[{"report_to_authorities": reportedToAuthorities } , {"date":{ "$gte": startDate,"$lt":endDate }}]})           
-            reportedReportsCount = mongo.db.report.find( {"$and":[{"report_to_authorities": reportedToAuthorities }, {"report_to_authorities": "Yes"}, {"date":{ "$gte": startDate,"$lte":endDate }}]}).count()           
+            startDatestr = request.form['reportedStartDateFrame']
+            print(startDatestr)
+            endDatestr = request.form['reportedEndDateFrame']
+            print(endDatestr)
+            startDateConversion = datetime.strptime(startDatestr, "%Y-%m-%d")
+            endDateTimeConversion = datetime.strptime(endDatestr, "%Y-%m-%d")
+            startDateTimeStamp = datetime.timestamp(startDateConversion)
+            endDateTimeStamp = datetime.timestamp(endDateTimeConversion)
+            report = mongo.db.report.find( {"$and":[{"report_to_authorities": reportedToAuthorities } , {"timestamp":{ "$gte": startDateTimeStamp,"$lt":endDateTimeStamp }}]})           
+            reportedReportsCount = mongo.db.report.find( {"$and":[{"report_to_authorities": reportedToAuthorities }, {"report_to_authorities": "Yes"},  {"timestamp":{ "$gte": startDateTimeStamp,"$lt":endDateTimeStamp }}]}).count()           
         
         print(report)
         # Statistics 
