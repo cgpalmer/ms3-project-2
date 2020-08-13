@@ -568,7 +568,7 @@ def search_db_reports():
                     reportedReportsCount = mongo.db.report.find( {"$and":[{"building":building_name }, {"report_to_authorities": "Yes"}] }).count()
                 else:
                     # Search buildings in all locations with time frame
-                    startDatestr = request.form['StartDateLocation']
+                    startDatestr = request.form['startDateLocation']
 
                     print(startDatestr)
                     endDatestr = request.form['allEndDateLocation']
@@ -640,7 +640,8 @@ def search_db_reports():
                 report = mongo.db.report.find( {locationType:value } )
                 reportedReportsCount = mongo.db.report.find( {"$and":[{locationType:value }, {"report_to_authorities": "Yes"}] }).count()
             else:
-                startDatestr = request.form['startDateLocation']
+                
+                startDatestr = request.form['startDateLocation']               
                 print(startDatestr)
                 endDatestr = request.form['endDateLocation']
                 print(endDatestr)
@@ -686,8 +687,8 @@ def search_db_reports():
             endDateTimeConversion = datetime.strptime(endDatestr, "%Y-%m-%d")
             startDateTimeStamp = datetime.timestamp(startDateConversion)
             endDateTimeStamp = datetime.timestamp(endDateTimeConversion)
-            report = mongo.db.report.find( {"$and":[{ "category_name":category }, {"date":{ "$gte": startDate,"$lte":endDate }}]}) 
-            reportedReportsCount = mongo.db.report.find( {"$and":[{ "category_name":category }, {"report_to_authorities": "Yes"}, {"date":{ "$gte": startDate,"$lte":endDate }}]}).count()           
+            report = mongo.db.report.find( {"$and":[{ "category_name":category }, {"timestamp":{ "$gte": startDateTimeStamp,"$lt":endDateTimeStamp }}]}) 
+            reportedReportsCount = mongo.db.report.find( {"$and":[{ "category_name":category }, {"report_to_authorities": "Yes"},  {"timestamp":{ "$gte": startDateTimeStamp,"$lt":endDateTimeStamp }}]}).count()           
         # Statistics
         number_of_reports = report.count()
         percentageOfDb = calculate_percentage_of_report_in_db(report, totalReportsCount)
