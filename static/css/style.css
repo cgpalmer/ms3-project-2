@@ -188,3 +188,7 @@ footer {
 footer p{
     margin: 0;
 }
+
+#footerTel, #footerEmail {
+    display: none;  
+}
