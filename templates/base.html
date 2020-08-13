@@ -67,9 +67,11 @@
                     <li class="">
                         <a class="" href="{{url_for('login')}}">Login</a>
                     </li>
+                    {% if session.get("email") == None %}
                     <li id="signupLink" class="">
                         <a class="" href="{{url_for('signup')}}">Signup</a>
                     </li>
+                    {% endif %}
                     {% if session.get("email") != None %}
                         <li class="">
                             <a class="" href="{{url_for('logout')}}">Logout</a>
