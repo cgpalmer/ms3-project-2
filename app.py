@@ -571,7 +571,7 @@ def search_db_reports():
                     startDatestr = request.form['startDateLocation']
 
                     print(startDatestr)
-                    endDatestr = request.form['allEndDateLocation']
+                    endDatestr = request.form['endDateLocation']
                     print(endDatestr)
                     startDateConversion = datetime.strptime(startDatestr, "%Y-%m-%d")
                     endDateTimeConversion = datetime.strptime(endDatestr, "%Y-%m-%d")
