@@ -185,14 +185,25 @@ footer {
     text-align: center;
 }
 
-#footerHeader{
-    font-size: 18px;
+.footerContact{
+    display: block;
 }
 
 footer p{
     margin: 0;
+    display: inline-block;
+    
+}
+
+#footerHeader{
+    font-size: 18px;
+    
 }
 
 #footerTel, #footerEmail {
     display: none;  
+}
+
+footer i {
+    display: inline-block;
 }
