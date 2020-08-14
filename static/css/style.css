@@ -90,7 +90,8 @@ textarea.materialize-textarea{
 /* Containers */
 
 .page-container{
-    min-height: 82vh;
+    min-height: 79vh;
+    margin-bottom: 1.5rem;
 }
 
 
@@ -101,6 +102,25 @@ textarea.materialize-textarea{
 /* Components */
 .btn {
     margin: 0.5rem 0 1rem 0;
+}
+
+/* Collapsible */
+.collapsible {
+    margin: 5vw;
+}
+
+.collapsible-header{
+    background-color:#f3cd05;
+    color: #36688d;
+    border-bottom: 1px solid #36688d;
+}
+
+.collapsible-header a, .dropdown-content li>span{
+     color: #36688d;
+}
+
+.collapsible-body{
+    background-color:#36688d;
 }
 
 
@@ -148,6 +168,9 @@ header {
 
 
 
+/* Search Report */
+
+
 /* Dashboard */
 
 .dashboard{
@@ -163,23 +186,7 @@ header {
     padding: 24px 0 24px 16px;
 }
 
-.collapsible {
-    margin: 0;
-}
 
-.collapsible-header{
-    background-color:#f3cd05;
-    color: #36688d;
-    border-bottom: 1px solid #36688d;
-}
-
-.collapsible-header a, .dropdown-content li>span{
-     color: #36688d;
-}
-
-.collapsible-body{
-    background-color:#36688d;
-}
 
 .input-field, .input-field textarea, input, ::placeholder, .input-field label, form label, form a {
     color: #f3cd05;
