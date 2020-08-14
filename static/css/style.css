@@ -66,6 +66,10 @@ hr {
     width: 60%;
     color: #f3dc05;
 }
+
+.page-header{
+    margin-top: 2rem;
+}
 /* Home */
 
 header {
