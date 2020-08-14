@@ -74,6 +74,10 @@ hr {
 .form-wrapper{
     margin: 0 5vw;
 }
+
+.btn {
+    margin: 1rem 0;
+}
 /* Home */
 
 header {
