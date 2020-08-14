@@ -84,6 +84,10 @@ header {
     display: block;
 }
 
+.signature {
+    font-style: italic;
+    font-size: 18px;
+}
 
 /* Dashboard */
 
