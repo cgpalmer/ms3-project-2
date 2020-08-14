@@ -70,6 +70,10 @@ hr {
 .page-header{
     margin-top: 2rem;
 }
+
+.form-wrapper{
+    margin: 0 3vw;
+}
 /* Home */
 
 header {
@@ -109,6 +113,10 @@ header {
 #team-info-wrapper-Chris {
     margin-bottom: 2rem;
 }
+
+/* Add report */
+
+
 
 /* Dashboard */
 
