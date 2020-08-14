@@ -46,13 +46,16 @@ p, label, ::placeholder {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    margin: 0;
+    margin: 1rem 0 1rem 0;
 }
 
 p, h1, h2, h3, h4, h5, h6 {
     text-align: center;
 }
 
+.row {
+    margin-bottom: 0;
+}
 
 /* Home */
 
