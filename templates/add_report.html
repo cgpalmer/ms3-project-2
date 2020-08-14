@@ -22,12 +22,12 @@
                         <option id="{{category.category_name}}" value="{{category.category_name}}">{{category.category_name}}</option>
                 {% endfor %}
                 </select>
-                <label for="category">Category</label>
+                
             </div>
                        
             <div class="input-field">
-                <textarea class="materialize-textarea" id="incident_description" name="incident_description" placeholder="Incident description" required></textarea>
-                <label for="incident_description">Incident description</label>
+                <textarea class="materialize-textarea " id="incident_description" name="incident_description" placeholder="Incident description" required></textarea>
+                
             </div>
            
             
@@ -35,11 +35,11 @@
                 <select class="" id="update_report_to_authorities" name="report_to_authorities" required>
                     <option disabled selected value="">Reported to authorities?</option>
                     
-                        <option value="Yes">Yes</option>
-                        <option value="No">No</option>
+                        <option value="Yes">Yes - I have reported this to the authorities</option>
+                        <option value="No">No - I have reported this to the authorities</option>
                 
                 </select>
-                <label for="incident_description">Report to authorities</label>
+                
             </div>
             <button class="btn" type="submit" name="action">Add report</button>
         </form>
