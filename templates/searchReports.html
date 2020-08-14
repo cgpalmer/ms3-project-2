@@ -28,21 +28,23 @@
                     </div>
 
                     <div class="input-field col s12 catTimeFrameDisplay hidden">
-                        <label for="startDate">Start Date</label>
+                        
                         <input type="text" id="date" name="categoryStartDateFrame" class="datepicker">
+                        <label for="startDate">Start Date</label>
                     </div>
                     <div class="input-field col s12 catTimeFrameDisplay hidden">
-                        <label for="endDate">End Date</label>
+                        
                         <input type="text" name="categoryEndDateFrame" id="categoryEndDateFrame" class="datepicker">
+                        <label for="endDate">End Date</label>
                     </div>
-                    <div class="input-field col s12">
+                    <div class="input-field input-field-search col s12">
                         <select name="category">
                             <option value="" disabled selected>Category</option>
                             {% for category in category %}
                                 <option value="{{category}}">{{category}}</option>
                             {% endfor %}
                         </select>
-                    
+                        <label class="">Choose a category to search.</label>
                     </div>
 
                     
@@ -90,7 +92,7 @@
                         <input type="text" name="endDateLocation" id="locationEndDateFrame" class="datepicker">
                     </div>
                                       
-                    <div  class="input-field col s12">
+                    <div  class="input-field input-field-search col s12">
                         <select id="searchDbLocationType" name="locationType">
                             <option value="" disabled selected>Choose location type</option>
                             
@@ -102,7 +104,7 @@
                         </select>
                     </div>
 
-                    <div id="searchDbLocationExtraType" class="input-field col s12 hidden">
+                    <div id="searchDbLocationExtraType" class="input-field input-field-search col s12 hidden">
                         <select id="searchDbLocationExtraTypeOptions" name="extraLocationSearchWithBuilding">
                             <option value="" disabled selected>Extra option for when building is selected.</option>
                            
@@ -115,7 +117,7 @@
                     </div>
 
 
-                    <div id="searchDbBuilding" class="input-field col s12 hidden">
+                    <div id="searchDbBuilding" class="input-field input-field-search col s12 hidden">
                         <select name="building">
                             <option value="" disabled selected>Building</option>
                             {% for building in building %}
@@ -125,7 +127,7 @@
                             {% endfor %}
                         </select>
                     </div>
-                    <div id="searchDbCity" class="input-field col s12 hidden">
+                    <div id="searchDbCity" class="input-field input-field-search col s12 hidden">
                         <select name="city">
                             <option value="" disabled selected>City</option>
                             {% for cities in city %}
@@ -136,7 +138,7 @@
                             {% endfor %}
                         </select>
                     </div>
-                    <div id="searchDbCounty" class="input-field col s12 hidden">
+                    <div id="searchDbCounty" class="input-field input-field-search col s12 hidden">
                         <select name="county">
                             <option value="" disabled selected>County</option>
                             {% for county in county %}
@@ -147,7 +149,7 @@
                             {% endfor %}
                         </select>
                     </div>
-                    <div id="searchDbPostcode" class="input-field col s12 hidden">
+                    <div id="searchDbPostcode" class="input-field input-field-search col s12 hidden">
                         <select name="postcode">
                             <option value="" disabled selected>Postcode</option>
                             {% for postcode in postcode %}
@@ -202,7 +204,7 @@
                         <label for="endDate">End Date</label>
                         <input type="text" name="reportedEndDateFrame" id="allEndDateFrame" class="datepicker">
                     </div>
-                    <div class="input-field col s12">
+                    <div class="input-field input-field-search col s12">
                          
                         <select id="reportedToAuthorities" name="searchReported">
                             
