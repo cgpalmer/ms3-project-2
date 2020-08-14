@@ -45,7 +45,7 @@ p, label, ::placeholder {
     min-height: 90vh;
 }
 
-h1 {
+h1, h2 {
     margin: 0;
 }
 
