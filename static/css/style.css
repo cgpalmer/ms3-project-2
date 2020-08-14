@@ -70,6 +70,7 @@ hr {
 }
 
 /* Forms */
+
 .form-wrapper{
     margin: 10vw 5vw 0 5vw;
 }
@@ -93,7 +94,12 @@ textarea.materialize-textarea{
     padding: 1rem 0 0 0;
 }
 
-
+.input-field>label:not(.label-icon).active {
+    -webkit-transform: translateY(-14px) scale(1);
+    transform: translateY(-24px) scale(1);
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+}
 
 /* Containers */
 
