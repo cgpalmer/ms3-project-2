@@ -108,8 +108,32 @@ textarea.materialize-textarea{
 }
 
 /* Components */
+
+/* Button */
+.btn{
+   
+    color: #36688d;
+    background-color: #f3cd05;
+   
+}
+
+.btn:hover{
+    background-color: #000;
+}
 .btn {
-    margin: 0.5rem 0 1rem 0;
+    margin: 1rem 0 1rem 0;
+}
+
+
+#settingButton{
+    float: right;
+    color: #36688d;
+}
+
+#settingButtonIcon{
+    padding: 3vw;
+    font-size: 36px;
+
 }
 
 /* Collapsible */
@@ -211,65 +235,14 @@ header {
     border-bottom: 1px solid #f3cd05;
 }
 
-[type="radio"]:not(:checked)+span:before, [type="radio"]:not(:checked)+span:after {
-    border: 2px solid #f3cd05;
-}
-
-[type="radio"]:checked+span:after, [type="radio"].with-gap:checked+span:after {
-    background-color: #f3cd05;
-    border: 2px solid #f3cd05;
-}
 
 
-.btn{
-   
-    color: #36688d;
-    background-color: #f3cd05;
-   
-}
-
-.btn:hover{
-    background-color: #000;
-}
-
-#settingButton{
-    float: right;
-    color: #36688d;
-}
-
-#settingButtonIcon{
-    padding: 3vw;
-    font-size: 36px;
-
-}
 
 
 /* Search db reports page */
 
-#compareSearch{
-    background-color: blue;
-    display: none;
-}
 
-#basicSearchForm{
-    background-color: yellow;
-
-}
-
-#orSearch{
-    background-color: green;
     
-}
-
-#filteredSearch{
-    background-color: purple;
-    
-}
-
-#comparedSearch{
-    background-color: orange;
-    
-}
 
 /* Footer */
 
