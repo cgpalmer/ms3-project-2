@@ -81,6 +81,7 @@ hr {
 
 .select-wrapper+label{
     font-size: 16px;
+    top: -40px;
 }
 
 .input-field{
@@ -110,10 +111,7 @@ textarea.materialize-textarea{
     transform-origin: 0 0;
 }
 
-/* .input-field>label
-{
-    top: -16px;
-} */
+
 /* Containers */
 
 .page-container{
