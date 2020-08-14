@@ -88,6 +88,11 @@ hr {
     
 }
 
+.input-field-search{
+    margin-top: 4rem;
+    
+}
+
 
 
 .final-input{
@@ -99,16 +104,16 @@ textarea.materialize-textarea{
 }
 
 .input-field>label:not(.label-icon).active {
-    -webkit-transform: translateY(-32px) scale(1);
-    transform: translateY(-32px) scale(1);
+    -webkit-transform: translateY(-16px) scale(1);
+    transform: translateY(-16px) scale(1);
     -webkit-transform-origin: 0 0;
     transform-origin: 0 0;
 }
 
-.input-field>label
+/* .input-field>label
 {
     top: -16px;
-}
+} */
 /* Containers */
 
 .page-container{
