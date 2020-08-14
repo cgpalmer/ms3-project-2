@@ -77,6 +77,10 @@ hr {
     margin-bottom: 2rem;
 }
 
+.final-input{
+    margin-bottom: 1rem;
+}
+
 textarea.materialize-textarea{
     padding: 1rem 0 0 0;
 }
