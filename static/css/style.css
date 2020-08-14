@@ -94,6 +94,9 @@ hr {
     
 }
 
+.input-field .dateLabel{
+    top: -1rem;
+}
 
 
 .final-input{
