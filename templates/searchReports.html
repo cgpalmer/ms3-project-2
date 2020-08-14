@@ -14,15 +14,6 @@
                             <input id="userSearchbyDiscrimination" class="hidden" type="text" name="userSearchReports" value="searchByDiscrimination">
                            
                     </label>
-                    <div class="input-field col s12">
-                        <select name="category">
-                            <option value="" disabled selected>Category</option>
-                            {% for category in category %}
-                                <option value="{{category}}">{{category}}</option>
-                            {% endfor %}
-                        </select>
-                    
-                    </div>
 
                     <div class="input-field col s12">
                          
@@ -44,6 +35,17 @@
                         <label for="endDate">End Date</label>
                         <input type="text" name="categoryEndDateFrame" id="categoryEndDateFrame" class="datepicker">
                     </div>
+                    <div class="input-field col s12">
+                        <select name="category">
+                            <option value="" disabled selected>Category</option>
+                            {% for category in category %}
+                                <option value="{{category}}">{{category}}</option>
+                            {% endfor %}
+                        </select>
+                    
+                    </div>
+
+                    
             
 
 
@@ -66,6 +68,27 @@
                             <input id="searchbyLocation" class="hidden"  type="text" name="userSearchReports" value="searchByLocation">
                             
                     </label>
+
+                        <div id="searchDbDate" class="input-field col s12">
+                         
+                        <select id="locationTimeFrame" name="useTimeFrame" class="timeFrameChoice">
+                            
+                                
+                                <option value="Yes">Yes</option>
+                                <option selected value="No">No</option>
+                         
+                        </select>
+                        <label class="active">Would you like to search within a time frame?</label>
+                    </div>
+
+                    <div  class="input-field col s12 locationTimeFrameDisplay searchDbDateFrame hidden">
+                        <label for="startDate">Start Date</label>
+                        <input type="text" id="locationStartDateFrame" name="startDateLocation" class="datepicker">
+                    </div>
+                    <div class="input-field col s12 locationTimeFrameDisplay searchDbDateFrame  hidden">
+                        <label for="endDate">End Date</label>
+                        <input type="text" name="endDateLocation" id="locationEndDateFrame" class="datepicker">
+                    </div>
                                       
                     <div  class="input-field col s12">
                         <select id="searchDbLocationType" name="locationType">
@@ -136,25 +159,7 @@
                         </select>
                     </div>
            
-                    <div id="searchDbDate" class="input-field col s12">
-                         <p>Would you like to search within a time frame?</p>
-                        <select id="locationTimeFrame" name="useTimeFrame" class="timeFrameChoice">
-                            
-                                
-                                <option value="Yes">Yes</option>
-                                <option selected value="No">No</option>
-                         
-                        </select>
-                    </div>
-
-                    <div  class="input-field col s12 locationTimeFrameDisplay searchDbDateFrame hidden">
-                        <label for="startDate">Start Date</label>
-                        <input type="text" id="locationStartDateFrame" name="startDateLocation" class="datepicker">
-                    </div>
-                    <div class="input-field col s12 locationTimeFrameDisplay searchDbDateFrame  hidden">
-                        <label for="endDate">End Date</label>
-                        <input type="text" name="endDateLocation" id="locationEndDateFrame" class="datepicker">
-                    </div>
+                
             
                 
                         <button type="submit"><i class="material-icons">text_snippet</i>Find reports</button>
@@ -179,16 +184,6 @@
                     
                     <div class="input-field col s12">
                          
-                        <select id="reportedToAuthorities" name="searchReported">
-                            
-                                <option value="" selected disabled>Search by whether incidents have been reported or not.</option>
-                                <option value="Yes">Search reported</option>
-                                <option value="No">Search unreported</option>
-                         
-                        </select>
-                    </div>
-                    <div class="input-field col s12">
-                         <p>Would you like to search within a time frame?</p>
                         <select id="allTimeFrame" name="useTimeFrame" class="timeFrameChoice">
                             
                                 
@@ -196,6 +191,7 @@
                                 <option selected value="No">No</option>
                          
                         </select>
+                        <label class="active">Would you like to search within a time frame?</label>
                     </div>
 
                     <div class="input-field col s12 reportedTimeFrameDisplay hidden">
@@ -206,6 +202,17 @@
                         <label for="endDate">End Date</label>
                         <input type="text" name="reportedEndDateFrame" id="allEndDateFrame" class="datepicker">
                     </div>
+                    <div class="input-field col s12">
+                         
+                        <select id="reportedToAuthorities" name="searchReported">
+                            
+                                <option value="" selected disabled>Search by whether incidents have been reported or not.</option>
+                                <option value="Yes">Search reported</option>
+                                <option value="No">Search unreported</option>
+                         
+                        </select>
+                    </div>
+                    
             
                 
                         <button type="submit"><i class="material-icons">text_snippet</i>Find reports</button>
