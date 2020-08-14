@@ -41,6 +41,9 @@ p, label, ::placeholder {
     font-size: 14px;
 }
 
+.page-container{
+    min-height: 90vh;
+}
 
 
 
