@@ -195,11 +195,11 @@ $("#seePassword").click(function(){
     var input = document.getElementById('password')
         if(input.value.match(passw))
             {
-            $("#validatedPassword").removeClass('hidden');
+            $("#validatedPassword").css("display", "inline-block");
             }
         else
             {
-            $("#validatedPassword").addClass('hidden');
+            $("#validatedPassword").css("display", "none");
             }
     }
  });
