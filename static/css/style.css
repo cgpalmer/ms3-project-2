@@ -79,6 +79,10 @@ hr {
     margin: 13vw 0 0 0;
 }
 
+.form-search-all{
+    margin: 0;
+}
+
 .select-wrapper+label{
     font-size: 16px;
     top: -40px;
