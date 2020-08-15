@@ -142,6 +142,10 @@ textarea.materialize-textarea{
     margin: 1rem 0;
 }
 
+.btn-wrapper{
+    text-align: center;
+}
+
 .btn:hover{
     background-color: #000;
 }
