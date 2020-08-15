@@ -16,6 +16,9 @@
    
 }
 
+.sidenav li>a:hover{
+    text-decoration: underline;
+}
 
 
 .sidenav{
