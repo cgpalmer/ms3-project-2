@@ -12,10 +12,16 @@
 
 .nav-wrapper, .sidenav{
     background-color: #36688d;
+    
 }
 
-nav ul a, nav .brand-logo, nav .sidenav-trigger i, .sidenav li>a{
+nav .brand-logo {
     color: #f3dc05;
+}
+
+nav ul a,  nav .sidenav-trigger i, .sidenav li>a{
+    font-size: 18px;
+
 }
 
 nav .sidenav-trigger i{
