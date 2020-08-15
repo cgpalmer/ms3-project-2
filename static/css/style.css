@@ -12,17 +12,27 @@
 
 .nav-wrapper, .sidenav{
     background-color: #36688d;
-    
+    text-align: center;
+   
+}
+
+
+
+.sidenav{
+     width: 180px;
 }
 
 nav .brand-logo {
     color: #f3dc05;
 }
 
+
 nav ul a,  nav .sidenav-trigger i, .sidenav li>a{
     font-size: 18px;
-
+     color: #f3dc05;
 }
+
+
 
 nav .sidenav-trigger i{
     font-size: 2.1rem;
