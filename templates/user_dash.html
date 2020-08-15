@@ -1,8 +1,9 @@
 {% extends 'base.html'%} {% block content %}
 
 <div class="page-container">
-<a id="settingButton" href="{{url_for('userSetting')}}"><i id="settingButtonIcon" class="material-icons">settings</i></a>
-
+<div id="settingButton">
+<a  href="{{url_for('userSetting')}}"><i id="settingButtonIcon" class="material-icons">settings</i></a>
+</div>
 <h3>Welcome back, {{name.capitalize()}}</h3>
 
 
