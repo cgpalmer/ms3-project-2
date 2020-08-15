@@ -27,6 +27,7 @@
                                 <option value="discrimination">Search my reports by discrimination</option>
                          
                         </select>
+                        <label class="">Choose a type of search.</label>
                     </div>
                     <div id="userSearchCategory" class="input-field col s12 hidden">
                         <select name="category">
@@ -35,6 +36,7 @@
                                 <option value="{{category}}">{{category}}</option>
                             {% endfor %}
                         </select>
+                         <label class="">Choose a category.</label>
                     
                     </div>
 
@@ -49,6 +51,7 @@
                                 <option>postcode</option>
                          
                         </select>
+                        <label class="">Choose a location.</label>
                     </div>
 
                     <div id="userSearchExtraLocation" class="input-field col s12 hidden">
@@ -61,6 +64,7 @@
                                 <option value="postcode">Postcode</option>
                     
                         </select>
+                        <label class="">Choose a second location.</label>
                     </div>
 
 
@@ -73,6 +77,7 @@
                                 {% endif %}
                             {% endfor %}
                         </select>
+                        <label class="">Choose a building.</label>
                     </div>
                     <div id="cityLocation" class="input-field col s12 hidden locationOptions">
                         <select name="city">
@@ -84,6 +89,7 @@
                                  {% endif %}
                             {% endfor %}
                         </select>
+                        <label class="">Choose a city.</label>
                     </div>
                     <div id="countyLocation" class="input-field col s12 hidden locationOptions">
                         <select name="county">
@@ -95,6 +101,7 @@
                                 {% endif %}
                             {% endfor %}
                         </select>
+                        <label class="">Choose a county.</label>
                     </div>
                     <div id="postcodeLocation" class="input-field col s12 hidden locationOptions">
                         <select name="postcode">
@@ -106,17 +113,10 @@
                                  {% endif %}
                             {% endfor %}
                         </select>
+                        <label class="">Choose a postcode.</label>
                     </div>
 
-                    <div class="input-field col s12 hidden dateOptions">
-                        <label for="startDate">Start Date</label>
-                        <input type="text" id="date" name="startDate" class="datepicker">
-                    </div>
-                    <div class="input-field col s12 hidden dateOptions">
-                        <label for="endDate">End Date</label>
-                        <input type="text" name="endDate" id="date" class="datepicker">
-                    </div>
-            
+                        
                 
                         <button type="submit"><i class="material-icons">text_snippet</i>Find reports</button>
                         
