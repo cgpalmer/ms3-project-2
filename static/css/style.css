@@ -16,7 +16,7 @@
    
 }
 
-.sidenav li>a:hover{
+.sidenav li>a:hover, .nav-wrapper a:hover {
     text-decoration: underline;
 }
 
