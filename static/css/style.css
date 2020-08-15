@@ -101,7 +101,7 @@ hr {
     
 }
 
-.input-field-search{
+.input-field-search, .input-field-login, .input-field-signup{
     margin-top: 4rem;
     
 }
