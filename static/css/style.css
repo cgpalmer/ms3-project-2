@@ -256,6 +256,17 @@ header {
     font-size: 18px;
 }
 
+
+/* Signup page */
+
+#seePassword {
+    margin-right: 5vw;
+}
+
+#confirmPasswordText{
+    font-size: 18px;
+}
+
 /* Dashboard */
 
 .dashboard{
