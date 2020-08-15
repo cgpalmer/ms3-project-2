@@ -1,6 +1,6 @@
 {% extends 'base.html'%} {% block content %}
 
-<section class="dashboard"> 
+<div class="page-container">
 <a id="settingButton" href="{{url_for('userSetting')}}"><i id="settingButtonIcon" class="material-icons">settings</i></a>
 
 <h3>Welcome back, {{name.capitalize()}}</h3>
@@ -140,8 +140,7 @@
       <a class="collapsible-header" href="{{url_for('search_report')}}"><i class="material-icons">search</i> Search our database</a>
     </li>
   </ul>
-  
-</section>
-  
+
+  </div>
 
 {% endblock %}
