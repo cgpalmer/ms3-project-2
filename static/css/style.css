@@ -69,11 +69,17 @@ hr {
     margin: 5vw;
 }
 
+.input-field .login-form, .input-field .login-form ::placeholder{
+    font-size: 2rem;
+}
+
 /* Forms */
 
 .form-wrapper{
     margin: 10vw 5vw 0 5vw;
 }
+
+
 
 .form-wrapper-search{
     margin: 13vw 0 0 0;
