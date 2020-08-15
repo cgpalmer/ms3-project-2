@@ -69,6 +69,10 @@ hr {
     margin: 5vw;
 }
 
+.page-info-user-dash{
+     margin: 9vw;
+}
+
 .input-field .login-form, .input-field .login-form ::placeholder{
     font-size: 2rem;
 }
