@@ -73,6 +73,8 @@ hr {
     font-size: 2rem;
 }
 
+
+
 /* Forms */
 
 .form-wrapper{
@@ -118,11 +120,12 @@ textarea.materialize-textarea{
 }
 
 .input-field>label:not(.label-icon).active {
-    -webkit-transform: translateY(-16px) scale(1);
-    transform: translateY(-16px) scale(1);
+    -webkit-transform: translateY(-32px) scale(1);
+    transform: translateY(-32px) scale(1);
     -webkit-transform-origin: 0 0;
     transform-origin: 0 0;
 }
+
 
 
 /* Containers */
