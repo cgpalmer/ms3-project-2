@@ -20,8 +20,10 @@
             <!-- use js to change the attr to text when clicked so you can see your password. Just for 5 seconds. -->
             <input type="password" class="login-form" id="login_password" name="login_password" placeholder="Please enter your password" required>
             <label class="login-form" for="login_password">Password</label>
-        </div>      
-        <button type="submit">Login</button>
+        </div>   
+        <div class="btn-wrapper">
+        <button class="btn btn-with-extra-margin" type="submit">Login</button>
+        </div>  
     </form>
 </div>
 <h3>Not got an account yet? <a href="{{url_for('signup')}}">Sign up here</a> </h3>
