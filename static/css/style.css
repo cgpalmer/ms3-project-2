@@ -189,6 +189,7 @@ textarea.materialize-textarea{
     background-color:#f3cd05;
     color: #36688d;
     border-bottom: 1px solid #36688d;
+    font-size: 18px;
 }
 
 .collapsible-header a, .dropdown-content li>span{
