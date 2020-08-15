@@ -207,6 +207,12 @@ textarea.materialize-textarea{
 
 }
 
+/* Icons */
+
+i {
+    margin-right: 5px;
+}
+
 /* Collapsible */
 .collapsible {
     margin: 6.5vw 5vw 5vw 5vw;
