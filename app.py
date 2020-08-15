@@ -232,6 +232,7 @@ def check_password():
             return redirect(url_for('dashboard'))
         else:
             print("no match")
+            flash("Sorry, that password is incorrect.")
             return render_template('login.html')
 
 
