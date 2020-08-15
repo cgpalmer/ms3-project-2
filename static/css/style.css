@@ -252,6 +252,10 @@ header {
     margin-bottom: 20vw;
 }
 
+.login-button {
+    font-size: 18px;
+}
+
 /* Dashboard */
 
 .dashboard{
