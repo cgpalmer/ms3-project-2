@@ -171,6 +171,8 @@ $('#extraLocationChoice').change(function(){
 
 // // Temporarily seeing passwords.
 
+
+
 $("#seePassword").click(function(){
          var seePassword = document.getElementById('password');
         seePassword.type = "text";
@@ -188,6 +190,11 @@ $("#seePassword").click(function(){
  
 // In here add the code to put a tick next to the password box once it is a certain length.
     // Live validating the password
+     $(document).ready(function(){
+         $("#validatedPassword").css("display", "none");
+    });
+
+
     $("#password").click(function(){  
     var password = document.getElementById('password')
     password.onkeyup = function(){
