@@ -170,7 +170,7 @@ textarea.materialize-textarea{
 
 
 #settingButton{
-    float: right;
+    text-align: right;
     color: #36688d;
 }
 
