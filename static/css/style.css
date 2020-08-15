@@ -134,15 +134,18 @@ textarea.materialize-textarea{
    
     color: #36688d;
     background-color: #f3cd05;
+    margin: 1rem 0 0 0;
    
+}
+
+.btn-add-report{
+    margin: 1rem 0;
 }
 
 .btn:hover{
     background-color: #000;
 }
-.btn {
-    margin: 1rem 0 1rem 0;
-}
+
 
 .btn i{
     vertical-align: bottom;
