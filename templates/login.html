@@ -8,6 +8,7 @@
         {% endfor %}
     {% endif %}
 {% endwith %}
+<div class="form-wrapper">
     <form action="{{url_for('check_password')}}" method="POST">
         <div class="form-group">
             <label for="login_username">Email</label>
@@ -20,7 +21,7 @@
         </div>      
         <button type="submit">Login</button>
     </form>
-
+</div>
 <h3>Not got an account yet? <a href="{{url_for('signup')}}">Sign up here</a> </h3>
 
 
