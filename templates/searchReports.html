@@ -17,7 +17,7 @@
 
                     <div class="input-field col s12">
                          
-                        <select id="categoryTimeFrame" class="timeFrameChoice" name="useTimeFrame">
+                        <select id="categoryTimeFrame" class="timeFrameChoice" name="useTimeFrame" required>
                             
                                 
                                 <option value="Yes">Yes</option>
@@ -38,10 +38,10 @@
                         <label class="dateLabel" for="endDate">End Date</label>
                     </div>
                     <div class="input-field input-field-search col s12">
-                        <select name="category">
-                            <option value="" disabled selected></option>
+                        <select name="category" required>
+                            <option value="unselected" disabled selected></option>
                             {% for category in category %}
-                                <option value="{{category}}">{{category}}</option>
+                                <option value="{{category}}" >{{category}}</option>
                             {% endfor %}
                         </select>
                         <label class="">Choose a category to search.</label>
@@ -121,7 +121,7 @@
 
                     <div id="searchDbBuilding" class="input-field input-field-search col s12 hidden">
                         <select name="building">
-                            <option value="" disabled selected></option>
+                            <option value="unselected" disabled selected></option>
                             {% for building in building %}
                                 {% if building != "" %}
                                 <option value="{{building}}">{{building}}</option>
@@ -132,7 +132,7 @@
                     </div>
                     <div id="searchDbCity" class="input-field input-field-search col s12 hidden">
                         <select name="city">
-                            <option value="" disabled selected></option>
+                            <option value="unselected" disabled selected></option>
                             {% for cities in city %}
                                 {% if cities != "" %}
                                
@@ -144,7 +144,7 @@
                     </div>
                     <div id="searchDbCounty" class="input-field input-field-search col s12 hidden">
                         <select name="county">
-                            <option value="" disabled selected></option>
+                            <option value="unselected" disabled selected></option>
                             {% for county in county %}
                                  {% if county != "" %}
                                 
@@ -156,7 +156,7 @@
                     </div>
                     <div id="searchDbPostcode" class="input-field input-field-search col s12 hidden">
                         <select name="postcode">
-                            <option value="" disabled selected></option>
+                            <option value="unselected" disabled selected></option>
                             {% for postcode in postcode %}
                                  {% if postcode != "" %}
                                 
