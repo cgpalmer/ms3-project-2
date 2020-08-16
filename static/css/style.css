@@ -344,7 +344,9 @@ header {
     border-bottom: 1px solid #f3cd05;
 }
 
-
+.collapsible-dash{
+    margin: 11.5vw 5vw 5vw 5vw;
+}
 /*  Add date and location pages */
 
 .skip, .yourDB {
