@@ -347,7 +347,7 @@ header {
 
 /*  Add date and location pages */
 
-.skip {
+.skip, .yourDB {
     margin-left: 2vw;
 }
 
