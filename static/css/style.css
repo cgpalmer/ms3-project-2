@@ -373,6 +373,10 @@ header {
     margin: 0;
 }
 
+.result-info-separator{
+    margin: 1rem;
+}
+
 /* Search result page */
 
 .search-again{
