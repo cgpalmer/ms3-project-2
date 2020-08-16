@@ -214,6 +214,10 @@ textarea.materialize-textarea{
 
 }
 
+.button-space-margin{
+    margin-left: 2vw;
+}
+
 
 
 /* Icons */
@@ -357,9 +361,6 @@ header {
 }
 /*  Add date and location pages */
 
-.skip, .yourDB {
-    margin-left: 2vw;
-}
 
 
 
