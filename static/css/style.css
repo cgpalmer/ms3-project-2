@@ -169,6 +169,12 @@ textarea.materialize-textarea{
 
 /* Components */
 
+/* cards */
+
+.card {
+    margin-top: 1rem;
+}
+
 /* Button */
 .btn{
    
