@@ -207,6 +207,8 @@ textarea.materialize-textarea{
 
 }
 
+
+
 /* Icons */
 
 i {
@@ -342,6 +344,12 @@ header {
     border-bottom: 1px solid #f3cd05;
 }
 
+
+/*  Add date and location pages */
+
+.skip {
+    margin-left: 2vw;
+}
 
 
 
