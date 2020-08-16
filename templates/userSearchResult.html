@@ -12,7 +12,7 @@
 <div class="btn-wrapper">
 <a class="btn" href="{{url_for('search_report')}}">Our database</a>
 {% if session.get("email") != None %}
-<a class="btn" href="{{url_for('dashboard')}}">Your database</a>
+<a class="btn yourDB" href="{{url_for('dashboard')}}">Your database</a>
 {% endif %}
 </div>
 
