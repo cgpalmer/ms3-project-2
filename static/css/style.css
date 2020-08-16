@@ -369,6 +369,10 @@ header {
     padding: 2vw;
 }
 
+.result-info{
+    margin: 0;
+}
+
 /* Search result page */
 
 .search-again{
