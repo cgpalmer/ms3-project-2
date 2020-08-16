@@ -21,34 +21,34 @@
    
     <div class="card bg-primary text-white report batch{{x}}">
         <div class="result-info-wrapper">
-            <p class="search-info">Category:</p>
-            <p class="search-info">{{report.category_name}}</p> 
-            <p class="search-info">Incident Description:</p> 
-            <p class="search-info">{{report.incident_description}}</p>
+            <p class="result-info">Category:</p>
+            <p class="result-info">{{report.category_name}}</p> 
+            <p class="result-info">Incident Description:</p> 
+            <p class="result-info">{{report.incident_description}}</p>
             {% if report.building != "" %}
-                <p class="search-info">Building:</p>
-                 <p class="search-info">{{report.building}}</p>
+                <p class="result-info">Building:</p>
+                 <p class="result-info">{{report.building}}</p>
             {% endif %} 
             {% if report.street != "" %}
-                <p class="search-info">Street:</p> 
-                <p class="search-info">{{report.street}}</p>
+                <p class="result-info">Street:</p> 
+                <p class="result-info">{{report.street}}</p>
             {% endif %} 
             {% if report.county != "" %}
-                <p class="search-info">City:</p>
-                 <p class="search-info">{{report.city}}</p>
+                <p class="result-info">City:</p>
+                 <p class="result-info">{{report.city}}</p>
             {% endif %}
             {% if report.county != "" %}
-                <p class="search-info">County:</p>
-                 <p class="search-info">{{report.county}}</p>
+                <p class="result-info">County:</p>
+                 <p class="result-info">{{report.county}}</p>
             {% endif %} 
             {% if report.postcode != "" %}
-                <p class="search-info">Postcode:</p> 
-                <p class="search-info">{{report.postcode}}</p>
+                <p class="result-info">Postcode:</p> 
+                <p class="result-info">{{report.postcode}}</p>
             {% endif %} 
-            <p class="search-info">Date:</p> 
-            <p class="search-info">{{report.date}}</p>
-            <p class="search-info">Reported to the authorities:</p>
-             <p class="search-info">{{report.report_to_authorities}}</p>
+            <p class="result-info">Date:</p> 
+            <p class="result-info">{{report.date}}</p>
+            <p class="result-info">Reported to the authorities:</p>
+             <p class="result-info">{{report.report_to_authorities}}</p>
         </div>
             <a class="btn btn-success" href="{{url_for('user_modify', report_id=report._id)}}">Edit</a>
             <a class="btn btn-danger" href="{{url_for('confirm_delete_report', report_id=report._id)}}">Delete</a>
