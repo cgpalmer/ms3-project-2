@@ -365,6 +365,9 @@ header {
 
 /* Search db reports page */
 
+.result-info-wrapper{
+    padding: 2vw;
+}
 
 /* Search result page */
 
