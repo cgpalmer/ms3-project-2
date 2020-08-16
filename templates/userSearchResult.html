@@ -8,11 +8,13 @@
 </div>
 {% endif %}
 
-
-<a href="{{url_for('search_report')}}"> <h6>Search our database</h6></a>
+<h5 class="page-info">Would you like to search again?</h5>
+<div class="btn-wrapper">
+<a class="btn" href="{{url_for('search_report')}}">Our database</a>
 {% if session.get("email") != None %}
-<a href="{{url_for('dashboard')}}"> <h6>Search your database</h6></a>
+<a class="btn" href="{{url_for('dashboard')}}">Your database</a>
 {% endif %}
+</div>
 
   <ul class="collapsible ">
   
