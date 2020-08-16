@@ -69,8 +69,8 @@
                     </div>
         </div>
         <div class="btn-wrapper">
-            <a class="btn btn-success" href="{{url_for('user_modify', report_id=report._id)}}">Edit</a>
-            <a class="btn btn-danger" href="{{url_for('confirm_delete_report', report_id=report._id)}}">Delete</a>
+            <a class="btn " href="{{url_for('user_modify', report_id=report._id)}}">Edit</a>
+            <a class="btn button-space-margin" href="{{url_for('confirm_delete_report', report_id=report._id)}}">Delete</a>
             </div>
             </div>
     {% endfor %}
@@ -84,7 +84,7 @@
 <div class="btn-wrapper">
 <a class="btn" href="{{url_for('search_report')}}">Our database</a>
 {% if session.get("email") != None %}
-<a class="btn yourDB" href="{{url_for('dashboard')}}">Your database</a>
+<a class="btn button-space-margin" href="{{url_for('dashboard')}}">Your database</a>
 {% endif %}
 </div>
 
