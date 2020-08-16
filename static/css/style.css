@@ -357,7 +357,11 @@ header {
 /* Search db reports page */
 
 
-    
+/* Search result page */
+
+.search-again{
+    margin: 10vw 5vw 0 5vw;
+}
 
 /* Footer */
 
