@@ -5,11 +5,11 @@
 
 /* Colours */
 
-.nav-color, .sidenav, .card-panel {
+.nav-color, .sidenav, .card-panel, footer  {
     background-color: #595775;
 }
 
-.text-color, .sidenav li>a, .card-panel {
+.text-color, .sidenav li>a, .card-panel, footer  {
     color: #fcfaf8;
 }
 
@@ -18,7 +18,7 @@
 }
 
 
-.page-container, body, .page-colour {
+.page-container, body, .page-colour{
         background-color: #fcfaf8;
 }
 
@@ -444,8 +444,7 @@ header {
 
 
 footer {
-    background-color:  #36688d;
-    color:#f3dc05;
+  
     bottom: 0;
     width: 100%;
     margin: 0;
