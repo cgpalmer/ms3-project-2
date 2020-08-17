@@ -5,7 +5,7 @@
 
 /* Colours */
 
-.nav-color, .sidenav, .card-panel, footer  {
+.nav-color, .sidenav, .card-panel, footer, .collapsible-body, .collapsible-header a, .dropdown-content li>span {
     background-color: #595775;
 }
 
@@ -272,12 +272,10 @@ i {
     font-size: 18px;
 }
 
-.collapsible-header a, .dropdown-content li>span{
-     color: #36688d;
-}
+
 
 .collapsible-body{
-    background-color:#36688d;
+    
     padding: 1rem 2rem;
 }
 
