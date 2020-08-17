@@ -9,7 +9,7 @@
     background-color: #595775;
 }
 
-.text-color, .sidenav li>a, .card-panel, footer, .btn, .collapsible-header  {
+.text-color, .sidenav li>a, .card-panel, footer, .btn, .collapsible-header, .input-field, .input-field textarea, input, ::placeholder, .input-field label, form label, form a  {
     color: #fcfaf8;
 }
 
@@ -374,7 +374,6 @@ header {
 
 
 .input-field, .input-field textarea, input, ::placeholder, .input-field label, form label, form a {
-    color: #f3cd05;
     font-family: 'Alegreya', serif;
 
 }
