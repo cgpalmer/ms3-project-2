@@ -10,7 +10,9 @@
             {% if report.street != "" %}
                 <p>Street: {{report.street}}</p>
             {% endif %} 
+              {% if report.street != "" %}
                 <p>City: {{report.city}}</p>
+            {% endif %}
             {% if report.county != "" %}
                 <p>County: {{report.county}}</p>
             {% endif %} 
