@@ -9,7 +9,7 @@
     background-color: #595775;
 }
 
-.text-color {
+.text-color, .sidenav li>a {
     color: #f1e0d6;
 }
 
