@@ -18,7 +18,7 @@
             </div>
             <div class="collapsible-body">
                 <form action="{{url_for('changeDetails')}}" method="POST">
-                    <div class="form-group">
+                    <div>
                         <input class="hidden" type="text" name="changeType" value="password" />
 
                         <label for="confirmCurrentPass">Current password
@@ -40,12 +40,12 @@
             <div class="collapsible-body">
                 <div id="changeEmailForm" class="collapse" role="tabpanel" aria-labelledby="headingTwo2" data-parent="#changeDetailsAccordian">
                     <div class="card-body">
-                        <p>Current email: {{ user_email }}</p>
                         <form action="{{url_for('changeDetails')}}" method="POST">
-                            <div class="form-group">
+                            <div>
                             
                                 <input class="hidden" type="text" name="changeType" value="email" />
                                 <input type="email" class="form-control" id="updateEmail" name="updateEmail" placeholder="Please enter your new email" required />
+                                 <label>Current email: {{ user_email }}</label>
                                 <button class="btn" type="submit">Change</button>
                             </div>
                         </form>
@@ -60,10 +60,10 @@
 
             <div class="collapsible-body">
                 <form action="{{url_for('changeDetails')}}" method="POST">
-                    <div class="form-group">
-                        <p>Current preferred name: {{ preferred_name.capitalize() }}</p>
+                    <div>
                         <input class="hidden" type="text" name="changeType" value="name" />
                         <input type="text" class="form-control" id="updateName" name="updateName" placeholder="Please enter your new preferred name" required />
+                        <label>Current preferred name: {{ preferred_name.capitalize() }}</label>
                         <button class="btn" type="submit">Change</button>
                     </div>
                 </form>

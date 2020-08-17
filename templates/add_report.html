@@ -10,11 +10,11 @@
 {% endwith %}
 <div class="form-wrapper">
 <form method="POST" action="{{ url_for('insert_report') }}">
-            <div class="input-field hidden">
+            <div class=" hidden">
                 <label for="email"></label>
                 <input type="text" class="" id="email" name="email" value="{{currentUserEmail}}" placeholder="Email">
             </div>         
-            <div class="input-field">
+            <div class="">
                 
                 <select class="" id="category" name="category_name" required>
                 <option disabled selected value="">Choose category</option> 
@@ -25,13 +25,13 @@
                 
             </div>
                        
-            <div class="input-field">
+            <div class="">
                 <textarea class="materialize-textarea " id="incident_description" name="incident_description" placeholder="Incident description" required></textarea>
                 
             </div>
            
             
-             <div class="input-field final-input">
+             <div class=" final-input">
                 <select class="" id="update_report_to_authorities" name="report_to_authorities" required>
                     <option disabled selected value="">Reported to authorities?</option>
                     
