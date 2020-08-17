@@ -393,6 +393,10 @@ header {
     margin: 0.5rem;
 }
 
+.settings-header i {
+    vertical-align: bottom;
+}
+
 /* Footer */
 
 
