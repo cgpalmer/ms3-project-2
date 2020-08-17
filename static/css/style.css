@@ -9,7 +9,7 @@
     background-color: #595775;
 }
 
-.text-color, .sidenav li>a, .card-panel, footer, .btn, .collapsible-header, .input-field, .input-field textarea, input, ::placeholder, .input-field label, form label, form a  {
+.text-color, .sidenav li>a, .card-panel, footer, .btn, .collapsible-header  {
     color: #fcfaf8;
 }
 
@@ -39,6 +39,9 @@ hr{
     border: 1px solid #aba6bf;
 }
 
+.input-field, .input-field textarea, input, ::placeholder, .input-field label, form label, form a{
+    color: #595775;
+}
 
 
 
