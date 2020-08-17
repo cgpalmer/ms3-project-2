@@ -35,11 +35,13 @@ hr{
     background-color: #bf988f;
 }
 
+.collapsible-header{
+    border: 1px solid #aba6bf;
+}
 
-
-.collapsible-header {
+.collapsible-body {
     background-color: #aba6bf;
-      border-bottom: 1px solid #595775;
+      
 }
 
 
