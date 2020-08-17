@@ -5,11 +5,11 @@
 
 /* Colours */
 
-.nav-color, .sidenav, .card-panel, footer, .collapsible-body, .collapsible-header a, .dropdown-content li>span {
+.nav-color, .sidenav, .card-panel, footer, .collapsible-body, .collapsible-header {
     background-color: #595775;
 }
 
-.text-color, .sidenav li>a, .card-panel, footer, .btn  {
+.text-color, .sidenav li>a, .card-panel, footer, .btn {
     color: #fcfaf8;
 }
 
