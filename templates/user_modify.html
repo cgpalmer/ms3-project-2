@@ -3,23 +3,54 @@
 <h3 class="page-header">This is the report you have chosen to edit.</h3>
     <div class="card bg-primary text-white">
         
-            <p>Category: {{report.category_name}}</p> 
-            <p>Incident Description: {{report.incident_description}}</p>
+        <div class="result-info-wrapper">
+            <div class="result-info-separator">
+            <p class="result-info">Category:</p>
+            <p class="result-info">{{report.category_name}}</p> 
+            </div>
+             <div class="result-info-separator">
+            <p class="result-info">Incident Description:</p> 
+            <p class="result-info">{{report.incident_description}}</p>
+                   </div>
             {% if report.building != "" %}
-                <p>Building: {{report.building}}</p>
+             <div class="result-info-separator">
+                <p class="result-info">Building:</p>
+                 <p class="result-info">{{report.building}}</p>
+                        </div>
             {% endif %} 
             {% if report.street != "" %}
-                <p>Street: {{report.street}}</p>
+             <div class="result-info-separator">
+                <p class="result-info">Street:</p> 
+                <p class="result-info">{{report.street}}</p>
+                       </div>
             {% endif %} 
-                <p>City: {{report.city}}</p>
             {% if report.county != "" %}
-                <p>County: {{report.county}}</p>
+             <div class="result-info-separator">
+                <p class="result-info">City:</p>
+                 <p class="result-info">{{report.city}}</p>
+                        </div>
+            {% endif %}
+            {% if report.county != "" %}
+             <div class="result-info-separator">
+                <p class="result-info">County:</p>
+                 <p class="result-info">{{report.county}}</p>
+                        </div>
             {% endif %} 
             {% if report.postcode != "" %}
-                <p>Postcode: {{report.postcode}}</p>
+             <div class="result-info-separator">
+                <p class="result-info">Postcode:</p> 
+                <p class="result-info">{{report.postcode}}</p>
+                       </div>
             {% endif %} 
-            <p>Date: {{report.date}}</p>
-            <p>Reported to the authorities: {{report.report_to_authorities}}</p>
+             <div class="result-info-separator">
+            <p class="result-info">Date:</p> 
+            <p class="result-info">{{report.date}}</p>
+                   </div>
+             <div class="result-info-separator">
+            <p class="result-info">Reported to the authorities:</p>
+             <p class="result-info">{{report.report_to_authorities}}</p>
+                    </div>
+        </div>
     </div>
     
 <form method="POST" action="{{ url_for('edit_report', report_id=report._id) }}">
