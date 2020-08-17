@@ -385,6 +385,14 @@ header {
     margin: 10vw 5vw 0 5vw;
 }
 
+
+/* Settings Page */
+
+.settings-header h5{
+    text-align: center;
+    margin: 0.5rem;
+}
+
 /* Footer */
 
 
