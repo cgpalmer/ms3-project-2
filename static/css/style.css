@@ -391,6 +391,10 @@ header {
     display: block;
 }
 
+.input-field-smaller-margin{
+    margin-top: 1rem;
+}
+
 /* Settings Page */
 
 .settings-header h5{
