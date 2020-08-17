@@ -1,6 +1,7 @@
 {% extends 'base.html'%} {% block content %}
 
 <h3 class="page-header">This is the report you have chosen to edit.</h3>
+   <div class="collapsible-body collapsible-body-modify">
     <div class="card bg-primary text-white">
         
         <div class="result-info-wrapper">
@@ -51,6 +52,7 @@
              <p class="result-info">{{report.report_to_authorities}}</p>
                     </div>
         </div>
+    </div>
     </div>
     
 <form method="POST" action="{{ url_for('edit_report', report_id=report._id) }}">
