@@ -9,7 +9,7 @@
     background-color: #595775;
 }
 
-.text-color, .sidenav li>a, .card-panel, footer  {
+.text-color, .sidenav li>a, .card-panel, footer, .btn  {
     color: #fcfaf8;
 }
 
@@ -31,7 +31,13 @@ hr{
     border-color:#fcfaf8 ;
 }
 
+.btn {
+    background-color: #bf988f;
+}
 
+.collapsible-header {
+    background-color: #aba6bf;
+}
 
 
 
@@ -207,10 +213,7 @@ textarea.materialize-textarea{
 
 /* Button */
 .btn{
-   
-    color: #36688d;
-    background-color: #f3cd05;
-    margin: 1rem 0 0 0;
+       margin: 1rem 0 0 0;
    
 }
 
