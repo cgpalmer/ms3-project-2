@@ -10,20 +10,24 @@
 }
 
 .text-color, .sidenav li>a {
-    color: #f1e0d6;
+    color: #fcfaf8;
 }
 
-.page-header {
+.page-header, .page-info {
     color: #583E2E;
 }
 
  .page-colour{
-     background-color: #f1e0d6;
+     background-color: #fcfaf8;
  }
+
+.page-container, body {
+        background-color: #fcfaf8;
+}
 
 hr{
      
-    border-color:#f1e0d6 ;
+    border-color:#583E2E ;
 }
 
 
