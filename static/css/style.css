@@ -385,6 +385,11 @@ header {
     margin: 10vw 5vw 0 5vw;
 }
 
+/* User modify */
+
+.collapsible-body-modify{
+    display: block;
+}
 
 /* Settings Page */
 
