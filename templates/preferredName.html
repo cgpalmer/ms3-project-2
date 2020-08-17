@@ -1,13 +1,15 @@
 {% extends 'base.html'%} {% block content %}
 
-<h1>Thank you for joining!</h1>
+<h1 class="page-header">Thank you for joining!</h1>
       <div class="modal-body">
         
-       <p>Please enter your preferred name!</p>
+       <h5 class="page-info">Please enter your preferred name!</h5>
         <form method="POST" action="{{url_for('insert_name')}}">
             <label for="preferredNameInput"></label>
-            <input id="preferredNameInput" name="preferredNameInput" type="text" required>        
-            <button type="submit"> Get started </button>       
+            <input id="preferredNameInput" name="preferredNameInput" type="text" required>
+            <div class="btn-wrapper">
+            <button class="btn" type="submit"> Get started </button>       
+            </div>        
         </form>
       </div>
 
