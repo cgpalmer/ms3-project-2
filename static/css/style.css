@@ -18,7 +18,11 @@
 }
 
 
-.page-container, body, .page-colour{
+.page-container{
+    background-color: #f1e0d6;
+}
+
+body, .page-colour{
         background-color: #fcfaf8;
 }
 
