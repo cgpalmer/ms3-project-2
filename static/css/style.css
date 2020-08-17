@@ -9,7 +9,7 @@
     background-color: #595775;
 }
 
-.text-color, .sidenav li>a, .card-panel, footer, .btn {
+.text-color, .sidenav li>a, .card-panel, footer, .btn, .collapsible-header  {
     color: #fcfaf8;
 }
 
