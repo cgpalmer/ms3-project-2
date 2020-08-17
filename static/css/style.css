@@ -5,12 +5,16 @@
 
 /* Colours */
 
-.nav-colour, .sidenav {
+.nav-color, .sidenav {
     background-color: #595775;
 }
 
 .text-color, .sidenav li>a {
     color: #f1e0d6;
+}
+
+.page-header {
+    color: #583E2E;
 }
 
  .page-colour{
