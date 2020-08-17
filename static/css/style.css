@@ -183,8 +183,8 @@ textarea.materialize-textarea{
 
 .page-container{
     min-height: 79vh;
-    margin-bottom: 1.5rem;
-    background-color: #f1e0d6;
+    padding-bottom: 1rem;
+    
 }
 
 
