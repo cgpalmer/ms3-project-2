@@ -5,11 +5,11 @@
 
 /* Colours */
 
-.nav-color, .sidenav {
+.nav-color, .sidenav, .card-panel {
     background-color: #595775;
 }
 
-.text-color, .sidenav li>a {
+.text-color, .sidenav li>a, .card-panel {
     color: #fcfaf8;
 }
 
@@ -17,11 +17,8 @@
     color: #583E2E;
 }
 
- .page-colour{
-     background-color: #fcfaf8;
- }
 
-.page-container, body {
+.page-container, body, .page-colour {
         background-color: #fcfaf8;
 }
 
@@ -29,6 +26,8 @@ hr{
      
     border-color:#583E2E ;
 }
+
+
 
 
 
@@ -282,8 +281,6 @@ header {
 
 .card-panel {
     font-size: 18px;
-    background-color: #36688d;
-    color:#f3cd05;
     margin: 4vw; 
 }
 
