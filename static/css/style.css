@@ -22,7 +22,7 @@
     background-color: #f1e0d6;
 }
 
-body, .page-colour{
+body, .page-colour, .collapsible-body{
         background-color: #fcfaf8;
 }
 
@@ -39,10 +39,7 @@ hr{
     border: 1px solid #aba6bf;
 }
 
-.collapsible-body {
-    background-color: #aba6bf;
-      
-}
+
 
 
 
