@@ -385,11 +385,13 @@ header {
     margin: 10vw 5vw 0 5vw;
 }
 
-/* User modify */
+/* User delete */
 
-.collapsible-body-modify{
+.collapsible-body-delete{
     display: block;
 }
+
+/* User modify */
 
 .input-field-smaller-margin{
     margin-top: 1rem;
