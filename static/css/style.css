@@ -30,13 +30,13 @@ margin-top: 26px;
 }
 
 nav .brand-logo {
-    color: #f3dc05;
+    color: #f1e0d6;
 }
 
 
 nav ul a,  nav .sidenav-trigger i, .sidenav li>a{
     font-size: 18px;
-     color: #f3dc05;
+     color: #f1e0d6;
 }
 
 
@@ -165,6 +165,7 @@ textarea.materialize-textarea{
 .page-container{
     min-height: 79vh;
     margin-bottom: 1.5rem;
+    background-color: #f1e0d6;
 }
 
 
