@@ -3,6 +3,27 @@
     font-family: 'Alegreya', serif;
 }
 
+/* Colours */
+
+.nav-colour {
+    background-color: #595775;
+}
+
+.text-color {
+    color: #f1e0d6;
+}
+
+ .page-colour{
+     background-color: #f1e0d6;
+ }
+
+hr{
+     
+    border-color:#f1e0d6 ;
+}
+
+
+
 
 /* Nav bar */
 .nav-wrapper{
@@ -11,7 +32,7 @@
 }
 
 .nav-wrapper, .sidenav{
-    background-color: #595775;
+    
     text-align: center;
    
 }
@@ -29,14 +50,12 @@
 margin-top: 26px;
 }
 
-nav .brand-logo {
-    color: #f1e0d6;
-}
+
 
 
 nav ul a,  nav .sidenav-trigger i, .sidenav li>a{
     font-size: 18px;
-     color: #f1e0d6;
+     
 }
 
 
@@ -45,13 +64,7 @@ nav .sidenav-trigger i{
     font-size: 2.1rem;
 }
 
-.navbar-light .navbar-nav .nav-link {
-    color: #f3dc05;
-}
 
-#homepageHeader{
-    background-color: #BDA589;
-}
 
 
 /* Re-used classes */
@@ -79,7 +92,6 @@ p {
 hr {
     margin-top: 1.5rem;
     width: 60%;
-    color: #f3dc05;
 }
 
 .page-header{
