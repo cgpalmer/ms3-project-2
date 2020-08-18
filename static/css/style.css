@@ -5,7 +5,7 @@
 
 /* Colours */
 
-.nav-color, .sidenav, .card-panel, footer, .collapsible-body, .collapsible-header {
+.nav-color, .sidenav, .card-panel, footer, .collapsible-body, .collapsible-header, .btn {
     background-color: #595775;
 }
 
@@ -31,9 +31,6 @@ hr{
     border-color:#fcfaf8 ;
 }
 
-.btn {
-    background-color: #bf988f;
-}
 
 .collapsible-header{
     border: 1px solid #aba6bf;
