@@ -28,7 +28,9 @@
                         <label for="updatePassword">New password
                         <input type="password" class="form-control" id="updatePassword" name="updatePassword" placeholder="Please enter your new password" required />
                         </label>
+                        <div class="btn-wrapper">
                         <button class="btn" type="submit">Change</button>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -46,7 +48,9 @@
                                 <input class="hidden" type="text" name="changeType" value="email" />
                                 <input type="email" class="form-control" id="updateEmail" name="updateEmail" placeholder="Please enter your new email" required />
                                  <label>Current email: {{ user_email }}</label>
+                                 <div class="btn-wrapper">
                                 <button class="btn" type="submit">Change</button>
+                                 </div>
                             </div>
                         </form>
                     </div>
@@ -64,7 +68,9 @@
                         <input class="hidden" type="text" name="changeType" value="name" />
                         <input type="text" class="form-control" id="updateName" name="updateName" placeholder="Please enter your new preferred name" required />
                         <label>Current preferred name: {{ preferred_name.capitalize() }}</label>
+                        <div class="btn-wrapper">
                         <button class="btn" type="submit">Change</button>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -77,7 +83,9 @@
                 <div id="confirmDeleteUser">
                     <form action="{{(url_for('delete_user'))}}" method="POST">
                         <input type="password" name="deletePassword" placeholder="Enter password to delete account" />
+                        <div class="btn-wrapper">
                         <button class="btn" type="submit">Confirm delete</button>
+                        </div>
                     </form>
                 </div>
             </div>
