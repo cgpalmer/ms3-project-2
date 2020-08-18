@@ -5,7 +5,7 @@
 
 /* Colours */
 
-.nav-color, .sidenav, .card-panel, footer, .collapsible-body, .collapsible-header, .btn, .datepicker-table td.is-selected, .datepicker-date-display {
+.nav-color, .sidenav, .card-panel, footer, .collapsible-header, .btn, .datepicker-table td.is-selected, .datepicker-date-display {
     background-color: #595775;
 }
 
@@ -23,8 +23,12 @@
     background-color: #f1e0d6;
 }
 
-body, .page-colour{
+body, .page-colour, .collapsible-body{
         background-color: #fcfaf8;
+}
+
+.collapsible-body-result {
+    background-color: #aba6bf;
 }
 
 hr{
@@ -432,6 +436,8 @@ header {
 .search-again{
     margin: 10vw 5vw 0 5vw;
 }
+
+
 
 /* User delete */
 
