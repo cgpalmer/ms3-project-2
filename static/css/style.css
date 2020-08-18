@@ -566,6 +566,14 @@ h5{
     height: 4rem;
 }
 
+.btn-with-extra-margin{
+    margin: 3rem;
+}
+
+.form-wrapper{
+    margin: 10vw 8vw 0 8vw;
+}
+
 /* Home Page */
 #meetTheTeam{
     font-size: 5rem;
