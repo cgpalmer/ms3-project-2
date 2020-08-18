@@ -44,6 +44,11 @@ hr{
     color: #595775;
 }
 
+.input-field input[type=text]:focus {
+     border-bottom: 1px solid #595775;
+     box-shadow: 0 1px 0 0 #595775;
+   }
+
 
 
 
@@ -381,10 +386,7 @@ header {
 
 }
 
- .input-field input[type=text]:focus {
-     border-bottom: 1px solid #f3cd05;
-     box-shadow: 0 1px 0 0 #f3cd05;
-   }
+ 
 
 
 
