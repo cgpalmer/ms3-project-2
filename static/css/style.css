@@ -40,8 +40,9 @@ hr{
       border-bottom: 1px solid #595775;
 }
 
-.input-field, .input-field textarea, input, ::placeholder, .input-field label, form label, form a, #settingButtonIcon{
+.input-field, .input-field textarea, input, ::placeholder, .input-field label, form label, form a, #settingButtonIcon, .dropdown-content li>a, .dropdown-content li>span{
     color: #595775;
+    font-weight: 700;
 }
 
 .input-field input[type=text]:focus {
