@@ -566,6 +566,10 @@ h5{
     height: 4rem;
 }
 
+.page-header{
+    margin-top: 4rem;
+}
+
 .btn-with-extra-margin{
     margin: 3rem;
 }
