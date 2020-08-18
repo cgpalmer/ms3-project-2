@@ -32,6 +32,9 @@ hr{
     border-color:#595775 ;
 }
 
+.purpose-hr{
+     border-color:#fff ;
+}
 
 .collapsible-header{
     border: 1px solid #fff;
