@@ -5,7 +5,7 @@
 
 /* Colours */
 
-.nav-color, .sidenav, .card-panel, footer, .collapsible-body, .collapsible-header, .btn {
+.nav-color, .sidenav, .card-panel, footer, .collapsible-body, .collapsible-header, .btn, .datepicker-table td.is-selected{
     background-color: #595775;
 }
 
