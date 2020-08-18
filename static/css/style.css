@@ -536,6 +536,14 @@ p, label, ::placeholder {
     font-size: 2rem;
 }
 
+h1{
+    font-size: 6rem;
+}
+
+h2{
+    font-size: 4.5rem;
+}
+
 
 .footerContact i{
     font-size: 40px;
