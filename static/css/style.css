@@ -33,7 +33,11 @@ hr{
 
 
 .collapsible-header{
-    border: 1px solid #aba6bf;
+    border: 1px solid #fff;
+}
+
+.select-wrapper input.select-dropdown, textarea.materialize-textarea, input[type=text]:not(.browser-default){
+      border-bottom: 1px solid #595775;
 }
 
 .input-field, .input-field textarea, input, ::placeholder, .input-field label, form label, form a, #settingButtonIcon{
@@ -382,9 +386,7 @@ header {
      box-shadow: 0 1px 0 0 #f3cd05;
    }
 
-.select-wrapper input.select-dropdown, textarea.materialize-textarea, input[type=text]:not(.browser-default) {
-    border-bottom: 1px solid #f3cd05;
-}
+
 
 .collapsible-dash {
     margin: 5.5vh 5vw 1vh 5vw;
