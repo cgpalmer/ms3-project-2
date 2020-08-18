@@ -39,9 +39,11 @@ hr{
     border: 1px solid #aba6bf;
 }
 
-.input-field, .input-field textarea, input, ::placeholder, .input-field label, form label, form a{
+.input-field, .input-field textarea, input, ::placeholder, .input-field label, form label, form a, #settingButtonIcon{
     color: #595775;
 }
+
+
 
 
 
