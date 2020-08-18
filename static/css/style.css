@@ -53,6 +53,11 @@ hr{
     font-weight: 700;
 }
 
+textarea{
+    color: #595775;
+    font-weight: 500;
+}
+
 .input-field input[type=text]:focus, input[type=email]:not(.browser-default):focus:not([readonly]),  input[type=text]:not(.browser-default):focus:not([readonly]),input[type=password]:not(.browser-default):focus:not([readonly]), textarea.materialize-textarea:focus:not([readonly]) {
     -webkit-box-shadow: 0 1px 0 0 #595775;
      box-shadow: 0 1px 0 0 #595775;
@@ -579,13 +584,21 @@ img.responsive-img{
 /* Add report */
 
 textarea.materialize-textarea{
-    min-height: 6rem;
+    padding:0;
+    font-size: 2rem;
+}
+
+
+{
+    color: 
 }
 
 .select-wrapper+label, .select-wrapper input.select-dropdown{
     font-size: 2rem;
     
 }
+
+
 
 
 
