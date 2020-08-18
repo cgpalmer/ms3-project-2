@@ -58,8 +58,10 @@ hr{
      box-shadow: 0 1px 0 0 #595775;
    }
 
+.btn:hover, .btn:focus {
+    background-color: #aba6bf;
 
-
+}
 
 
 
@@ -251,9 +253,7 @@ textarea.materialize-textarea{
     text-align: center;
 }
 
-.btn:hover{
-    background-color: #000;
-}
+
 
 
 .btn i{
