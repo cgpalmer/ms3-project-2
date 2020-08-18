@@ -532,7 +532,7 @@ nav a.sidenav-trigger i{
 
 
 
-p, label, ::placeholder {
+p, label, ::placeholder, .signature {
     font-size: 2rem;
 }
 
@@ -556,9 +556,13 @@ h5{
     font-size: 2.5rem;
 }
 
+
+/* Home Page */
 #meetTheTeam{
     font-size: 5rem;
 }
+
+
 
 img.responsive-img{
     height: 39vh;
@@ -570,5 +574,9 @@ img.responsive-img{
 
 .footerContact i{
     font-size: 40px;
+}
+
+#footerHeader{
+    font-size:32px;
 }
 }
