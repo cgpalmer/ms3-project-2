@@ -36,7 +36,7 @@ hr{
     border: 1px solid #fff;
 }
 
-.select-wrapper input.select-dropdown, textarea.materialize-textarea, input[type=text]:not(.browser-default){
+.select-wrapper input.select-dropdown, textarea.materialize-textarea, input[type=text]:not(.browser-default), .input-field input[type=text]:focus{
       border-bottom: 1px solid #595775;
 }
 
@@ -45,7 +45,7 @@ hr{
 }
 
 .input-field input[type=text]:focus {
-     border-bottom: 1px solid #595775;
+ 
      box-shadow: 0 1px 0 0 #595775;
    }
 
