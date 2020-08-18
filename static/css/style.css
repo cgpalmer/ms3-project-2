@@ -574,6 +574,21 @@ img.responsive-img{
     text-align: center;
 }
 
+
+
+/* Add report */
+
+textarea.materialize-textarea{
+    min-height: 6rem;
+}
+
+.select-wrapper+label, .select-wrapper input.select-dropdown{
+    font-size: 2rem;
+    
+}
+
+
+
 .footerContact i{
     font-size: 40px;
 }
