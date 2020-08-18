@@ -535,4 +535,9 @@ nav a.sidenav-trigger i{
 p, label, ::placeholder {
     font-size: 2rem;
 }
+
+
+.footerContact i{
+    font-size: 40px;
+}
 }
