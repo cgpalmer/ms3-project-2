@@ -586,17 +586,19 @@ img.responsive-img{
 textarea.materialize-textarea{
     padding:0;
     font-size: 2rem;
+    margin-bottom: 3rem;
 }
 
 
-{
-    color: 
-}
 
 .select-wrapper+label, .select-wrapper input.select-dropdown{
     font-size: 2rem;
     margin-bottom: 3rem;
     
+}
+
+.dropdown-content li>span{
+    font-size: 2rem;
 }
 
 
