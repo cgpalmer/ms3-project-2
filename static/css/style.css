@@ -595,6 +595,7 @@ textarea.materialize-textarea{
 
 .select-wrapper+label, .select-wrapper input.select-dropdown{
     font-size: 2rem;
+    margin-bottom: 3rem;
     
 }
 
