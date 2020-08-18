@@ -5,7 +5,7 @@
 
 /* Colours */
 
-.nav-color, .sidenav, .card-panel, footer, .collapsible-body, .collapsible-header, .btn, .datepicker-table td.is-selected{
+.nav-color, .sidenav, .card-panel, footer, .collapsible-body, .collapsible-header, .btn, .datepicker-table td.is-selected, .datepicker-date-display {
     background-color: #595775;
 }
 
@@ -40,7 +40,7 @@ hr{
       border-bottom: 1px solid #595775;
 }
 
-.input-field, .input-field textarea, input, ::placeholder, .input-field label, form label, form a, #settingButtonIcon, .dropdown-content li>a, .dropdown-content li>span{
+.input-field, .input-field textarea, input, ::placeholder, .input-field label, form label, form a, #settingButtonIcon, .dropdown-content li>a, .dropdown-content li>span, .datepicker-table td.is-today{
     color: #595775;
     font-weight: 700;
 }
@@ -290,6 +290,11 @@ i {
     padding: 1rem 2rem;
 }
 
+/* Datepicker */ 
+
+.datepicker-table td.is-today{
+    background-color: lightgray;
+}
 
 /* Home */
 
