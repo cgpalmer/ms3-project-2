@@ -521,6 +521,14 @@ nav .brand-logo{
     
 }
 
+nav .sidenav-trigger i{
+    font-size: 3rem;
+   
+}
+
+nav a.sidenav-trigger i{
+    line-height: 80px;
+}
 
 
 
