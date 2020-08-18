@@ -40,7 +40,7 @@ hr{
     border: 1px solid #fff;
 }
 
-.select-wrapper input.select-dropdown, textarea.materialize-textarea, input[type=text]:not(.browser-default), .input-field input[type=text]:focus, input[type=text]:not(.browser-default):focus:not([readonly]), input[type=password]:not(.browser-default):focus:not([readonly]), input[type=email]:not(.browser-default):focus:not([readonly]){
+.select-wrapper input.select-dropdown, textarea.materialize-textarea, input[type=text]:not(.browser-default), .input-field input[type=text]:focus, input[type=text]:not(.browser-default):focus:not([readonly]), input[type=password]:not(.browser-default):focus:not([readonly]), input[type=email]:not(.browser-default):focus:not([readonly]), .select-wrapper input.select-dropdown:focus, textarea.materialize-textarea:focus:not([readonly]){
       border-bottom: 1px solid #595775;
 }
 
@@ -49,7 +49,7 @@ hr{
     font-weight: 700;
 }
 
-.input-field input[type=text]:focus, input[type=email]:not(.browser-default):focus:not([readonly]),  input[type=text]:not(.browser-default):focus:not([readonly]),input[type=password]:not(.browser-default):focus:not([readonly]) {
+.input-field input[type=text]:focus, input[type=email]:not(.browser-default):focus:not([readonly]),  input[type=text]:not(.browser-default):focus:not([readonly]),input[type=password]:not(.browser-default):focus:not([readonly]), textarea.materialize-textarea:focus:not([readonly]) {
     -webkit-box-shadow: 0 1px 0 0 #595775;
      box-shadow: 0 1px 0 0 #595775;
    }
