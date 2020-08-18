@@ -63,9 +63,6 @@ hr{
 
 }
 
-
-
-
 /* Nav bar */
 
 .nav{
@@ -404,8 +401,6 @@ header {
 
 }
 
- 
-
 
 
 .collapsible-dash {
@@ -511,4 +506,13 @@ footer i {
 
 #copyWrapper{
     margin-top: 0.5rem;
+}
+
+
+
+@media screen and (min-width: 768px) {
+
+p, label, ::placeholder {
+    font-size: 2rem;
+}
 }
