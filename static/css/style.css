@@ -570,7 +570,7 @@ h5{
 
 
 
-.collapsible-header{
+.collapsible-header, .input-field>label{
     font-size: 2rem;
 }
 
