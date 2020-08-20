@@ -589,6 +589,10 @@ h5{
     margin: 10vw 8vw 0 8vw;
 }
 
+.input-field .dateLabel{
+    top: -2rem;
+}
+
 /* Home Page */
 #meetTheTeam{
     font-size: 5rem;
