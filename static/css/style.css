@@ -522,7 +522,7 @@ footer i {
 }
 
 
-
+/* iPad */
 @media screen and (min-width: 768px) {
 
 /* Nav */
@@ -643,6 +643,10 @@ img.responsive-img{
 
 .team-pic-wrapper{
     text-align: center;
+}
+
+.purpose-wrapper{
+    margin-top: 7vw;
 }
 
 
