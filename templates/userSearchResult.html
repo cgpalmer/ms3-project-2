@@ -22,8 +22,10 @@
     <div class="card bg-primary text-white report batch{{x}}">
         <div class="result-info-wrapper">
             <div class="result-info-separator">
+             {% if report.category_name != "" %}
             <p class="result-info">Category:</p>
-            <p class="result-info">{{report.category_name}}</p> 
+            <p class="result-info">{{report.category_name}}</p>
+            {% endif %} 
             </div>
              <div class="result-info-separator">
             <p class="result-info">Incident Description:</p> 
@@ -59,14 +61,19 @@
                 <p class="result-info">{{report.postcode}}</p>
                        </div>
             {% endif %} 
+             {% if report.date != "" %}
              <div class="result-info-separator">
+             
             <p class="result-info">Date:</p> 
             <p class="result-info">{{report.date}}</p>
                    </div>
+                   {% endif %}
+                 {% if report.report_to_authorities != "" %}
              <div class="result-info-separator">
             <p class="result-info">Reported to the authorities:</p>
              <p class="result-info">{{report.report_to_authorities}}</p>
                     </div>
+                    {% endif%}
         </div>
         <div class="btn-wrapper">
             <a class="btn " href="{{url_for('user_modify', report_id=report._id)}}">Edit</a>
