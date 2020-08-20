@@ -570,7 +570,7 @@ h5{
 
 
 
-.collapsible-header, .dateSpan{
+.collapsible-header, .dateSpan, input[type=email]:not(.browser-default){
     font-size: 2rem;
 }
 
