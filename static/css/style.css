@@ -800,7 +800,7 @@ footer{
 /* Login */
 
 .hrefButton{
-    height:6rem;
+    height:auto;
     line-height: 87px;
 }
 
