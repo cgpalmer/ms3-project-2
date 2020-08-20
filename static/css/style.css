@@ -767,4 +767,9 @@ input[type=text]:not(.browser-default), #confirmPasswordText {
     margin-bottom: 0.5rem;
     
 }
+
+/* Home  */
+.disclaimer-wrapper {
+    padding: 48px 42px;
+}
 }
