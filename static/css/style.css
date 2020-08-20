@@ -570,9 +570,10 @@ h5{
 
 
 
-.collapsible-header, .input-field>label{
+.collapsible-header, .dateSpan{
     font-size: 2rem;
 }
+
 
 
 /* Margins */
