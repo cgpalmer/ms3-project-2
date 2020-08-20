@@ -516,6 +516,8 @@ footer i {
 
 
 @media screen and (min-width: 768px) {
+
+/* Nav */
 nav{
     height: 8.4vh;
     line-height: 75px;
@@ -535,7 +537,7 @@ nav a.sidenav-trigger i{
     line-height: 80px;
 }
 
-
+/* Font sizes */
 
 p, label, ::placeholder, .signature {
     font-size: 2rem;
@@ -565,6 +567,15 @@ h5{
     font-size: 2rem;
     height: 4rem;
 }
+
+
+
+.collapsible-header{
+    font-size: 2rem;
+}
+
+
+/* Margins */
 
 .page-header{
     margin-top: 4rem;
