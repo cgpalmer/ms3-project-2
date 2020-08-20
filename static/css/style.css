@@ -743,7 +743,7 @@ h5{
 
 
 input[type=text]:not(.browser-default), #confirmPasswordText {
-    font-size: 28px;
+    font-size: 42px;
 }
 
 .collapsible-header i, .btn i{
