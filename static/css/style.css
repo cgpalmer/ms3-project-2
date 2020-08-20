@@ -788,4 +788,11 @@ footer{
 #meetTheTeam {
     margin: 2.5rem 0 3rem 0;
 }
+
+/* Add report */
+
+.select-wrapper input.select-dropdown{
+    height: 5rem;
+}
+
 }
