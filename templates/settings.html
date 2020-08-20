@@ -5,7 +5,7 @@
 {% with messages = get_flashed_messages() %}
     {% if messages%}
         {% for message in messages %}
-            <h3 class="settings-message">{{ message }}</h3>
+            <h3 class="flashMessage settings-message">{{ message }}</h3>
         {% endfor %}
     {% endif %}
 {% endwith %}
