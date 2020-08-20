@@ -13,7 +13,7 @@
     color: #fcfaf8;
 }
 
-.page-header, .page-info, .userDashHeader, .page-info-user-dash h5, .result-info{
+.page-header, .page-info, .userDashHeader, .page-info-user-dash h5, .result-info, .flashMessage{
     color: #583E2E;
     font-weight: 700;
 }
