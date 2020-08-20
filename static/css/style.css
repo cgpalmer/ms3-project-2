@@ -670,7 +670,9 @@ textarea.materialize-textarea{
     margin-top: 6rem;
 }
 
-
+#settingButtonIcon{
+font-size: 50px;
+}
 /*  Footer */
 
 .footerContact i{
