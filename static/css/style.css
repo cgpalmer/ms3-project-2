@@ -68,6 +68,13 @@ textarea{
 
 }
 
+[type="checkbox"]:checked+span:not(.lever):before{
+    border-right: 2px solid #595775;
+    border-bottom: 2px solid #595775;
+
+}
+
+
 /* Nav bar */
 
 nav{
