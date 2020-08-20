@@ -543,6 +543,7 @@ nav .sidenav-trigger i{
 
 nav a.sidenav-trigger i{
     line-height: 80px;
+    margin-left: 1.5rem;
 }
 
 .sidenav {
