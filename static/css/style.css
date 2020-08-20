@@ -833,4 +833,8 @@ input[type=password]:not(.browser-default), input[type=email]:not(.browser-defau
     margin: 2rem 0;
 }
 
+input[type=email]:not(.browser-default){
+    height: 4rem;
+}
+
 }
