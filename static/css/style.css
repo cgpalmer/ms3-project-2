@@ -639,9 +639,15 @@ textarea.materialize-textarea{
     font-size: 2rem;
 }
 
+/* Login page */
+.input-field>.login-form:not(.label-icon).active{
+    -webkit-transform: translateY(-50px) scale(1);
+    transform: translateY(-50px) scale(1);
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+}
 
-
-
+/*  Footer */
 
 .footerContact i{
     font-size: 40px;
