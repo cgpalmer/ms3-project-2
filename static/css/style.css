@@ -760,6 +760,12 @@ input[type=text]:not(.browser-default), #confirmPasswordText {
     margin: 1.5rem 0;
 }
 
+.dropdown-content li>span{
+    font-size: 3rem;
+}
+
+
+
 
 /* Footer */
 footer{
@@ -791,8 +797,6 @@ footer{
 
 /* Add report */
 
-.select-wrapper input.select-dropdown, textarea.materialize-textarea{
+.select-wrapper input.select-dropdown, textarea.materialize-textarea, input[type=text]:not(.browser-default){
     height: 5rem;
-}
-
 }
