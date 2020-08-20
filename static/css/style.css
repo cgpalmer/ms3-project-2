@@ -622,6 +622,9 @@ input[type=text]:not(.browser-default), #confirmPasswordText {
     margin-top: 6rem;
 }
 
+.first-nav-link{
+    margin-top: 50px;
+}
 
 /* Home Page */
 #meetTheTeam{
