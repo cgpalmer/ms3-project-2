@@ -754,4 +754,12 @@ input[type=text]:not(.browser-default), #confirmPasswordText {
     font-size: 2rem;
     margin: 1.5rem 0;
 }
+
+
+/* Footer */
+#footerHeader{
+    font-size: 60px;
+    margin-bottom: 0.5rem;
+    
+}
 }
