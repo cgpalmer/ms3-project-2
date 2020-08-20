@@ -743,7 +743,7 @@ h5{
 
 
 .collapsible-header, .dateSpan, input[type=email]:not(.browser-default){
-    font-size: 2rem;
+    font-size: 3rem;
 }
 
 
@@ -799,4 +799,5 @@ footer{
 
 .select-wrapper input.select-dropdown, textarea.materialize-textarea, input[type=text]:not(.browser-default){
     height: 5rem;
+}
 }
