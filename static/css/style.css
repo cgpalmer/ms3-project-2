@@ -800,4 +800,13 @@ footer{
 .select-wrapper input.select-dropdown, textarea.materialize-textarea, input[type=text]:not(.browser-default){
     height: 5rem;
 }
+
+
+/* Dashboard */
+
+.select-wrapper+label, .select-wrapper input.select-dropdown{
+    font-size: 3rem;
+    margin-bottom: 3rem;
+    
+}
 }
