@@ -575,6 +575,9 @@ h5{
 }
 
 
+input[type=text]:not(.browser-default){
+    font-size: 24px;
+}
 
 /* Margins */
 
