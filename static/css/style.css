@@ -575,7 +575,7 @@ h5{
 }
 
 
-input[type=text]:not(.browser-default){
+input[type=text]:not(.browser-default), #confirmPasswordText {
     font-size: 24px;
 }
 
@@ -598,6 +598,10 @@ input[type=text]:not(.browser-default){
 
 .input-field .dateLabel{
     top: -2rem;
+}
+
+.input-field-signup{
+    margin-top: 6rem;
 }
 
 /* Home Page */
