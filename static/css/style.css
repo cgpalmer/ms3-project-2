@@ -545,6 +545,10 @@ nav a.sidenav-trigger i{
     line-height: 80px;
 }
 
+.sidenav {
+    width: 260px;
+}
+
 /* Font sizes */
 
 p, label, ::placeholder, .signature {
