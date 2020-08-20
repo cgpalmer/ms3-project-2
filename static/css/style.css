@@ -776,4 +776,8 @@ input[type=text]:not(.browser-default), #confirmPasswordText {
 .about-wrapper{
     padding-bottom: 4rem;
 }
+
+#meetTheTeam {
+    margin: 2.5rem 0 3rem 0;
+}
 }
