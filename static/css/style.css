@@ -797,6 +797,13 @@ footer{
     margin: 2.5rem 0 3rem 0;
 }
 
+/* Login */
+
+.hrefButton{
+    height:6rem;
+    line-height: 87px;
+}
+
 /* Add report */
 
 .select-wrapper input.select-dropdown, textarea.materialize-textarea, input[type=text]:not(.browser-default){
