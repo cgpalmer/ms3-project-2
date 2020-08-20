@@ -772,4 +772,8 @@ input[type=text]:not(.browser-default), #confirmPasswordText {
 .disclaimer-wrapper {
     padding: 48px 42px;
 }
+
+.about-wrapper{
+    padding-bottom: 4rem;
+}
 }
