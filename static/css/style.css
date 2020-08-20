@@ -663,8 +663,13 @@ textarea.materialize-textarea{
 /* User-dash */
 
 .select-wrapper+label{
-    top: -50px;
+    top: -65px;
 }
+
+.input-field-manage-reports{
+    margin-top: 6rem;
+}
+
 
 /*  Footer */
 
