@@ -760,7 +760,7 @@ input[type=text]:not(.browser-default), #confirmPasswordText {
     margin: 1.5rem 0;
 }
 
-.dropdown-content li>span, input[type=password]:not(.browser-default), .input-field .login-form{
+.dropdown-content li>span, input[type=password]:not(.browser-default), .input-field .login-form, .material-icons{
     font-size: 3rem;
 }
 
