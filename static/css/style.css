@@ -818,6 +818,23 @@ height: 2rem;
 top: -6px;
 }
 
+[type="checkbox"]:checked+span:not(.lever):before {
+    top: -9px;
+    left: -5px;
+    width: 18px;
+    height: 32px;
+   
+}
+
+[type="checkbox"]:checked+span:not(.lever):before{
+    border-right: 4px solid #595775;
+    border-bottom: 4px solid #595775;
+}
+
+[type="checkbox"]+span:not(.lever){
+    padding-left: 50px;
+}
+
 /* Dashboard */
 
 .select-wrapper+label, .select-wrapper input.select-dropdown{
