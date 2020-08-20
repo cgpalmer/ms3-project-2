@@ -599,6 +599,7 @@ input[type=text]:not(.browser-default), #confirmPasswordText {
 
 .sidenav li>a {
     font-size: 2rem;
+    margin: 1.5rem 0;
 }
 /* Margins */
 
