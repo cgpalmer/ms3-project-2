@@ -820,4 +820,9 @@ footer{
   line-height: inherit;
   
 }
+
+.collapsible-header i {
+   width: 3rem; 
+}
+
 }
