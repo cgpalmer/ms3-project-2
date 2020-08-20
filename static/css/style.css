@@ -810,6 +810,13 @@ footer{
     height: 5rem;
 }
 
+/* Signup */
+
+[type="checkbox"]+span:not(.lever):before{
+width: 2rem;
+height: 2rem;
+top: -6px;
+}
 
 /* Dashboard */
 
@@ -843,5 +850,6 @@ input[type=password]:not(.browser-default), input[type=email]:not(.browser-defau
 input[type=email]:not(.browser-default), input[type=password]:not(.browser-default){
     height: 4rem;
 }
+
 
 }
