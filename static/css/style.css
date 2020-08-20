@@ -827,4 +827,10 @@ footer{
    width: 3rem; 
 }
 
+/* Settings */
+
+input[type=password]:not(.browser-default), input[type=email]:not(.browser-default){
+    margin: 2rem 0;
+}
+
 }
