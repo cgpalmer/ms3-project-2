@@ -709,7 +709,7 @@ font-size: 50px;
 @media screen and (min-width: 1024px) {
 /* Font sizes */
 
-p, label, ::placeholder, .signature {
+p, label, ::placeholder, .signature, textarea.materialize-textarea {
     font-size: 3rem;
 }
 
@@ -734,8 +734,8 @@ h5{
 }
 
 .btn {
-    font-size: 2rem;
-    height: 5rem;
+    font-size: 4rem;
+    height: 7rem;
     margin-bottom: 1rem;
     line-height: 70px;
 }
