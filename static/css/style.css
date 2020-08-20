@@ -27,7 +27,7 @@ body, .page-colour, .collapsible-body{
         background-color: #fcfaf8;
 }
 
-.collapsible-body-result {
+.collapsible-body-result, .collapsible-body-delete {
     background-color: #aba6bf;
 }
 
