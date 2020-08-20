@@ -813,4 +813,11 @@ footer{
 .select-wrapper+label{
     top: -83px;
 }
+
+.collapsible-header i, .btn i{
+    font-size: 3rem;
+  vertical-align: bottom;
+  line-height: inherit;
+  
+}
 }
