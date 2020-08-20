@@ -764,7 +764,9 @@ input[type=text]:not(.browser-default), #confirmPasswordText {
     font-size: 3rem;
 }
 
-
+#settingButtonIcon {
+    font-size: 65px;
+}
 
 
 /* Footer */
