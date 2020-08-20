@@ -592,6 +592,10 @@ input[type=text]:not(.browser-default), #confirmPasswordText {
 .collapsible-header i, .btn i{
     font-size: 2.6rem;
 }
+
+.sidenav li>a {
+    font-size: 2rem;
+}
 /* Margins */
 
 .page-header{
