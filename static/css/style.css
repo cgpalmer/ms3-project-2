@@ -770,7 +770,9 @@ input[type=text]:not(.browser-default), #confirmPasswordText {
 
 
 /* Nav */
-
+nav{
+    height: 10.4vh;
+}
 nav .brand-logo{
     position: unset;
     display: block;
