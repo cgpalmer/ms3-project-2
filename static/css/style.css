@@ -1000,6 +1000,10 @@ input[type=text]:not(.browser-default), #confirmPasswordText {
     
 }
 
+.dropdown-content li>span, input[type=password]:not(.browser-default), .input-field .login-form, .material-icons{
+    font-size: 2rem;
+}
+
 /* Home Page */
 #meetTheTeam{
     font-size: 5rem;
