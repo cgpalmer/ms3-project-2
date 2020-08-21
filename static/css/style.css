@@ -769,6 +769,18 @@ input[type=text]:not(.browser-default), #confirmPasswordText {
 }
 
 
+/* Nav */
+
+nav .brand-logo{
+    position: unset;
+    margin-left: 5vw;
+}
+
+.nav-wrapper {
+    text-align: left;
+}
+
+
 /* Footer */
 footer{
     height: 22vh;
