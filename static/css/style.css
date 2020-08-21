@@ -980,7 +980,7 @@ input[type=text]:not(.browser-default), #confirmPasswordText {
 }
 
 .form-wrapper{
-    margin: 10vw 8vw 0 8vw;
+    margin: 7vw 8vw 0 8vw;
 }
 
 .input-field .dateLabel{
@@ -1056,6 +1056,12 @@ footer {
 
 .form-wrapper-search{
     margin: 8vw 0 0 0;
+}
+
+/* Login form */
+
+.login-form-wrapper{
+    margin-bottom: 7vh;
 }
 
 }
