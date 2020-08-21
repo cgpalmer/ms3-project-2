@@ -1026,6 +1026,10 @@ input[type=text]:not(.browser-default), #confirmPasswordText {
     margin-bottom: 4rem;
 }
 
+.container{
+    width: 85%;
+}
+
 img.responsive-img{
     height: 46vh;
     margin-top: 30px;
