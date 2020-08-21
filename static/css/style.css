@@ -1022,6 +1022,10 @@ input[type=text]:not(.browser-default), #confirmPasswordText {
     font-size: 5rem;
 }
 
+.homePageInfo{
+    margin: 4vw 3vw;
+}
+
 #team-info-wrapper-Chris{
     margin-bottom: 4rem;
 }
