@@ -89,9 +89,9 @@
 
 <h5 class="page-info search-again">Would you like to search again?</h5>
 <div class="btn-wrapper">
-<a class="btn" href="{{url_for('search_report')}}">Our database</a>
+<a class="btn hrefButton" href="{{url_for('search_report')}}">Our database</a>
 {% if session.get("email") != None %}
-<a class="btn button-space-margin" href="{{url_for('dashboard')}}">Your database</a>
+<a class="btn button-space-margin hrefButton" href="{{url_for('dashboard')}}">Your database</a>
 {% endif %}
 </div>
 
