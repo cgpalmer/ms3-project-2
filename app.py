@@ -160,7 +160,7 @@ def signup():
     return render_template("signup.html", list_existing_emails=list_existing_emails)
 
 #signup
-@app.route('/creating_user', methods=['POST'])
+@app.route('/creating-user', methods=['POST'])
 def creating_user():
     salt = os.urandom(32)
     new_username= request.form['new_username']
@@ -192,7 +192,7 @@ def creating_user():
         return redirect(url_for('signup'))
 
 
-@app.route('/insert_name', methods=['POST'])
+@app.route('/insert-name', methods=['POST'])
 def insert_name():
     currentUserEmail = session.get("email")
     preferred_name = request.form['preferredNameInput'].lower()
@@ -209,7 +209,7 @@ def login():
 
 
     
-@app.route('/check_password', methods=['POST'])
+@app.route('/check-password', methods=['POST'])
 def check_password():
     login_email = request.form['login_username']  
     login_password = request.form['login_password']
@@ -355,7 +355,7 @@ def changeDetails():
     
 
 
-@app.route('/delete_user', methods=['POST'])
+@app.route('/delete-user', methods=['POST'])
 def delete_user():
     if session.get("email") is None:
         flash('Please login to see all of our amazing features')
@@ -398,7 +398,7 @@ def logout():
 
 
 # current working
-@app.route('/search_reports', methods=['GET', 'POST'])
+@app.route('/search-reports', methods=['GET', 'POST'])
 def search_reports():
     typeOfSearch = request.form['userSearchOwnReports']
     user_email = session.get("email")
@@ -510,7 +510,7 @@ def search_reports():
 
 #####################################################
 
-@app.route('/search_db_reports', methods=['GET', 'POST'])
+@app.route('/search-db-reports', methods=['GET', 'POST'])
 def search_db_reports():
     totalReportsCount = mongo.db.report.find().count()
     typeOfSearch = request.form['userSearchReports']
@@ -744,13 +744,13 @@ def search_db_reports():
 
 
 
-@app.route('/get_report')
+@app.route('/get-report')
 def get_report():
     return render_template("report.html", report=mongo.db.report.find())    
 
 
 # This is the OG screen with one search box as default.
-@app.route('/search_report')
+@app.route('/search-report')
 def search_report():
     total = mongo.db.report.find().count()
     category = mongo.db.report.find().distinct("category_name")
@@ -765,7 +765,7 @@ def search_report():
 #######################################################################
 # Creating reports
 
-@app.route('/add_report')
+@app.route('/add-report')
 def add_report():
     currentUserEmail = session.get("email")
     if currentUserEmail == None:
@@ -779,7 +779,7 @@ def add_report():
                            
                            )
 
-@app.route('/insert_report', methods=['GET','POST'])
+@app.route('/insert-report', methods=['GET','POST'])
 def insert_report():
     currentUserEmail = session.get("email")
     if currentUserEmail == None:
@@ -800,7 +800,7 @@ def insert_report():
     report.insert( { "email": currentUserEmail, "time": timestamp, "category_name": category, "incident_description": incident, "report_to_authorities": reported } )
     return render_template('addLocationToNewReport.html', now=timestamp)
 
-@app.route('/addLocationToReport', methods=['GET','POST'])
+@app.route('/add-Location-To-Report', methods=['GET','POST'])
 def addLocationToReport():
     currentUserEmail = session.get("email")
     if currentUserEmail == None:
@@ -817,7 +817,7 @@ def addLocationToReport():
     mongo.db.report.update_one({ "$and": [ {"email": currentUserEmail}, {"time": float(reportTimeStamp)}]}, {"$set": {"building": addBuilding, "city": addCity, "street": addStreet, "county": addCounty, "postcode": addPostcode}})
     return render_template('addDateToReport.html', reportTimeStamp=reportTimeStamp, currentUserEmail=currentUserEmail)
 
-@app.route('/addDateToReport', methods=['GET','POST'])
+@app.route('/add-Date-To-Report', methods=['GET','POST'])
 def addDateToReport():
     currentUserEmail = session.get("email")
     if currentUserEmail == None:
@@ -845,7 +845,7 @@ def addDateToReport():
         else:
             return redirect(url_for('dashboard'))
 
-@app.route('/skipDate', methods=['GET','POST'])
+@app.route('/skip-Date', methods=['GET','POST'])
 def skipDate():
     if session.get("email") is None:
             flash("Thank you for your report!")
@@ -857,7 +857,7 @@ def skipDate():
 
 #####################################################################################
 # Updating reports
-@app.route('/user_modify/<report_id>')
+@app.route('/user-modify/<report_id>')
 def user_modify(report_id):
     the_report = mongo.db.report.find_one({"_id": ObjectId(report_id)})
     print(the_report)
@@ -866,7 +866,7 @@ def user_modify(report_id):
     currentUserEmail = session.get("email")
     return render_template('userModifyReport.html', currentUserEmail=currentUserEmail, report=the_report, categories=available_categories)
 
-@app.route('/edit_report/<report_id>', methods=["POST"])
+@app.route('/edit-report/<report_id>', methods=["POST"])
 def edit_report(report_id):
     print("accessed")
     report = mongo.db.report
@@ -888,7 +888,7 @@ def edit_report(report_id):
 ##################################################################
 # Deleting reports
 
-@app.route('/confirm_delete_report/<report_id>')
+@app.route('/confirm-delete-report/<report_id>')
 def confirm_delete_report(report_id):
     the_report = mongo.db.report.find_one({"_id": ObjectId(report_id)})
     ###################### Check this is needed?
@@ -898,7 +898,7 @@ def confirm_delete_report(report_id):
     return render_template('userDeleteReport.html', report=the_report, categories=available_categories)
 
 
-@app.route('/delete_report/<report_id>', methods=["POST"])
+@app.route('/delete-report/<report_id>', methods=["POST"])
 def delete_report(report_id):
     # Trigger a modal of some kind where the user has to input the correct email.
     report = mongo.db.report
