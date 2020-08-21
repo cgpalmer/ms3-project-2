@@ -2,7 +2,7 @@
 
 <div class="page-container">
 <div id="settingButton">
-<a  href="{{url_for('userSetting')}}"><i id="settingButtonIcon" class="material-icons">settings</i></a>
+<a  href="{{url_for('user-Setting')}}"><i id="settingButtonIcon" class="material-icons">settings</i></a>
 </div>
 <h3 class="userDashHeader">Welcome back, {{name.capitalize()}}</h3>
 
@@ -18,7 +18,7 @@
     <li class="active">
       <div class="collapsible-header"><i class="material-icons">edit</i>Manage old reports</div>
       <div class="collapsible-body">       
-            <form id="userSearchForm" method="POST" action="{{ url_for('search_reports') }}">
+            <form id="userSearchForm" method="POST" action="{{ url_for('search-reports') }}">
             <div class="input-field input-field-manage-reports col s12">
                         <select id="userSearchType" name="userSearchOwnReports" required>
                             <option value="" disabled selected>Choose a search type</option>
@@ -133,12 +133,12 @@
      
     </li>
     <li>
-      <a class="collapsible-header" href="{{url_for('add_report')}}"> <i class="material-icons">add_circle</i>Create a new report</a>
+      <a class="collapsible-header" href="{{url_for('add-report')}}"> <i class="material-icons">add_circle</i>Create a new report</a>
       
       
     </li>
     <li>
-      <a class="collapsible-header" href="{{url_for('search_report')}}"><i class="material-icons">search</i> Search our database</a>
+      <a class="collapsible-header" href="{{url_for('search-report')}}"><i class="material-icons">search</i> Search our database</a>
     </li>
   </ul>
 
