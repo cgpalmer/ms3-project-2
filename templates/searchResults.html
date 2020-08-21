@@ -1,0 +1,114 @@
+{% extends 'base.html'%} {% block content %}
+
+<h3 class="page-header">Your search found {{number_of_reports}} incidents.</h3>
+{% if searchingUserDb != "yes" %}
+<div class="page-info">
+<h5 >These incidents make up {{percentageOfDb}}% of the entire database.</h5>
+<h5>{{reportedReports}}% of these have been reported to the authorities.</h5>
+</div>
+{% endif %}
+
+
+  <ul class="collapsible ">
+  
+{% for x in range(collapsibles)%}
+   <li>
+      <div class="collapsible-header"><i class="material-icons">add_circle</i>Reports {{x*10+1}} - {{x+1}}0</div>
+      <div class="collapsible-body collapsible-body-result"> 
+
+{% for report in pages[x] %}
+    
+   
+    <div class="card bg-primary text-white report batch{{x}}">
+        <div class="result-info-wrapper">
+            <div class="row result-row">
+            <div class="col xl6">
+            <div class="result-info-separator">
+             {% if report.category_name != "" %}
+            <p class="result-info">Category:</p>
+            <p class="result-info">{{report.category_name}}</p>
+            {% endif %} 
+            </div>
+            
+            {% if report.building != "" %}
+             <div class="result-info-separator">
+                <p class="result-info">Building:</p>
+                 <p class="result-info">{{report.building}}</p>
+                        </div>
+            {% endif %} 
+            {% if report.street != "" %}
+             <div class="result-info-separator">
+                <p class="result-info">Street:</p> 
+                <p class="result-info">{{report.street}}</p>
+                       </div>
+            {% endif %} 
+            {% if report.county != "" %}
+             <div class="result-info-separator">
+                <p class="result-info">City:</p>
+                 <p class="result-info">{{report.city}}</p>
+                        </div>
+            {% endif %}
+            {% if report.county != "" %}
+             <div class="result-info-separator">
+                <p class="result-info">County:</p>
+                 <p class="result-info">{{report.county}}</p>
+                        </div>
+            {% endif %} 
+            {% if report.postcode != "" %}
+             <div class="result-info-separator">
+                <p class="result-info">Postcode:</p> 
+                <p class="result-info">{{report.postcode}}</p>
+                       </div>
+            {% endif %} 
+             
+                 
+        </div>
+        <div class="col xl6">
+         <div class="result-info-separator">
+            <p class="result-info">Incident Description:</p> 
+            <p class="result-info">{{report.incident_description}}</p>
+                   </div>
+
+{% if report.date != "" %}
+             <div class="result-info-separator">
+             
+            <p class="result-info">Date:</p> 
+            <p class="result-info">{{report.date}}</p>
+                   </div>
+                   {% endif %}
+
+{% if report.report_to_authorities != "" %}
+             <div class="result-info-separator">
+            <p class="result-info">Reported to the authorities:</p>
+             <p class="result-info">{{report.report_to_authorities}}</p>
+                    </div>
+                    {% endif%}
+
+
+                </div>
+        </div>
+
+        </div>
+        <div class="btn-wrapper">
+            <a class="btn " href="{{url_for('user_modify', report_id=report._id)}}">Edit</a>
+            <a class="btn button-space-margin" href="{{url_for('confirm_delete_report', report_id=report._id)}}">Delete</a>
+            </div>
+            </div>
+    {% endfor %}
+    </div>   
+
+    </li>
+{% endfor %}
+</ul>
+
+
+<h5 class="page-info search-again">Would you like to search again?</h5>
+<div class="btn-wrapper">
+<a class="btn hrefButton" href="{{url_for('search_report')}}">Our database</a>
+{% if session.get("email") != None %}
+<a class="btn button-space-margin hrefButton" href="{{url_for('dashboard')}}">Your database</a>
+{% endif %}
+</div>
+
+
+{% endblock %}
