@@ -1010,4 +1010,17 @@ img.responsive-img{
 .purpose-wrapper{
     margin-top: 8vh;
 }
+
+/* Footer */
+
+/*  Footer */
+
+.footerContact i{
+    font-size: 40px;
+}
+
+#footerHeader{
+    font-size:32px;
+}
+
 }
