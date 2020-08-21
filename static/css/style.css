@@ -1121,6 +1121,10 @@ footer {
 .row .col{
     float: left;
 }
+
+#preferredNameInput{
+    font-size: 44px;
+}
 }
 
 @media screen and (min-width: 1440px) {
@@ -1145,7 +1149,5 @@ h5{
     font-size: 3.5rem;
 }
 
-#preferredNameInput{
-    font-size: 44px;
-}
+
 }
