@@ -788,7 +788,8 @@ nav ul a{
 }
 
 nav ul li{
- 
+    display: inline-block;
+    float: none; 
 }
 
 nav .nav-links{
