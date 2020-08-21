@@ -969,13 +969,13 @@ input[type=text]:not(.browser-default), #confirmPasswordText {
     font-size: 2rem;
 }
 
-#settingButtonIcon{
-    font-size: 50px;
-    padding: 2vw;
-}
+
 
 
 /* Margins */
+.page-info-user-dash{
+    margin: 5vw;
+}
 
 .page-header{
     margin-top: 3rem;
@@ -1089,6 +1089,13 @@ footer {
 
 .input-field-search, .input-field-login, .input-field-signup, .input-field-manage-reports{
     margin-top: 1rem;
+}
+
+/* User dash */
+
+#settingButtonIcon{
+    font-size: 50px;
+    padding: 2vw;
 }
 
 }
