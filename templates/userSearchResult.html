@@ -15,11 +15,11 @@
    <li>
       <div class="collapsible-header"><i class="material-icons">add_circle</i>Reports {{x*10+1}} - {{x+1}}0</div>
       <div class="collapsible-body collapsible-body-result"> 
-         
+<div class="row">
 {% for report in pages[x] %}
     
    
-    <div class="card bg-primary text-white report batch{{x}}">
+    <div class="card bg-primary text-white report batch{{x}} col xl6">
         <div class="result-info-wrapper">
             <div class="result-info-separator">
              {% if report.category_name != "" %}
@@ -81,6 +81,7 @@
             </div>
             </div>
     {% endfor %}
+    </div>   
       </div>
     </li>
 {% endfor %}
