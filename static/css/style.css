@@ -997,6 +997,10 @@ input[type=text]:not(.browser-default), #confirmPasswordText {
     margin-top: 6rem;
 }
 
+.input-field-search{
+    margin-top: 5rem;
+}
+
 .first-nav-link{
     margin-top: 50px;
 }
@@ -1087,7 +1091,7 @@ footer {
     margin-bottom: 7vh;
 }
 
-.input-field-search, .input-field-login, .input-field-signup, .input-field-manage-reports{
+.input-field-login, .input-field-signup, .input-field-manage-reports{
     margin-top: 1rem;
 }
 
