@@ -914,7 +914,7 @@ nav{
 }
 
 
-p, label, ::placeholder, .signature {
+p, label, ::placeholder, .signature, textarea.materialize-textarea{
     font-size: 2rem;
 }
 
@@ -964,6 +964,11 @@ input[type=text]:not(.browser-default), #confirmPasswordText {
     font-size: 2rem;
     margin: 1.5rem 0;
 }
+
+.dropdown-content li>span, input[type=password]:not(.browser-default), .input-field .login-form, .material-icons{
+    font-size: 2rem;
+}
+
 /* Margins */
 
 .page-header{
@@ -1000,8 +1005,9 @@ input[type=text]:not(.browser-default), #confirmPasswordText {
     
 }
 
-.dropdown-content li>span, input[type=password]:not(.browser-default), .input-field .login-form, .material-icons{
-    font-size: 2rem;
+
+.select-wrapper input.select-dropdown, textarea.materialize-textarea, input[type=text]:not(.browser-default){
+    height: 3rem;
 }
 
 
