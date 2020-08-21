@@ -1041,7 +1041,7 @@ img.responsive-img{
 /* Footer */
 
 footer {
-    height: 25vh;
+    height: auto;
 }
 
 .footerContact i{
