@@ -39,6 +39,8 @@ Be able to log into their own area
 
 ### Tutorials
 
+https://restfulapi.net/resource-naming/
+
 https://stackoverflow.com/questions/1959386/how-do-you-sort-a-list-in-jinja2
 
 https://www.dataquest.io/blog/python-datetime-tutorial/
