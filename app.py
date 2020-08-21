@@ -256,7 +256,7 @@ def dashboard():
         city = mongo.db.report.find({"email": user}).distinct("city")
         county = mongo.db.report.find({"email": user}).distinct("county")
         postcode = mongo.db.report.find({"email": user}).distinct("postcode")        
-        return render_template('user_dash.html', name=userName, categories=mongo.db.categories.find(),
+        return render_template('userDash.html', name=userName, categories=mongo.db.categories.find(),
                                currentUserEmail=user, postcode=postcode, city=city, county=county, building=building, category=category, total=total)
 
 
@@ -416,7 +416,7 @@ def search_reports():
         for x in range(numOfPagesRounded):
             page = mongo.db.report.find({"email": user_email}).skip(int(x+1)*10).limit(page_size)
             pages.append(page)
-        return render_template('userSearchResult.html', searchingUserDb=searchingUserDb, number_of_reports=number_of_reports, collapsibles=numOfPagesRounded, pages=pages)
+        return render_template('searchResult.html', searchingUserDb=searchingUserDb, number_of_reports=number_of_reports, collapsibles=numOfPagesRounded, pages=pages)
         
 
 
@@ -442,7 +442,7 @@ def search_reports():
                 for x in range(numOfPagesRounded):
                     page = mongo.db.report.find( { "$and": [ {"email": user_email}, { "building":building_name } ] } ).skip(int(x+1)*10).limit(page_size)
                     pages.append(page)
-                return render_template('userSearchResult.html', number_of_reports=number_of_reports, searchingUserDb=searchingUserDb, report=report, collapsibles=numOfPagesRounded, pages=pages)
+                return render_template('searchResult.html', number_of_reports=number_of_reports, searchingUserDb=searchingUserDb, report=report, collapsibles=numOfPagesRounded, pages=pages)
             else:
                 extraLocationValue = request.form[extraLocation]        
                 report = mongo.db.report.find( { "$and": [ {"email": user_email}, { "building":building_name }, { extraLocation : extraLocationValue} ] } )
@@ -457,7 +457,7 @@ def search_reports():
                 for x in range(numOfPagesRounded):
                     page = mongo.db.report.find( { "$and": [ {"email": user_email}, { "building":building_name }, { extraLocation : extraLocationValue} ] } ).skip(int(x+1)*10).limit(page_size)
                     pages.append(page)
-                return render_template('userSearchResult.html', number_of_reports=number_of_reports, searchingUserDb=searchingUserDb, report=report, collapsibles=numOfPagesRounded, pages=pages)
+                return render_template('searchResult.html', number_of_reports=number_of_reports, searchingUserDb=searchingUserDb, report=report, collapsibles=numOfPagesRounded, pages=pages)
         else:
             value = request.form[locationType]
             report = mongo.db.report.find( { "$and": [ {"email": user_email}, { locationType : value } ] } )
@@ -472,7 +472,7 @@ def search_reports():
             for x in range(numOfPagesRounded):
                 page = mongo.db.report.find( { "$and": [ {"email": user_email}, { locationType : value } ] } ).skip(int(x+1)*10).limit(page_size)
                 pages.append(page)
-            return render_template('userSearchResult.html', searchingUserDb=searchingUserDb, number_of_reports = number_of_reports, report=report, collapsibles=numOfPagesRounded, pages=pages)
+            return render_template('searchResult.html', searchingUserDb=searchingUserDb, number_of_reports = number_of_reports, report=report, collapsibles=numOfPagesRounded, pages=pages)
 
     elif typeOfSearch == "date":
         print("see date")
@@ -490,7 +490,7 @@ def search_reports():
         for x in range(numOfPagesRounded):
             page = mongo.db.report.find( { "$and": [ {"email": user_email}, {"timestamp":{ "$gte": startDateTimeStamp,"$lt":endDateTimeStamp }}  ] } ).skip(int(x+1)*10).limit(page_size)
             pages.append(page)
-        return render_template('userSearchResult.html', searchingUserDb=searchingUserDb, number_of_reports=number_of_reports, report=report, collapsibles=numOfPagesRounded, pages=pages)
+        return render_template('searchResult.html', searchingUserDb=searchingUserDb, number_of_reports=number_of_reports, report=report, collapsibles=numOfPagesRounded, pages=pages)
     else:
         print("see discrimin")
         category = request.form['category']
@@ -506,7 +506,7 @@ def search_reports():
         for x in range(numOfPagesRounded):
             page = mongo.db.report.find( { "$and": [ {"email": user_email}, { "category_name":category } ] } ).skip(int(x+1)*10).limit(page_size)
             pages.append(page)
-        return render_template('userSearchResult.html', searchingUserDb=searchingUserDb, number_of_reports=number_of_reports, report=report, collapsibles=numOfPagesRounded, pages=pages)
+        return render_template('searchResult.html', searchingUserDb=searchingUserDb, number_of_reports=number_of_reports, report=report, collapsibles=numOfPagesRounded, pages=pages)
 
 #####################################################
 
@@ -547,7 +547,7 @@ def search_db_reports():
         for x in range(numOfPagesRounded):
             page = mongo.db.report.find().skip(int(x+1)*10).limit(page_size)
             pages.append(page)
-        return render_template('userSearchResult.html', percentageOfDb=percentageOfDb, reportedReports=reportedReports, number_of_reports=number_of_reports, report=report, collapsibles=numOfPagesRounded, pages=pages)
+        return render_template('searchResult.html', percentageOfDb=percentageOfDb, reportedReports=reportedReports, number_of_reports=number_of_reports, report=report, collapsibles=numOfPagesRounded, pages=pages)
 
     # Search db by Location
     elif typeOfSearch == "searchByLocation":
@@ -594,7 +594,7 @@ def search_db_reports():
                 for x in range(numOfPagesRounded):
                     page = mongo.db.report.find( {"building":building_name } ).skip(int(x+1)*10).limit(page_size)
                     pages.append(page)
-                return render_template('userSearchResult.html', percentageOfDb=percentageOfDb, number_of_reports=number_of_reports, reportedReports=reportedReports, report=report, collapsibles=numOfPagesRounded, pages=pages)
+                return render_template('searchResult.html', percentageOfDb=percentageOfDb, number_of_reports=number_of_reports, reportedReports=reportedReports, report=report, collapsibles=numOfPagesRounded, pages=pages)
             else:
                 extraLocationValue = request.form[extraLocation]   
                 useTimeFrame = request.form['useTimeFrame']
@@ -626,7 +626,7 @@ def search_db_reports():
                 for x in range(numOfPagesRounded):
                     page = mongo.db.report.find( { "$and": [ {"building":building_name }, { extraLocation : extraLocationValue} ] } ).skip(int(x+1)*10).limit(page_size)
                     pages.append(page)
-                return render_template('userSearchResult.html', number_of_reports=number_of_reports, percentageOfDb=percentageOfDb, reportedReports=reportedReports, report=report, collapsibles=numOfPagesRounded, pages=pages)
+                return render_template('searchResult.html', number_of_reports=number_of_reports, percentageOfDb=percentageOfDb, reportedReports=reportedReports, report=report, collapsibles=numOfPagesRounded, pages=pages)
         else:
             if locationType == 'city':
                 value = request.form['city']  
@@ -667,7 +667,7 @@ def search_db_reports():
                 page = mongo.db.report.find( {locationType:value } ).skip(int(x+1)*10).limit(page_size)
                 pages.append(page)
                 print(pages)
-            return render_template('userSearchResult.html', reportedReports=reportedReports, percentageOfDb=percentageOfDb, number_of_reports=number_of_reports, report=report, collapsibles=numOfPagesRounded, pages=pages)              
+            return render_template('searchResult.html', reportedReports=reportedReports, percentageOfDb=percentageOfDb, number_of_reports=number_of_reports, report=report, collapsibles=numOfPagesRounded, pages=pages)              
               
 
     elif typeOfSearch == "searchByDiscrimination":
@@ -703,7 +703,7 @@ def search_db_reports():
         for x in range(numOfPagesRounded):
             page = mongo.db.report.find( { "category_name":category }).skip(int(x+1)*10).limit(page_size)
             pages.append(page)
-        return render_template('userSearchResult.html', number_of_reports=number_of_reports, reportedReports=reportedReports, percentageOfDb=percentageOfDb, report=report, collapsibles=numOfPagesRounded, pages=pages)
+        return render_template('searchResult.html', number_of_reports=number_of_reports, reportedReports=reportedReports, percentageOfDb=percentageOfDb, report=report, collapsibles=numOfPagesRounded, pages=pages)
     else:
         print("see reported")
         reportedToAuthorities = request.form['searchReported']
@@ -740,7 +740,7 @@ def search_db_reports():
         for x in range(numOfPagesRounded):
             page = mongo.db.report.find(  {"report_to_authorities": reportedToAuthorities } ).skip(int(x+1)*10).limit(page_size)
             pages.append(page)
-        return render_template('userSearchResult.html', reportedReports=reportedReports, percentageOfDb=percentageOfDb, number_of_reports=number_of_reports, report=report, collapsibles=numOfPagesRounded, pages=pages)
+        return render_template('searchResult.html', reportedReports=reportedReports, percentageOfDb=percentageOfDb, number_of_reports=number_of_reports, report=report, collapsibles=numOfPagesRounded, pages=pages)
 
 
 
@@ -771,11 +771,11 @@ def add_report():
     if currentUserEmail == None:
         currentUserEmail = "anonymous"
         print(currentUserEmail)
-        return render_template("add_report.html", currentUserEmail=currentUserEmail, categories=mongo.db.categories.find(),
+        return render_template("addReport.html", currentUserEmail=currentUserEmail, categories=mongo.db.categories.find(),
                            
                            )
     else:
-        return render_template("add_report.html", currentUserEmail=currentUserEmail, categories=mongo.db.categories.find(),
+        return render_template("addReport.html", currentUserEmail=currentUserEmail, categories=mongo.db.categories.find(),
                            
                            )
 
@@ -864,7 +864,7 @@ def user_modify(report_id):
     available_categories = mongo.db.categories.find()
     
     currentUserEmail = session.get("email")
-    return render_template('user_modify.html', currentUserEmail=currentUserEmail, report=the_report, categories=available_categories)
+    return render_template('userModifyReport.html', currentUserEmail=currentUserEmail, report=the_report, categories=available_categories)
 
 @app.route('/edit_report/<report_id>', methods=["POST"])
 def edit_report(report_id):
@@ -895,7 +895,7 @@ def confirm_delete_report(report_id):
     available_categories = mongo.db.categories.find()
     
 
-    return render_template('confirm_delete.html', report=the_report, categories=available_categories)
+    return render_template('userDeleteReport.html', report=the_report, categories=available_categories)
 
 
 @app.route('/delete_report/<report_id>', methods=["POST"])
