@@ -855,6 +855,10 @@ top: -6px;
    
 }
 
+.btn-wrapper .signup-button{
+    margin: 3.5rem 0 3rem 0;
+}
+
 [type="checkbox"]:checked+span:not(.lever):before{
     border-right: 4px solid #595775;
     border-bottom: 4px solid #595775;
