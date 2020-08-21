@@ -1122,3 +1122,28 @@ footer {
     float: left;
 }
 }
+
+@media screen and (min-width: 1440px) {
+
+h1{
+    font-size: 7rem;
+}
+
+h2{
+    font-size: 5.5rem;
+}
+
+h3{
+    font-size: 5rem;
+}
+
+h4{
+    font-size: 4.28rem;
+} 
+
+h5{
+    font-size: 3.5rem;
+}
+
+
+}
