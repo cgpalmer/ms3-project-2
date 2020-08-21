@@ -95,7 +95,24 @@ ___
 <span id="featuresLeftToImplement"></span>
 ### Features Left to Implement
 
-1.
+Users can do the following:
+
+See an overview of records on the home page.
+Add a record of Discrimination
+When adding a record they can add a username and an email
+When adding a record they can fill in a thorough form so people can sort by city, town, postcode etc
+Edit or delete records if they can provide the correct email address for the specific report
+Search for reports based on the following = username, email, type of discrimination, location
+Search for a type of discrimination and see where it is prevalent in the UK.
+See statistics based on the collection of records so far 
+
+Future features.
+A google api will allow the locations of the features to be displayed as clusters across a map. 
+People can filter crimes via a date. 
+Export data as a CSV to be used on excel.
+Councils to be able to upload reports of discrimination via their own CSV
+Be able to log into their own area
+
 ___
 <span id="defensiveFeatures"></span>
 ## Defensive Features
@@ -175,65 +192,6 @@ ___
 For all of the following tutorials, I have edited the code necessary for my project. The links provide
 the source of my initial inspiration. 
 
-
-<span id="media"></span>
-<ins>Media</ins>
-
-To generate my favicon, I used this website: 
-
-https://www.favicon.cc/
-
-
-<span id="acknowledgements"></span>
-<ins>Acknowledgements</ins>  
-
-Through discussion with my mentor, we decided a matching pairs game would give me an appropriate challenge.
-I received inspiration from playing Pokémon Go. I thought a great way to give the matching game a purpose would 
-be to use Pokémon cards. 
-
-
-___
-<span id="project"></span>
-## Project Evaluation
-
-
-
-
-<span id="improvements"></span>
-### Improvements
-
-   
-
-
-
-
-___
-
-
-
-
-### Features
-
-Users can do the following:
-
-See an overview of records on the home page.
-Add a record of Discrimination
-When adding a record they can add a username and an email
-When adding a record they can fill in a thorough form so people can sort by city, town, postcode etc
-Edit or delete records if they can provide the correct email address for the specific report
-Search for reports based on the following = username, email, type of discrimination, location
-Search for a type of discrimination and see where it is prevalent in the UK.
-See statistics based on the collection of records so far 
-
-Future features.
-A google api will allow the locations of the features to be displayed as clusters across a map. 
-People can filter crimes via a date. 
-Export data as a CSV to be used on excel.
-Councils to be able to upload reports of discrimination via their own CSV
-Be able to log into their own area
-
-### Tutorials
-
 https://restfulapi.net/resource-naming/
 
 https://stackoverflow.com/questions/1959386/how-do-you-sort-a-list-in-jinja2
@@ -272,13 +230,45 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Element/datalist
 
 https://www.youtube.com/watch?v=_sgVt16Q4O4
 
-Methodology of build
 
-First establish CRUD abilities to all users.
-Create a search function based on just the form options
-Add in basic statistics for when a search is carried out
-Add in an autocomplete based on postcode
-Add a login 
-Add a user area
-Make sure users can only edit their own reports
+<span id="media"></span>
+<ins>Media</ins>
+
+To generate my favicon, I used this website: 
+
+https://www.favicon.cc/
+
+
+<span id="acknowledgements"></span>
+<ins>Acknowledgements</ins>  
+
+Through discussion with my mentor, we decided a matching pairs game would give me an appropriate challenge.
+I received inspiration from playing Pokémon Go. I thought a great way to give the matching game a purpose would 
+be to use Pokémon cards. 
+
+
+___
+<span id="project"></span>
+## Project Evaluation
+
+
+
+
+<span id="improvements"></span>
+### Improvements
+
+   
+
+
+
+
+___
+
+
+
+
+
+
+
+
 Send an email to me when a report has been updated
