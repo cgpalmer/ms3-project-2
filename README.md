@@ -1,5 +1,46 @@
 # Report On Any Discrimination
 
+# Disclaimer
+
+The statistics on this website are free to use. However, they must be reported responsibly and with context. 
+
+Any misrepresentation of the statistics will be denounced and asked to remove them. 
+
+
+### [Live page](https://ms3-cgpalmer91.herokuapp.com/)
+___
+
+## Contents
++ <a href="#rationale">Rationale</a>
++ <a href="#UX">UX</a> 
+   - <a href="#userStories">User Stories</a>
++ <a href="#features">Features</a>
+   - <a href="#existingFeatures">Existing Features</a>
+   - <a href="#featuresLeftToImplement">Features left To Implement</a>
++ <a href="#defensiveFeatures">Defensive Features</a>
++ <a href="#technologiesUsed">Technologies Used</a>
++ <a href="#testing">Testing</a>
++ <a href="#responsiveDesign">Responsive design</a>
++ <a href="#deployment">Deployment</a>
+   - <a href="#deploymentLive">Deployment Live</a>
+   - <a href="#deploymentLive">Deployment Local</a>
++ <a href="#credit">Credit</a>
+   - <a href="#tutorials">Tutorials</a>
+   - <a href="#media">Media</a>
+   - <a href="#acknowledgements">Acknowledgements</a>
++ <a href="#project">Project Evaluation</a>
+   - <a href="#improvements">Improvements</a>
+
+
+
+
+
+
+___
+
+<span id="rationale"></span>
+## Rationale
+
 ## Project proposal
 
 The project aim to create a database of discrimination across the UK. It will allow users to take a stand and 
@@ -11,11 +52,165 @@ time soon. Yet, there is a rise in racist and xenophobic attacks across the coun
 This project will be open-sourced and all councils, police, charities and authories will have access to the data.
 They can search by area or by discrimination to see where they can focus their efforts and funding.
 
-# Disclaimer
+___
 
-The statistics on this website are free to use. However, they must be reported responsibly and with context. 
+<span id="UX"></span>
+## UX
 
-Any misrepresentation of the statistics will be denounced and asked to remove them. 
+<span id="userStories"></span> 
+### User Stories
+
+1. 
+
+
+### Wireframes
+
+Wireframes have been made using Balsamiq. 
+
+[Wireframes](assets/files/wireFrames.pdf)
+
+[Responsive images of actual site](assets/files/responsiveImages.pdf)
+___
+<span id="features"></span>
+## Features
+
+<span id="existingFeatures"></span>
+### Existing Features
+
+<ins>Navbar</ins>
+
+1. 
+
+<ins>Help Page</ins>
+
+1. 
+
+<ins>Contact Page</ins>
+
+1. 
+
+<ins>Play! Page</ins>
+
+
+<span id="featuresLeftToImplement"></span>
+### Features Left to Implement
+
+1.
+___
+<span id="defensiveFeatures"></span>
+## Defensive Features
+
+As this project is designed for 
++ Modals guide the players through to the game in an easy and straight forward way.
+
+___
+<span id="technologiesUsed"></span>
+### Technologies Used
+
+Languages used
+
+1. HTML
+2. CSS
+3. Javascript
+
+Bootstrap – https://getbootstrap.com/  
+The project uses Bootstrap to simplify the process of building a grid layout, implementing forms, cards, and creating buttons. Bootstrap was also used for responsive design. 
+
+JQuery – https://jquery.com/  
+
+___
+<span id="testing"></span>
+## Testing
+
+I have posted a link for more detailed testing. 
+
+Please find the link to the test document here: [Link to the testing page](assets/files/README-Testing.md)   
+
+Interesting bugs
+
+1. 
+
+
+___
+<span id="responsiveDesign"></span>
+## Responsive Design
+
+This project has been optimised to the common devices on Google Chrome's Dev Tools.
+It has been specifically designed for the following:
+   + Moto G4
+   + iPhone 6/7/8
+   + iPad
+   + iPad Pro
+   + Laptop with MDPI screen
+   + Laptop with HiDPI screen
+This includes both portrait and landscape orientation for all of the above devices. 
+
+The majority of the website stays consistent to an easy user experience. There are minor changes to font-sizes etc. Some 
+of these can be seen in the [responsiveImages](assets/files/responsiveImages.pdf)
+There are a few major resposive choices, detailed below.
+___
+<span id="deployment"></span>
+## Deployment
+
+<span id="deploymentLive"></span>
+Deployment – Live Website  
+
+   1.	Create repository in GitHub and give it a relevant name.
+   
+
+<span id="deploymentLocal"></span>
+Deployment – Run Locally  
+
+   1.	Again, click on the repository called The-Book-Club.
+   
+
+
+___
+<span id="credit"></span>
+## Credit
+
+<span id="tutorials"></span>
+<ins>Tutorials</ins>
+
+For all of the following tutorials, I have edited the code necessary for my project. The links provide
+the source of my initial inspiration. 
+
+
+<span id="media"></span>
+<ins>Media</ins>
+
+To generate my favicon, I used this website: 
+
+https://www.favicon.cc/
+
+
+<span id="acknowledgements"></span>
+<ins>Acknowledgements</ins>  
+
+Through discussion with my mentor, we decided a matching pairs game would give me an appropriate challenge.
+I received inspiration from playing Pokémon Go. I thought a great way to give the matching game a purpose would 
+be to use Pokémon cards. 
+
+
+___
+<span id="project"></span>
+## Project Evaluation
+
+
+
+
+<span id="improvements"></span>
+### Improvements
+
+   
+
+
+
+
+___
+
+
+
 
 ### Features
 
