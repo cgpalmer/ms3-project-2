@@ -1117,4 +1117,8 @@ footer {
 .result-row{
     margin-top: 0;
 }
+
+.row .col{
+    float: left;
+}
 }
