@@ -990,6 +990,10 @@ input[type=text]:not(.browser-default), #confirmPasswordText {
     margin-top: 50px;
 }
 
+.collapsible-header i, .btn i{
+    font-size: 2rem;
+}
+
 /* Home Page */
 #meetTheTeam{
     font-size: 5rem;
