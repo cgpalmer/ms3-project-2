@@ -904,17 +904,110 @@ input[type=password]:not(.browser-default), input[type=email]:not(.browser-defau
 input[type=email]:not(.browser-default), input[type=password]:not(.browser-default){
     height: 4rem;
 }
-
+}
 
 @media screen and (min-width: 1280px) {
 
 /* Nav */
 nav{
-    height: 10.4vh;
+    height: 11.4vw;
+}
+
+
+p, label, ::placeholder, .signature {
+    font-size: 2rem;
+}
+
+h1{
+    font-size: 6rem;
+}
+
+h2{
+    font-size: 4.5rem;
+}
+
+h3{
+    font-size: 4rem;
+}
+
+h4{
+    font-size: 3.28rem;
+} 
+
+h5{
+    font-size: 2.5rem;
+}
+
+.btn {
+    font-size: 2rem;
+    height: 5rem;
+    margin-bottom: 1rem;
+    line-height: 70px;
 }
 
 
 
+.collapsible-header, .dateSpan, input[type=email]:not(.browser-default){
+    font-size: 2rem;
 }
 
+
+input[type=text]:not(.browser-default), #confirmPasswordText {
+    font-size: 28px;
+}
+
+.collapsible-header i, .btn i{
+    font-size: 2.6rem;
+}
+
+.sidenav li>a {
+    font-size: 2rem;
+    margin: 1.5rem 0;
+}
+/* Margins */
+
+.page-header{
+    margin-top: 4rem;
+}
+
+.btn-with-extra-margin{
+    margin: 3rem;
+}
+
+.form-wrapper{
+    margin: 10vw 8vw 0 8vw;
+}
+
+.input-field .dateLabel{
+    top: -2rem;
+}
+
+.input-field-signup{
+    margin-top: 6rem;
+}
+
+.first-nav-link{
+    margin-top: 50px;
+}
+
+/* Home Page */
+#meetTheTeam{
+    font-size: 5rem;
+}
+
+#team-info-wrapper-Chris{
+    margin-bottom: 4rem;
+}
+
+img.responsive-img{
+    height: 39vh;
+}
+
+.team-pic-wrapper{
+    text-align: center;
+}
+
+.purpose-wrapper{
+    margin-top: 7vw;
+}
 }
