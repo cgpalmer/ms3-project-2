@@ -787,6 +787,10 @@ nav ul a{
     padding: 0 30px;
 }
 
+nav ul li{
+    float: unset;    
+}
+
 nav .nav-links{
     padding: 0 4rem;
 }
