@@ -766,7 +766,7 @@ def search_report():
 # Creating reports
 
 @app.route('/add-report')
-def add-report():
+def add_report():
     currentUserEmail = session.get("email")
     if currentUserEmail == None:
         currentUserEmail = "anonymous"
