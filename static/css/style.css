@@ -876,6 +876,10 @@ top: -6px;
     top: -60px;
 }
 
+.input-field .managing-reports-labels{
+    top: -83px;
+}
+
 .collapsible-header i, .btn i{
     font-size: 3rem;
   vertical-align: bottom;
