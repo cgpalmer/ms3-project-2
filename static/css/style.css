@@ -773,11 +773,12 @@ input[type=text]:not(.browser-default), #confirmPasswordText {
 
 nav .brand-logo{
     position: unset;
-    margin-left: 5vw;
+    display: block;
+   
 }
 
 .nav-wrapper {
-    text-align: left;
+    text-align: center;
 }
 
 
