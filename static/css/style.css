@@ -1013,7 +1013,9 @@ img.responsive-img{
 
 /* Footer */
 
-/*  Footer */
+footer {
+    height: 25vh;
+}
 
 .footerContact i{
     font-size: 40px;
@@ -1022,5 +1024,7 @@ img.responsive-img{
 #footerHeader{
     font-size:32px;
 }
+
+
 
 }
