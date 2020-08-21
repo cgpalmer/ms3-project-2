@@ -1081,4 +1081,8 @@ footer {
     margin-bottom: 7vh;
 }
 
+.input-field-search, .input-field-login, .input-field-signup, .input-field-manage-reports{
+    margin-top: 1rem;
+}
+
 }
