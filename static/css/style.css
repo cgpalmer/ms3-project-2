@@ -1026,6 +1026,10 @@ input[type=text]:not(.browser-default), #confirmPasswordText {
     margin: 4vw 3vw;
 }
 
+.purpose-header{
+    margin-bottom: 4rem;
+}
+
 #team-info-wrapper-Chris{
     margin-bottom: 4rem;
 }
