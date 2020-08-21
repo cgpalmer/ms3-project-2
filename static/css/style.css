@@ -1010,7 +1010,12 @@ input[type=text]:not(.browser-default), #confirmPasswordText {
     height: 3rem;
 }
 
-
+.input-field>.login-form:not(.label-icon).active{
+    -webkit-transform: translateY(-21px) scale(1);
+    transform: translateY(-21px) scale(1);
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+}
 
 /* Home Page */
 #meetTheTeam{
