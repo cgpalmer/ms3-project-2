@@ -969,6 +969,12 @@ input[type=text]:not(.browser-default), #confirmPasswordText {
     font-size: 2rem;
 }
 
+#settingButtonIcon{
+    font-size: 50px;
+    padding: 2vw;
+}
+
+
 /* Margins */
 
 .page-header{
