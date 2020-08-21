@@ -787,8 +787,8 @@ nav ul a{
     padding: 0 30px;
 }
 
-.nav-links{
-    padding: 0 1rem;
+nav .nav-links{
+    padding: 0 4rem;
 }
 
 /* Footer */
