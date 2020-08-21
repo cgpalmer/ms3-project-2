@@ -782,13 +782,13 @@ nav .brand-logo{
 }
 
 nav ul a{
-    font-size: 2rem;
+    font-size: 32px;
     font-weight: 500;
-    padding: 0 30px;
+    padding: 0 22px;
 }
 
 nav ul li{
-    float: unset;    
+ 
 }
 
 nav .nav-links{
