@@ -265,7 +265,7 @@ def dashboard():
 # User preferences
 
 
-@app.route('/userSetting')
+@app.route('/user-Setting')
 def userSetting():
     if session.get("email") is None:
         flash('Please login to see all of our amazing features')
@@ -278,7 +278,7 @@ def userSetting():
         return render_template("settings.html", user_email=user_email, user_password=user_password, preferred_name=preferred_name)
 
 
-@app.route('/changeDetails', methods=['POST'])
+@app.route('/change-Details', methods=['POST'])
 def changeDetails():
     if session.get("email") is None:
         flash('Please login to see all of our amazing features')
@@ -296,7 +296,7 @@ def changeDetails():
             if flag ==-1: 
                 print("Not a Valid Password")
                 flash('Please use a valid password')
-                return redirect(url_for('userSetting'))
+                return redirect(url_for('user-Setting'))
 
             # Hashing the new password ready for the database
             
@@ -313,11 +313,11 @@ def changeDetails():
             if hash_login_password == stored_password:
                 mongo.db.user_credentials.update_one({"user_email": currentEmail},{"$set": {"user_password": hash_new_password, "salt": salt}})
                 flash("Password updated")
-                return redirect(url_for('userSetting'))
+                return redirect(url_for('user-Setting'))
 
             else: 
                 flash("Incorrect password")
-                return redirect(url_for('userSetting'))
+                return redirect(url_for('user-Setting'))
 
 
 
@@ -338,20 +338,20 @@ def changeDetails():
                     flash("Email updated.")
                     session.pop("email", None)
                     session["email"] = updated_email
-                    return redirect(url_for('userSetting'))
+                    return redirect(url_for('user-Setting'))
                 else:
                     flash("Sorry, that email is taken.")
-                    return redirect(url_for('userSetting'))
+                    return redirect(url_for('user-Setting'))
             else: 
                 flash("Please use a valid email.")
-                return redirect(url_for('userSetting'))
+                return redirect(url_for('user-Setting'))
         if changeType == 'name':
             updated_name = request.form['updateName']
             mongo.db.user_credentials.update_one({"user_email": currentEmail},{"$set": {"name": updated_name}})
             flash("Name updated.") 
             session.pop("name", None)  
             session["name"] = updated_name    
-            return redirect(url_for('userSetting'))
+            return redirect(url_for('user-Setting'))
     
 
 
@@ -766,7 +766,7 @@ def search_report():
 # Creating reports
 
 @app.route('/add-report')
-def add_report():
+def add-report():
     currentUserEmail = session.get("email")
     if currentUserEmail == None:
         currentUserEmail = "anonymous"
@@ -841,7 +841,7 @@ def addDateToReport():
         mongo.db.report.update_one({ "$and": [ {"email": currentUserEmail}, {"time": float(reportTimeStamp)}]}, {"$set": {"date": strDate, "timestamp": timestampDate }})
         if session.get("email") is None:
             flash("Thank you for your report!")
-            return redirect(url_for('add_report'))
+            return redirect(url_for('add-report'))
         else:
             return redirect(url_for('dashboard'))
 
@@ -849,7 +849,7 @@ def addDateToReport():
 def skipDate():
     if session.get("email") is None:
             flash("Thank you for your report!")
-            return redirect(url_for('add_report'))
+            return redirect(url_for('add-report'))
     else:
         return redirect(url_for('dashboard'))
 
