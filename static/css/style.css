@@ -994,6 +994,12 @@ input[type=text]:not(.browser-default), #confirmPasswordText {
     font-size: 2rem;
 }
 
+.select-wrapper+label, .select-wrapper input.select-dropdown{
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    
+}
+
 /* Home Page */
 #meetTheTeam{
     font-size: 5rem;
