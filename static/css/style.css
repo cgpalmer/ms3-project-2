@@ -1089,6 +1089,10 @@ footer {
     margin: 0;
 }
 
+.search-again {
+    margin: 5vw 5vw 0 5vw;
+}
+
 /* Login form */
 
 .login-form-wrapper{
