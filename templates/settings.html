@@ -17,7 +17,7 @@
                 <h5 class="mb-0"><i class="material-icons">vpn_key</i>Change password </h5>
             </div>
             <div class="collapsible-body">
-                <form action="{{url_for('change-Details')}}" method="POST">
+                <form action="{{url_for('changeDetails')}}" method="POST">
                     <div>
                         <input class="hidden" type="text" name="changeType" value="password" />
 
@@ -42,7 +42,7 @@
             <div class="collapsible-body">
                 <div id="changeEmailForm" class="collapse" role="tabpanel" aria-labelledby="headingTwo2" data-parent="#changeDetailsAccordian">
                     <div class="card-body">
-                        <form action="{{url_for('change-Details')}}" method="POST">
+                        <form action="{{url_for('changeDetails')}}" method="POST">
                             <div>
                             
                                 <input class="hidden" type="text" name="changeType" value="email" />
@@ -63,7 +63,7 @@
             </div>
 
             <div class="collapsible-body">
-                <form action="{{url_for('change-Details')}}" method="POST">
+                <form action="{{url_for('changeDetails')}}" method="POST">
                     <div>
                         <input class="hidden" type="text" name="changeType" value="name" />
                         <input type="text" class="form-control" id="updateName" name="updateName" placeholder="Please enter your new preferred name" required />
@@ -81,7 +81,7 @@
             </div>
             <div class="collapsible-body">
                 <div id="confirmDeleteUser">
-                    <form action="{{(url_for('delete-user'))}}" method="POST">
+                    <form action="{{(url_for('delete_user'))}}" method="POST">
                         <input type="password" name="deletePassword" placeholder="Enter password to delete account" />
                         <div class="btn-wrapper">
                         <button class="btn" type="submit">Confirm delete</button>

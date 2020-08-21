@@ -10,8 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Alegreya&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <link rel="icon" type="image/png" sizes="16x16" href="static/images/favicon.ico" />
-    <title>Report It</title>
+    <title>Document</title>
 </head>
 <body class="body">
  <div class="page-container">
@@ -31,10 +30,10 @@
                         </li>
                     {% endif %}
                     <li class="">
-                        <a class="" href="{{url_for('add-report')}}">Add a report</a>
+                        <a class="" href="{{url_for('add_report')}}">Add a report</a>
                     </li>
                     <li class="">
-                        <a class="" href="{{url_for('search-report')}}">Search reports</a>
+                        <a class="" href="{{url_for('search_report')}}">Search reports</a>
                     </li>
                     {% if session.get("email") == None %}
                     <li class="">
@@ -68,10 +67,10 @@
                         </li>
                     {% endif %}
                     <li class="">
-                        <a class="" href="{{url_for('add-report')}}">Add a report</a>
+                        <a class="" href="{{url_for('add_report')}}">Add a report</a>
                     </li>
                     <li class="">
-                        <a class="" href="{{url_for('search-report')}}">Search reports</a>
+                        <a class="" href="{{url_for('search_report')}}">Search reports</a>
                     </li>
                     {% if session.get("email") == None %}
                     <li class="">
