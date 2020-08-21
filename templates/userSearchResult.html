@@ -15,22 +15,21 @@
    <li>
       <div class="collapsible-header"><i class="material-icons">add_circle</i>Reports {{x*10+1}} - {{x+1}}0</div>
       <div class="collapsible-body collapsible-body-result"> 
-<div class="row">
+
 {% for report in pages[x] %}
     
    
-    <div class="card bg-primary text-white report batch{{x}} col xl6">
+    <div class="card bg-primary text-white report batch{{x}}">
         <div class="result-info-wrapper">
+            <div class="row">
+            <div class="col xl6">
             <div class="result-info-separator">
              {% if report.category_name != "" %}
             <p class="result-info">Category:</p>
             <p class="result-info">{{report.category_name}}</p>
             {% endif %} 
             </div>
-             <div class="result-info-separator">
-            <p class="result-info">Incident Description:</p> 
-            <p class="result-info">{{report.incident_description}}</p>
-                   </div>
+            
             {% if report.building != "" %}
              <div class="result-info-separator">
                 <p class="result-info">Building:</p>
@@ -75,6 +74,15 @@
                     </div>
                     {% endif%}
         </div>
+        <div class="col xl6">
+         <div class="result-info-separator">
+            <p class="result-info">Incident Description:</p> 
+            <p class="result-info">{{report.incident_description}}</p>
+                   </div>
+                </div>
+        </div>
+
+        </div>
         <div class="btn-wrapper">
             <a class="btn " href="{{url_for('user_modify', report_id=report._id)}}">Edit</a>
             <a class="btn button-space-margin" href="{{url_for('confirm_delete_report', report_id=report._id)}}">Delete</a>
@@ -82,7 +90,7 @@
             </div>
     {% endfor %}
     </div>   
-      </div>
+
     </li>
 {% endfor %}
 </ul>
