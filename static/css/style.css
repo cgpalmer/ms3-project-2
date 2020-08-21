@@ -1004,6 +1004,8 @@ input[type=text]:not(.browser-default), #confirmPasswordText {
     font-size: 2rem;
 }
 
+
+
 /* Home Page */
 #meetTheTeam{
     font-size: 5rem;
@@ -1039,6 +1041,10 @@ footer {
     font-size:32px;
 }
 
+/* Search reports */
 
+.form-wrapper-search{
+    margin: 8vw 0 0 0;
+}
 
 }
