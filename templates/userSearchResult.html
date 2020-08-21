@@ -60,25 +60,31 @@
                 <p class="result-info">{{report.postcode}}</p>
                        </div>
             {% endif %} 
-             {% if report.date != "" %}
-             <div class="result-info-separator">
              
-            <p class="result-info">Date:</p> 
-            <p class="result-info">{{report.date}}</p>
-                   </div>
-                   {% endif %}
-                 {% if report.report_to_authorities != "" %}
-             <div class="result-info-separator">
-            <p class="result-info">Reported to the authorities:</p>
-             <p class="result-info">{{report.report_to_authorities}}</p>
-                    </div>
-                    {% endif%}
+                 
         </div>
         <div class="col xl6">
          <div class="result-info-separator">
             <p class="result-info">Incident Description:</p> 
             <p class="result-info">{{report.incident_description}}</p>
                    </div>
+
+{% if report.date != "" %}
+             <div class="result-info-separator">
+             
+            <p class="result-info">Date:</p> 
+            <p class="result-info">{{report.date}}</p>
+                   </div>
+                   {% endif %}
+
+{% if report.report_to_authorities != "" %}
+             <div class="result-info-separator">
+            <p class="result-info">Reported to the authorities:</p>
+             <p class="result-info">{{report.report_to_authorities}}</p>
+                    </div>
+                    {% endif%}
+
+
                 </div>
         </div>
 
