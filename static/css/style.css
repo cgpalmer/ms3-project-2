@@ -781,6 +781,15 @@ nav .brand-logo{
     text-align: center;
 }
 
+nav ul a{
+    font-size: 2rem;
+    font-weight: 500;
+    padding: 0 30px;
+}
+
+.nav-links{
+    padding: 0 1rem;
+}
 
 /* Footer */
 footer{
