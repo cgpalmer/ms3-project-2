@@ -906,4 +906,15 @@ input[type=email]:not(.browser-default), input[type=password]:not(.browser-defau
 }
 
 
+@media screen and (min-width: 1280px) {
+
+/* Nav */
+nav{
+    height: 10.4vh;
+}
+
+
+
+}
+
 }
