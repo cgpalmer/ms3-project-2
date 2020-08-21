@@ -1110,4 +1110,8 @@ footer {
     padding: 2vw;
 }
 
+/* Search report results */
+.result-row{
+    margin-top: 0;
+}
 }
