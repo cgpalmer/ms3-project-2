@@ -12,7 +12,7 @@ $('#category').change(function(){
     console.log(val1);
     console.log(val2);
     if((val1 != "") && (val2 != undefined)){
-        console.log("both have passed")
+        $("#addReportButton").prop("disabled", false);
     }
 }
 );
@@ -24,7 +24,7 @@ $('#add_report_to_authorities').change(function(){
     console.log(val1);
     console.log(val2);
     if((val1 != undefined) && (val2 != undefined)){
-        console.log("both have passed")
+       $("#addReportButton").prop("disabled", false);
     }
 }
 );
