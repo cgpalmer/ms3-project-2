@@ -27,7 +27,7 @@ comparison_number = None
 mongo = PyMongo(app)
 
 def is_new_password_valid(new_password):
-    print("function activated")
+    
     while True:   
         if (len(new_password)<8): 
             flag = -1
@@ -46,26 +46,23 @@ def is_new_password_valid(new_password):
             break
         else:
             flag = 0
-            print("Valid Password") 
+       
             break
-    print("flag value in function")
-    print(flag)
+    
     return flag
 
 def get_user_password(current_user):
     for k,v in current_user.items():
         if k == 'user_password':
             user_password = v
-            print("this has been reach")
-            print(user_password)
+    
     return user_password
 
 def get_user_password_salt(current_user):
     for k,v in current_user.items():
         if k == 'salt':
             stored_salt = v
-            print("this is the salt")
-            print(stored_salt)
+   
     return stored_salt
 
 def get_user_login_name(current_user):
@@ -94,19 +91,19 @@ def hashing_a_new_password(new_password, salt):
     return hash_new_password
 
 def get_number_of_pages_from_search(report):
-    print("function called")
+   
     number_of_reports = report.count()
     page_size = 10
     numOfPages = number_of_reports/page_size
     numOfPagesRounded = math.ceil(numOfPages)
-    print(numOfPages)
-    print(numOfPagesRounded)
+
+    
     return numOfPagesRounded
 
 def calculate_percentage_of_report_in_db(report, totalReportsCount):
-    print("calculate_percentage reached")
+
     number_of_reports = report.count()
-    print(number_of_reports)
+  
     if number_of_reports == 0:
         percentageOfDb = "0"
     else:
@@ -115,7 +112,7 @@ def calculate_percentage_of_report_in_db(report, totalReportsCount):
     return percentageOfDb
 
 def calculate_percentage_of_search_reported_to_authorities(report, reportedReportsCount):
-    print("calculate_percentage reached for reported")
+    
     number_of_reports = report.count()
     if number_of_reports == 0:
         reportedReports = "0"
@@ -134,7 +131,7 @@ def calculate_percentage_of_search_reported_to_authorities(report, reportedRepor
 def homepage():
     report=mongo.db.report.find().count()
     user = session.get("email")
-    print(user)
+    
     return render_template("home.html", report=report)
 
 @app.route('/developer')
@@ -152,11 +149,11 @@ def developer():
 def signup():
     list_existing_emails = []
     used_email = mongo.db.user_credentials.find()
-    print(used_email)
+    
     for x in used_email:
-        print(x["user_email"])
+       
         list_existing_emails.append(x["user_email"])
-        print(list_existing_emails)
+        
     return render_template("signup.html", list_existing_emails=list_existing_emails)
 
 #signup
@@ -164,19 +161,19 @@ def signup():
 def creating_user():
     salt = os.urandom(32)
     new_username= request.form['new_username']
-    print(new_username)
+  
     new_password = request.form['new_password']
     regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
     if(re.search(regex,new_username)):  
-        print("Valid Email")  
+      
         
         check_username_availibility = mongo.db.user_credentials.find_one({"user_email": new_username})
-        print(check_username_availibility)
+       
         if check_username_availibility == None:
             flag = is_new_password_valid(new_password) 
-            print(flag)       
+                 
             if flag ==-1: 
-                print("Not a Valid Password")
+                
                 flash('Please use a valid password')
                 return redirect(url_for('signup'))
             
@@ -213,7 +210,7 @@ def login():
 def check_password():
     login_email = request.form['login_username']  
     login_password = request.form['login_password']
-    print(login_password)
+  
     current_user = mongo.db.user_credentials.find_one({"user_email": login_email})
     if current_user == None:
         flash("Sorry, this email hasn't been registered with us yet.")
@@ -223,15 +220,15 @@ def check_password():
         stored_salt = get_user_password_salt(current_user)
         login_name = get_user_login_name(current_user)
         hash_login_password = hash_a_password_to_check_it_is_correct(stored_salt, login_password)
-        print(hash_login_password)
+     
         if stored_password == hash_login_password:
-            print("match")
+       
             session["email"] = login_email
             username = session.get("email")
             session["name"] = login_name              
             return redirect(url_for('dashboard'))
         else:
-            print("no match")
+          
             flash("Sorry, that password is incorrect.")
             return render_template('login.html')
 
@@ -248,7 +245,7 @@ def dashboard():
         return redirect(url_for('login'))
     else: 
         user = session.get("email")
-        print(user)
+      
         userName = session.get("name")
         total=mongo.db.report.find({"email": user}).count()
         category = mongo.db.report.find({"email": user}).distinct("category_name")
@@ -291,16 +288,16 @@ def changeDetails():
             # Validating the new password
             new_password = request.form['updatePassword']
             flag = is_new_password_valid(new_password)
-            print("This is the flag")
-            print(flag)
+          
+            
             if flag ==-1: 
-                print("Not a Valid Password")
+                
                 flash('Please use a valid password')
                 return redirect(url_for('user-Setting'))
 
             # Hashing the new password ready for the database
             
-            print(new_password)
+          
                       
 
             # Checking the current password is correct.
@@ -324,14 +321,14 @@ def changeDetails():
 
         if changeType == 'email':
             
-            print(currentEmail)
+           
             updated_email = request.form['updateEmail']
             regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
             if(re.search(regex,updated_email)):  
-                print("Valid Email")  
+              
                 
                 check_username_availibility = mongo.db.user_credentials.find_one({"user_email": updated_email})
-                print(check_username_availibility)
+               
                 if check_username_availibility == None: 
                     mongo.db.user_credentials.update_one({"user_email": currentEmail},{"$set": {"user_email": updated_email}})
                     mongo.db.report.update_many({"email": currentEmail},{"$set": {"email": updated_email}})
@@ -404,7 +401,7 @@ def search_reports():
     user_email = session.get("email")
     totalReportsCount = mongo.db.report.find().count()
     if typeOfSearch == "all":
-        print("see All")
+        
         report = mongo.db.report.find({"email": user_email})
         number_of_reports = report.count()
         searchingUserDb = "yes"
@@ -421,14 +418,14 @@ def search_reports():
 
 
     elif typeOfSearch == "location":
-        print("see location")
+        
         locationType = request.form['locationType']
-        print(locationType)
+       
         if locationType == 'building':
             building_name = request.form['building']
-            print(building_name)
+           
             extraLocation = request.form['extraLocationSearchWithBuilding']
-            print(extraLocation)
+           
             if extraLocation == "all":
                 report = mongo.db.report.find( { "$and": [ {"email": user_email}, { "building":building_name } ] } )
                 number_of_reports = report.count()
@@ -475,11 +472,11 @@ def search_reports():
             return render_template('searchResult.html', searchingUserDb=searchingUserDb, number_of_reports = number_of_reports, report=report, collapsibles=numOfPagesRounded, pages=pages)
 
     elif typeOfSearch == "date":
-        print("see date")
+      
         startDatestr = request.form['startDate']
         endDatestr = request.form['endDate']
         report = mongo.db.report.find( { "$and": [ {"email": user_email}, {"timestamp":{ "$gte": startDateTimeStamp,"$lt":endDateTimeStamp }}  ] } )
-        print(report)
+      
         number_of_reports = report.count()
         searchingUserDb = "yes"
         page_size = 10
@@ -492,9 +489,9 @@ def search_reports():
             pages.append(page)
         return render_template('searchResult.html', searchingUserDb=searchingUserDb, number_of_reports=number_of_reports, report=report, collapsibles=numOfPagesRounded, pages=pages)
     else:
-        print("see discrimin")
+        
         category = request.form['category']
-        print(category)
+        
         report = mongo.db.report.find( { "$and": [ {"email": user_email}, { "category_name":category } ] } ) 
         number_of_reports = report.count()
         searchingUserDb = "yes"
@@ -535,29 +532,29 @@ def search_db_reports():
 
     # Search db by Location
     elif typeOfSearch == "searchByLocation":
-        print("see location")
+        
         locationType = request.form['locationType']
-        print(locationType)
+       
         # Search by building
         if locationType == 'building':
             building_name = request.form['building']
-            print(building_name)
+           
             extraLocation = request.form['extraLocationSearchWithBuilding']
-            print(extraLocation)
+           
             if extraLocation == "all":
                 # Search buildings in all locations with no time frame
                 useTimeFrame = request.form['useTimeFrame']
                 if useTimeFrame == "No":
-                    print("see All")
+                   
                     report = mongo.db.report.find( {"building":building_name } )
                     reportedReportsCount = mongo.db.report.find( {"$and":[{"building":building_name }, {"report_to_authorities": "Yes"}] }).count()
                 else:
                     # Search buildings in all locations with time frame
                     startDatestr = request.form['startDateLocation']
 
-                    print(startDatestr)
+                    
                     endDatestr = request.form['endDateLocation']
-                    print(endDatestr)
+                   
                     startDateConversion = datetime.strptime(startDatestr, "%Y-%m-%d")
                     endDateTimeConversion = datetime.strptime(endDatestr, "%Y-%m-%d")
                     startDateTimeStamp = datetime.timestamp(startDateConversion)
@@ -583,14 +580,14 @@ def search_db_reports():
                 extraLocationValue = request.form[extraLocation]   
                 useTimeFrame = request.form['useTimeFrame']
                 if useTimeFrame == "No":
-                    print("see All")
+                   
                     report = mongo.db.report.find( { "$and": [ {"building":building_name }, { extraLocation : extraLocationValue} ] } )
                     reportedReportsCount = mongo.db.report.find( {"$and":[{"building":building_name }, { extraLocation : extraLocationValue}, {"report_to_authorities": "Yes"}] }).count()
                 else:
                     startDatestr = request.form['StartDateLocation']
-                    print(startDatestr)
+                    
                     endDatestr = request.form['allEndDateLocation']
-                    print(endDatestr)
+                   
                     startDateConversion = datetime.strptime(startDatestr, "%Y-%m-%d")
                     endDateTimeConversion = datetime.strptime(endDatestr, "%Y-%m-%d")
                     startDateTimeStamp = datetime.timestamp(startDateConversion)
@@ -619,17 +616,17 @@ def search_db_reports():
             else:
                 value = request.form['postcode']
             useTimeFrame = request.form['useTimeFrame']
-            print(useTimeFrame)
+        
             if useTimeFrame == "No":
-                print("see All")
+               
                 report = mongo.db.report.find( {locationType:value } )
                 reportedReportsCount = mongo.db.report.find( {"$and":[{locationType:value }, {"report_to_authorities": "Yes"}] }).count()
             else:
                 
                 startDatestr = request.form['startDateLocation']               
-                print(startDatestr)
+                
                 endDatestr = request.form['endDateLocation']
-                print(endDatestr)
+               
                 startDateConversion = datetime.strptime(startDatestr, "%Y-%m-%d")
                 endDateTimeConversion = datetime.strptime(endDatestr, "%Y-%m-%d")
                 startDateTimeStamp = datetime.timestamp(startDateConversion)
@@ -650,24 +647,24 @@ def search_db_reports():
             for x in range(numOfPagesRounded):
                 page = mongo.db.report.find( {locationType:value } ).skip(int(x+1)*10).limit(page_size)
                 pages.append(page)
-                print(pages)
+           
             return render_template('searchResult.html', reportedReports=reportedReports, percentageOfDb=percentageOfDb, number_of_reports=number_of_reports, report=report, collapsibles=numOfPagesRounded, pages=pages)              
               
 
     elif typeOfSearch == "searchByDiscrimination":
-        print("see discrimin")
+        
         category = request.form['category']
         useTimeFrame = request.form['useTimeFrame']
-        print(useTimeFrame)
+    
         if useTimeFrame == "No":
-            print("see All")
+           
             report = mongo.db.report.find( { "category_name":category } )
             reportedReportsCount = mongo.db.report.find( {"$and":[{ "category_name":category }, {"report_to_authorities": "Yes"}] }).count()
         else:
             startDatestr = request.form['categoryStartDateFrame']
-            print(startDatestr)
+            
             endDatestr = request.form['categoryEndDateFrame']
-            print(endDatestr)
+           
             startDateConversion = datetime.strptime(startDatestr, "%Y-%m-%d")
             endDateTimeConversion = datetime.strptime(endDatestr, "%Y-%m-%d")
             startDateTimeStamp = datetime.timestamp(startDateConversion)
@@ -689,19 +686,19 @@ def search_db_reports():
             pages.append(page)
         return render_template('searchResult.html', number_of_reports=number_of_reports, reportedReports=reportedReports, percentageOfDb=percentageOfDb, report=report, collapsibles=numOfPagesRounded, pages=pages)
     else:
-        print("see reported")
+     
         reportedToAuthorities = request.form['searchReported']
         useTimeFrame = request.form['useTimeFrame']
-        print(useTimeFrame)
+    
         if useTimeFrame == "No":
-            print("see All")
+           
             report = mongo.db.report.find({"report_to_authorities": reportedToAuthorities }  )
             reportedReportsCount = mongo.db.report.find( {"$and":[{"report_to_authorities": reportedToAuthorities }, {"report_to_authorities": "Yes"}]}).count() 
         else:
             startDatestr = request.form['reportedStartDateFrame']
-            print(startDatestr)
+            
             endDatestr = request.form['reportedEndDateFrame']
-            print(endDatestr)
+           
             startDateConversion = datetime.strptime(startDatestr, "%Y-%m-%d")
             endDateTimeConversion = datetime.strptime(endDatestr, "%Y-%m-%d")
             startDateTimeStamp = datetime.timestamp(startDateConversion)
@@ -709,7 +706,7 @@ def search_db_reports():
             report = mongo.db.report.find( {"$and":[{"report_to_authorities": reportedToAuthorities } , {"timestamp":{ "$gte": startDateTimeStamp,"$lt":endDateTimeStamp }}]})           
             reportedReportsCount = mongo.db.report.find( {"$and":[{"report_to_authorities": reportedToAuthorities }, {"report_to_authorities": "Yes"},  {"timestamp":{ "$gte": startDateTimeStamp,"$lt":endDateTimeStamp }}]}).count()           
         
-        print(report)
+      
         # Statistics 
         number_of_reports = report.count()
         percentageOfDb = calculate_percentage_of_report_in_db(report, totalReportsCount)
@@ -754,7 +751,7 @@ def add_report():
     currentUserEmail = session.get("email")
     if currentUserEmail == None:
         currentUserEmail = "anonymous"
-        print(currentUserEmail)
+    
         return render_template("addReport.html", currentUserEmail=currentUserEmail, categories=mongo.db.categories.find(),
                            
                            )
@@ -773,11 +770,9 @@ def insert_report():
     report = mongo.db.report
     now = datetime.now()
     dateObj = now.date()
-    print("below is the dateobj")
-    print(dateObj)
-    print(now)
+ 
     timestamp = datetime.timestamp(now)
-    print(timestamp)
+
     category = request.form['category_name']
     incident = request.form['incident_description']
     reported = request.form['report_to_authorities']
@@ -791,10 +786,10 @@ def addLocationToReport():
         currentUserEmail = "anonymous"
     else: 
         currentUserEmail = session.get('email')
-    print("add location has been reached.")
+  
     reportTimeStamp = request.form['reportTimeStamp']
     addBuilding = request.form['building'].capitalize()
-    print(addBuilding)
+
     addStreet = request.form['street'].capitalize()
     addCity = request.form['city'].capitalize()
     addCounty = request.form['county'].capitalize()
@@ -810,12 +805,11 @@ def addDateToReport():
     else: 
         currentUserEmail = session.get('email')
     reportTimeStamp = (request.form['reportTimeStamp'])
-    print("timestamp")
-    print(reportTimeStamp)
+    
     strDate = str(request.form['date'])
-    print(strDate)
+
     if strDate == '':
-        print("blank date")
+      
         mongo.db.report.update_one({ "$and": [ {"email": currentUserEmail}, {"time": float(reportTimeStamp)}]}, {"$set": {"date": strDate}})
         if session.get("email") is None:
             flash("Thank you for your report!")
@@ -826,9 +820,9 @@ def addDateToReport():
         timeStamp = datetime.strptime(strDate, "%Y-%m-%d")
         timestampDate = datetime.timestamp(timeStamp)
 
-        print(timestampDate)
+       
         if timestampDate > float(reportTimeStamp):
-            print("date is in the future")
+      
             flash("Please select a date that is not in the future")
             return render_template('addDateToReport.html', reportTimeStamp=reportTimeStamp, currentUserEmail=currentUserEmail)
         else: 
@@ -854,7 +848,7 @@ def addDateToReport():
 @app.route('/user-modify/<report_id>')
 def user_modify(report_id):
     the_report = mongo.db.report.find_one({"_id": ObjectId(report_id)})
-    print(the_report)
+    
     available_categories = mongo.db.categories.find()
     
     currentUserEmail = session.get("email")
@@ -862,7 +856,7 @@ def user_modify(report_id):
 
 @app.route('/edit-report/<report_id>', methods=["POST"])
 def edit_report(report_id):
-    print("accessed")
+    
     report = mongo.db.report
     report.update({'_id': ObjectId(report_id)},
                   {
