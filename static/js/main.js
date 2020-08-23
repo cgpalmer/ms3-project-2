@@ -324,9 +324,6 @@ $("#password").click(function () {
     };
 });
 
-// Animations
-// Search page
-
 // Materialize
 
 $(document).ready(function () {
