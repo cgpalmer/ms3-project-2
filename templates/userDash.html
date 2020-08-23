@@ -31,7 +31,7 @@
                         <label class="managing-reports-labels">Choose a type of search.*</label>
                     </div>
                     <div id="userSearchCategory" class="input-field input-field-manage-reports col s12 hidden">
-                        <select name="category">
+                        <select id="userDashSearchCat" name="category">
                             <option value="" disabled selected>Category</option>
                             {% for category in category|sort %}
                                 <option value="{{category}}">{{category}}</option>
