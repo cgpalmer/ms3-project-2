@@ -331,7 +331,8 @@ $('#extraLocationChoice').change(function(){
         }
 
         else{
-             $("#countyLocation, #cityLocation, #postcodeLocation, #buildingLocation").addClass('hidden');                        
+             $("#countyLocation, #cityLocation, #postcodeLocation, #buildingLocation").addClass('hidden');
+             $("#buildingLocation").removeClass('hidden');                        
         }
      }
 });
