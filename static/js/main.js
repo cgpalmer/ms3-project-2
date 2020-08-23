@@ -73,6 +73,18 @@ $('#userDashSearchCat').change(function(){
     }
 });
 
+$('#userDashSearchBuilding, #userDashSearchCity, #userDashSearchCounty, #userDashSearchPostcode').change(function(){
+    var locationTypeVal = $('#locationType').val();
+    if(locationTypeVal != 'building'){
+    var val1 = $(this).val();
+    console.log(val1);
+    if(val1 != undefined){
+        $("#managingReportSearchButton").prop("disabled", false);
+    }}
+});
+
+
+
 
 
 //  Js to narrow down user choice when submitting forms.
