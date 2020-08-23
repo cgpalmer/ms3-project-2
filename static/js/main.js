@@ -50,13 +50,16 @@ $('#reportedToAuthorities').change(function(){
 }
 );
 
-// Managing reports
+// Managing reports in dashboard
 
 $('#userSearchType').change(function(){
     var val1 = $(this).val();
     console.log(val1);
     if(val1 == "all"){
         $("#managingReportSearchButton").prop("disabled", false);
+    }
+    else{
+         $("#managingReportSearchButton").prop("disabled", true);
     }
 }
 );
