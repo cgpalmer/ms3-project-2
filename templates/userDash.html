@@ -21,14 +21,14 @@
             <form id="userSearchForm" method="POST" action="{{ url_for('search_reports') }}">
             <div class="input-field input-field-manage-reports col s12">
                         <select id="userSearchType" name="userSearchOwnReports" required>
-                            <option value="" disabled selected>Choose a search type</option>
+                            <option value="" disabled selected>Choose a search type.*</option>
                             
                                 <option value="all">Show all of my reports</option>
                                 <option value="location">Search my reports by location</option>
                                 <option value="discrimination">Search my reports by discrimination</option>
                          
                         </select>
-                        <label class="managing-reports-labels">Choose a type of search.</label>
+                        <label class="managing-reports-labels">Choose a type of search.*</label>
                     </div>
                     <div id="userSearchCategory" class="input-field input-field-manage-reports col s12 hidden">
                         <select name="category">
@@ -37,14 +37,14 @@
                                 <option value="{{category}}">{{category}}</option>
                             {% endfor %}
                         </select>
-                         <label class="managing-reports-labels">Choose a category.</label>
+                         <label class="managing-reports-labels">Choose a category.*</label>
                     
                     </div>
 
 
                     <div id="userSearchLocationType" class="input-field input-field-manage-reports col s12 hidden">
                         <select id="locationType" name="locationType">
-                            <option value="" disabled selected>Choose location type</option>
+                            <option value="" disabled selected>Choose location type.*</option>
                             
                                 <option value="building">Building</option>
                                 <option value="city">City</option>
@@ -52,7 +52,7 @@
                                 <option value="postcode">Postcode</option>
                          
                         </select>
-                        <label class="managing-reports-labels">Choose a location.</label>
+                        <label class="managing-reports-labels">Choose a location.*</label>
                     </div>
 
                     <div id="userSearchExtraLocation" class="input-field input-field-manage-reports col s12 hidden">
@@ -65,7 +65,7 @@
                                 <option value="postcode">Postcode</option>
                     
                         </select>
-                        <label class="managing-reports-labels">Choose a second location.</label>
+                        <label class="managing-reports-labels">Choose a second location.*</label>
                     </div>
 
 
@@ -90,7 +90,7 @@
                                  {% endif %}
                             {% endfor %}
                         </select>
-                        <label class="managing-reports-labels">Choose a city.</label>
+                        <label class="managing-reports-labels">Choose a city.*</label>
                     </div>
                     <div id="countyLocation" class="input-field input-field-manage-reports col s12 hidden locationOptions">
                         <select name="county">
@@ -102,7 +102,7 @@
                                 {% endif %}
                             {% endfor %}
                         </select>
-                        <label class="managing-reports-labels">Choose a county.</label>
+                        <label class="managing-reports-labels">Choose a county.*</label>
                     </div>
                     <div id="postcodeLocation" class="input-field input-field-manage-reports col s12 hidden locationOptions">
                         <select name="postcode">
