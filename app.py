@@ -809,7 +809,8 @@ def addLocationToReport():
         currentUserEmail = session.get('email')
     print("add location has been reached.")
     reportTimeStamp = request.form['reportTimeStamp']
-    addBuilding = request.form['building']
+    addBuilding = request.form['building'].lower()
+    print(addBuilding)
     addStreet = request.form['street']
     addCity = request.form['city']
     addCounty = request.form['county']
