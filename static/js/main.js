@@ -2,6 +2,35 @@
 let collapsibleChoice;
 let timeFrame;
 
+
+
+// JS to make sure the uses adds all the relevant information for the initial add_report page.
+
+$('#category').change(function(){
+    var val1 = $("#category").val();
+    var val2 = $("#add_report_to_authorities").val();
+    console.log(val1);
+    console.log(val2);
+    if((val1 != "") && (val2 != undefined)){
+        console.log("both have passed")
+    }
+}
+);
+
+$('#add_report_to_authorities').change(function(){
+    alert("reached")
+    var val1 = $("#category").val();
+    var val2 = $("#add_report_to_authorities").val();
+    console.log(val1);
+    console.log(val2);
+    if((val1 != undefined) && (val2 != undefined)){
+        console.log("both have passed")
+    }
+}
+);
+
+
+
 //  Js to narrow down user choice when submitting forms.
 // Searching the db
 $("#categoryCollapsible").click(function(){
