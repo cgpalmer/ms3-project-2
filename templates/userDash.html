@@ -70,7 +70,7 @@
 
 
                     <div id="buildingLocation" class="input-field input-field-manage-reports col s12 hidden locationOptions ">
-                        <select name="building">
+                        <select id="userDashSearchBuilding" name="building">
                             <option value="" disabled selected>Building</option>
                             {% for building in building|sort %}
                                  {% if building != "" %}
@@ -81,7 +81,7 @@
                         <label class="managing-reports-labels">Choose a building.</label>
                     </div>
                     <div id="cityLocation" class="input-field input-field-manage-reports col s12 hidden locationOptions">
-                        <select name="city">
+                        <select id="userDashSearchCity" name="city">
                             <option value="" disabled selected>City</option>
                             {% for cities in city|sort %}
                                 {% if cities != "" %}
@@ -93,7 +93,7 @@
                         <label class="managing-reports-labels">Choose a city.*</label>
                     </div>
                     <div id="countyLocation" class="input-field input-field-manage-reports col s12 hidden locationOptions">
-                        <select name="county">
+                        <select id="userDashSearchCounty" name="county">
                             <option value="" disabled selected>County</option>
                             {% for county in county|sort %}
                                 {% if county != "" %}
@@ -105,7 +105,7 @@
                         <label class="managing-reports-labels">Choose a county.*</label>
                     </div>
                     <div id="postcodeLocation" class="input-field input-field-manage-reports col s12 hidden locationOptions">
-                        <select name="postcode">
+                        <select id="userDashSearchBuilding" name="postcode">
                             <option value="" disabled selected>Postcode</option>
                             {% for postcode in postcode|sort %}
                                  {% if postcode != "" %}
