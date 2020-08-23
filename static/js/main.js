@@ -11,7 +11,7 @@ $('#category').change(function(){
     var val2 = $("#add_report_to_authorities").val();
     console.log(val1);
     console.log(val2);
-    if((val1 != "") && (val2 != undefined)){
+    if((val1 != undefined) && (val2 != undefined)){
         $("#addReportButton").prop("disabled", false);
     }
 }
@@ -29,7 +29,30 @@ $('#add_report_to_authorities').change(function(){
 }
 );
 
+// JS to make sure the uses adds all the relevant information for the search to go ahead.
 
+
+$('#searchbyDiscrimination').change(function(){
+    var val1 = $(this).val();
+    console.log(val1);
+    if(val1 != undefined){
+        $("#searchCategoryButton").prop("disabled", false);
+    }
+}
+);
+
+$('#reportedToAuthorities').change(function(){
+    var val1 = $(this).val();
+    console.log(val1);
+    if(val1 != undefined){
+        $("#searchIncidentButton").prop("disabled", false);
+    }
+}
+);
+
+
+
+searchDbLocationType
 
 //  Js to narrow down user choice when submitting forms.
 // Searching the db
