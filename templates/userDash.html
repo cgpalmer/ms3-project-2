@@ -20,7 +20,7 @@
       <div class="collapsible-body">       
             <form id="userSearchForm" method="POST" action="{{ url_for('search_reports') }}">
             <div class="input-field input-field-manage-reports col s12">
-                        <select id="userSearchType" name="userSearchOwnReports" required>
+                        <select id="userSearchType" name="userSearchOwnReports" >
                             <option value="" disabled selected>Choose a search type.*</option>
                             
                                 <option value="all">Show all of my reports</option>
@@ -119,7 +119,7 @@
 
                         
                     <div class="btn-wrapper">
-                        <button class="btn btn-with-extra-margin" type="submit"><i class="material-icons">text_snippet</i>Find reports</button>
+                        <button id="managingReportSearchButton" class="btn btn-with-extra-margin" type="submit"><i class="material-icons">text_snippet</i>Find reports</button>
                     </div>
              
                 </form>
