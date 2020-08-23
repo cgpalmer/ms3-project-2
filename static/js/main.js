@@ -81,7 +81,9 @@ $('#locationType').change(function(){
     }
 });
 
-
+$('#extraLocationChoice').change(function(){
+        $("#managingReportSearchButton").prop("disabled", true);
+});
 
 $('#userDashSearchBuilding').change(function(){
     var extraLocationChoice = $('#extraLocationChoice').val()
