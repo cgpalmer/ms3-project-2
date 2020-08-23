@@ -111,9 +111,9 @@ ___
 
 Wireframes have been made using Balsamiq. 
 
-[Wireframes](assets/files/wireFrames.pdf)
+[Wireframes](static/wireframes/wireFrames.pdf)
 
-[Responsive images of actual site](assets/files/responsiveImages.pdf)
+[Responsive images of actual site](static/wireframes/responsiveImages.pdf)
 ___
 <span id="features"></span>
 ## Features
@@ -125,37 +125,30 @@ ___
 
 1. 
 
-<ins>Help Page</ins>
+<ins>Home </ins>
 
 1. 
 
-<ins>Contact Page</ins>
+<ins>Dashboard </ins>
 
 1. 
 
-<ins>Play! Page</ins>
+<ins>Login </ins>
+<ins>Signup</ins>
+<ins>Add report</ins>
+<ins>Search report</ins>
+<ins>Settings</ins>
 
 
 <span id="featuresLeftToImplement"></span>
 ### Features Left to Implement
 
-Users can do the following:
-
-See an overview of records on the home page.
-Add a record of Discrimination
-When adding a record they can add a username and an email
-When adding a record they can fill in a thorough form so people can sort by city, town, postcode etc
-Edit or delete records if they can provide the correct email address for the specific report
-Search for reports based on the following = username, email, type of discrimination, location
-Search for a type of discrimination and see where it is prevalent in the UK.
-See statistics based on the collection of records so far 
-
 Future features.
 A google api will allow the locations of the features to be displayed as clusters across a map. 
-People can filter crimes via a date. 
+People can filter incidents just by a date frame. 
 Export data as a CSV to be used on excel.
-Councils to be able to upload reports of discrimination via their own CSV
-Be able to log into their own area
+Councils/ other professional bodies will be able to upload reports of discrimination via their own CSV.
+
 
 ___
 <span id="defensiveFeatures"></span>
