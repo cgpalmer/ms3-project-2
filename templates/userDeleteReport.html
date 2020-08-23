@@ -13,33 +13,45 @@
                         {% endif %}
                     </div>
 
-                    {% if report.building != "" %}
-                    <div class="result-info-separator">
-                        <p class="result-info">Building:</p>
-                        <p class="result-info">{{report.building}}</p>
-                    </div>
-                    {% endif %} {% if report.street != "" %}
-                    <div class="result-info-separator">
-                        <p class="result-info">Street:</p>
-                        <p class="result-info">{{report.street}}</p>
-                    </div>
-                    {% endif %} {% if report.county != "" %}
-                    <div class="result-info-separator">
-                        <p class="result-info">City:</p>
-                        <p class="result-info">{{report.city}}</p>
-                    </div>
-                    {% endif %} {% if report.county != "" %}
-                    <div class="result-info-separator">
-                        <p class="result-info">County:</p>
-                        <p class="result-info">{{report.county}}</p>
-                    </div>
-                    {% endif %} {% if report.postcode != "" %}
-                    <div class="result-info-separator">
-                        <p class="result-info">Postcode:</p>
-                        <p class="result-info">{{report.postcode}}</p>
-                    </div>
-                    {% endif %}
-                </div>
+<div class="result-info-separator">
+                <p class="result-info">Location:</p>
+                {% if report.building != "" %}
+                 <p class="result-info">{{report.building}}</p>
+                   {% endif %}
+                     
+           
+            {% if report.street != "" %}
+             
+                <p class="result-info">{{report.street}}</p>
+                   
+            {% endif %} 
+            {% if report.city != "" %}
+             
+                 <p class="result-info">{{report.city}}</p>
+                    
+            {% endif %}
+            {% if report.county != "" %}
+             
+                 <p class="result-info">{{report.county}}</p>
+                    
+            {% endif %} 
+            {% if report.postcode != "" %}
+             
+                <p class="result-info">{{report.postcode}}</p>
+                      
+            {% endif %} 
+            </div>
+             
+
+
+
+
+
+
+
+
+
+
                 <div class="col xl6">
                     <div class="result-info-separator">
                         <p class="result-info">Incident Description:</p>
