@@ -60,9 +60,18 @@ $('#userSearchType').change(function(){
     }
     else{
          $("#managingReportSearchButton").prop("disabled", true);
+
     }
 }
 );
+
+$('#userDashSearchCat').change(function(){
+    var val1 = $(this).val();
+    console.log(val1);
+    if(val1 != undefined){
+        $("#managingReportSearchButton").prop("disabled", false);
+    }
+});
 
 
 
