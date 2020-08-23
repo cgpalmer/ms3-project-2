@@ -14,6 +14,7 @@ ___
 
 ## Contents
 + <a href="#rationale">Rationale</a>
+<a href="#inspiration">Rationale</a>
 + <a href="#UX">UX</a> 
    - <a href="#userStories">User Stories</a>
 + <a href="#features">Features</a>
@@ -56,7 +57,7 @@ They can search by area or by discrimination to see where they can focus their e
 
 ___
 
-<span id="Inspiration"></span>
+<span id="inspiration"></span>
 
 ## Inspiration
 
