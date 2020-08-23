@@ -53,7 +53,7 @@
 
                        <div class="btn-wrapper">
                 
-                        <button class="btn" type="submit"><i class="material-icons">text_snippet</i>Find reports</button>
+                        <button class="btn" type="submit" disabled><i class="material-icons">text_snippet</i>Find reports</button>
                      </div>   
              
                 </form>
@@ -170,7 +170,7 @@
                 
             
                    <div class="btn-wrapper">
-                        <button class="btn" type="submit"><i class="material-icons">text_snippet</i>Find reports</button>
+                        <button class="btn" type="submit" disabled><i class="material-icons">text_snippet</i>Find reports</button>
                      </div>   
              
                 </form>
@@ -224,7 +224,7 @@
                     
             
                        <div class="btn-wrapper">
-                        <button class="btn" type="submit"><i class="material-icons">text_snippet</i>Find reports</button>
+                        <button class="btn" type="submit" disabled><i class="material-icons">text_snippet</i>Find reports</button>
                         </div>
              
                 </form>
@@ -237,26 +237,6 @@
             <form class="form-wrapper-search form-search-all" method="POST" action="{{ url_for('search_db_reports') }}">
        
                             <input id="userSearchbyAll" class="hidden" type="text" name="userSearchReports" value="searchAll">
-                
-                    <div class="input-field col s12 hidden">
-                         <p>Would you like to search within a time frame?</p>
-                        <select id="allTimeFrame" class="timeFrameChoice" name="useTimeFrame">
-                            
-                                
-                                <option value="Yes">Yes</option>
-                                <option selected value="No">No</option>
-                         
-                        </select>
-                    </div>
-
-                    <div class="input-field col s12 allTimeFrameDisplay hidden">
-                        
-                         <span class="dateSpan">From:</span><input type="text" id="allStartDateFrame" name="allStartDateFrame" class="datepicker" placeholder="Start Date">
-                    </div>
-                    <div class="input-field col s12 allTimeFrameDisplay hidden">
-                      
-                         <span class="dateSpan">To:</span><input type="text" name="allEndDateFrame" id="allEndDateFrame" class="datepicker" placeholder="End Date">
-                    </div>
             
                     <div class="btn-wrapper">
                         <button class="btn btn-add-report" type="submit"><i class="material-icons">text_snippet</i>Find reports</button>
