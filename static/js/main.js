@@ -83,27 +83,32 @@ $('#locationType').change(function(){
 
 
 
-$('#extraLocationChoice').change(function(){
+$('#userDashSearchBuilding').change(function(){
+    var extraLocationChoice = $('#extraLocationChoice').val()
     var val1 = $(this).val();
     console.log(val1);
-    if(val1 != undefined){
-        $("#managingReportSearchButton").prop("disabled", true);
+    if((val1 == 'all') && (extraLocationChoice != undefined)){
+        $("#managingReportSearchButton").prop("disabled", false);
     }
 });
 
-
-
-
-
-
 $('#userDashSearchCity, #userDashSearchCounty, #userDashSearchPostcode').change(function(){
+    var val1 = $(this).val();
     var locationTypeVal = $('#locationType').val();
     if(locationTypeVal != 'building'){
-    var val1 = $(this).val();
     console.log(val1);
-    if(val1 != undefined){
-        $("#managingReportSearchButton").prop("disabled", false);
-    }}
+        if(val1 != undefined){
+            $("#managingReportSearchButton").prop("disabled", false);
+        }}
+    else{
+        var userDashBuilding = $('#userDashSearchBuilding').val()
+        console.log("reached the userSash")
+        console.log(userDashBuilding)
+        if((userDashBuilding != undefined) && (val1 != undefined)){
+            $("#managingReportSearchButton").prop("disabled", false);
+        }
+    }
+ 
 });
 
 
