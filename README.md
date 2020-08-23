@@ -242,9 +242,7 @@ https://www.favicon.cc/
 <span id="acknowledgements"></span>
 <ins>Acknowledgements</ins>  
 
-Through discussion with my mentor, we decided a matching pairs game would give me an appropriate challenge.
-I received inspiration from playing Pokémon Go. I thought a great way to give the matching game a purpose would 
-be to use Pokémon cards. 
+https://www.gov.uk/discrimination-your-rights
 
 
 ___
