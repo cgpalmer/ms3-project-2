@@ -56,6 +56,44 @@ They can search by area or by discrimination to see where they can focus their e
 
 ___
 
+<span id="Inspiration"></span>
+
+## Inspiration
+
+#### Requesting information
+
+I designed this website to be as intuative and quick as possible. A major factor for not recording events is simply 
+the amount of time it can take out of the day. Therefore, I designed my web site to only request the information
+it necessary. 
+
+I read an article explaining how to create a minimalist registering page at this link:
+https://www.smashingmagazine.com/2011/05/innovative-techniques-to-simplify-signups-and-logins/
+
+Using it as inspiration, I simplified my registering form and allowed user to sign up as quickly as possible.
+I also allowed them to add a preferred name once they were signed up, again speeding up the process.
+
+I took this a step further with adding a new report or searching for a report. 
+
+When adding a report, you are required to give information on whether the incident has been reported, 
+the category of the incident and a description. As soon as that information was supplied, the incident was recorded.
+After that, the user had the option to add extra details such as date and location. This offers flexibility to the
+user and encourages use even if all the details aren't accessible.
+
+When searching for a report, you only need to select the information necessary for your search. Otherwise, the Javascript
+hides the extra information.
+
+#### Design
+
+I wanted this website to have a calm and mature theme - one that matches and reflects the sombre but important purpose.
+In order to do this, I looked at two particular design websites that are linked below:
+https://visme.co/blog/color-combinations/?fbclid=IwAR04pjyYtd1uGzsv9jQWIOkG3KCayjX2nGdH6xTy9WPapcLV0Xie3HKmWg0
+https://visme.co/blog/website-color-schemes/?fbclid=IwAR16fr1TqIOxw-Juvp4z_FFiHoHpONwH6D6g7Eud2-aVdneS0q2DHFfTWPg
+
+I finally decided on one that had earth tones, which promoted calm and clarity. I attempted where possible to stick 
+to as few colour as possible and ensured they complimented each other. 
+
+___
+
 <span id="UX"></span>
 ## UX
 
