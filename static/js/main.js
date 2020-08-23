@@ -30,7 +30,13 @@ $('#add_report_to_authorities').change(function(){
 );
 
 // JS to make sure the uses adds all the relevant information for the search to go ahead.
-
+$('#searchDbLocationType').change(function(){
+    var val1 = $(this).val();
+    console.log(val1);
+    if(val1 != undefined){
+        $("#searchLocationButton").prop("disabled", true);
+    }
+});
 
 $('#searchbyDiscrimination').change(function(){
     var val1 = $(this).val();
