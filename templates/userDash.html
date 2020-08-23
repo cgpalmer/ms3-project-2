@@ -74,7 +74,7 @@
                             <option value="" disabled selected>Building</option>
                             {% for building in building|sort %}
                                  {% if building != "" %}
-                                <option value="{{building}}">{{building}}</option>
+                                <option value="{{building}}">{{building.capitalize()}}</option>
                                 {% endif %}
                             {% endfor %}
                         </select>
@@ -86,7 +86,7 @@
                             {% for cities in city|sort %}
                                 {% if cities != "" %}
                                
-                                <option value="{{cities}}">{{cities}}</option>
+                                <option value="{{cities}}">{{citiescapitalize()}}</option>
                                  {% endif %}
                             {% endfor %}
                         </select>
@@ -98,7 +98,7 @@
                             {% for county in county|sort %}
                                 {% if county != "" %}
                                 
-                                <option value="{{county}}">{{county}}</option>
+                                <option value="{{county}}">{{countycapitalize()}}</option>
                                 {% endif %}
                             {% endfor %}
                         </select>
@@ -110,7 +110,7 @@
                             {% for postcode in postcode|sort %}
                                  {% if postcode != "" %}
                                
-                                <option value="{{postcode}}">{{postcode}}</option>
+                                <option value="{{postcode}}">{{postcodecapitalize()}}</option>
                                  {% endif %}
                             {% endfor %}
                         </select>
