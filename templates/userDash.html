@@ -86,7 +86,7 @@
                             {% for cities in city|sort %}
                                 {% if cities != "" %}
                                
-                                <option value="{{cities}}">{{citiescapitalize()}}</option>
+                                <option value="{{cities}}">{{cities.capitalize()}}</option>
                                  {% endif %}
                             {% endfor %}
                         </select>
@@ -98,7 +98,7 @@
                             {% for county in county|sort %}
                                 {% if county != "" %}
                                 
-                                <option value="{{county}}">{{countycapitalize()}}</option>
+                                <option value="{{county}}">{{county.capitalize()}}</option>
                                 {% endif %}
                             {% endfor %}
                         </select>
@@ -110,7 +110,7 @@
                             {% for postcode in postcode|sort %}
                                  {% if postcode != "" %}
                                
-                                <option value="{{postcode}}">{{postcodecapitalize()}}</option>
+                                <option value="{{postcode}}">{{postcode.capitalize()}}</option>
                                  {% endif %}
                             {% endfor %}
                         </select>
