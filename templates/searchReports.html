@@ -124,7 +124,7 @@
                             <option value="unselected" disabled selected></option>
                             {% for building in building %}
                                 {% if building != "" %}
-                                <option value="{{building}}">{{building}}</option>
+                                <option value="{{building}}">{{building.capitalize()}}</option>
                                 {% endif %}
                             {% endfor %}
                         </select>
@@ -136,7 +136,7 @@
                             {% for cities in city %}
                                 {% if cities != "" %}
                                
-                                <option value="{{cities}}">{{cities}}</option>
+                                <option value="{{cities}}">{{cities.capitalize()}}</option>
                                  {% endif %}
                             {% endfor %}
                         </select>
@@ -148,7 +148,7 @@
                             {% for county in county %}
                                  {% if county != "" %}
                                 
-                                <option value="{{county}}">{{county}}</option>
+                                <option value="{{county}}">{{county.capitalize()}}</option>
                                 {% endif %}
                             {% endfor %}
                         </select>
@@ -160,7 +160,7 @@
                             {% for postcode in postcode %}
                                  {% if postcode != "" %}
                                 
-                                <option value="{{postcode}}">{{postcode}}</option>
+                                <option value="{{postcode}}">{{postcode.capitalize()}}</option>
                                 {% endif %}
                             {% endfor %}
                         </select>
