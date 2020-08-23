@@ -518,22 +518,8 @@ def search_db_reports():
     if typeOfSearch == "searchAll":
         useTimeFrame = request.form['useTimeFrame']
         print(useTimeFrame)
-        if useTimeFrame == "No":
-            print("see All")
-            report = mongo.db.report.find()
-            reportedReportsCount = mongo.db.report.find({"report_to_authorities": "Yes"}).count()
-        else:
-            # Search entire db with time frame
-            startDatestr = request.form['allStartDateFrame']
-            print(startDatestr)
-            endDatestr = request.form['allEndDateFrame']
-            print(endDatestr)
-            startDateConversion = datetime.strptime(startDatestr, "%Y-%m-%d")
-            endDateTimeConversion = datetime.strptime(endDatestr, "%Y-%m-%d")
-            startDateTimeStamp = datetime.timestamp(startDateConversion)
-            endDateTimeStamp = datetime.timestamp(endDateTimeConversion)
-            report = mongo.db.report.find({"timestamp":{ "$gte": startDateTimeStamp,"$lt":endDateTimeStamp }})
-            reportedReportsCount = mongo.db.report.find( {"$and":[{"timestamp":{ "$gte": startDateTimeStamp,"$lt":endDateTimeStamp }}, {"report_to_authorities": "Yes"}] }).count()
+        report = mongo.db.report.find()
+        reportedReportsCount = mongo.db.report.find({"report_to_authorities": "Yes"}).count()
         number_of_reports = report.count()
         # Statistics for the top of the search page.
         percentageOfDb = calculate_percentage_of_report_in_db(report, totalReportsCount)
@@ -811,10 +797,10 @@ def addLocationToReport():
     reportTimeStamp = request.form['reportTimeStamp']
     addBuilding = request.form['building'].lower()
     print(addBuilding)
-    addStreet = request.form['street']
-    addCity = request.form['city']
-    addCounty = request.form['county']
-    addPostcode = request.form['postcode']
+    addStreet = request.form['street'].lower()
+    addCity = request.form['city'].lower()
+    addCounty = request.form['county'].lower()
+    addPostcode = request.form['postcode'].lower()
     mongo.db.report.update_one({ "$and": [ {"email": currentUserEmail}, {"time": float(reportTimeStamp)}]}, {"$set": {"building": addBuilding, "city": addCity, "street": addStreet, "county": addCounty, "postcode": addPostcode}})
     return render_template('addDateToReport.html', reportTimeStamp=reportTimeStamp, currentUserEmail=currentUserEmail)
 
@@ -850,7 +836,7 @@ def addDateToReport():
 def skipDate():
     if session.get("email") is None:
             flash("Thank you for your report!")
-            return redirect(url_for('add-report'))
+            return redirect(url_for('add_report'))
     else:
         return redirect(url_for('dashboard'))
 
