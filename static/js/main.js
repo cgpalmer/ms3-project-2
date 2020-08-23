@@ -6,8 +6,8 @@ let timeFrame;
 $("#category").change(function () {
     var val1 = $("#category").val();
     var val2 = $("#add_report_to_authorities").val();
-    console.log(val1);
-    console.log(val2);
+ 
+  
     if (val1 != undefined && val2 != undefined) {
         $("#addReportButton").prop("disabled", false);
     }
@@ -17,8 +17,8 @@ $("#add_report_to_authorities").change(function () {
     alert("reached");
     var val1 = $("#category").val();
     var val2 = $("#add_report_to_authorities").val();
-    console.log(val1);
-    console.log(val2);
+ 
+  
     if (val1 != undefined && val2 != undefined) {
         $("#addReportButton").prop("disabled", false);
     }
@@ -27,7 +27,7 @@ $("#add_report_to_authorities").change(function () {
 // JS to make sure the uses adds all the relevant information for the search to go ahead.
 $("#searchDbLocationType").change(function () {
     var val1 = $(this).val();
-    console.log(val1);
+ 
     if (val1 != undefined) {
         $("#searchLocationButton").prop("disabled", true);
     }
@@ -35,7 +35,7 @@ $("#searchDbLocationType").change(function () {
 
 $("#searchbyDiscrimination").change(function () {
     var val1 = $(this).val();
-    console.log(val1);
+ 
     if (val1 != undefined) {
         $("#searchCategoryButton").prop("disabled", false);
     }
@@ -43,7 +43,7 @@ $("#searchbyDiscrimination").change(function () {
 
 $("#reportedToAuthorities").change(function () {
     var val1 = $(this).val();
-    console.log(val1);
+ 
     if (val1 != undefined) {
         $("#searchIncidentButton").prop("disabled", false);
     }
@@ -55,7 +55,7 @@ $("#searchDBBuildingOption").change(function () {
     var cityLocation = $("#searchDBCityOption").val();
     var countyLocation = $("#searchDBCountyOption").val();
     var postcodeLocation = $("#searchDBPostcodeOption").val();
-    console.log(val1);
+ 
     if (val1 != undefined && extraLocationChoice == "all") {
         $("#searchLocationButton").prop("disabled", false);
     }
@@ -68,14 +68,14 @@ $("#searchDBCityOption, #searchDBCountyOption, #searchDBPostcodeOption").change(
     var val1 = $(this).val();
     var locationTypeVal = $("#searchDbLocationType").val();
     if (locationTypeVal != "building") {
-        console.log(val1);
+     
         if (val1 != undefined) {
             $("#searchLocationButton").prop("disabled", false);
         }
     } else {
         var userDashBuilding = $("#searchDBBuildingOption").val();
-        console.log("reached the userSash");
-        console.log(userDashBuilding);
+      
+      
         if (userDashBuilding != undefined && val1 != undefined) {
             $("#searchLocationButton").prop("disabled", false);
         }
@@ -90,7 +90,7 @@ $("#searchDbLocationExtraTypeOptions").change(function () {
 
 $("#userSearchType").change(function () {
     var val1 = $(this).val();
-    console.log(val1);
+ 
     if (val1 == "all") {
         $("#managingReportSearchButton").prop("disabled", false);
     } else {
@@ -100,7 +100,7 @@ $("#userSearchType").change(function () {
 
 $("#userDashSearchCat").change(function () {
     var val1 = $(this).val();
-    console.log(val1);
+ 
     if (val1 != undefined) {
         $("#managingReportSearchButton").prop("disabled", false);
     }
@@ -108,7 +108,7 @@ $("#userDashSearchCat").change(function () {
 
 $("#locationType").change(function () {
     var val1 = $(this).val();
-    console.log(val1);
+ 
     if (val1 != undefined) {
         $("#managingReportSearchButton").prop("disabled", true);
     }
@@ -124,7 +124,7 @@ $("#userDashSearchBuilding").change(function () {
     var cityLocation = $("#userDashSearchCity").val();
     var countyLocation = $("#userDashSearchCounty").val();
     var postcodeLocation = $("#userDashSearchPostcode").val();
-    console.log(val1);
+ 
     if (extraLocationChoice == "all" && extraLocationChoice != undefined) {
         $("#managingReportSearchButton").prop("disabled", false);
     }
@@ -137,14 +137,14 @@ $("#userDashSearchCity, #userDashSearchCounty, #userDashSearchPostcode").change(
     var val1 = $(this).val();
     var locationTypeVal = $("#locationType").val();
     if (locationTypeVal != "building") {
-        console.log(val1);
+     
         if (val1 != undefined) {
             $("#managingReportSearchButton").prop("disabled", false);
         }
     } else {
         var userDashBuilding = $("#userDashSearchBuilding").val();
-        console.log("reached the userSash");
-        console.log(userDashBuilding);
+        
+      
         if (userDashBuilding != undefined && val1 != undefined) {
             $("#managingReportSearchButton").prop("disabled", false);
         }
@@ -156,7 +156,7 @@ $("#userDashSearchCity, #userDashSearchCounty, #userDashSearchPostcode").change(
 $("#categoryCollapsible").click(function () {
     collapsibleChoice = "category";
     timeFrame = ".catTimeFrameDisplay";
-    console.log(timeFrame);
+
 });
 
 $("#locationCollapsible").click(function () {
@@ -175,7 +175,8 @@ $(".timeFrameChoice").change(function () {
     var val = $(this).val();
     if (val == "Yes") {
         $(timeFrame).removeClass("hidden");
-        console.log(timeFrame);
+      
+
     } else {
         $(timeFrame).addClass("hidden");
     }
@@ -186,7 +187,7 @@ $(".timeFrameChoice").change(function () {
 $("#searchDbLocationType").change(function () {
     var val = $(this).val();
     if (val == "building") {
-        console.log("building");
+        
         $("#searchDbLocationExtraType").removeClass("hidden");
         $("#searchDbPostcode, #searchDbCity, #searchDbCounty").addClass("hidden");
     } else {
@@ -209,7 +210,7 @@ $("#searchDbLocationType").change(function () {
 $("#searchDbLocationExtraTypeOptions").change(function () {
     var val = $(this).val();
     if (val == "postcode") {
-        console.log("postcode reached");
+       
         $("#searchDbPostcode, #searchDbBuilding").removeClass("hidden");
         $("#searchDbCounty, #searchDbCity").addClass("hidden");
     } else {
@@ -235,13 +236,13 @@ $("#userSearchType").change(function () {
     } else if (val == "location") {
         $("#userSearchLocationType").removeClass("hidden");
         $("#userSearchCategory, #userSearchExtraLocation, .locationOptions, .dateOptions").addClass("hidden");
-        console.log("location");
+   
     } else if (val == "date") {
         $(".dateOptions").removeClass("hidden");
         $("#userSearchCategory, #userSearchLocationType, #userSearchExtraLocation, .locationOptions").addClass("hidden");
-        console.log("date");
+   
     } else {
-        console.log("discrimination");
+     
         $("#userSearchCategory").removeClass("hidden");
         $("#userSearchExtraLocation, #userSearchLocationType, .locationOptions, .dateOptions").addClass("hidden");
     }
@@ -250,7 +251,7 @@ $("#userSearchType").change(function () {
 $("#locationType").change(function () {
     var val = $(this).val();
     if (val == "building") {
-        console.log("building");
+        
         $("#userSearchExtraLocation").removeClass("hidden");
         $("#postcodeLocation, #countyLocation, #cityLocation").addClass("hidden");
     } else {
