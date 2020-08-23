@@ -50,9 +50,18 @@ $('#reportedToAuthorities').change(function(){
 }
 );
 
+// Managing reports
+
+$('#userSearchType').change(function(){
+    var val1 = $(this).val();
+    console.log(val1);
+    if(val1 == "all"){
+        $("#managingReportSearchButton").prop("disabled", false);
+    }
+}
+);
 
 
-searchDbLocationType
 
 //  Js to narrow down user choice when submitting forms.
 // Searching the db
