@@ -144,6 +144,11 @@ ___
 ### Features Left to Implement
 
 Future features.
+The date will present itself the correct way round.
+Automatic email will be sent to the website managers when a report is updated/added
+Public can recommend categorise when adding a report rather than having to email separately.
+
+
 A google api will allow the locations of the features to be displayed as clusters across a map. 
 People can filter incidents just by a date frame. 
 Export data as a CSV to be used on excel.
@@ -197,11 +202,17 @@ It has been specifically designed for the following:
    + iPad Pro
    + Laptop with MDPI screen
    + Laptop with HiDPI screen
-This includes both portrait and landscape orientation for all of the above devices. 
+
 
 The majority of the website stays consistent to an easy user experience. There are minor changes to font-sizes etc. Some 
 of these can be seen in the [responsiveImages](assets/files/responsiveImages.pdf)
 There are a few major resposive choices, detailed below.
+
+1. When viewing on a laptop the search results present their information in a different way. The incident description,
+date and whether it had been reported are shown in their own colour on the right of the card.
+
+2. The pictures of staff and descriptions shift to being alongside each other once on the laptop/ landscape iPad Pro 
+screen.
 ___
 <span id="deployment"></span>
 ## Deployment
@@ -276,9 +287,13 @@ To generate my favicon, I used this website:
 https://www.favicon.cc/
 
 
+
 <span id="acknowledgements"></span>
 <ins>Acknowledgements</ins>  
 
+I used the Government's own website when choosing which categorise would be available. There are a few names I have
+changed on the grounds that there are more colloquial terms available. Eg. 'Sex' has been changed to 'sexism'.
+Please find the link attached below:
 https://www.gov.uk/discrimination-your-rights
 
 
