@@ -6,6 +6,8 @@ The statistics on this website are free to use. However, they must be reported r
 
 Any misrepresentation of the statistics will be denounced and asked to remove them. 
 
+Please do not use a person's name in the reports, as the report will be removed.
+
 
 ### [Live page](https://ms3-cgpalmer91.herokuapp.com/)
 ___
