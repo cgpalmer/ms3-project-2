@@ -67,7 +67,7 @@ $('#searchDBBuildingOption').change(function(){
     if((val1 != undefined) && (extraLocationChoice == "all")){
         $("#searchLocationButton").prop("disabled", false);
     }
-    if((val1 != 'all') && (postcodeLocation != undefined || cityLocation != undefined || countyLocation != undefined) ){
+    if((extraLocationChoice != 'all') && (postcodeLocation != undefined || cityLocation != undefined || countyLocation != undefined) ){
         $("#searchLocationButton").prop("disabled", false);
     }
 });
