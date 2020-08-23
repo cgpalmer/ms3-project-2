@@ -50,6 +50,47 @@ $('#reportedToAuthorities').change(function(){
 }
 );
 
+
+$('#searchDBBuildingOption').change(function(){
+    var extraLocationChoice = $('#searchDbLocationExtraTypeOptions').val()
+    var val1 = $(this).val();
+    var cityLocation = $('#searchDBCityOption').val();
+    var countyLocation = $('#searchDBCountyOption').val();
+    var postcodeLocation = $('#searchDBPostcodeOption').val();
+    console.log(val1);
+    if((val1 == 'all') && (extraLocationChoice != undefined)){
+        $("#searchLocationButton").prop("disabled", false);
+    }
+    if((val1 != 'all') && (postcodeLocation != undefined || cityLocation != undefined || countyLocation != undefined) ){
+        $("#searchLocationButton").prop("disabled", false);
+    }
+});
+
+$('#searchDBCityOption, #searchDBCountyOption, #searchDBPostcodeOption').change(function(){
+    var val1 = $(this).val();
+    var locationTypeVal = $('#searchDbLocationType').val();
+    if(locationTypeVal != 'building'){
+    console.log(val1);
+        if(val1 != undefined){
+            $("#searchLocationButton").prop("disabled", false);
+        }}
+    else{
+        var userDashBuilding = $('#searchDBBuildingOption').val()
+        console.log("reached the userSash")
+        console.log(userDashBuilding)
+        if((userDashBuilding != undefined) && (val1 != undefined)){
+            $("#searchLocationButton").prop("disabled", false);
+        }
+    }
+ 
+});
+
+
+
+
+
+
+
 // Managing reports in dashboard
 
 $('#userSearchType').change(function(){
