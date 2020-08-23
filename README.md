@@ -101,8 +101,11 @@ ___
 <span id="userStories"></span> 
 ### User Stories
 
+#### As a public user
 1. 
 
+
+#### As a charity or researcher
 
 ### Wireframes
 
