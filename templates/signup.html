@@ -39,8 +39,7 @@
 
 <script>
     var v = {{list_existing_emails|tojson}}
-    console.log(v)
-    console.log(v[1])
+  
 
     var inputBox = document.getElementById('email');
 
@@ -50,8 +49,7 @@
                 document.getElementById('email_taken').innerHTML = "Sorry this email is already registered!"
                 document.getElementById("signupButton").disabled = true;
             } else {
-                console.log("no match yet")
-                console.log(user_email_input)
+                
                 document.getElementById('email_taken').innerHTML = ""
                 document.getElementById("signupButton").disabled = false;
             }
