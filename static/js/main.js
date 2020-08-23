@@ -64,7 +64,7 @@ $('#searchDBBuildingOption').change(function(){
     var countyLocation = $('#searchDBCountyOption').val();
     var postcodeLocation = $('#searchDBPostcodeOption').val();
     console.log(val1);
-    if((val1 == 'all') && (extraLocationChoice != undefined)){
+    if((val1 != undefined) && (extraLocationChoice == "all")){
         $("#searchLocationButton").prop("disabled", false);
     }
     if((val1 != 'all') && (postcodeLocation != undefined || cityLocation != undefined || countyLocation != undefined) ){
