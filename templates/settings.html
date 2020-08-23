@@ -2,34 +2,32 @@
 
 <h1 class="page-header">Settings</h1>
 
-{% with messages = get_flashed_messages() %}
-    {% if messages%}
-        {% for message in messages %}
-            <h3 class="flashMessage settings-message">{{ message }}</h3>
-        {% endfor %}
-    {% endif %}
-{% endwith %}
+{% with messages = get_flashed_messages() %} {% if messages%} {% for message in messages %}
+<h3 class="flashMessage settings-message">{{ message }}</h3>
+{% endfor %} {% endif %} {% endwith %}
 
 <div>
     <ul class="collapsible settings-collapsible">
         <li>
             <div class="collapsible-header settings-header">
-                <h5 class="mb-0"><i class="material-icons">vpn_key</i>Change password </h5>
+                <h5 class="mb-0"><i class="material-icons">vpn_key</i>Change password</h5>
             </div>
             <div class="collapsible-body">
                 <form action="{{url_for('changeDetails')}}" method="POST">
                     <div>
                         <input class="hidden" type="text" name="changeType" value="password" />
 
-                        <label for="confirmCurrentPass">Current password
-                        <input type="password" class="form-control" id="confirmCurrentPass" name="confirmCurrentPass" placeholder="Please enter your current password" required />
+                        <label for="confirmCurrentPass">
+                            Current password
+                            <input type="password" class="form-control" id="confirmCurrentPass" name="confirmCurrentPass" placeholder="Please enter your current password" required />
                         </label>
 
-                        <label for="updatePassword">New password
-                        <input type="password" class="form-control" id="updatePassword" name="updatePassword" placeholder="Please enter your new password" required />
+                        <label for="updatePassword">
+                            New password
+                            <input type="password" class="form-control" id="updatePassword" name="updatePassword" placeholder="Please enter your new password" required />
                         </label>
                         <div class="btn-wrapper">
-                        <button class="btn" type="submit">Change</button>
+                            <button class="btn" type="submit">Change</button>
                         </div>
                     </div>
                 </form>
@@ -44,13 +42,12 @@
                     <div class="card-body">
                         <form action="{{url_for('changeDetails')}}" method="POST">
                             <div>
-                            
                                 <input class="hidden" type="text" name="changeType" value="email" />
                                 <input type="email" class="form-control" id="updateEmail" name="updateEmail" placeholder="Please enter your new email" required />
-                                 <label>Current email: {{ user_email }}</label>
-                                 <div class="btn-wrapper">
-                                <button class="btn" type="submit">Change</button>
-                                 </div>
+                                <label>Current email: {{ user_email }}</label>
+                                <div class="btn-wrapper">
+                                    <button class="btn" type="submit">Change</button>
+                                </div>
                             </div>
                         </form>
                     </div>
@@ -69,7 +66,7 @@
                         <input type="text" class="form-control" id="updateName" name="updateName" placeholder="Please enter your new preferred name" required />
                         <label>Current preferred name: {{ preferred_name.capitalize() }}</label>
                         <div class="btn-wrapper">
-                        <button class="btn" type="submit">Change</button>
+                            <button class="btn" type="submit">Change</button>
                         </div>
                     </div>
                 </form>
@@ -82,9 +79,9 @@
             <div class="collapsible-body">
                 <div id="confirmDeleteUser">
                     <form action="{{(url_for('delete_user'))}}" method="POST">
-                        <input type="password" name="deletePassword" placeholder="Enter password to delete account" required/>
+                        <input type="password" name="deletePassword" placeholder="Enter password to delete account" required />
                         <div class="btn-wrapper">
-                        <button class="btn" type="submit">Confirm delete</button>
+                            <button class="btn" type="submit">Confirm delete</button>
                         </div>
                     </form>
                 </div>

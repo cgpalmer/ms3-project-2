@@ -1,51 +1,40 @@
 {% extends 'base.html'%} {% block content %}
 
 <h3 class="page-header">Your journey to making a difference starts <em>here</em>.</h3>
-{% with messages = get_flashed_messages() %}
-    {% if messages%}
-        {% for message in messages %}
-            <h5 class="flashMessage">{{ message }}</h5>
-        {% endfor %}
-    {% endif %}
-{% endwith %}
+{% with messages = get_flashed_messages() %} {% if messages%} {% for message in messages %}
+<h5 class="flashMessage">{{ message }}</h5>
+{% endfor %} {% endif %} {% endwith %}
 <div class="form-wrapper">
-<form method="POST" action="{{ url_for('insert_report') }}">
-            <div class=" hidden">
-                <label for="email"></label>
-                <input type="text" class="" id="email" name="email" value="{{currentUserEmail}}" placeholder="Email">
-            </div>         
-            <div class="">
-                
-                <select class="" id="category" name="category_name">
-                <option disabled selected value="">Choose category*</option> 
+    <form method="POST" action="{{ url_for('insert_report') }}">
+        <div class="hidden">
+            <label for="email"></label>
+            <input type="text" class="" id="email" name="email" value="{{currentUserEmail}}" placeholder="Email" />
+        </div>
+        <div class="">
+            <select class="" id="category" name="category_name">
+                <option disabled selected value="">Choose category*</option>
                 {% for category in categories|sort(attribute='category_name') %}
-                        <option id="{{category.category_name}}" value="{{category.category_name}}">{{category.category_name}}</option>
+                <option id="{{category.category_name}}" value="{{category.category_name}}">{{category.category_name}}</option>
                 {% endfor %}
-                </select>
-                
-            </div>
-                       
-            <div class="">
-                <textarea class="materialize-textarea " id="incident_description" name="incident_description" placeholder="Incident description*" required></textarea>
-                
-            </div>
-           
-            
-             <div class=" final-input">
-                <select class="" id="add_report_to_authorities" name="report_to_authorities">
-                    <option disabled selected value="">Reported to authorities?*</option>
-                    
-                        <option value="Yes">Yes - I have reported this to the authorities</option>
-                        <option value="No">No - I have reported this to the authorities</option>
-                
-                </select>
-                
-            </div>
-            <div class="btn-wrapper">
-            <button id="addReportButton" class="btn btn-with-extra-margin" type="submit" name="action" disabled>Add report</button>
-            </div>
-        </form>
-</div>
+            </select>
+        </div>
 
+        <div class="">
+            <textarea class="materialize-textarea" id="incident_description" name="incident_description" placeholder="Incident description*" required></textarea>
+        </div>
+
+        <div class="final-input">
+            <select class="" id="add_report_to_authorities" name="report_to_authorities">
+                <option disabled selected value="">Reported to authorities?*</option>
+
+                <option value="Yes">Yes - I have reported this to the authorities</option>
+                <option value="No">No - I have reported this to the authorities</option>
+            </select>
+        </div>
+        <div class="btn-wrapper">
+            <button id="addReportButton" class="btn btn-with-extra-margin" type="submit" name="action" disabled>Add report</button>
+        </div>
+    </form>
+</div>
 
 {% endblock %}

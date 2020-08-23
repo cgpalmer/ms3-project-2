@@ -1,32 +1,29 @@
 {% extends 'base.html'%} {% block content %}
 
 <div class="page-container">
-<div id="settingButton">
-<a  href="{{url_for('userSetting')}}"><i id="settingButtonIcon" class="material-icons">settings</i></a>
-</div>
-<h3 class="userDashHeader">Welcome back, {{name.capitalize()}}</h3>
+    <div id="settingButton">
+        <a href="{{url_for('userSetting')}}"><i id="settingButtonIcon" class="material-icons">settings</i></a>
+    </div>
+    <h3 class="userDashHeader">Welcome back, {{name.capitalize()}}</h3>
 
+    <div class="page-info-user-dash">
+        <h5>Thank you for all of your contributions!</h5>
+        <h5>So far you have made {{total}} reports</h5>
+    </div>
 
-<div class="page-info-user-dash">
-<h5>Thank you for all of your contributions!</h5>
-<h5>So far you have made {{total}} reports</h5>
-</div>
-
-  <ul class="collapsible-dash collapsible">
-    
-    <!-- Managing reports -->
-    <li class="active">
-      <div class="collapsible-header"><i class="material-icons">edit</i>Manage old reports</div>
-      <div class="collapsible-body">       
-            <form id="userSearchForm" method="POST" action="{{ url_for('search_reports') }}">
-            <div class="input-field input-field-manage-reports col s12">
-                        <select id="userSearchType" name="userSearchOwnReports" >
+    <ul class="collapsible-dash collapsible">
+        <!-- Managing reports -->
+        <li class="active">
+            <div class="collapsible-header"><i class="material-icons">edit</i>Manage old reports</div>
+            <div class="collapsible-body">
+                <form id="userSearchForm" method="POST" action="{{ url_for('search_reports') }}">
+                    <div class="input-field input-field-manage-reports col s12">
+                        <select id="userSearchType" name="userSearchOwnReports">
                             <option value="" disabled selected>Choose a search type.</option>
-                            
-                                <option value="all">Show all of my reports</option>
-                                <option value="location">Search my reports by location</option>
-                                <option value="discrimination">Search my reports by discrimination</option>
-                         
+
+                            <option value="all">Show all of my reports</option>
+                            <option value="location">Search my reports by location</option>
+                            <option value="discrimination">Search my reports by discrimination</option>
                         </select>
                         <label class="managing-reports-labels">Choose a type of search.*</label>
                     </div>
@@ -34,23 +31,20 @@
                         <select id="userDashSearchCat" name="category">
                             <option value="" disabled selected>Category</option>
                             {% for category in category|sort %}
-                                <option value="{{category}}">{{category}}</option>
+                            <option value="{{category}}">{{category}}</option>
                             {% endfor %}
                         </select>
-                         <label class="managing-reports-labels">Choose a category.*</label>
-                    
+                        <label class="managing-reports-labels">Choose a category.*</label>
                     </div>
-
 
                     <div id="userSearchLocationType" class="input-field input-field-manage-reports col s12 hidden">
                         <select id="locationType" name="locationType">
                             <option value="" disabled selected>Choose location type.*</option>
-                            
-                                <option value="building">Building</option>
-                                <option value="city">City</option>
-                                <option value="county">County</option>
-                                <option value="postcode">Postcode</option>
-                         
+
+                            <option value="building">Building</option>
+                            <option value="city">City</option>
+                            <option value="county">County</option>
+                            <option value="postcode">Postcode</option>
                         </select>
                         <label class="managing-reports-labels">Choose a location.*</label>
                     </div>
@@ -58,90 +52,68 @@
                     <div id="userSearchExtraLocation" class="input-field input-field-manage-reports col s12 hidden">
                         <select id="extraLocationChoice" name="extraLocationSearchWithBuilding">
                             <option value="" disabled selected>Extra option for when building is selected.</option>
-                           
-                                <option value="all">All</option>
-                                <option value="city">City</option>
-                                <option value="county">County</option>
-                                <option value="postcode">Postcode</option>
-                    
+
+                            <option value="all">All</option>
+                            <option value="city">City</option>
+                            <option value="county">County</option>
+                            <option value="postcode">Postcode</option>
                         </select>
                         <label class="managing-reports-labels">Choose a second location.*</label>
                     </div>
 
-
-                    <div id="buildingLocation" class="input-field input-field-manage-reports col s12 hidden locationOptions ">
+                    <div id="buildingLocation" class="input-field input-field-manage-reports col s12 hidden locationOptions">
                         <select id="userDashSearchBuilding" name="building">
                             <option value="" disabled selected>Building</option>
-                            {% for building in building|sort %}
-                                 {% if building != "" %}
-                                <option value="{{building}}">{{building.capitalize()}}</option>
-                                {% endif %}
-                            {% endfor %}
+                            {% for building in building|sort %} {% if building != "" %}
+                            <option value="{{building}}">{{building.capitalize()}}</option>
+                            {% endif %} {% endfor %}
                         </select>
                         <label class="managing-reports-labels">Choose a building.</label>
                     </div>
                     <div id="cityLocation" class="input-field input-field-manage-reports col s12 hidden locationOptions">
                         <select id="userDashSearchCity" name="city">
                             <option value="" disabled selected>City</option>
-                            {% for cities in city|sort %}
-                                {% if cities != "" %}
-                               
-                                <option value="{{cities}}">{{cities.capitalize()}}</option>
-                                 {% endif %}
-                            {% endfor %}
+                            {% for cities in city|sort %} {% if cities != "" %}
+
+                            <option value="{{cities}}">{{cities.capitalize()}}</option>
+                            {% endif %} {% endfor %}
                         </select>
                         <label class="managing-reports-labels">Choose a city.*</label>
                     </div>
                     <div id="countyLocation" class="input-field input-field-manage-reports col s12 hidden locationOptions">
                         <select id="userDashSearchCounty" name="county">
                             <option value="" disabled selected>County</option>
-                            {% for county in county|sort %}
-                                {% if county != "" %}
-                                
-                                <option value="{{county}}">{{county.capitalize()}}</option>
-                                {% endif %}
-                            {% endfor %}
+                            {% for county in county|sort %} {% if county != "" %}
+
+                            <option value="{{county}}">{{county.capitalize()}}</option>
+                            {% endif %} {% endfor %}
                         </select>
                         <label class="managing-reports-labels">Choose a county.*</label>
                     </div>
                     <div id="postcodeLocation" class="input-field input-field-manage-reports col s12 hidden locationOptions">
                         <select id="userDashSearchBuilding" name="postcode">
                             <option value="" disabled selected>Postcode</option>
-                            {% for postcode in postcode|sort %}
-                                 {% if postcode != "" %}
-                               
-                                <option value="{{postcode}}">{{postcode.capitalize()}}</option>
-                                 {% endif %}
-                            {% endfor %}
+                            {% for postcode in postcode|sort %} {% if postcode != "" %}
+
+                            <option value="{{postcode}}">{{postcode.capitalize()}}</option>
+                            {% endif %} {% endfor %}
                         </select>
                         <label class="managing-reports-labels">Choose a postcode.</label>
                     </div>
 
-                        
                     <div class="btn-wrapper">
                         <button id="managingReportSearchButton" class="btn btn-with-extra-margin" type="submit" disabled><i class="material-icons">text_snippet</i>Find reports</button>
                     </div>
-             
                 </form>
             </div>
-
-         
-        
-        
-
-
-     
-    </li>
-    <li>
-      <a class="collapsible-header" href="{{url_for('add_report')}}"> <i class="material-icons">add_circle</i>Create a new report</a>
-      
-      
-    </li>
-    <li>
-      <a class="collapsible-header" href="{{url_for('search_report')}}"><i class="material-icons">search</i> Search our database</a>
-    </li>
-  </ul>
-
-  </div>
+        </li>
+        <li>
+            <a class="collapsible-header" href="{{url_for('add_report')}}"> <i class="material-icons">add_circle</i>Create a new report</a>
+        </li>
+        <li>
+            <a class="collapsible-header" href="{{url_for('search_report')}}"><i class="material-icons">search</i> Search our database</a>
+        </li>
+    </ul>
+</div>
 
 {% endblock %}

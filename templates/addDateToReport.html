@@ -4,37 +4,26 @@
 
 <h5 class="page-info">Would you like to add a date to your report?</h5>
 
-{% with messages = get_flashed_messages() %}
-    {% if messages%}
-        {% for message in messages %}
-            <h5 class="flashMessage">{{ message }}</h5>
-        {% endfor %}
-    {% endif %}
-{% endwith %}
+{% with messages = get_flashed_messages() %} {% if messages%} {% for message in messages %}
+<h5 class="flashMessage">{{ message }}</h5>
+{% endfor %} {% endif %} {% endwith %}
 
 <div class="form-wrapper">
-<form  method="POST" action="{{ url_for('addDateToReport') }}">
-            <div class="input-field hidden">
-                <input type="text" class="" id="email" name="email" value="{{currentUserEmail}}" placeholder="Email">
-            </div>  
-            <div class="input-field hidden">
-                <input type="text" class="" id="reportTimeStamp" name="reportTimeStamp" value="{{reportTimeStamp}}" placeholder="">
-            </div>         
-          
-             <div class="input-field">
-                        
-                        <span class="dateSpan">Date</span><input type="text" name="date" id="date" class="datepicker">
-                    </div>
+    <form method="POST" action="{{ url_for('addDateToReport') }}">
+        <div class="input-field hidden">
+            <input type="text" class="" id="email" name="email" value="{{currentUserEmail}}" placeholder="Email" />
+        </div>
+        <div class="input-field hidden">
+            <input type="text" class="" id="reportTimeStamp" name="reportTimeStamp" value="{{reportTimeStamp}}" placeholder="" />
+        </div>
 
-            
-            
-            <div class="btn-wrapper">
+        <div class="input-field"><span class="dateSpan">Date</span><input type="text" name="date" id="date" class="datepicker" /></div>
+
+        <div class="btn-wrapper">
             <button class="btn" type="submit" name="action">Add date</button>
             <button class="btn button-space-margin" type="submit" name="action">Skip date</button>
-           
-            </div>
-        </form>
+        </div>
+    </form>
 </div>
-
 
 {% endblock %}

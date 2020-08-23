@@ -1,70 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-   
+    <head>
+        <meta charset="UTF-8" />
+        <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
 
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Alegreya&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body class="body">
- <div class="page-container">
-    <header>
-         
-  <nav>
-    <div class="nav-wrapper nav-color">
-      <a href="#!" class="brand-logo">Report It</a>
-      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-      <ul class="nav-links hide-on-med-and-down">
-        <li class="">
-                        <a class="" href="{{url_for('homepage')}}">Home</a>
-                    </li>
-                    {% if session.get("email") != None %}
-                       <li class="">
-                            <a class="" href="{{url_for('dashboard')}}">Dashboard</a>
-                        </li>
-                    {% endif %}
-                    <li class="">
-                        <a class="" href="{{url_for('add_report')}}">Add a report</a>
-                    </li>
-                    <li class="">
-                        <a class="" href="{{url_for('search_report')}}">Search reports</a>
-                    </li>
-                    {% if session.get("email") == None %}
-                    <li class="">
-                        <a class="" href="{{url_for('login')}}">Login</a>
-                    </li>
-                     
-                    <li id="signupLink" class="">
-                        <a class="" href="{{url_for('signup')}}">Signup</a>
-                    </li>
-                    {% endif %}
-                    {% if session.get("email") != None %}
-                        <li class="">
-                            <a class="" href="{{url_for('logout')}}">Logout</a>
-                        </li>
-                      
-                     {% endif %}
-                    <!-- <li class="">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Alegreya&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body class="body">
+        <div class="page-container">
+            <header>
+                <nav>
+                    <div class="nav-wrapper nav-color">
+                        <a href="#!" class="brand-logo">Report It</a>
+                        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                        <ul class="nav-links hide-on-med-and-down">
+                            <li class="">
+                                <a class="" href="{{url_for('homepage')}}">Home</a>
+                            </li>
+                            {% if session.get("email") != None %}
+                            <li class="">
+                                <a class="" href="{{url_for('dashboard')}}">Dashboard</a>
+                            </li>
+                            {% endif %}
+                            <li class="">
+                                <a class="" href="{{url_for('add_report')}}">Add a report</a>
+                            </li>
+                            <li class="">
+                                <a class="" href="{{url_for('search_report')}}">Search reports</a>
+                            </li>
+                            {% if session.get("email") == None %}
+                            <li class="">
+                                <a class="" href="{{url_for('login')}}">Login</a>
+                            </li>
+
+                            <li id="signupLink" class="">
+                                <a class="" href="{{url_for('signup')}}">Signup</a>
+                            </li>
+                            {% endif %} {% if session.get("email") != None %}
+                            <li class="">
+                                <a class="" href="{{url_for('logout')}}">Logout</a>
+                            </li>
+
+                            {% endif %}
+                            <!-- <li class="">
                             <a class="" href="{{url_for('developer')}}">developer</a>
                     </li> -->
-      </ul>
-    </div>
-  </nav>
+                        </ul>
+                    </div>
+                </nav>
 
-  <ul class="sidenav" id="mobile-demo">
-    <li class="first-nav-link">
+                <ul class="sidenav" id="mobile-demo">
+                    <li class="first-nav-link">
                         <a class="" href="{{url_for('homepage')}}">Home</a>
                     </li>
                     {% if session.get("email") != None %}
-                      <li class="">
-                            <a class="" href="{{url_for('dashboard')}}">Dashboard</a>
-                        </li>
+                    <li class="">
+                        <a class="" href="{{url_for('dashboard')}}">Dashboard</a>
+                    </li>
                     {% endif %}
                     <li class="">
                         <a class="" href="{{url_for('add_report')}}">Add a report</a>
@@ -76,50 +73,45 @@
                     <li class="">
                         <a class="" href="{{url_for('login')}}">Login</a>
                     </li>
-                    
+
                     <li id="signupLink" class="">
                         <a class="" href="{{url_for('signup')}}">Signup</a>
                     </li>
-                    {% endif %}
-                    {% if session.get("email") != None %}
-                        <li class="">
-                            <a class="" href="{{url_for('logout')}}">Logout</a>
-                        </li>
-                       
-                        
-                     {% endif %}
+                    {% endif %} {% if session.get("email") != None %}
                     <li class="">
-                            <a class="" href="{{url_for('developer')}}">developer</a>
+                        <a class="" href="{{url_for('logout')}}">Logout</a>
                     </li>
-  </ul>
-        
-    </header>
-    {% block content %} {% endblock %}
 
-  </div>
-    <footer>
-        
-        <div>
-        <p id="footerHeader">Contact</p>
-        <div class="footerContact">
-        <i class="material-icons">call</i><p><span id="footerTel">Tel:</span> 0143 223 22</p>
+                    {% endif %}
+                    <li class="">
+                        <a class="" href="{{url_for('developer')}}">developer</a>
+                    </li>
+                </ul>
+            </header>
+            {% block content %} {% endblock %}
         </div>
-          <div class="footerContact">
-        <i class="material-icons">email</i><p><span id="footerEmail">Email:</span> cpalmercoding@outlook.com</p>
-        </div>
-        </div>
-        <div id="copyWrapper">
-        <p><small>Copyright © - 2020</small></p> 
-        </div>
-    </footer>
- 
-<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-<script src="{{url_for('static', filename='js/main.js')}}"></script>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <footer>
+            <div>
+                <p id="footerHeader">Contact</p>
+                <div class="footerContact">
+                    <i class="material-icons">call</i>
+                    <p><span id="footerTel">Tel:</span> 0143 223 22</p>
+                </div>
+                <div class="footerContact">
+                    <i class="material-icons">email</i>
+                    <p><span id="footerEmail">Email:</span> cpalmercoding@outlook.com</p>
+                </div>
+            </div>
+            <div id="copyWrapper">
+                <p><small>Copyright © - 2020</small></p>
+            </div>
+        </footer>
 
-
-</body>
+        <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+        <script src="{{url_for('static', filename='js/main.js')}}"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    </body>
 </html>

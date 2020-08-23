@@ -1,66 +1,60 @@
 {% extends 'base.html'%} {% block content %}
 
-<h3 class="page-header  login-form-wrapper">Signing up is the first step. <br> Thank you.</h3>
-{% with messages = get_flashed_messages() %}
-    {% if messages%}
-        {% for message in messages %}
-            <h5 class="flashMessage">{{ message }}</h5>
-        {% endfor %}
-    {% endif %}
-{% endwith %}
+<h3 class="page-header login-form-wrapper">
+    Signing up is the first step. <br />
+    Thank you.
+</h3>
+{% with messages = get_flashed_messages() %} {% if messages%} {% for message in messages %}
+<h5 class="flashMessage">{{ message }}</h5>
+{% endfor %} {% endif %} {% endwith %}
 <h5 id="email_taken"></h5>
 <div class="form-wrapper">
     <form action="{{ url_for('creating_user') }}" method="POST">
         <div class="input-field input-field-signup">
-            
             <label class="login-form" for="email">Email address</label>
-            <input type="email" class="login-form" id="email" name="new_username" placeholder="name@example.com" required>
+            <input type="email" class="login-form" id="email" name="new_username" placeholder="name@example.com" required />
             <span class="hidden" id="validatedEmail">Tick!</span>
-        </div>        
+        </div>
         <div class="input-field input-field-signup">
-           
-            <label for="password" class="login-form">Password<span id="passwordHint" class="tooltipped" data-position="right" data-tooltip="Password must have a number, capital letter and be 8 or more characters."><i class="material-icons">lightbulb_outline</i></span></label>
-            
-           
-            <input class="login-form" type="password" id="password" name="new_password" placeholder="Password" required>
+            <label for="password" class="login-form">
+                Password<span id="passwordHint" class="tooltipped" data-position="right" data-tooltip="Password must have a number, capital letter and be 8 or more characters."><i class="material-icons">lightbulb_outline</i></span>
+            </label>
+
+            <input class="login-form" type="password" id="password" name="new_password" placeholder="Password" required />
             <span id="validatedPassword"><i class="material-icons">check_circle</i></span>
             <div id="seePassword"><i class="material-icons">remove_red_eye</i></div>
         </div>
         <div>
-           
-    
             <label for="confirmPassword">
-                <input id="confirmPassword" type="checkbox" required>
-                <span id="confirmPasswordText" >Checked password?</span>
-                
+                <input id="confirmPassword" type="checkbox" required />
+                <span id="confirmPasswordText">Checked password?</span>
             </label>
         </div>
-    
+
         <div class="btn-wrapper">
-        <button class="btn signup-button" id="signupButton" type="submit" name="action" data-toggle="modal" data-target="#exampleModal">Sign Up!</button>
+            <button class="btn signup-button" id="signupButton" type="submit" name="action" data-toggle="modal" data-target="#exampleModal">Sign Up!</button>
         </div>
     </form>
 </div>
 
-<script> 
-var v = {{list_existing_emails|tojson}}
-console.log(v)
-console.log(v[1])
+<script>
+    var v = {{list_existing_emails|tojson}}
+    console.log(v)
+    console.log(v[1])
 
-var inputBox = document.getElementById('email');
+    var inputBox = document.getElementById('email');
 
-inputBox.onkeyup = function(){
-    user_email_input = inputBox.value;
-        if (v.includes(user_email_input)){
-            document.getElementById('email_taken').innerHTML = "Sorry this email is already registered!"
-            document.getElementById("signupButton").disabled = true;
-        } else {
-            console.log("no match yet")
-            console.log(user_email_input)
-            document.getElementById('email_taken').innerHTML = ""
-            document.getElementById("signupButton").disabled = false;
+    inputBox.onkeyup = function(){
+        user_email_input = inputBox.value;
+            if (v.includes(user_email_input)){
+                document.getElementById('email_taken').innerHTML = "Sorry this email is already registered!"
+                document.getElementById("signupButton").disabled = true;
+            } else {
+                console.log("no match yet")
+                console.log(user_email_input)
+                document.getElementById('email_taken').innerHTML = ""
+                document.getElementById("signupButton").disabled = false;
+            }
         }
-    }
-
 </script>
 {% endblock %}

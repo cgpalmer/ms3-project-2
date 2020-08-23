@@ -5,28 +5,27 @@
 <h5 class="page-info">Thank you for your report - it has been added. Would you like to add a location?</h5>
 
 <div class="form-wrapper">
-<form method="POST" action="{{ url_for('addLocationToReport') }}">
-            <div class="input-field hidden">
-                <input type="text" class="" id="email" name="email" value="{{currentUserEmail}}" placeholder="Email">
-            </div>  
-            <div class="input-field hidden">
-                <input type="text" class="" id="reportTimeStamp" name="reportTimeStamp" value="{{now}}" placeholder="">
-            </div>         
-          
-            <div class="input-field">
-                <input type="text" class="" id="building" name="building" placeholder="Building">
-                <input type="text" class="" id="street" name="street" placeholder="Street">
-                <input type="text" class="" id="city" name="city" placeholder="City">
-                <input type="text" class="" id="county" name="county" placeholder="County">
-                <input type="text" class="" id="postcode" name="postcode" placeholder="Postcode">
-            </div>
-            
-            
-                   <div class="btn-wrapper">
+    <form method="POST" action="{{ url_for('addLocationToReport') }}">
+        <div class="input-field hidden">
+            <input type="text" class="" id="email" name="email" value="{{currentUserEmail}}" placeholder="Email" />
+        </div>
+        <div class="input-field hidden">
+            <input type="text" class="" id="reportTimeStamp" name="reportTimeStamp" value="{{now}}" placeholder="" />
+        </div>
+
+        <div class="input-field">
+            <input type="text" class="" id="building" name="building" placeholder="Building" />
+            <input type="text" class="" id="street" name="street" placeholder="Street" />
+            <input type="text" class="" id="city" name="city" placeholder="City" />
+            <input type="text" class="" id="county" name="county" placeholder="County" />
+            <input type="text" class="" id="postcode" name="postcode" placeholder="Postcode" />
+        </div>
+
+        <div class="btn-wrapper">
             <button class="btn" type="submit" name="action">Add location</button>
             <button class="btn button-space-margin" type="submit" name="action">Skip</button>
-            </div>
-        </form>
+        </div>
+    </form>
 </div>
 
 {% endblock %}
