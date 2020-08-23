@@ -141,10 +141,10 @@ $('#userDashSearchBuilding').change(function(){
     var countyLocation = $('#userDashSearchCounty').val();
     var postcodeLocation = $('#userDashSearchPostcode').val();
     console.log(val1);
-    if((val1 == 'all') && (extraLocationChoice != undefined)){
+    if((extraLocationChoice == 'all') && (extraLocationChoice != undefined)){
         $("#managingReportSearchButton").prop("disabled", false);
     }
-    if((val1 != 'all') && (postcodeLocation != undefined || cityLocation != undefined || countyLocation != undefined) ){
+    if((extraLocationChoice != 'all') && (postcodeLocation != undefined || cityLocation != undefined || countyLocation != undefined) ){
         $("#managingReportSearchButton").prop("disabled", false);
     }
 });
