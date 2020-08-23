@@ -73,6 +73,16 @@ $('#userDashSearchCat').change(function(){
     }
 });
 
+$('#locationType').change(function(){
+    var val1 = $(this).val();
+    console.log(val1);
+    if(val1 != undefined){
+        $("#managingReportSearchButton").prop("disabled", true);
+    }
+});
+
+
+
 $('#userDashSearchBuilding, #userDashSearchCity, #userDashSearchCounty, #userDashSearchPostcode').change(function(){
     var locationTypeVal = $('#locationType').val();
     if(locationTypeVal != 'building'){
