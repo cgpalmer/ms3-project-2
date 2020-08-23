@@ -92,7 +92,9 @@ $('#searchDBCityOption, #searchDBCountyOption, #searchDBPostcodeOption').change(
 });
 
 
-
+$('#searchDbLocationExtraTypeOptions').change(function(){
+        $("#searchLocationButton").prop("disabled", true);
+});
 
 
 
