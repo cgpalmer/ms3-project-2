@@ -516,8 +516,6 @@ def search_db_reports():
     typeOfSearch = request.form['userSearchReports']
     # Search entire db
     if typeOfSearch == "searchAll":
-        useTimeFrame = request.form['useTimeFrame']
-        print(useTimeFrame)
         report = mongo.db.report.find()
         reportedReportsCount = mongo.db.report.find({"report_to_authorities": "Yes"}).count()
         number_of_reports = report.count()
@@ -812,33 +810,42 @@ def addDateToReport():
     else: 
         currentUserEmail = session.get('email')
     reportTimeStamp = (request.form['reportTimeStamp'])
+    print("timestamp")
     print(reportTimeStamp)
     strDate = str(request.form['date'])
     print(strDate)
-    timeStamp = datetime.strptime(strDate, "%Y-%m-%d")
-  
-    timestampDate = datetime.timestamp(timeStamp)
-
-    print(timestampDate)
-    if timestampDate > float(reportTimeStamp):
-        print("date is in the future")
-        flash("Please select a date that is not in the future")
-        return render_template('addDateToReport.html', reportTimeStamp=reportTimeStamp, currentUserEmail=currentUserEmail)
-    else: 
-        mongo.db.report.update_one({ "$and": [ {"email": currentUserEmail}, {"time": float(reportTimeStamp)}]}, {"$set": {"date": strDate, "timestamp": timestampDate }})
+    if strDate == '':
+        print("blank date")
+        mongo.db.report.update_one({ "$and": [ {"email": currentUserEmail}, {"time": float(reportTimeStamp)}]}, {"$set": {"date": strDate}})
         if session.get("email") is None:
             flash("Thank you for your report!")
             return redirect(url_for('add_report'))
         else:
             return redirect(url_for('dashboard'))
-
-@app.route('/skip-Date', methods=['GET','POST'])
-def skipDate():
-    if session.get("email") is None:
-            flash("Thank you for your report!")
-            return redirect(url_for('add_report'))
     else:
-        return redirect(url_for('dashboard'))
+        timeStamp = datetime.strptime(strDate, "%Y-%m-%d")
+        timestampDate = datetime.timestamp(timeStamp)
+
+        print(timestampDate)
+        if timestampDate > float(reportTimeStamp):
+            print("date is in the future")
+            flash("Please select a date that is not in the future")
+            return render_template('addDateToReport.html', reportTimeStamp=reportTimeStamp, currentUserEmail=currentUserEmail)
+        else: 
+            mongo.db.report.update_one({ "$and": [ {"email": currentUserEmail}, {"time": float(reportTimeStamp)}]}, {"$set": {"date": strDate, "timestamp": timestampDate }})
+            if session.get("email") is None:
+                flash("Thank you for your report!")
+                return redirect(url_for('add_report'))
+            else:
+                return redirect(url_for('dashboard'))
+
+# @app.route('/skip-Date', methods=['GET','POST'])
+# def skipDate():
+#     if session.get("email") is None:
+#             flash("Thank you for your report!")
+#             return redirect(url_for('add_report'))
+#     else:
+#         return redirect(url_for('dashboard'))
 
         
 
