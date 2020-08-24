@@ -166,6 +166,15 @@ ___
 
 <ins>Dashboard </ins>
 
+1. Has a welcome message with the users name.
+2. A collapsible gives the user the three options:- Manage their own reports, search the database or add a report.
+3. The search our database and add report links will take the user to the designated pages for adding reports and 
+   searching the database.
+4. The managing reports part of the collapsible is open.
+5. The user can search their own reports by searching all, by location or by discrimination.
+6. Button is disabled until the right amount of information is given.
+7. There is a settings button which will take the user to the settings.
+
 
 
 <ins>Login </ins>
