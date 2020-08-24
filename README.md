@@ -222,10 +222,21 @@ ___
 3. The current name, password, email have the original values displayed underneath.
 4. When deleting the account, the user must put in their correct password.  
 
+<ins>Search Result</ins>
+
+1. All results are within a card and display all of the report information.
+2. The pagination works by splitting up the reports ten at a time and putting them in separate collapsibles.
+3. At the top of the page, the user will get three statistics: How many reports, what percentage they make up of 
+   the database they make, and how many have been reported to authorities. 
+4. There are two choices with each report: to either edit or delete the report.
+
+
 <ins>User Modify</ins>
 
 1. The user modify page has a form with all previous values form the report.
 2. The user can modify any of the values and resubmit the form.
+
+
 
 <span id="featuresLeftToImplement"></span>
 ### Features Left to Implement
