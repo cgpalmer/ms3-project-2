@@ -105,11 +105,33 @@ ___
 <span id="userStories"></span> 
 ### User Stories
 
-#### As a public user
-1. 
+#### First-time user
+1. As a first-time user, I want to easily navigate through the website be able to easily access all of its features.
+2. As a first-time user, I want to be able to immediately see what the website is about.
+3. As a first-time user, I want to be able to create an account.
+4. As a first-time user, I want to be able to log in with my new account.
+5. As a first time user, I want to be able to explore the dashboard immediately.
+6. As a first time user, I want to be able to add a report regardless of whether I have created an account or not.
+7. As a first-time user, I want to be able to search reports. 
+8. As a first-time user, I want to be able to log out when I am done.
+9. As a first-time user, I want my personal details to be private and kept away from the reports.  
 
+#### Returning user
 
-#### As a charity or researcher
+1. As a returning user, I want to be able to log in easily.
+2. As a As a returning user, I want to be able to do all the things as stated in a new user with the same ease.
+3. As a returning user, I want to search through my own reports.
+4. As a returning user, I want to be able to add a report and it go into my collection.
+5. As a returning user, I want to be able to modify one of my reports.
+6. As a returning user, I want to be able to delete one of my reports.
+7. As a returning user, I want to be able to change my preferred name.
+8. As a returning user, I want to be able to change my email.
+9. As a returning user, I want to be able to change my password.
+10. As a returning user, I want to be able to delete my account.
+
+#### User as a charity or researcher (professional user)
+
+1. As a profession user, I want to be able to see some statistics about my search so I can compare them to other searches.
 
 ### Wireframes
 
