@@ -14,7 +14,7 @@ ___
 
 ## Contents
 + <a href="#rationale">Rationale</a>
-<a href="#inspiration">Rationale</a>
+    - <a href="#inspiration">Inspiration</a>
 + <a href="#UX">UX</a> 
    - <a href="#userStories">User Stories</a>
 + <a href="#features">Features</a>
