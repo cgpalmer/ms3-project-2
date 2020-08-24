@@ -182,15 +182,19 @@ Frameworks
 
 ___
 <span id="testing"></span>
+
 ## Testing
 
 I have posted a link for more detailed testing. 
 
 Please find the link to the test document here: [Link to the testing page](assets/files/README-Testing.md)   
 
-Interesting bugs
+## Interesting bugs
 
-1. 
+[Dividing by 0](static/files/bug-for-dividing-by-0.pdf) 
+
+
+
 
 
 ___
