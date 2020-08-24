@@ -152,7 +152,10 @@ ___
 4. When logged in the links change to the following: - home page, dashboard, logout, add report, search report.
 5. The logo will take the user back to the home page.
 
- 
+<ins>Footer</ins>
+
+1. An email address which the user can contact the team by.
+2. A telephone which the users can contact the team by.
 
 <ins>Home </ins>
 
