@@ -218,7 +218,7 @@ It has been specifically designed for the following:
 
 
 The majority of the website stays consistent to an easy user experience. There are minor changes to font-sizes etc. Some 
-of these can be seen in the [Responsive image](assets/files/responsive-design.jpg). This has been taken from the website:
+of these can be seen in the [responsive image](static/files/responsive-design.jpg). This has been taken from the website:
 http://ami.responsivedesign.is/#
 
 There are a few major resposive choices, detailed below.
