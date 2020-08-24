@@ -146,11 +146,18 @@ ___
 
 <ins>Navbar</ins>
 
-1. 
+1. The navbar is responsive and had a traditional 'hamburger' icon on devices smaller than a laptop.
+2. Each link will take the user to the designated pages.
+3. There are links for the home page, login page, signup page, add report, search report - initially.
+4. When logged in the links change to the following: - home page, dashboard, logout, add report, search report.
+ 
 
 <ins>Home </ins>
 
-1. 
+1. There is an update on how many reports have been collected altogether.
+2. User can see the purpose of the website clearly.
+3. There is information about the team behind the website.
+4. There is a disclaimer giving advice on how to use the website. 
 
 <ins>Dashboard </ins>
 
@@ -159,7 +166,18 @@ ___
 <ins>Login </ins>
 <ins>Signup</ins>
 <ins>Add report</ins>
+
+1. There is a reminder to not use person's name in the report.
+2. There are initial options to start the report.
+3. There is a disabled button which will become enabled when all the options have been chosen.
+4. Upon pushing the add report button, the user is taken to a new screen where they can add a loction or skip 
+   and then add a date.  
+
 <ins>Search report</ins>
+
+
+
+
 <ins>Settings</ins>
 
 
