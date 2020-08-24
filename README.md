@@ -166,7 +166,7 @@ ___
 
 <ins>Dashboard </ins>
 
-1. 
+
 
 <ins>Login </ins>
 
@@ -184,6 +184,7 @@ ___
 3. There is an eye-icon which users can press to see the password they have inputted.
 4. When the user enters a password that meets the criteria a tick will be displayed next to the eye-icon.
 5. There is a check button the user must click to confirm they have checked the password.
+6. Once signed up, the user is redirected to another page where they can enter their preferred name.
 
 <ins>Add report</ins>
 
