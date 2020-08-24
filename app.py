@@ -134,11 +134,7 @@ def homepage():
     
     return render_template("home.html", report=report)
 
-@app.route('/developer')
-def developer():
-    session["email"] = "developer"
-    session["name"] = "developer"
-    return redirect(url_for("homepage"))
+
 
 ######################################################################
 # User controls
