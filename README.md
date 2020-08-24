@@ -150,6 +150,8 @@ ___
 2. Each link will take the user to the designated pages.
 3. There are links for the home page, login page, signup page, add report, search report - initially.
 4. When logged in the links change to the following: - home page, dashboard, logout, add report, search report.
+5. The logo will take the user back to the home page.
+
  
 
 <ins>Home </ins>
