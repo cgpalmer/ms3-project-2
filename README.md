@@ -304,10 +304,16 @@ ___
 
 
 
+
 <span id="improvements"></span>
 ### Improvements
 
-   
+I would like to refactor the code that chooses whether you can search by a date.
+The menu could have icons on it as a visual reminder.
+There could be a dashboard button like the settings button on the pages as a shortcut.
+I need to use an ajax to live check the email addresses when signing up as the regex will become slow and cumbersome 
+as the users grow.
+
 
 
 
@@ -320,5 +326,3 @@ ___
 
 
 
-
-Send an email to me when a report has been updated
