@@ -53,9 +53,6 @@ ___
 The project aim to create a database of discrimination across the UK. It will allow users to take a stand and 
 report any discrimination they experience, hear or see. They can categorise the discrimination and add a location.
 
-Why collect data? Councils have made it clear that they are underfunded and that doesn't appear to be changing any
-time soon. Yet, there is a rise in racist and xenophobic attacks across the country. 
-
 This project will be open-sourced and all councils, police, charities and authories will have access to the data.
 They can search by area or by discrimination to see where they can focus their efforts and funding.
 
