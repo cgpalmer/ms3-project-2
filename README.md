@@ -217,6 +217,11 @@ ___
 
 <ins>Settings</ins>
 
+1. There is a collapsible on the settings page where the user can change name, password, email or delete account.
+2. Each of the options above are in their own collapsible body.
+3. The current name, password, email have the original values displayed underneath.
+4. When deleting the account, the user must put in their correct password.  
+
 
 <span id="featuresLeftToImplement"></span>
 ### Features Left to Implement
