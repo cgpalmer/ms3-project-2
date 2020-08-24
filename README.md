@@ -178,6 +178,13 @@ ___
 5. There is a link to the signup page in case the user doesn't yet have an account. 
 
 <ins>Signup</ins>
+
+1. A form to fill in in order to register an account.
+2. A lightbulb will give the users information for the password requirements. 
+3. There is an eye-icon which users can press to see the password they have inputted.
+4. When the user enters a password that meets the criteria a tick will be displayed next to the eye-icon.
+5. There is a check button the user must click to confirm they have checked the password.
+
 <ins>Add report</ins>
 
 1. There is a reminder to not use person's name in the report.
