@@ -236,7 +236,9 @@ ___
 1. The user modify page has a form with all previous values form the report.
 2. The user can modify any of the values and resubmit the form.
 
+<ins>User Delete</ins>
 
+1. The user delete page will show a single report with a delete button.
 
 <span id="featuresLeftToImplement"></span>
 ### Features Left to Implement
