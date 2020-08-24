@@ -193,11 +193,11 @@ Please find the link to the test document here: [Link to the testing page](asset
 
 
 1. [Dividing by 0](static/files/bug-for-dividing-by-0.pdf) 
-2. [Dividing by 0](static/files/Issue-with-logging-in.pdf) 
-3. [Dividing by 0](static/files/js-console-error-interrupting-the-other-js.pdf) 
-4. [Dividing by 0](static/files/Live-reading-if-the-username-exists.pdf) 
-5. [Dividing by 0](static/files/Not-match-against-all-array-elements.pdf) 
-6. [Dividing by 0](static/files/password-validation-issue.pdf) 
+2. [Logging in issues](static/files/Issue-with-logging-in.pdf) 
+3. [Console error breaking the JS flow](static/files/js-console-error-interrupting-the-other-js.pdf) 
+4. [Problems reading if the email address exists, live](static/files/Live-reading-if-the-username-exists.pdf) 
+5. [Only certain elements are being searched in the array](static/files/Not-match-against-all-array-elements.pdf) 
+6. [Problems with validating the password](static/files/password-validation-issue.pdf) 
 
 
 
