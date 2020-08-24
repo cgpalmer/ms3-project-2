@@ -348,19 +348,34 @@ ___
 <span id="project"></span>
 ## Project Evaluation
 
+I believe this website handles its purpose with maturity and simplicity. There is no unnecessary data collected and indeed
+there is the option to skip it. The clean UX, complete with a responsive navbar, makes the site very easy to navigate.
+All of the links to the user areas are in the same place and easy to access in the navbar. 
+This is also complemented by a simple and complimentary colour scheme. They colours are calm and neutral which 
+sets the correct tone for the purpose of the website.
 
+There are a variety of way in which you can search through the reports. All of search options are on one webpage
+which cuts down on screen loading time. In addition, elements of a form that aren't needed are hidden. Again, this
+creates a clean user experience where the user is not over loaded with information.
 
+Giving the user complete control over their own reports helps to promote trust in the website. Users can edit and
+even delete their reports at any time. If a user is logged in they will be associated with that report in their dashboard
+but no where else on the website. This allows flexibility and anonymity. 
+
+Overall, I think the website has a clear purpose, clean UX and defensive features to ensure the user gets the most
+out of the experience.
 
 
 
 <span id="improvements"></span>
 ### Improvements
 
-I would like to refactor the code that chooses whether you can search by a date.
-The menu could have icons on it as a visual reminder.
-There could be a dashboard button like the settings button on the pages as a shortcut.
-I need to use an ajax to live check the email addresses when signing up as the regex will become slow and cumbersome 
-as the users grow.
++ I would like to refactor the code that chooses whether you can search by a date.
++ The menu could have icons on it as a visual reminder.
++ There could be a dashboard button like the settings button on the pages as a shortcut.
++ I need to use an ajax to live check the email addresses when signing up as the regex will become slow and cumbersome 
+  as the users grow.
+
 
 
 
