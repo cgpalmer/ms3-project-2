@@ -175,8 +175,15 @@ ___
 
 <ins>Search report</ins>
 
-
-
+1. There collapsible from materialize that has four options: Search by discrimination, location, whether it has been reported or all.
+2. If the user clicks on a header, then that part of the collapsible stands out to draw focus. 
+3. In all search options except 'search all', there is an option to choose a date frame within which to search.
+4. For the discrimination option, you can choose from the pre-selected discrimination categories. 
+5. For the location option, you can choose any of the pre-set location options.
+6. Should you choose to search by buildings, you may choose a second location in order to compare. 
+7. Like in the add report, the button stays disabled until the user has given enough information for a viable report.
+8. Starred inputs are there to show the user which information is needed.
+9. For searching by reported to authorities, there is a choice between whether the report has or hasn't been reported.
 
 <ins>Settings</ins>
 
