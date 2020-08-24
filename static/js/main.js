@@ -3,7 +3,7 @@ let timeFrame;
 
 // JS to make sure the uses adds all the relevant information for the initial add_report page.
 
-$("#category").change(function () {
+$("#category").change(function() {
     var val1 = $("#category").val();
     var val2 = $("#add_report_to_authorities").val();
  
@@ -13,7 +13,7 @@ $("#category").change(function () {
     }
 });
 
-$("#add_report_to_authorities").change(function () {
+$("#add_report_to_authorities").change(function() {
     alert("reached");
     var val1 = $("#category").val();
     var val2 = $("#add_report_to_authorities").val();
@@ -25,7 +25,7 @@ $("#add_report_to_authorities").change(function () {
 });
 
 // JS to make sure the uses adds all the relevant information for the search to go ahead.
-$("#searchDbLocationType").change(function () {
+$("#searchDbLocationType").change(function() {
     var val1 = $(this).val();
  
     if (val1 != undefined) {
@@ -33,7 +33,7 @@ $("#searchDbLocationType").change(function () {
     }
 });
 
-$("#searchbyDiscrimination").change(function () {
+$("#searchbyDiscrimination").change(function() {
     var val1 = $(this).val();
  
     if (val1 != undefined) {
@@ -41,7 +41,7 @@ $("#searchbyDiscrimination").change(function () {
     }
 });
 
-$("#reportedToAuthorities").change(function () {
+$("#reportedToAuthorities").change(function() {
     var val1 = $(this).val();
  
     if (val1 != undefined) {
@@ -49,7 +49,7 @@ $("#reportedToAuthorities").change(function () {
     }
 });
 
-$("#searchDBBuildingOption").change(function () {
+$("#searchDBBuildingOption").change(function() {
     var extraLocationChoice = $("#searchDbLocationExtraTypeOptions").val();
     var val1 = $(this).val();
     var cityLocation = $("#searchDBCityOption").val();
@@ -64,7 +64,7 @@ $("#searchDBBuildingOption").change(function () {
     }
 });
 
-$("#searchDBCityOption, #searchDBCountyOption, #searchDBPostcodeOption").change(function () {
+$("#searchDBCityOption, #searchDBCountyOption, #searchDBPostcodeOption").change(function() {
     var val1 = $(this).val();
     var locationTypeVal = $("#searchDbLocationType").val();
     if (locationTypeVal != "building") {
@@ -82,13 +82,13 @@ $("#searchDBCityOption, #searchDBCountyOption, #searchDBPostcodeOption").change(
     }
 });
 
-$("#searchDbLocationExtraTypeOptions").change(function () {
+$("#searchDbLocationExtraTypeOptions").change(function() {
     $("#searchLocationButton").prop("disabled", true);
 });
 
 // Managing reports in dashboard
 
-$("#userSearchType").change(function () {
+$("#userSearchType").change(function() {
     var val1 = $(this).val();
  
     if (val1 == "all") {
@@ -98,7 +98,7 @@ $("#userSearchType").change(function () {
     }
 });
 
-$("#userDashSearchCat").change(function () {
+$("#userDashSearchCat").change(function() {
     var val1 = $(this).val();
  
     if (val1 != undefined) {
@@ -106,7 +106,7 @@ $("#userDashSearchCat").change(function () {
     }
 });
 
-$("#locationType").change(function () {
+$("#locationType").change(function() {
     var val1 = $(this).val();
  
     if (val1 != undefined) {
@@ -114,11 +114,11 @@ $("#locationType").change(function () {
     }
 });
 
-$("#extraLocationChoice").change(function () {
+$("#extraLocationChoice").change(function() {
     $("#managingReportSearchButton").prop("disabled", true);
 });
 
-$("#userDashSearchBuilding").change(function () {
+$("#userDashSearchBuilding").change(function() {
     var extraLocationChoice = $("#extraLocationChoice").val();
     var val1 = $(this).val();
     var cityLocation = $("#userDashSearchCity").val();
@@ -133,7 +133,7 @@ $("#userDashSearchBuilding").change(function () {
     }
 });
 
-$("#userDashSearchCity, #userDashSearchCounty, #userDashSearchPostcode").change(function () {
+$("#userDashSearchCity, #userDashSearchCounty, #userDashSearchPostcode").change(function() {
     var val1 = $(this).val();
     var locationTypeVal = $("#locationType").val();
     if (locationTypeVal != "building") {
@@ -153,25 +153,25 @@ $("#userDashSearchCity, #userDashSearchCounty, #userDashSearchPostcode").change(
 
 //  Js to narrow down user choice when submitting forms.
 // Searching the db
-$("#categoryCollapsible").click(function () {
+$("#categoryCollapsible").click(function() {
     collapsibleChoice = "category";
     timeFrame = ".catTimeFrameDisplay";
 
 });
 
-$("#locationCollapsible").click(function () {
+$("#locationCollapsible").click(function() {
     timeFrame = ".locationTimeFrameDisplay";
 });
 
-$("#reportedCollapsible").click(function () {
+$("#reportedCollapsible").click(function() {
     timeFrame = ".reportedTimeFrameDisplay";
 });
 
-$("#allCollapsible").click(function () {
+$("#allCollapsible").click(function() {
     timeFrame = ".allTimeFrameDisplay";
 });
 
-$(".timeFrameChoice").change(function () {
+$(".timeFrameChoice").change(function() {
     var val = $(this).val();
     if (val == "Yes") {
         $(timeFrame).removeClass("hidden");
@@ -184,7 +184,7 @@ $(".timeFrameChoice").change(function () {
 
 // Search entire db
 
-$("#searchDbLocationType").change(function () {
+$("#searchDbLocationType").change(function() {
     var val = $(this).val();
     if (val == "building") {
         
@@ -207,7 +207,7 @@ $("#searchDbLocationType").change(function () {
     }
 });
 
-$("#searchDbLocationExtraTypeOptions").change(function () {
+$("#searchDbLocationExtraTypeOptions").change(function() {
     var val = $(this).val();
     if (val == "postcode") {
        
@@ -229,7 +229,7 @@ $("#searchDbLocationExtraTypeOptions").change(function () {
 
 // User dash - search js
 
-$("#userSearchType").change(function () {
+$("#userSearchType").change(function() {
     var val = $(this).val();
     if (val == "all") {
         $("#userSearchCategory, #userSearchLocationType, #userSearchExtraLocation, .locationOptions, .dateOptions").addClass("hidden");
@@ -248,7 +248,7 @@ $("#userSearchType").change(function () {
     }
 });
 
-$("#locationType").change(function () {
+$("#locationType").change(function() {
     var val = $(this).val();
     if (val == "building") {
         
@@ -271,7 +271,7 @@ $("#locationType").change(function () {
     }
 });
 
-$("#extraLocationChoice").change(function () {
+$("#extraLocationChoice").change(function() {
     var val = $(this).val();
     if (val == "postcode") {
         $("#postcodeLocation, #buildingLocation").removeClass("hidden");
@@ -294,7 +294,7 @@ $("#extraLocationChoice").change(function () {
 
 // // Temporarily seeing passwords.
 
-$("#seePassword").click(function () {
+$("#seePassword").click(function() {
     var seePassword = document.getElementById("password");
     seePassword.type = "text";
     var passwordTimeout = setTimeout(passwordReveal, 2000);
@@ -308,13 +308,13 @@ $("#seePassword").click(function () {
 
 // In here add the code to put a tick next to the password box once it is a certain length.
 // Live validating the password
-$(document).ready(function () {
+$(document).ready(function() {
     $("#validatedPassword").css("display", "none");
 });
 
-$("#password").click(function () {
+$("#password").click(function() {
     var password = document.getElementById("password");
-    password.onkeyup = function () {
+    password.onkeyup = function() {
         var passw = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}$/;
         var input = document.getElementById("password");
         if (input.value.match(passw)) {
@@ -327,24 +327,24 @@ $("#password").click(function () {
 
 // Materialize
 
-$(document).ready(function () {
+$(document).ready(function(){
     $(".collapsible").collapsible();
 });
 
-$(document).ready(function () {
+$(document).ready(function(){
     $("select").formSelect();
 });
 
-$(document).ready(function () {
+$(document).ready(function(){
     $(".datepicker").datepicker({
         format: "yyyy-mm-dd",
     });
 });
 
-$(document).ready(function () {
+$(document).ready(function(){
     $(".sidenav").sidenav();
 });
 
-$(document).ready(function () {
+$(document).ready(function(){
     $(".tooltipped").tooltip();
 });
