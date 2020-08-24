@@ -218,7 +218,7 @@ It has been specifically designed for the following:
 
 
 The majority of the website stays consistent to an easy user experience. There are minor changes to font-sizes etc. Some 
-of these can be seen in the [responsiveImages](assets/files/responsiveImages.pdf)
+of these can be seen in the [Responsive image](assets/files/responsive-design.jpg)
 There are a few major resposive choices, detailed below.
 
 1. When viewing on a laptop the search results present their information in a different way. The incident description,
