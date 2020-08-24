@@ -222,6 +222,10 @@ ___
 3. The current name, password, email have the original values displayed underneath.
 4. When deleting the account, the user must put in their correct password.  
 
+<ins>User Modify</ins>
+
+1. The user modify page has a form with all previous values form the report.
+2. The user can modify any of the values and resubmit the form.
 
 <span id="featuresLeftToImplement"></span>
 ### Features Left to Implement
