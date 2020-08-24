@@ -191,7 +191,13 @@ Please find the link to the test document here: [Link to the testing page](asset
 
 ## Interesting bugs
 
-[Dividing by 0](static/files/bug-for-dividing-by-0.pdf) 
+
+1. [Dividing by 0](static/files/bug-for-dividing-by-0.pdf) 
+2. [Dividing by 0](static/files/Issue-with-logging-in.pdf) 
+3. [Dividing by 0](static/files/js-console-error-interrupting-the-other-js.pdf) 
+4. [Dividing by 0](static/files/Live-reading-if-the-username-exists.pdf) 
+5. [Dividing by 0](static/files/Not-match-against-all-array-elements.pdf) 
+6. [Dividing by 0](static/files/password-validation-issue.pdf) 
 
 
 
