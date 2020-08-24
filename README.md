@@ -159,8 +159,15 @@ ___
 <span id="defensiveFeatures"></span>
 ## Defensive Features
 
-As this project is designed for 
-+ Modals guide the players through to the game in an easy and straight forward way.
++ I wanted to make sure that the users inputted all the information necessary for a successful search. 
+  So I have used JS to disable the buttons until a criteria has been met. 
++ If you try to access any of the web pages that are reserved for account holders, it will redirect you to the login
+  page. I did this to help protect people's reports so that only they could modify them. 
++ A new user cannot use the same email as a current user. This is because the functionality of the website uses the
+  email address to identify which user to assign the report to. 
++ I ask the user to confirm their password before they can delete their account.
++ The passwords are hashed and a different salt is generated each time a password is made/changed. If anyone hacks into
+  database they will not be able to see the passwords.
 
 ___
 <span id="technologiesUsed"></span>
