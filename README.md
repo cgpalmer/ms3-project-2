@@ -164,6 +164,14 @@ ___
 1. 
 
 <ins>Login </ins>
+
+1. A form to input user details which will allow them to log in.
+2. A button which will submit the form.
+3. If the user inputs an incorrect email or password, then a message will flash underneath the heading giving 
+   the user feedback.
+4. There is advice on how a user can reset their password.
+5. There is a link to the signup page in case the user doesn't yet have an account. 
+
 <ins>Signup</ins>
 <ins>Add report</ins>
 
