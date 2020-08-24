@@ -14,7 +14,7 @@ $("#category").change(function() {
 });
 
 $("#add_report_to_authorities").change(function() {
-    alert("reached");
+ 
     var val1 = $("#category").val();
     var val2 = $("#add_report_to_authorities").val();
  
