@@ -1,5 +1,9 @@
 # Report On Any Discrimination
 
+![Image a website on different devices](static/files/responsive-design.jpg)
+
+### [Live page](https://ms3-cgpalmer91.herokuapp.com/)
+
 # Disclaimer
 
 The statistics on this website are free to use. However, they must be reported responsibly and with context. 
@@ -9,7 +13,7 @@ Any misrepresentation of the statistics will be denounced and asked to remove th
 Please do not use a person's name in the reports, as the report will be removed.
 
 
-### [Live page](https://ms3-cgpalmer91.herokuapp.com/)
+
 ___
 
 ## Contents
