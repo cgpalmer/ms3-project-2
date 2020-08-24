@@ -143,16 +143,13 @@ ___
 <span id="featuresLeftToImplement"></span>
 ### Features Left to Implement
 
-Future features.
-The date will present itself the correct way round.
-Automatic email will be sent to the website managers when a report is updated/added
-Public can recommend categorise when adding a report rather than having to email separately.
-
-
-A google api will allow the locations of the features to be displayed as clusters across a map. 
-People can filter incidents just by a date frame. 
-Export data as a CSV to be used on excel.
-Councils/ other professional bodies will be able to upload reports of discrimination via their own CSV.
+- The date will present itself the correct way round.
+- Automatic email will be sent to the website managers when a report is updated/added
+- Public can recommend categorise when adding a report rather than having to email separately.
+- A google api will allow the locations of the features to be displayed as clusters across a map. 
+- People can filter incidents just by a date frame. 
+- Export data as a CSV to be used on excel.
+- Councils/ other professional bodies will be able to upload reports of discrimination via their own CSV.
 
 
 ___
