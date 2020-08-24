@@ -256,46 +256,51 @@ ___
 <span id="tutorials"></span>
 <ins>Tutorials</ins>
 
-For all of the following tutorials, I have edited the code necessary for my project. The links provide
-the source of my initial inspiration. 
+For all of the following tutorials, I have edited the code necessary for my project. 
 
+This tutorial helped me to make sure my urls were clearer.
 https://restfulapi.net/resource-naming/
 
+This tutorial helped me to alphabetise some areas of results.
 https://stackoverflow.com/questions/1959386/how-do-you-sort-a-list-in-jinja2
 
+This tutorial helped me to use the date-time function in python
 https://www.dataquest.io/blog/python-datetime-tutorial/
-https://devdojo.com/tnylea/how-to-detect-radio-box-change-with-jquery
 
-https://www.codementor.io/@arpitbhayani/fast-and-efficient-pagination-in-mongodb-9095flbqr
+This tutorial helped me to save the date from the input into the mongoDB.
 https://stackoverflow.com/questions/58160212/how-to-save-date-from-datepicker-into-database-in-sqlalchemy-flask-application
+
+This tutorial helped me to validate a password live for when users are deciding their first password.
 https://www.w3resource.com/javascript/form/password-validation.php
 
-https://www.geeksforgeeks.org/check-if-email-address-valid-or-not-in-python/
 
+This link helped to set up Flash-messages.
 https://www.youtube.com/watch?v=DFCKWhoiHZ4
 
+This tutorial helped me to store things to the Flask session.
 https://pythonise.com/series/learning-flask/flask-session-object
 
+This tutorial helped me to set up a back-end validation check which matched the live JS version.
 https://www.geeksforgeeks.org/python-program-check-validity-password/
-https://hackersandslackers.com/flask-login-user-authentication
 
+
+This tutorial helped me to check if there was a value in the array that matched the criteria.
 https://stackoverflow.com/questions/55957237/checking-if-input-value-matches-the-array-items
 
+This tutorial helped me to check the email live to see if there was already a user with that account.
 https://stackoverflow.com/questions/14411235/while-typing-in-a-text-input-field-printing-the-content-typed-in-a-div
 
+This link helped me to process a list of emails in python and access them in JS.
 https://groups.google.com/forum/#!topic/web2py/OmwTo1ZsFN4
 
+This link helped me to process a list from python into a json file.
 https://stackoverflow.com/questions/23038710/accessing-python-list-in-javascript-as-an-array
 
-jQuery based on a form value
+This helped me to understand how I could get the value from a select option.
 http://jsfiddle.net/YPsqQ/
 
-Typing to see options
-https://stackoverflow.com/questions/5650457/html-select-form-with-option-to-enter-custom-value
-https://developer.mozilla.org/en-US/docs/Web/HTML/Element/datalist
-
-
-https://www.youtube.com/watch?v=_sgVt16Q4O4
+Tutorial on how to hash a password
+https://nitratine.net/blog/post/how-to-hash-passwords-in-python/
 
 
 <span id="media"></span>
