@@ -171,11 +171,14 @@ Languages used
 1. HTML
 2. CSS
 3. Javascript
+4. Python 
 
-Bootstrap – https://getbootstrap.com/  
-The project uses Bootstrap to simplify the process of building a grid layout, implementing forms, cards, and creating buttons. Bootstrap was also used for responsive design. 
+Frameworks
 
-JQuery – https://jquery.com/  
+1. Materialize 1.0.0
+2. Flask 
+3. Jinja 
+4. jQuery
 
 ___
 <span id="testing"></span>
@@ -300,6 +303,7 @@ https://www.gov.uk/discrimination-your-rights
 ___
 <span id="project"></span>
 ## Project Evaluation
+
 
 
 
