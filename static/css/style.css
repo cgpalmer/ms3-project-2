@@ -1001,7 +1001,7 @@ footer i {
     .dropdown-content li > span,
     input[type="password"]:not(.browser-default),
     .input-field .login-form,
-    .material-icons {
+    .material-icons{
         font-size: 2rem;
     }
 
@@ -1142,6 +1142,16 @@ footer i {
     .input-field-manage-reports {
         margin-top: 7rem;
     }
+
+
+    /* Signup Page */
+
+    input[type="text"]:not(.browser-default) {
+        font-size: 2rem;
+        height: 4rem;
+        margin: 2rem 0;
+    }
+
     /* User dash */
 
     #settingButtonIcon {
