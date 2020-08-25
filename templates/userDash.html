@@ -4,6 +4,7 @@
     <div id="settingButton">
         <a href="{{url_for('userSetting')}}"><i id="settingButtonIcon" class="material-icons">settings</i></a>
     </div>
+    <!-- Page info -->
     <h3 class="userDashHeader">Welcome back, {{name.capitalize()}}</h3>
 
     <div class="page-info-user-dash">
@@ -14,6 +15,7 @@
     <ul class="collapsible-dash collapsible">
         <!-- Managing reports -->
         <li class="active">
+        <!-- Form to search the user's database -->
             <div class="collapsible-header"><i class="material-icons">edit</i>Manage old reports</div>
             <div class="collapsible-body">
                 <form id="userSearchForm" method="POST" action="{{ url_for('search_reports') }}">
