@@ -1,19 +1,26 @@
 {% extends 'base.html'%} {% block content %}
-
+<!-- Page info -->
 <h4 class="page-header">Please search our databases for reports.</h4>
 <p class="page-info">You can search by discrimination category, location or if they have been reported to authorities. If you wish, you can search reports within a time frame.</p>
+
+<!-- Flash messages -->
 {% with messages = get_flashed_messages() %} {% if messages%} {% for message in messages %}
 <h5 class="flashMessage">{{ message }}</h5>
 {% endfor %} {% endif %} {% endwith %}
+
+<!-- Collapsible -->
 <ul class="collapsible popout">
     <li>
         <div id="categoryCollapsible" class="collapsible-header"><i class="material-icons">description</i>Search by discrimination</div>
         <div class="collapsible-body">
+        <!-- Form for searching by discrimination -->
             <form class="form-wrapper-search" method="POST" action="{{ url_for('search_db_reports') }}">
+                <!-- Hidden field to identify the type of search by -->
                 <label for="userSearchbyDiscrimination">
                     <input id="userSearchbyDiscrimination" class="hidden" type="text" name="userSearchReports" value="searchByDiscrimination" />
                 </label>
-
+                <!-- User inputs -->
+                <!-- Date choices and input -->
                 <div class="input-field col s12">
                     <select id="categoryTimeFrame" class="timeFrameChoice" name="useTimeFrame" required>
                         <option value="Yes">Yes</option>
@@ -24,6 +31,7 @@
 
                 <div class="input-field col s12 catTimeFrameDisplay hidden"><span class="dateSpan">From:</span><input type="text" id="date" name="categoryStartDateFrame" class="datepicker" placeholder="Start Date" /></div>
                 <div class="input-field col s12 catTimeFrameDisplay hidden"><span class="dateSpan">To:</span><input type="text" name="categoryEndDateFrame" id="categoryEndDateFrame" class="datepicker" placeholder="End Date" /></div>
+                <!-- Search parameter input -->
                 <div class="input-field input-field-search col s12">
                     <select id="searchbyDiscrimination" name="category" required>
                         <option value="unselected" disabled selected></option>
@@ -44,11 +52,14 @@
     <li>
         <div id="locationCollapsible" class="collapsible-header searchDbCollapsible"><i class="material-icons">location_on</i>Search by Location</div>
         <div class="collapsible-body">
+        <!-- Form for searching by location -->
             <form class="form-wrapper-search" method="POST" action="{{ url_for('search_db_reports') }}">
+                 <!-- Hidden field to identify the type of search by -->
                 <label for="searchbyLocation">
                     <input id="searchbyLocation" class="hidden" type="text" name="userSearchReports" value="searchByLocation" />
                 </label>
-
+                <!-- User input -->
+                 <!-- Date choices and input -->
                 <div id="searchDbDate" class="input-field col s12">
                     <select id="locationTimeFrame" name="useTimeFrame" class="timeFrameChoice">
                         <option value="Yes">Yes</option>
@@ -56,14 +67,14 @@
                     </select>
                     <label class="active">Would you like to search within a time frame?</label>
                 </div>
-
+       
                 <div class="input-field col s12 locationTimeFrameDisplay searchDbDateFrame hidden">
                     <span class="dateSpan">From:</span><input type="text" id="locationStartDateFrame" name="startDateLocation" class="datepicker" placeholder="Start Date" />
                 </div>
                 <div class="input-field col s12 locationTimeFrameDisplay searchDbDateFrame hidden">
                     <span class="dateSpan">To:</span><input type="text" name="endDateLocation" id="locationEndDateFrame" class="datepicker" placeholder="End Date" />
                 </div>
-
+            <!-- Search parameter input -->
                 <div class="input-field input-field-search col s12">
                     <select id="searchDbLocationType" name="locationType">
                         <option value="" disabled selected></option>
@@ -137,8 +148,13 @@
     <li>
         <div id="reportedCollapsible" class="collapsible-header searchDbCollapsible"><i class="material-icons">record_voice_over</i>Search by reported incidents</div>
         <div class="collapsible-body">
+        <!-- Form for searching by location -->
             <form class="form-wrapper-search" method="POST" action="{{ url_for('search_db_reports') }}">
+                 <!-- Hidden field to identify the type of search by -->
                 <input id="userSearchReport" class="hidden" type="text" name="userSearchReports" value="searchByReported" />
+
+     <!-- User input -->
+                 <!-- Date choices and input -->
 
                 <div class="input-field col s12">
                     <select id="allTimeFrame" name="useTimeFrame" class="timeFrameChoice">
@@ -151,6 +167,7 @@
                 <div class="input-field col s12 reportedTimeFrameDisplay hidden">
                     <span class="dateSpan">From:</span><input type="text" id="reportedStartDateFrame" name="reportedStartDateFrame" class="datepicker" placeholder="Start Date" />
                 </div>
+                 <!-- Search parameter input -->
                 <div class="input-field col s12 reportedTimeFrameDisplay hidden"><span class="dateSpan">To:</span><input type="text" name="reportedEndDateFrame" id="allEndDateFrame" class="datepicker" placeholder="End Date" /></div>
                 <div class="input-field input-field-search col s12">
                     <select id="reportedToAuthorities" name="searchReported">
@@ -171,7 +188,9 @@
     <li>
         <div id="allCollapsible" class="collapsible-header searchDbCollapsible"><i class="material-icons">search</i>Search all</div>
         <div class="collapsible-body">
+        <!-- Form for searching by location -->
             <form class="form-wrapper-search form-search-all" method="POST" action="{{ url_for('search_db_reports') }}">
+                 <!-- Hidden field to identify the type of search by -->
                 <input id="userSearchbyAll" class="hidden" type="text" name="userSearchReports" value="searchAll" />
 
                 <div class="btn-wrapper">
