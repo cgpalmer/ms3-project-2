@@ -301,7 +301,7 @@ textarea.materialize-textarea {
 }
 
 /* Button */
-.btn {
+.btn,  textarea.materialize-textarea {
     margin: 1rem 0 0 0;
     font-family: "Alegreya", serif;
 }
