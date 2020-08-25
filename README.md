@@ -137,7 +137,7 @@ Wireframes have been made using Balsamiq.
 [Wireframes](static/files/wireframes/ms3-wireframes-with-notes.pdf)
 
 As there were not initial wireframes of the all the screen, I have added responsive images of all the pages in their final form.
-[Responsive images of actual site](static/files/wireframes/responsive-images-instead-of-WF.pdf)
+[- responsive images of actual site.](static/files/wireframes/responsive-images-instead-of-WF.pdf)
 ___
 <span id="features"></span>
 ## Features
