@@ -156,9 +156,15 @@ nav .sidenav-trigger i {
     font-size: 2.1rem;
 }
 
+
+
 /* Re-used classes */
 .hidden {
     display: none;
+}
+
+.datepicker-controls .select-month input{
+    width: 120px;
 }
 
 /* Text */
@@ -617,6 +623,8 @@ footer i {
         font-size: 2rem;
         margin: 1.5rem 0;
     }
+
+
     /* Margins */
 
     .page-header {
@@ -681,6 +689,10 @@ footer i {
     .dropdown-content li > span {
         font-size: 2rem;
     }
+
+.catTimeFrameDisplay .select-wrapper input.select-dropdown {
+    font-size: 1.5rem;
+}
 
     /* Login page */
     .input-field > .login-form:not(.label-icon).active {
