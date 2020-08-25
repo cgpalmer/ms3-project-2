@@ -2,7 +2,6 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
 
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
@@ -14,6 +13,7 @@
     <body class="body">
         <div class="page-container">
             <header>
+            <!-- Full nav bar for larger screens -->
                 <nav>
                     <div class="nav-wrapper nav-color">
                         <a href="{{url_for('homepage')}}" class="brand-logo">Report It</a>
@@ -52,6 +52,7 @@
                     </div>
                 </nav>
 
+                <!-- Side-nav bar for mobile to ipad screens -->
                 <ul class="sidenav" id="mobile-demo">
                     <li class="first-nav-link">
                         <a class="" href="{{url_for('homepage')}}">Home</a>
