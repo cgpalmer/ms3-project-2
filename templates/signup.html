@@ -1,13 +1,16 @@
 {% extends 'base.html'%} {% block content %}
-
+<!-- Page info -->
 <h3 class="page-header login-form-wrapper">
     Signing up is the first step. <br />
     Thank you.
 </h3>
+<!-- Flash messages -->
 {% with messages = get_flashed_messages() %} {% if messages%} {% for message in messages %}
 <h5 class="flashMessage">{{ message }}</h5>
 {% endfor %} {% endif %} {% endwith %}
 <h5 id="email_taken"></h5>
+
+<!-- Form for registering an account -->
 <div class="form-wrapper">
     <form action="{{ url_for('creating_user') }}" method="POST">
         <div class="input-field input-field-signup">
@@ -16,10 +19,11 @@
             <span class="hidden" id="validatedEmail">Tick!</span>
         </div>
         <div class="input-field input-field-signup">
+        <!-- A hint to show the validation rules. -->
             <label for="password" class="login-form">
                 Password<span id="passwordHint" class="tooltipped" data-position="right" data-tooltip="Password must have a number, capital letter and be 8 or more characters."><i class="material-icons">lightbulb_outline</i></span>
             </label>
-
+            <!-- An icon that shows when the password is valid. -->
             <input class="login-form" type="password" id="password" name="new_password" placeholder="Password" required />
             <span id="validatedPassword"><i class="material-icons">check_circle</i></span>
             <div id="seePassword"><i class="material-icons">remove_red_eye</i></div>
@@ -37,6 +41,7 @@
     </form>
 </div>
 
+<!-- JS script to live check if the email address is taken -->
 <script>
     var v = {{list_existing_emails|tojson}}
   
