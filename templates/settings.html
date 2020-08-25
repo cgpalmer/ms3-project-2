@@ -1,6 +1,8 @@
 {% extends 'base.html'%} {% block content %}
-
+<!-- Page info -->
 <h1 class="page-header">Settings</h1>
+<!-- Flash messages -->
+
 
 {% with messages = get_flashed_messages() %} {% if messages%} {% for message in messages %}
 <h3 class="flashMessage settings-message">{{ message }}</h3>
@@ -9,10 +11,12 @@
 <div>
     <ul class="collapsible settings-collapsible">
         <li>
+        <!-- Form for changing password -->
             <div class="collapsible-header settings-header">
                 <h5 class="mb-0"><i class="material-icons">vpn_key</i>Change password</h5>
             </div>
             <div class="collapsible-body">
+            
                 <form action="{{url_for('changeDetails')}}" method="POST">
                     <div>
                         <input class="hidden" type="text" name="changeType" value="password" />
@@ -37,9 +41,11 @@
             <div class="collapsible-header settings-header">
                 <h5 class="mb-0"><i class="material-icons">email</i>Change email</h5>
             </div>
+            <!-- Form for changing email -->
             <div class="collapsible-body">
                 <div id="changeEmailForm" class="collapse" role="tabpanel" aria-labelledby="headingTwo2" data-parent="#changeDetailsAccordian">
                     <div class="card-body">
+                    
                         <form action="{{url_for('changeDetails')}}" method="POST">
                             <div>
                                 <input class="hidden" type="text" name="changeType" value="email" />
@@ -58,8 +64,9 @@
             <div class="collapsible-header settings-header">
                 <h5 class="mb-0"><i class="material-icons">edit</i>Change preferred name</h5>
             </div>
-
+             <!-- Form for changing preferred name-->
             <div class="collapsible-body">
+          
                 <form action="{{url_for('changeDetails')}}" method="POST">
                     <div>
                         <input class="hidden" type="text" name="changeType" value="name" />
@@ -73,6 +80,7 @@
             </div>
         </li>
         <li>
+          <!-- Form for deleting account -->
             <div class="collapsible-header settings-header">
                 <h5 class="mb-0"><i class="material-icons">delete</i>Delete account</h5>
             </div>
