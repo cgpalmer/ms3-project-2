@@ -34,6 +34,10 @@ footer,
     font-weight: 700;
 }
 
+.datepicker-cancel, .datepicker-done {
+    color: #595775; 
+}
+
 .page-container {
     background-color: #f1e0d6;
 }
