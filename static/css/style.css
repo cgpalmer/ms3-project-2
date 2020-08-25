@@ -936,6 +936,7 @@ footer i {
     }
 }
 
+/* MD Laptop screens */
 @media screen and (min-width: 1280px) {
     /* Nav */
     nav {
@@ -1173,6 +1174,7 @@ footer i {
     }
 }
 
+/* Screen sizes for HD Laptops */
 @media screen and (min-width: 1440px) {
     h1 {
         font-size: 7rem;
