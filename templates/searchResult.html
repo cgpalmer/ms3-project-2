@@ -71,6 +71,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- Modify and delete reports. -->
                 {% if searchingUserDb == "yes" %}
                 <div class="btn-wrapper">
                     <a class="btn" href="{{url_for('user_modify', report_id=report._id)}}">Edit</a>
@@ -85,7 +86,7 @@
 </ul>
 
 
-<!-- Option to delete or edit reports -->
+<!-- Option to search again -->
 <h5 class="page-info search-again">Would you like to search again?</h5>
 <div class="btn-wrapper">
     <a class="btn hrefButton" href="{{url_for('search_report')}}">Our database</a>
