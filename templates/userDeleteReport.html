@@ -1,6 +1,8 @@
 {% extends 'base.html'%} {% block content %}
-
+<!-- Page info -->
 <h3 class="page-header">This is the report you have chosen to edit</h3>
+
+<!-- Display result -->
 <div class="collapsible-body collapsible-body-delete">
     <div class="card bg-primary text-white">
         <div class="result-info-wrapper">
@@ -59,7 +61,7 @@
             </div>
         </div>
     </div>
-
+    <!-- Form to confirm delete -->
     <form method="POST" action="{{ url_for('delete_report', report_id=report._id) }}">
         <div class="btn-wrapper">
             <button class="btn" type="submit">Confirm delete</button>
