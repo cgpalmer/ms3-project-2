@@ -1,6 +1,6 @@
 # Report On Any Discrimination
 
-![Image a website on different devices](static/files/responsive-design.jpg)
+![Image a website on different devices](static/files/wireframes/responsive-design.jpg)
 
 ### [Live page](https://ms3-cgpalmer91.herokuapp.com/)
 
@@ -134,10 +134,10 @@ ___
 
 Wireframes have been made using Balsamiq. 
 
-[Wireframes](static/wireframes/ms3-wireframes-with-notes.pdf)
+[Wireframes](static/files/wireframes/ms3-wireframes-with-notes.pdf)
 
 As there were not initial wireframes of the all the screen, I have added responsive images of all the pages in their final form.
-[Responsive images of actual site](static/wireframes/responsiveImages.pdf)
+[Responsive images of actual site](static/files/wireframes/responsive-images-instead-of-WF.pdf)
 ___
 <span id="features"></span>
 ## Features
@@ -323,7 +323,7 @@ It has been specifically designed for the following:
 
 
 The majority of the website stays consistent to an easy user experience. There are minor changes to font-sizes etc. Some 
-of these can be seen in the [responsive image](static/files/responsive-design.jpg). This has been taken from the website:
+of these can be seen in the [responsive image](static/files/wireframes/responsive-design.jpg). This has been taken from the website:
 http://ami.responsivedesign.is/#
 
 There are a few major resposive choices, detailed below.
