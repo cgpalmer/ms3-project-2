@@ -1,3 +1,4 @@
+// Global variables
 let collapsibleChoice;
 let timeFrame;
 
@@ -24,7 +25,7 @@ $("#add_report_to_authorities").change(function() {
     }
 });
 
-// JS to make sure the uses adds all the relevant information for the search to go ahead.
+// JS to make sure the uses adds all the relevant information for the search to go ahead - disabling the button and enabling it when necessary
 $("#searchDbLocationType").change(function() {
     var val1 = $(this).val();
  
@@ -86,7 +87,7 @@ $("#searchDbLocationExtraTypeOptions").change(function() {
     $("#searchLocationButton").prop("disabled", true);
 });
 
-// Managing reports in dashboard
+// Managing reports in dashboard - disabling the button and enabling it when necessary
 
 $("#userSearchType").change(function() {
     var val1 = $(this).val();
@@ -152,7 +153,7 @@ $("#userDashSearchCity, #userDashSearchCounty, #userDashSearchPostcode").change(
 });
 
 //  Js to narrow down user choice when submitting forms.
-// Searching the db
+// Setting the different collapsible identifiers
 $("#categoryCollapsible").click(function() {
     collapsibleChoice = "category";
     timeFrame = ".catTimeFrameDisplay";
@@ -182,7 +183,7 @@ $(".timeFrameChoice").change(function() {
     }
 });
 
-// Search entire db
+// Search entire db - unhiding/hiding the correct input fields
 
 $("#searchDbLocationType").change(function() {
     var val = $(this).val();
@@ -227,7 +228,7 @@ $("#searchDbLocationExtraTypeOptions").change(function() {
     }
 });
 
-// User dash - search js
+// User dash - search js - - unhiding/hiding the correct input fields
 
 $("#userSearchType").change(function() {
     var val = $(this).val();
@@ -325,7 +326,7 @@ $("#password").click(function() {
     };
 });
 
-// Materialize
+// Materialize intialisation
 
 $(document).ready(function(){
     $(".collapsible").collapsible();
