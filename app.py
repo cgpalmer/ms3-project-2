@@ -657,16 +657,23 @@ def search_db_reports():
             report = mongo.db.report.find( { "category_name":category } )
             reportedReportsCount = mongo.db.report.find( {"$and":[{ "category_name":category }, {"report_to_authorities": "Yes"}] }).count()
         else:
+
+           
             startDatestr = request.form['categoryStartDateFrame']
             
             endDatestr = request.form['categoryEndDateFrame']
-           
-            startDateConversion = datetime.strptime(startDatestr, "%Y-%m-%d")
-            endDateTimeConversion = datetime.strptime(endDatestr, "%Y-%m-%d")
-            startDateTimeStamp = datetime.timestamp(startDateConversion)
-            endDateTimeStamp = datetime.timestamp(endDateTimeConversion)
-            report = mongo.db.report.find( {"$and":[{ "category_name":category }, {"timestamp":{ "$gte": startDateTimeStamp,"$lt":endDateTimeStamp }}]}) 
-            reportedReportsCount = mongo.db.report.find( {"$and":[{ "category_name":category }, {"report_to_authorities": "Yes"},  {"timestamp":{ "$gte": startDateTimeStamp,"$lt":endDateTimeStamp }}]}).count()           
+            
+            if startDatestr == "" or endDatestr == "":
+                flash("Please make sure you enter a date or select 'No'.")
+                return redirect(url_for('search_report'))
+            else:
+
+                startDateConversion = datetime.strptime(startDatestr, "%Y-%m-%d")
+                endDateTimeConversion = datetime.strptime(endDatestr, "%Y-%m-%d")
+                startDateTimeStamp = datetime.timestamp(startDateConversion)
+                endDateTimeStamp = datetime.timestamp(endDateTimeConversion)
+                report = mongo.db.report.find( {"$and":[{ "category_name":category }, {"timestamp":{ "$gte": startDateTimeStamp,"$lt":endDateTimeStamp }}]}) 
+                reportedReportsCount = mongo.db.report.find( {"$and":[{ "category_name":category }, {"report_to_authorities": "Yes"},  {"timestamp":{ "$gte": startDateTimeStamp,"$lt":endDateTimeStamp }}]}).count()           
         # Statistics
         number_of_reports = report.count()
         percentageOfDb = calculate_percentage_of_report_in_db(report, totalReportsCount)
