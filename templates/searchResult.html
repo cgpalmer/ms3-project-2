@@ -1,6 +1,7 @@
 {% extends 'base.html'%} {% block content %}
-
+<!-- Page info -->
 <h3 class="page-header">Your search found {{number_of_reports}} incidents.</h3>
+<!-- Flash messages -->
 {% if searchingUserDb != "yes" %}
 <div class="page-info">
     <h5>These incidents make up {{percentageOfDb}}% of the entire database.</h5>
@@ -13,6 +14,7 @@
     <li>
         <div class="collapsible-header"><i class="material-icons">add_circle</i>Reports {{x*10+1}} - {{x+1}}0</div>
         <div class="collapsible-body collapsible-body-result">
+        <!-- Display all reports that are returned from query -->
             {% for report in pages[x] %}
 
             <div class="card bg-primary text-white report batch{{x}}">
@@ -69,10 +71,12 @@
                         </div>
                     </div>
                 </div>
+                {% if session.get("email") != None %}
                 <div class="btn-wrapper">
                     <a class="btn" href="{{url_for('user_modify', report_id=report._id)}}">Edit</a>
                     <a class="btn button-space-margin" href="{{url_for('confirm_delete_report', report_id=report._id)}}">Delete</a>
                 </div>
+                {% endif %}
             </div>
             {% endfor %}
         </div>
@@ -80,6 +84,8 @@
     {% endfor %}
 </ul>
 
+
+<!-- Option to delete or edit reports -->
 <h5 class="page-info search-again">Would you like to search again?</h5>
 <div class="btn-wrapper">
     <a class="btn hrefButton" href="{{url_for('search_report')}}">Our database</a>
