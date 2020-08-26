@@ -775,7 +775,7 @@ def insert_report():
     return render_template('addLocationToNewReport.html', now=timestamp)
 
 
-@app.route('/add-Location-To-Report', methods=['GET','POST'])
+@app.route('/add-Location-To-Report', methods=['GET', 'POST'])
 def addLocationToReport():
     currentUserEmail = session.get("email")
     if currentUserEmail is None:
@@ -792,7 +792,7 @@ def addLocationToReport():
     return render_template('addDateToReport.html', reportTimeStamp=reportTimeStamp, currentUserEmail=currentUserEmail)
 
 
-@app.route('/add-Date-To-Report', methods=['GET','POST'])
+@app.route('/add-Date-To-Report', methods=['GET', 'POST'])
 def addDateToReport():
     currentUserEmail = session.get("email")
     if currentUserEmail is None:
