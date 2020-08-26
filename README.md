@@ -290,12 +290,18 @@ ___
 
 ## Testing
 
-I have posted a link for more detailed testing. 
+ 
+### User stories
 
-Please find the link to the test document here: [Link to the testing page](assets/files/README-Testing.md)   
+### General testing
 
-## Interesting bugs
+### Responsive design
 
+### Cross browser test
+
+### Code validation
+
+### Interesting bugs
 
 1. [Dividing by 0](static/files/testing/interesting-bugs-documentation/bug-for-dividing-by-0.pdf) 
 2. [Logging in issues](static/files/testing/interesting-bugs-documentation/Issue-with-logging-in.pdf) 
