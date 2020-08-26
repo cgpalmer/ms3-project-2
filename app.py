@@ -387,7 +387,6 @@ def logout():
 def search_reports():
     typeOfSearch = request.form['userSearchOwnReports']
     user_email = session.get("email")
-    totalReportsCount = mongo.db.report.find().count()
     if typeOfSearch == "all":
         report = mongo.db.report.find({"email": user_email})
         number_of_reports = report.count()
@@ -435,8 +434,10 @@ def search_reports():
                     pages.append(page)
                 return render_template('searchResult.html',
                                        number_of_reports=number_of_reports,
-                                       searchingUserDb=searchingUserDb, report=report,
-                                       collapsibles=numOfPagesRounded, pages=pages)
+                                       searchingUserDb=searchingUserDb,
+                                       report=report,
+                                       collapsibles=numOfPagesRounded,
+                                       pages=pages)
             else:
                 extraLocationValue = request.form[extraLocation]
                 report = mongo.db.report.find({"$and":
@@ -487,23 +488,18 @@ def search_reports():
                                           }).limit(page_size)
             pages.append(page1)
             for x in range(numOfPagesRounded):
-                page = mongo.db.report.find({"$and": [{"email": user_email}, {locationType: value}]}).skip(int(x+1)*10).limit(page_size)
+                page = mongo.db.report.find({"$and":
+                                            [{"email": user_email},
+                                             {locationType: value}]
+                                             }).skip(int(x+1)*10
+                                                     ).limit(page_size)
                 pages.append(page)
-            return render_template('searchResult.html', searchingUserDb=searchingUserDb, number_of_reports = number_of_reports, report=report, collapsibles = numOfPagesRounded, pages = pages)
-    elif typeOfSearch == "date":
-        startDatestr = request.form['startDate']
-        endDatestr = request.form['endDate']
-        report = mongo.db.report.find({"$and": [{"email": user_email}, {"timestamp":{"$gte": startDateTimeStamp,"$lt":endDateTimeStamp}} ]})
-        number_of_reports = report.count()
-        searchingUserDb = "yes"
-        page_size = 10
-        pages = []
-        page1 = mongo.db.report.find({"$and": [{"email": user_email}, {"timestamp":{"$gte": startDateTimeStamp,"$lt":endDateTimeStamp}} ]}).limit(page_size)
-        pages.append(page1)
-        for x in range(numOfPagesRounded):
-            page = mongo.db.report.find({"$and": [{"email": user_email}, {"timestamp":{"$gte": startDateTimeStamp,"$lt":endDateTimeStamp}} ]}).skip(int(x+1)*10).limit(page_size)
-            pages.append(page)
-        return render_template('searchResult.html', searchingUserDb=searchingUserDb, number_of_reports = number_of_reports, report=report, collapsibles = numOfPagesRounded, pages = pages)
+            return render_template('searchResult.html',
+                                   searchingUserDb=searchingUserDb,
+                                   number_of_reports=number_of_reports,
+                                   report=report,
+                                   collapsibles=numOfPagesRounded,
+                                   pages=pages)
     else:
         category = request.form['category']
         report = mongo.db.report.find({"$and": [{"email": user_email}, {"category_name":category}]}) 
@@ -833,7 +829,7 @@ def user_modify(report_id):
     return render_template('userModifyReport.html', currentUserEmail=currentUserEmail, report=the_report, categories=available_categories)
 
 
-@app.route('/edit-report/<report_id>', methods = ["POST"])
+@app.route('/edit-report/<report_id>', methods=["POST"])
 def edit_report(report_id):
     report = mongo.db.report
     report.update({'_id': ObjectId(report_id)},
