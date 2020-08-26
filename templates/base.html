@@ -35,11 +35,11 @@
                                 <a class="" href="{{url_for('search_report')}}">Search reports</a>
                             </li>
                             {% if session.get("email") == None %}
-                            <li class="">
+                            <li>
                                 <a class="" href="{{url_for('login')}}">Login</a>
                             </li>
 
-                            <li id="signupLink" class="">
+                            <li id="signupLinkNav" class="">
                                 <a class="" href="{{url_for('signup')}}">Signup</a>
                             </li>
                             {% endif %} {% if session.get("email") != None %}
