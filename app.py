@@ -425,9 +425,16 @@ def search_reports():
                                              ).limit(page_size)
                 pages.append(page1)
                 for x in range(numOfPagesRounded):
-                    page = mongo.db.report.find({"$and": [{"email": user_email}, {"building": building_name}]} ).skip(int(x+1)*10).limit(page_size)
+                    page = mongo.db.report.find({"$and":
+                                                [{"email": user_email},
+                                                 {"building": building_name}]}
+                                                ).skip(int(x+1)*10).limit(
+                                                page_size)
                     pages.append(page)
-                return render_template('searchResult.html', number_of_reports=number_of_reports, searchingUserDb=searchingUserDb, report=report, collapsibles=numOfPagesRounded, pages=pages)
+                return render_template('searchResult.html', 
+                                        number_of_reports=number_of_reports,
+                                        searchingUserDb=searchingUserDb, report=report,
+                                        collapsibles=numOfPagesRounded, pages=pages)
             else:
                 extraLocationValue = request.form[extraLocation]        
                 report = mongo.db.report.find({"$and": [{"email": user_email}, {"building": building_name}, {extraLocation: extraLocationValue}]})
@@ -765,7 +772,7 @@ def addDateToReport():
         currentUserEmail = "anonymous"
     else:
         currentUserEmail = session.get('email')
-    reportTimeStamp = (request.form['reportTimeStamp'])    
+    reportTimeStamp = (request.form['reportTimeStamp'])
     strDate = str(request.form['date'])
     if strDate == '':
         mongo.db.report.update_one({"$and": [{"email": currentUserEmail}, {"time": float(reportTimeStamp)}]}, {"$set": {"date": strDate}})
