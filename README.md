@@ -299,6 +299,15 @@ ___
 
 ### Cross browser test
 
+I have test my site on Microsoft Edge, Firefox and Chrome web browsers.
+I specifically test the following things:
+   + Do the collapsibles and their animations open?
+   + Does the checkbox still work?
+   + Does the tooltip work on the signup page?
+   + Do the select options work? 
+
+On the browsers Firefox, Edge and Chrome, all of th elements above are working properly.
+
 ### Code validation
 
 #### Python
