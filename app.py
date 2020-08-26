@@ -45,59 +45,61 @@ def is_new_password_valid(new_password):
             break
     return flag
 
+
+
+
 def get_user_password(current_user):
-    for k,v in current_user.items():
+    for k, v in current_user.items():
         if k == 'user_password':
             user_password = v
-    
     return user_password
 
+
 def get_user_password_salt(current_user):
-    for k,v in current_user.items():
+    for k, v in current_user.items():
         if k == 'salt':
             stored_salt = v
-   
     return stored_salt
 
+
 def get_user_login_name(current_user):
-    for k,v in current_user.items():
+    for k, v in current_user.items():
         login_name = v
     return login_name
 
+
 def hash_a_password_to_check_it_is_correct(stored_salt, login_password):
     hash_login_password = hashlib.pbkdf2_hmac(
-                    'sha256', # The hash digest algorithm for HMAC
-                    login_password.encode('utf-8'), # Convert the password to bytes
-                    stored_salt, # Provide the salt
-                    100000, # It is recommended to use at least 100,000 iterations of SHA-256 
-                    dklen=128 # Get a 128 byte key
+                    'sha256',
+                    login_password.encode('utf-8'),
+                    stored_salt,
+                    100000,
+                    dklen=128
                 )
     return hash_login_password
 
+
 def hashing_a_new_password(new_password, salt):
     hash_new_password = hashlib.pbkdf2_hmac(
-            'sha256', # The hash digest algorithm for HMAC
-            new_password.encode('utf-8'), # Convert the password to bytes
-            salt, # Provide the salt
-            100000, # It is recommended to use at least 100,000 iterations of SHA-256 
-            dklen=128 # Get a 128 byte key
-            ) 
+            'sha256',
+            new_password.encode('utf-8'),
+            salt,
+            100000,
+            dklen=128
+            )
     return hash_new_password
 
+
 def get_number_of_pages_from_search(report):
-   
     number_of_reports = report.count()
     page_size = 10
     numOfPages = number_of_reports/page_size
     numOfPagesRounded = math.ceil(numOfPages)
-
-    
     return numOfPagesRounded
 
-def calculate_percentage_of_report_in_db(report, totalReportsCount):
 
+def calculate_percentage_of_report_in_db(report, totalReportsCount):
     number_of_reports = report.count()
-  
     if number_of_reports == 0:
         percentageOfDb = "0"
     else:
@@ -105,13 +107,15 @@ def calculate_percentage_of_report_in_db(report, totalReportsCount):
         percentageOfDb = round(calculatePercentageDb)
     return percentageOfDb
 
-def calculate_percentage_of_search_reported_to_authorities(report, reportedReportsCount):
-    
+
+def calculate_percentage_of_search_reported_to_authorities(
+                                report, reportedReportsCount):
     number_of_reports = report.count()
     if number_of_reports == 0:
         reportedReports = "0"
     else:
-        reportedReportsPercentage = (reportedReportsCount/number_of_reports)*100
+        reportedReportsPercentage = (reportedReportsCount /
+                                     number_of_reports)*100
         reportedReports = round(reportedReportsPercentage)
     return reportedReports
 
