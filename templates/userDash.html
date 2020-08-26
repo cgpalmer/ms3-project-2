@@ -12,6 +12,10 @@
         <h5>So far you have made {{total}} reports</h5>
     </div>
 
+    {% with messages = get_flashed_messages() %} {% if messages%} {% for message in messages %}
+    <h5 class="flashMessage">{{ message }}</h5>
+    {% endfor %} {% endif %} {% endwith %}
+
     <ul class="collapsible-dash collapsible">
         <!-- Managing reports -->
         <li class="active">
