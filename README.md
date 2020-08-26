@@ -293,6 +293,35 @@ ___
  
 ### User stories
 
+User Stories - first time users | Expected outcome | Actual outcome 
+--------- | --------------- | ---
+As a first-time user, I want to easily navigate through the website be able to easily access all of its features. | Design is responsive and readable | True
+As a first-time user, I want to be able to immediately see what the website is about.                             | Design is responsive and readable | True
+As a first-time user, I want to be able to create an account.                                                     | Design is responsive and readable | True
+As a first-time user, I want to be able to log in with my new account.                                            | Design is responsive and readable | True
+As a first time user, I want to be able to explore the dashboard immediately.                                     | Design is responsive and readable | True
+As a first time user, I want to be able to add a report regardless of whether I have created an account or not.   | Design is responsive and readable | True
+As a first-time user, I want to be able to search reports.                                                        | Design is responsive and readable | True
+As a first-time user, I want to be able to log out when I am done.                                                | Design is responsive and readable | True
+As a first-time user, I want my personal details to be private and kept away from the reports.                    | Design is responsive and readable | True
+ 
+User Stories - returning users | Expected outcome | Actual outcome 
+--------- | --------------- | ---
+As a returning user, I want to be able to log in easily.                                                     | Design is responsive and readable | True
+As a As a returning user, I want to be able to do all the things as stated in a new user with the same ease. | Design is responsive and readable | True
+As a returning user, I want to search through my own reports.                                                 | Design is responsive and readable | True
+As a returning user, I want to be able to add a report and it go into my collection.                          | Design is responsive and readable | True
+As a returning user, I want to be able to modify one of my reports.                                          | Design is responsive and readable | True
+As a returning user, I want to be able to delete one of my reports.                                          | Design is responsive and readable | True
+As a returning user, I want to be able to change my preferred name.                                          | Design is responsive and readable | True
+As a returning user, I want to be able to change my email.                                                   | Design is responsive and readable | True
+As a returning user, I want to be able to change my password.                                                | Design is responsive and readable | True
+As a returning user, I want to be able to delete my account.                                                  | Design is responsive and readable | True
+
+User as a charity or researcher (professional user)| Expected outcome | Actual outcome 
+--------- | --------------- | ---
+1. As a profession user, I want to be able to see some statistics about my search so I can compare them to other searches.
+
 ### General testing
 
 ### Responsive design
