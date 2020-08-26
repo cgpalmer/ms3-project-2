@@ -203,27 +203,25 @@ def login():
 # Authenticating the login password
 @app.route('/check-password', methods=['POST'])
 def check_password():
-    login_email = request.form['login_username']  
+    login_email = request.form['login_username']
     login_password = request.form['login_password']
-  
-    current_user = mongo.db.user_credentials.find_one({"user_email": login_email})
-    if current_user == None:
+    current_user = mongo.db.user_credentials.find_one(
+                                        {"user_email": login_email})
+    if current_user is None:
         flash("Sorry, this email hasn't been registered with us yet.")
         return redirect(url_for('login'))
     else:
         stored_password = get_user_password(current_user)
         stored_salt = get_user_password_salt(current_user)
         login_name = get_user_login_name(current_user)
-        hash_login_password = hash_a_password_to_check_it_is_correct(stored_salt, login_password)
-     
+        hash_login_password = hash_a_password_to_check_it_is_correct(
+                                            stored_salt, login_password)
         if stored_password == hash_login_password:
-       
             session["email"] = login_email
             username = session.get("email")
-            session["name"] = login_name              
+            session["name"] = login_name
             return redirect(url_for('dashboard'))
         else:
-          
             flash("Sorry, that password is incorrect.")
             return render_template('login.html')
 
