@@ -129,7 +129,7 @@ def calculate_percentage_of_search_reported_to_authorities(report, reportedRepor
 @app.route('/')
 @app.route('/homepage')
 def homepage():
-    report=mongo.db.report.find().count()
+    report= mongo.db.report.find().count()
     user = session.get("email")
     
     return render_template("home.html", report=report)
@@ -801,7 +801,7 @@ def insert_report():
     category = request.form['category_name']
     incident = request.form['incident_description']
     reported = request.form['report_to_authorities']
-    report.insert( { "email": currentUserEmail, "time": timestamp, "category_name": category, "incident_description": incident, "report_to_authorities": reported } )
+    report.insert_one( { "email": currentUserEmail, "time": timestamp, "category_name": category, "incident_description": incident, "report_to_authorities": reported } )
     return render_template('addLocationToNewReport.html', now=timestamp)
 
 @app.route('/add-Location-To-Report', methods=['GET','POST'])
