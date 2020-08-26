@@ -811,6 +811,7 @@ footer i {
     /* Nav */
     nav {
         height: 10.4vh;
+        position: relative;
     }
     nav .brand-logo {
         position: unset;
@@ -835,7 +836,11 @@ footer i {
     nav .nav-links {
         padding: 0 4rem;
     }
-
+    
+    .page-container{
+        margin-top: 0;
+    }
+    
     /* Footer */
     footer {
         height: 22vh;
