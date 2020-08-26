@@ -6,10 +6,10 @@
     <form method="POST" action="{{ url_for('edit_report', report_id=report._id) }}">
         <div class="input-field hidden">
             <label for="email"></label>
-            <input type="text" class="" id="email" name="email" value="{{currentUserEmail}}" placeholder="Email" />
+            <input type="text"  id="email" name="email" value="{{currentUserEmail}}" placeholder="Email" />
         </div>
         <div class="input-field input-field-smaller-margin">
-            <select class="" id="category" name="category_name">
+            <select  id="category" name="category_name">
                 <option selected value="{{report.category_name}}">{{report.category_name}}</option>
                 {% for category in categories %}
                 <option id="{{category.category_name}}" value="{{category.category_name}}">{{category.category_name}}</option>
@@ -20,18 +20,18 @@
             <textarea class="materialize-textarea" id="incident_description" name="incident_description" placeholder="Incident description">{{report.incident_description}}</textarea>
         </div>
         <div class="input-field input-field-smaller-margin">
-            <input type="text" value="{{report.building}}" class="" id="building" name="building" placeholder="Building" />
+            <input type="text" value="{{report.building}}"  id="building" name="building" placeholder="Building" />
 
-            <input type="text" value="{{report.street}}" class="" id="street" name="street" placeholder="Street" />
-            <input type="text" value="{{report.city}}" class="" id="city" name="city" placeholder="City" />
-            <input type="text" value="{{report.county}}" class="" id="county" name="county" placeholder="County" />
-            <input type="text" value="{{report.postcode}}" class="" id="postcode" name="postcode" placeholder="Postcode" />
+            <input type="text" value="{{report.street}}"  id="street" name="street" placeholder="Street" />
+            <input type="text" value="{{report.city}}"  id="city" name="city" placeholder="City" />
+            <input type="text" value="{{report.county}}"  id="county" name="county" placeholder="County" />
+            <input type="text" value="{{report.postcode}}"  id="postcode" name="postcode" placeholder="Postcode" />
         </div>
         <div class="input-field">
             <input type="text" name="date" id="date" value="{{report.date}}" class="datepicker" placeholder="Date" />
         </div>
         <div>
-            <select class="" id="update_report_to_authorities" name="report_to_authorities" required>
+            <select  id="update_report_to_authorities" name="report_to_authorities" required>
                 <option disabled selected value="">Reported to authorities?</option>
 
                 <option value="Yes">Yes</option>

@@ -15,12 +15,12 @@
     <!-- A hidden input to identify the user -->
         <div class="hidden">
             <label for="email"></label>
-            <input type="text" class="" id="email" name="email" value="{{currentUserEmail}}" placeholder="Email" />
+            <input type="text"  id="email" name="email" value="{{currentUserEmail}}" placeholder="Email" />
         </div>
 
         <!-- User inputs -->
-        <div class="">
-            <select class="" id="category" name="category_name">
+        <div >
+            <select  id="category" name="category_name">
                 <option disabled selected value="">Choose category*</option>
                 {% for category in categories|sort(attribute='category_name') %}
                 <option id="{{category.category_name}}" value="{{category.category_name}}">{{category.category_name}}</option>
@@ -28,12 +28,12 @@
             </select>
         </div>
 
-        <div class="">
+        <div >
             <textarea class="materialize-textarea" id="incident_description" name="incident_description" placeholder="Incident description*" required></textarea>
         </div>
 
         <div class="final-input">
-            <select class="" id="add_report_to_authorities" name="report_to_authorities">
+            <select  id="add_report_to_authorities" name="report_to_authorities">
                 <option disabled selected value="">Reported to authorities?*</option>
 
                 <option value="Yes">Yes - I have reported this to the authorities</option>

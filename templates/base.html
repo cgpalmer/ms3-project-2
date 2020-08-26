@@ -20,31 +20,31 @@
                         <a href="{{url_for('homepage')}}" class="brand-logo">Report It</a>
                         <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                         <ul class="nav-links hide-on-med-and-down">
-                            <li class="">
-                                <a class="" href="{{url_for('homepage')}}">Home</a>
+                            <li >
+                                <a  href="{{url_for('homepage')}}">Home</a>
                             </li>
                             {% if session.get("email") != None %}
-                            <li class="">
-                                <a class="" href="{{url_for('dashboard')}}">Dashboard</a>
+                            <li >
+                                <a  href="{{url_for('dashboard')}}">Dashboard</a>
                             </li>
                             {% endif %}
-                            <li class="">
-                                <a class="" href="{{url_for('add_report')}}">Add a report</a>
+                            <li >
+                                <a  href="{{url_for('add_report')}}">Add a report</a>
                             </li>
-                            <li class="">
-                                <a class="" href="{{url_for('search_report')}}">Search reports</a>
+                            <li >
+                                <a  href="{{url_for('search_report')}}">Search reports</a>
                             </li>
                             {% if session.get("email") == None %}
                             <li>
-                                <a class="" href="{{url_for('login')}}">Login</a>
+                                <a  href="{{url_for('login')}}">Login</a>
                             </li>
 
-                            <li id="signupLinkNav" class="">
-                                <a class="" href="{{url_for('signup')}}">Signup</a>
+                            <li id="signupLinkNav" >
+                                <a  href="{{url_for('signup')}}">Signup</a>
                             </li>
                             {% endif %} {% if session.get("email") != None %}
-                            <li class="">
-                                <a class="" href="{{url_for('logout')}}">Logout</a>
+                            <li >
+                                <a  href="{{url_for('logout')}}">Logout</a>
                             </li>
 
                             {% endif %}
@@ -56,30 +56,30 @@
                 <!-- Side-nav bar for mobile to ipad screens -->
                 <ul class="sidenav" id="mobile-demo">
                     <li class="first-nav-link">
-                        <a class="" href="{{url_for('homepage')}}">Home</a>
+                        <a  href="{{url_for('homepage')}}">Home</a>
                     </li>
                     {% if session.get("email") != None %}
-                    <li class="">
-                        <a class="" href="{{url_for('dashboard')}}">Dashboard</a>
+                    <li >
+                        <a  href="{{url_for('dashboard')}}">Dashboard</a>
                     </li>
                     {% endif %}
-                    <li class="">
-                        <a class="" href="{{url_for('add_report')}}">Add a report</a>
+                    <li >
+                        <a  href="{{url_for('add_report')}}">Add a report</a>
                     </li>
-                    <li class="">
-                        <a class="" href="{{url_for('search_report')}}">Search reports</a>
+                    <li >
+                        <a  href="{{url_for('search_report')}}">Search reports</a>
                     </li>
                     {% if session.get("email") == None %}
-                    <li class="">
-                        <a class="" href="{{url_for('login')}}">Login</a>
+                    <li >
+                        <a  href="{{url_for('login')}}">Login</a>
                     </li>
 
-                    <li id="signupLink" class="">
-                        <a class="" href="{{url_for('signup')}}">Signup</a>
+                    <li id="signupLink" >
+                        <a  href="{{url_for('signup')}}">Signup</a>
                     </li>
                     {% endif %} {% if session.get("email") != None %}
-                    <li class="">
-                        <a class="" href="{{url_for('logout')}}">Logout</a>
+                    <li >
+                        <a  href="{{url_for('logout')}}">Logout</a>
                     </li>
 
                     {% endif %}
