@@ -297,6 +297,9 @@ ___
 
 ### Responsive design
 
+As in the wireframes section, the website is responsive across mobile, iPad, iPad Pro and Laptops - both MDi and HDMi.
+[Here is the list for the responsive images.](static/files/wireframes/responsive-design.jpg)
+
 ### Cross browser test
 
 I have test my site on Microsoft Edge, Firefox and Chrome web browsers.
@@ -311,6 +314,7 @@ I have attached a pdf of the results of the tests. They are only for Firefox and
 covered by my other testing.
 
 [Firefox cross browser testing.](static/files/testing/crossBrowserTesting/crossBrowserFirefoxTest.pdf) 
+
 [Edge cross browser testing.](static/files/testing/crossBrowserTesting/crossBrowserEdgeTest.pdf) 
 
 
