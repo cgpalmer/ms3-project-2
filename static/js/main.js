@@ -121,7 +121,6 @@ $("#extraLocationChoice").change(function() {
 
 $("#userDashSearchBuilding").change(function() {
     var extraLocationChoice = $("#extraLocationChoice").val();
-    var val1 = $(this).val();
     var cityLocation = $("#userDashSearchCity").val();
     var countyLocation = $("#userDashSearchCounty").val();
     var postcodeLocation = $("#userDashSearchPostcode").val();
@@ -302,7 +301,7 @@ $("#seePassword").click(function() {
     function passwordReveal() {
         seePassword.type = "password";
     }
-    clearTimeout();
+    clearTimeout(passwordTimeout);
 });
 
 // //   Matching passwords
