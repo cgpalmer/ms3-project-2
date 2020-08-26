@@ -379,8 +379,8 @@ def logout():
 
 ##############################################
 
+
 # Reading reports
-# current working
 @app.route('/search-reports', methods=['GET', 'POST'])
 def search_reports():
     typeOfSearch = request.form['userSearchOwnReports']
@@ -396,22 +396,33 @@ def search_reports():
         page1 = mongo.db.report.find({"email": user_email}).limit(page_size)
         pages.append(page1)
         for x in range(numOfPagesRounded):
-            page = mongo.db.report.find({"email": user_email}).skip(int(x+1)*10).limit(page_size)
+            page = mongo.db.report.find({"email": user_email}).skip(
+                                        int(x+1)*10).limit(page_size)
             pages.append(page)
-        return render_template('searchResult.html', searchingUserDb=searchingUserDb, number_of_reports=number_of_reports, collapsibles=numOfPagesRounded, pages=pages)
+        return render_template('searchResult.html',
+                               searchingUserDb=searchingUserDb,
+                               number_of_reports=number_of_reports,
+                               collapsibles=numOfPagesRounded,
+                               pages=pages)
     elif typeOfSearch == "location":
         locationType = request.form['locationType']
         if locationType == 'building':
             building_name = request.form['building']
             extraLocation = request.form['extraLocationSearchWithBuilding']
             if extraLocation == "all":
-                report = mongo.db.report.find( { "$and": [ {"email": user_email}, { "building":building_name } ] } )
+                report = mongo.db.report.find({"$and": [
+                                                {"email": user_email},
+                                                {"building": building_name}
+                                                ]})
                 number_of_reports = report.count()
                 searchingUserDb = "yes"
                 page_size = 10
                 numOfPagesRounded = get_number_of_pages_from_search(report)
                 pages = []
-                page1 = mongo.db.report.find( { "$and": [ {"email": user_email}, { "building":building_name } ] } ).limit(page_size)
+                page1 = mongo.db.report.find({"$and": [
+                                             {"email": user_email},
+                                             {"building": building_name}]}
+                                             ).limit(page_size)
                 pages.append(page1)
                 for x in range(numOfPagesRounded):
                     page = mongo.db.report.find( { "$and": [ {"email": user_email}, { "building":building_name } ] } ).skip(int(x+1)*10).limit(page_size)
@@ -825,7 +836,7 @@ def delete_report(report_id):
     report.delete_one({'_id': ObjectId(report_id)})
     return redirect(url_for('dashboard'))
 
-
+ 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
     port=int(os.environ.get('PORT')),
