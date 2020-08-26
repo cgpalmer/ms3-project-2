@@ -314,6 +314,10 @@ There are no issues with my css.
 #### HTML
 My HTML has been checked on this website: https://validator.w3.org/
 
+#### Javascript
+My javascript has been checked at https://jshint.com/
+There are no issues with my JS. 
+
 ### Interesting bugs
 
 1. [Dividing by 0](static/files/testing/interesting-bugs-documentation/bug-for-dividing-by-0.pdf) 
