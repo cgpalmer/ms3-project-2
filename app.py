@@ -132,9 +132,7 @@ def calculate_percentage_of_search_reported_to_authorities(
 @app.route('/')
 @app.route('/homepage')
 def homepage():
-    report= mongo.db.report.find().count()
-    user = session.get("email")
-    
+    report = mongo.db.report.find().count()
     return render_template("home.html", report=report)
 
 
