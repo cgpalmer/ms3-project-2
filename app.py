@@ -46,8 +46,7 @@ def is_new_password_valid(new_password):
     return flag
 
 
-
-
+# Finding the user password
 def get_user_password(current_user):
     for k, v in current_user.items():
         if k == 'user_password':
@@ -55,6 +54,7 @@ def get_user_password(current_user):
     return user_password
 
 
+# Finding the user salt
 def get_user_password_salt(current_user):
     for k, v in current_user.items():
         if k == 'salt':
@@ -62,12 +62,13 @@ def get_user_password_salt(current_user):
     return stored_salt
 
 
+# Finding the user login name
 def get_user_login_name(current_user):
     for k, v in current_user.items():
         login_name = v
     return login_name
 
-
+# Checking if a password is correct
 def hash_a_password_to_check_it_is_correct(stored_salt, login_password):
     hash_login_password = hashlib.pbkdf2_hmac(
                     'sha256',
@@ -79,6 +80,7 @@ def hash_a_password_to_check_it_is_correct(stored_salt, login_password):
     return hash_login_password
 
 
+# Storing a new password
 def hashing_a_new_password(new_password, salt):
     hash_new_password = hashlib.pbkdf2_hmac(
             'sha256',
@@ -90,6 +92,7 @@ def hashing_a_new_password(new_password, salt):
     return hash_new_password
 
 
+# Finding the number of pages from a report
 def get_number_of_pages_from_search(report):
     number_of_reports = report.count()
     page_size = 10
@@ -98,6 +101,7 @@ def get_number_of_pages_from_search(report):
     return numOfPagesRounded
 
 
+# Working out the percentage of reports return from a search
 def calculate_percentage_of_report_in_db(report, totalReportsCount):
     number_of_reports = report.count()
     if number_of_reports == 0:
@@ -108,6 +112,7 @@ def calculate_percentage_of_report_in_db(report, totalReportsCount):
     return percentageOfDb
 
 
+# Percentage of the reports that have been reported
 def calculate_percentage_of_search_reported_to_authorities(
                                 report, reportedReportsCount):
     number_of_reports = report.count()
