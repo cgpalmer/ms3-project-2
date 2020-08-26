@@ -16,15 +16,14 @@ app.secret_key = 'thefluffiestofwoofers'
 app.config["MONGO_URI"] = os.environ.get('MONGO_URI')
 app.config["MONGO_DBNAME"] = "projectDB"
 
-
-
-# Look into why test can't be 0? 
-comparison_number = None
-
 mongo = PyMongo(app)
 
+
+# This section has all the repeated funtions.
+
+
+# Checking if the password is valid with regards to requirements.
 def is_new_password_valid(new_password):
-    
     while True:   
         if (len(new_password)<8): 
             flag = -1
