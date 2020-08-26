@@ -285,7 +285,7 @@ def changeDetails():
             # Validating the new password
             new_password = request.form['updatePassword']
             flag = is_new_password_valid(new_password)
-            if flag ==-1:
+            if flag == -1:
                 flash('Please use a valid password')
                 return redirect(url_for('user-Setting'))
             # Hashing the new password ready for the database
@@ -306,26 +306,24 @@ def changeDetails():
                                                       "salt": salt}})
                 flash("Password updated")
                 return redirect(url_for('user-Setting'))
-            else: 
+            else:
                 flash("Incorrect password")
                 return redirect(url_for('user-Setting'))
-
-
-
-
         if changeType == 'email':
-            
-           
             updated_email = request.form['updateEmail']
-            regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
-            if(re.search(regex,updated_email)):  
-              
-                
-                check_username_availibility = mongo.db.user_credentials.find_one({"user_email": updated_email})
-               
-                if check_username_availibility == None: 
-                    mongo.db.user_credentials.update_one({"user_email": currentEmail},{"$set": {"user_email": updated_email}})
-                    mongo.db.report.update_many({"email": currentEmail},{"$set": {"email": updated_email}})
+            regex = '^[a-z0-9]+[\\._]?[a-z0-9]+[@]\\w+[.]\\w{2,3}$'
+            if(re.search(regex, updated_email)):
+                check_username_availibility = mongo.db.user_credentials.find_one(
+                            {"user_email": updated_email})
+                if check_username_availibility is None:
+                    mongo.db.user_credentials.update_one({"user_email":
+                                                          currentEmail},
+                                                         {"$set":
+                                                         {"user_email":
+                                                          updated_email}})
+                    mongo.db.report.update_many({"email": currentEmail},
+                                                {"$set": {"email":
+                                                          updated_email}})
                     flash("Email updated.")
                     session.pop("email", None)
                     session["email"] = updated_email
@@ -333,17 +331,18 @@ def changeDetails():
                 else:
                     flash("Sorry, that email is taken.")
                     return redirect(url_for('user-Setting'))
-            else: 
+            else:
                 flash("Please use a valid email.")
                 return redirect(url_for('user-Setting'))
         if changeType == 'name':
             updated_name = request.form['updateName']
-            mongo.db.user_credentials.update_one({"user_email": currentEmail},{"$set": {"name": updated_name}})
-            flash("Name updated.") 
-            session.pop("name", None)  
-            session["name"] = updated_name    
+            mongo.db.user_credentials.update_one({"user_email": currentEmail},
+                                                 {"$set":
+                                                 {"name": updated_name}})
+            flash("Name updated.")
+            session.pop("name", None)
+            session["name"] = updated_name
             return redirect(url_for('user-Setting'))
-    
 
 
 @app.route('/delete-user', methods=['POST'])
@@ -788,7 +787,7 @@ def insert_report():
     currentUserEmail = session.get("email")
     if currentUserEmail == None:
         currentUserEmail = "anonymous"
-    else: 
+    else:
         currentUserEmail = session.get('email')
     report = mongo.db.report
     now = datetime.now()
@@ -807,7 +806,7 @@ def addLocationToReport():
     currentUserEmail = session.get("email")
     if currentUserEmail == None:
         currentUserEmail = "anonymous"
-    else: 
+    else:
         currentUserEmail = session.get('email')
   
     reportTimeStamp = request.form['reportTimeStamp']
@@ -825,7 +824,7 @@ def addDateToReport():
     currentUserEmail = session.get("email")
     if currentUserEmail == None:
         currentUserEmail = "anonymous"
-    else: 
+    else:
         currentUserEmail = session.get('email')
     reportTimeStamp = (request.form['reportTimeStamp'])
     
@@ -848,7 +847,7 @@ def addDateToReport():
       
             flash("Please select a date that is not in the future")
             return render_template('addDateToReport.html', reportTimeStamp=reportTimeStamp, currentUserEmail=currentUserEmail)
-        else: 
+        else:
             mongo.db.report.update_one({ "$and": [ {"email": currentUserEmail}, {"time": float(reportTimeStamp)}]}, {"$set": {"date": strDate, "timestamp": timestampDate }})
             if session.get("email") is None:
                 flash("Your report has been submitted - thank you.")
