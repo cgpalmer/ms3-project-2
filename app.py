@@ -148,35 +148,32 @@ def signup():
     return render_template("signup.html",
                            list_existing_emails=list_existing_emails)
 
-#signup
+
+# Creating a new user
 @app.route('/creating-user', methods=['POST'])
 def creating_user():
     salt = os.urandom(32)
-    new_username= request.form['new_username']
-  
+    new_username = request.form['new_username']
     new_password = request.form['new_password']
-    regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
-    if(re.search(regex,new_username)):  
-      
-        
-        check_username_availibility = mongo.db.user_credentials.find_one({"user_email": new_username})
-       
-        if check_username_availibility == None:
-            flag = is_new_password_valid(new_password) 
-                 
-            if flag ==-1: 
-                
+    regex = '^[a-z0-9]+[\\._]?[a-z0-9]+[@]\\w+[.]\\w{2,3}$'
+    if(re.search(regex, new_username)):
+        check_username_availibility = mongo.db.user_credentials.find_one(
+                                      {"user_email": new_username})
+        if check_username_availibility is None:
+            flag = is_new_password_valid(new_password)
+            if flag == -1:
                 flash('Please use a valid password')
                 return redirect(url_for('signup'))
-            
             hash_new_password = hashing_a_new_password(new_password, salt)
-            
-            mongo.db.user_credentials.insert_one({"user_email": new_username, "user_password": hash_new_password, "salt": salt})
+            mongo.db.user_credentials.insert_one({"user_email": new_username,
+                                                  "user_password":
+                                                  hash_new_password,
+                                                  "salt": salt})
             session["email"] = new_username
             return render_template("preferredName.html")
         else:
             return redirect(url_for('signup'))
-    else:  
+    else:
         flash('Please use a valid email format. For example - email@test.com')
         return redirect(url_for('signup'))
 
