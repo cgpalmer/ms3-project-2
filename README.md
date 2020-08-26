@@ -320,7 +320,7 @@ As a returning user, I want to be able to delete my account.                    
 
 User as a charity or researcher (professional user)| Expected outcome | Actual outcome 
 --------- | --------------- | ---
-1. As a profession user, I want to be able to see some statistics about my search so I can compare them to other searches.
+1. As a profession user, I want to be able to see some statistics about my search so I can compare them to other searches. | Design is responsive and readable | True
 
 ### General testing
 
@@ -525,6 +525,7 @@ out of the experience.
 + There could be a dashboard button like the settings button on the pages as a shortcut.
 + I need to use an ajax to live check the email addresses when signing up as the regex will become slow and cumbersome 
   as the users grow.
++ The code for counting the reports has recently become depreciated - in the future I would like to upgrade the code to the new version.
 
 
 
