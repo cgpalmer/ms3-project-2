@@ -27,7 +27,7 @@ mongo = PyMongo(app)
 
 # Checking if the password is valid with regards to requirements.
 def is_new_password_valid(new_password):
-    while True:   
+    while True:
         if (len(new_password) < 8):
             flag = -1
             break
@@ -70,6 +70,7 @@ def get_user_login_name(current_user):
     for k, v in current_user.items():
         login_name = v
     return login_name
+
 
 # Checking if a password is correct
 def hash_a_password_to_check_it_is_correct(stored_salt, login_password):
@@ -186,18 +187,20 @@ def insert_name():
     currentUserEmail = session.get("email")
     preferred_name = request.form['preferredNameInput'].lower()
     session["name"] = preferred_name
-    mongo.db.user_credentials.update_one({"user_email": currentUserEmail},{"$set": {"name": preferred_name}})
+    mongo.db.user_credentials.update_one({"user_email": currentUserEmail},
+                                         {"$set": {"name": preferred_name}})
     return redirect(url_for('dashboard'))
 
 ######################################################################
 
-#login page
+
+# Login page
 @app.route('/login')
 def login():
     return render_template("login.html")
 
 
-    
+# Authenticating the login password
 @app.route('/check-password', methods=['POST'])
 def check_password():
     login_email = request.form['login_username']  
