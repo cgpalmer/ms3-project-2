@@ -1,13 +1,14 @@
 # import pymongo
-import os, math
+import os
+import math
 import hashlib
-from flask import Flask, render_template, url_for, request, redirect, session, flash, jsonify
+from flask import Flask, render_template, url_for, request, redirect, \
+     session, flash
 from os import path
 from datetime import datetime
-from flask_pymongo import PyMongo, pymongo
+from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 import re
-from validate_email import validate_email
 
 app = Flask(__name__)
 app.secret_key = 'thefluffiestofwoofers'
