@@ -228,26 +228,27 @@ def check_password():
 
 ############################################################
 # Dashboard
-
-
-#dashboard
+# Dashboard page
 @app.route('/dashboard')
 def dashboard():
     if session.get("email") is None:
         flash('Please login to see all of our amazing features')
         return redirect(url_for('login'))
-    else: 
+    else:
         user = session.get("email")
-      
         userName = session.get("name")
-        total=mongo.db.report.find({"email": user}).count()
-        category = mongo.db.report.find({"email": user}).distinct("category_name")
+        total = mongo.db.report.find({"email": user}).count()
+        category = mongo.db.report.find({"email": user}).distinct(
+                                                    "category_name")
         building = mongo.db.report.find({"email": user}).distinct("building")
         city = mongo.db.report.find({"email": user}).distinct("city")
         county = mongo.db.report.find({"email": user}).distinct("county")
-        postcode = mongo.db.report.find({"email": user}).distinct("postcode")        
-        return render_template('userDash.html', name=userName, categories=mongo.db.categories.find(),
-                               currentUserEmail=user, postcode=postcode, city=city, county=county, building=building, category=category, total=total)
+        postcode = mongo.db.report.find({"email": user}).distinct("postcode")
+        return render_template('userDash.html', name=userName,
+                               categories=mongo.db.categories.find(),
+                               currentUserEmail=user, postcode=postcode,
+                               city=city, county=county, building=building,
+                               category=category, total=total)
 
 
 #####################################################
