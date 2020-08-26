@@ -25,26 +25,24 @@ mongo = PyMongo(app)
 # Checking if the password is valid with regards to requirements.
 def is_new_password_valid(new_password):
     while True:   
-        if (len(new_password)<8): 
+        if (len(new_password) < 8):
             flag = -1
             break
-        elif not re.search("[a-z]", new_password): 
+        elif not re.search("[a-z]", new_password):
             flag = -1
             break
-        elif not re.search("[A-Z]", new_password): 
+        elif not re.search("[A-Z]", new_password):
             flag = -1
             break
-        elif not re.search("[0-9]", new_password): 
+        elif not re.search("[0-9]", new_password):
             flag = -1
             break
-        elif re.search("\s", new_password): 
+        elif re.search("\\s", new_password):
             flag = -1
             break
         else:
             flag = 0
-       
             break
-    
     return flag
 
 def get_user_password(current_user):
