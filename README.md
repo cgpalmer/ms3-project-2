@@ -312,7 +312,7 @@ My css only has warnings about webkits being 'unknown vendor extensions'.
 There are no issues with my css. 
 
 #### HTML
-
+My HTML has been checked on this website: https://validator.w3.org/
 
 ### Interesting bugs
 
