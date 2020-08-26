@@ -300,7 +300,9 @@ ___
 ### Cross browser test
 
 ### Code validation
-
+To check my python code validation, I have used a combination of 'cornflakes-linter 0.4.0' and http://pep8online.com/checkresult
+I have configured the cornflakes to accept a line length of 120 characters.
+Therefore, the only code issue that comes up on http://pep8online.com/checkresult is that the lines are too long as it is set to 79 characters.
 ### Interesting bugs
 
 1. [Dividing by 0](static/files/testing/interesting-bugs-documentation/bug-for-dividing-by-0.pdf) 
