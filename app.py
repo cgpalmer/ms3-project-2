@@ -413,7 +413,7 @@ def search_reports():
                 report = mongo.db.report.find({"$and": [
                                                 {"email": user_email},
                                                 {"building": building_name}
-                                                ]})
+                                               ]})
                 number_of_reports = report.count()
                 searchingUserDb = "yes"
                 page_size = 10
@@ -425,63 +425,63 @@ def search_reports():
                                              ).limit(page_size)
                 pages.append(page1)
                 for x in range(numOfPagesRounded):
-                    page = mongo.db.report.find( { "$and": [ {"email": user_email}, { "building":building_name } ] } ).skip(int(x+1)*10).limit(page_size)
+                    page = mongo.db.report.find({"$and": [{"email": user_email}, {"building": building_name}]} ).skip(int(x+1)*10).limit(page_size)
                     pages.append(page)
                 return render_template('searchResult.html', number_of_reports=number_of_reports, searchingUserDb=searchingUserDb, report=report, collapsibles=numOfPagesRounded, pages=pages)
             else:
                 extraLocationValue = request.form[extraLocation]        
-                report = mongo.db.report.find( { "$and": [ {"email": user_email}, { "building":building_name }, { extraLocation : extraLocationValue} ] } )
+                report = mongo.db.report.find({"$and": [{"email": user_email}, {"building": building_name}, {extraLocation: extraLocationValue}]})
                 number_of_reports = report.count()
                 searchingUserDb = "yes"
                 page_size = 10
                 numOfPagesRounded = get_number_of_pages_from_search(report)
                 pages = []
-                page1 = mongo.db.report.find( { "$and": [ {"email": user_email}, { "building":building_name }, { extraLocation : extraLocationValue} ] } ).limit(page_size)
+                page1 = mongo.db.report.find({"$and": [{"email": user_email}, {"building": building_name}, {extraLocation: extraLocationValue}]}).limit(page_size)
                 pages.append(page1)
                 for x in range(numOfPagesRounded):
-                    page = mongo.db.report.find( { "$and": [ {"email": user_email}, { "building":building_name }, { extraLocation : extraLocationValue} ] } ).skip(int(x+1)*10).limit(page_size)
+                    page = mongo.db.report.find({"$and": [{"email": user_email}, {"building": building_name}, {extraLocation: extraLocationValue}]}).skip(int(x+1)*10).limit(page_size)
                     pages.append(page)
                 return render_template('searchResult.html', number_of_reports=number_of_reports, searchingUserDb=searchingUserDb, report=report, collapsibles=numOfPagesRounded, pages=pages)
         else:
             value = request.form[locationType]
-            report = mongo.db.report.find( { "$and": [ {"email": user_email}, { locationType : value } ] } )
+            report = mongo.db.report.find({"$and": [{"email": user_email}, {locationType: value}]})
             number_of_reports = report.count()
             searchingUserDb = "yes"
             page_size = 10
             numOfPagesRounded = get_number_of_pages_from_search(report)
             pages = []
-            page1 = mongo.db.report.find( { "$and": [ {"email": user_email}, { locationType : value } ] } ).limit(page_size)
+            page1 = mongo.db.report.find({"$and": [{"email": user_email}, {locationType: value}]}).limit(page_size)
             pages.append(page1)
             for x in range(numOfPagesRounded):
-                page = mongo.db.report.find( { "$and": [ {"email": user_email}, { locationType : value } ] } ).skip(int(x+1)*10).limit(page_size)
+                page = mongo.db.report.find({"$and": [{"email": user_email}, {locationType: value}]}).skip(int(x+1)*10).limit(page_size)
                 pages.append(page)
             return render_template('searchResult.html', searchingUserDb=searchingUserDb, number_of_reports = number_of_reports, report=report, collapsibles=numOfPagesRounded, pages=pages)
     elif typeOfSearch == "date":
         startDatestr = request.form['startDate']
         endDatestr = request.form['endDate']
-        report = mongo.db.report.find( { "$and": [ {"email": user_email}, {"timestamp":{ "$gte": startDateTimeStamp,"$lt":endDateTimeStamp }}  ] } )
+        report = mongo.db.report.find({"$and": [{"email": user_email}, {"timestamp":{"$gte": startDateTimeStamp,"$lt":endDateTimeStamp}} ]})
         number_of_reports = report.count()
         searchingUserDb = "yes"
         page_size = 10
         pages = []
-        page1 = mongo.db.report.find( { "$and": [ {"email": user_email}, {"timestamp":{ "$gte": startDateTimeStamp,"$lt":endDateTimeStamp }}  ] } ).limit(page_size)
+        page1 = mongo.db.report.find({"$and": [{"email": user_email}, {"timestamp":{"$gte": startDateTimeStamp,"$lt":endDateTimeStamp}} ]}).limit(page_size)
         pages.append(page1)
         for x in range(numOfPagesRounded):
-            page = mongo.db.report.find( { "$and": [ {"email": user_email}, {"timestamp":{ "$gte": startDateTimeStamp,"$lt":endDateTimeStamp }}  ] } ).skip(int(x+1)*10).limit(page_size)
+            page = mongo.db.report.find({"$and": [{"email": user_email}, {"timestamp":{"$gte": startDateTimeStamp,"$lt":endDateTimeStamp}} ]}).skip(int(x+1)*10).limit(page_size)
             pages.append(page)
         return render_template('searchResult.html', searchingUserDb=searchingUserDb, number_of_reports=number_of_reports, report=report, collapsibles=numOfPagesRounded, pages=pages)
     else:
         category = request.form['category']
-        report = mongo.db.report.find( { "$and": [ {"email": user_email}, { "category_name":category } ] } ) 
+        report = mongo.db.report.find({"$and": [{"email": user_email}, {"category_name":category}]}) 
         number_of_reports = report.count()
         searchingUserDb = "yes"
         page_size = 10
         numOfPagesRounded = get_number_of_pages_from_search(report)      
         pages = []
-        page1 = mongo.db.report.find( { "$and": [ {"email": user_email}, { "category_name":category } ] } ).limit(page_size)
+        page1 = mongo.db.report.find({"$and": [{"email": user_email}, {"category_name":category}]}).limit(page_size)
         pages.append(page1)
         for x in range(numOfPagesRounded):
-            page = mongo.db.report.find( { "$and": [ {"email": user_email}, { "category_name":category } ] } ).skip(int(x+1)*10).limit(page_size)
+            page = mongo.db.report.find({"$and": [{"email": user_email}, {"category_name":category}]}).skip(int(x+1)*10).limit(page_size)
             pages.append(page)
         return render_template('searchResult.html', searchingUserDb=searchingUserDb, number_of_reports=number_of_reports, report=report, collapsibles=numOfPagesRounded, pages=pages)
 
@@ -521,8 +521,8 @@ def search_db_reports():
                 # Search buildings in all locations with no time frame
                 useTimeFrame = request.form['useTimeFrame']
                 if useTimeFrame == "No":
-                    report = mongo.db.report.find( {"building":building_name } )
-                    reportedReportsCount = mongo.db.report.find( {"$and":[{"building":building_name }, {"report_to_authorities": "Yes"}] }).count()
+                    report = mongo.db.report.find({"building": building_name})
+                    reportedReportsCount = mongo.db.report.find({"$and": [{"building": building_name}, {"report_to_authorities": "Yes"}]}).count()
                 else:
                     # Search buildings in all locations with time frame
                     startDatestr = request.form['startDateLocation']
@@ -535,8 +535,8 @@ def search_db_reports():
                         endDateTimeConversion = datetime.strptime(endDatestr, "%Y-%m-%d")
                         startDateTimeStamp = datetime.timestamp(startDateConversion)
                         endDateTimeStamp = datetime.timestamp(endDateTimeConversion)
-                        report = mongo.db.report.find({"$and": [{"building":building_name }, {"timestamp":{ "$gte": startDateTimeStamp,"$lt":endDateTimeStamp }}]})                
-                        reportedReportsCount = mongo.db.report.find( {"$and":[{"building":building_name }, {"timestamp":{ "$gte": startDateTimeStamp,"$lt":endDateTimeStamp }}, {"report_to_authorities": "Yes"}] }).count()
+                        report = mongo.db.report.find({"$and": [{"building": building_name}, {"timestamp":{"$gte": startDateTimeStamp,"$lt":endDateTimeStamp}}]})                
+                        reportedReportsCount = mongo.db.report.find({"$and": [{"building": building_name}, {"timestamp":{"$gte": startDateTimeStamp,"$lt":endDateTimeStamp}}, {"report_to_authorities": "Yes"}]}).count()
                 # Statistics for results page
                 page_size = 10
                 number_of_reports = report.count()
@@ -545,18 +545,18 @@ def search_db_reports():
                 # Pagination
                 numOfPagesRounded = get_number_of_pages_from_search(report)
                 pages = []
-                page1 = mongo.db.report.find( {"building":building_name } ).limit(page_size)
+                page1 = mongo.db.report.find({"building": building_name}).limit(page_size)
                 pages.append(page1)
                 for x in range(numOfPagesRounded):
-                    page = mongo.db.report.find( {"building":building_name } ).skip(int(x+1)*10).limit(page_size)
+                    page = mongo.db.report.find({"building": building_name}).skip(int(x+1)*10).limit(page_size)
                     pages.append(page)
                 return render_template('searchResult.html', percentageOfDb=percentageOfDb, number_of_reports=number_of_reports, reportedReports=reportedReports, report=report, collapsibles=numOfPagesRounded, pages=pages)
             else:
                 extraLocationValue = request.form[extraLocation]   
                 useTimeFrame = request.form['useTimeFrame']
                 if useTimeFrame == "No":
-                    report = mongo.db.report.find( { "$and": [ {"building":building_name }, { extraLocation : extraLocationValue} ] } )
-                    reportedReportsCount = mongo.db.report.find( {"$and":[{"building":building_name }, { extraLocation : extraLocationValue}, {"report_to_authorities": "Yes"}] }).count()
+                    report = mongo.db.report.find({"$and": [{"building": building_name}, {extraLocation: extraLocationValue}]})
+                    reportedReportsCount = mongo.db.report.find({"$and": [{"building": building_name}, {extraLocation: extraLocationValue}, {"report_to_authorities": "Yes"}]}).count()
                 else:
                     startDatestr = request.form['StartDateLocation']
                     endDatestr = request.form['allEndDateLocation']
@@ -568,8 +568,8 @@ def search_db_reports():
                         endDateTimeConversion = datetime.strptime(endDatestr, "%Y-%m-%d")
                         startDateTimeStamp = datetime.timestamp(startDateConversion)
                         endDateTimeStamp = datetime.timestamp(endDateTimeConversion)
-                        report = mongo.db.report.find( { "$and": [ {"building":building_name }, { extraLocation : extraLocationValue},{"timestamp":{ "$gte": startDateTimeStamp,"$lt":endDateTimeStamp }} ] } )
-                        reportedReportsCount = mongo.db.report.find( {"$and":[{"building":building_name }, { extraLocation : extraLocationValue}, {"timestamp":{ "$gte": startDateTimeStamp,"$lt":endDateTimeStamp }}, {"report_to_authorities": "Yes"}] }).count()
+                        report = mongo.db.report.find({"$and": [{"building": building_name}, {extraLocation: extraLocationValue},{"timestamp":{"$gte": startDateTimeStamp,"$lt":endDateTimeStamp}}]})
+                        reportedReportsCount = mongo.db.report.find({"$and": [{"building": building_name}, {extraLocation: extraLocationValue}, {"timestamp":{"$gte": startDateTimeStamp,"$lt":endDateTimeStamp}}, {"report_to_authorities": "Yes"}]}).count()
                 # Statistics for search page
                 number_of_reports = report.count()
                 percentageOfDb = calculate_percentage_of_report_in_db(report, totalReportsCount) 
@@ -578,10 +578,10 @@ def search_db_reports():
                 numOfPagesRounded = get_number_of_pages_from_search(report)        
                 page_size = 10
                 pages = []
-                page1 = mongo.db.report.find( { "$and": [ {"building":building_name }, { extraLocation : extraLocationValue} ] } ).limit(page_size)
+                page1 = mongo.db.report.find({"$and": [{"building": building_name}, {extraLocation: extraLocationValue}]}).limit(page_size)
                 pages.append(page1)
                 for x in range(numOfPagesRounded):
-                    page = mongo.db.report.find( { "$and": [ {"building":building_name }, { extraLocation : extraLocationValue} ] } ).skip(int(x+1)*10).limit(page_size)
+                    page = mongo.db.report.find({"$and": [{"building": building_name}, {extraLocation: extraLocationValue}]}).skip(int(x+1)*10).limit(page_size)
                     pages.append(page)
                 return render_template('searchResult.html', number_of_reports=number_of_reports, percentageOfDb=percentageOfDb, reportedReports=reportedReports, report=report, collapsibles=numOfPagesRounded, pages=pages)
         else:
@@ -593,8 +593,8 @@ def search_db_reports():
                 value = request.form['postcode']
             useTimeFrame = request.form['useTimeFrame']
             if useTimeFrame == "No":
-                report = mongo.db.report.find( {locationType:value } )
-                reportedReportsCount = mongo.db.report.find( {"$and":[{locationType:value }, {"report_to_authorities": "Yes"}] }).count()
+                report = mongo.db.report.find({locationType:value})
+                reportedReportsCount = mongo.db.report.find({"$and": [{locationType:value}, {"report_to_authorities": "Yes"}]}).count()
             else:
                 startDatestr = request.form['startDateLocation']
                 endDatestr = request.form['endDateLocation']
@@ -606,8 +606,8 @@ def search_db_reports():
                     endDateTimeConversion = datetime.strptime(endDatestr, "%Y-%m-%d")
                     startDateTimeStamp = datetime.timestamp(startDateConversion)
                     endDateTimeStamp = datetime.timestamp(endDateTimeConversion)
-                    report = mongo.db.report.find( {"$and":[{locationType:value }, {"timestamp":{ "$gte": startDateTimeStamp,"$lt":endDateTimeStamp }}]})           
-                    reportedReportsCount = mongo.db.report.find( {"$and":[{locationType:value }, {"timestamp":{ "$gte": startDateTimeStamp,"$lt":endDateTimeStamp }}, {"report_to_authorities": "Yes"}] }).count()
+                    report = mongo.db.report.find({"$and": [{locationType:value}, {"timestamp":{"$gte": startDateTimeStamp,"$lt":endDateTimeStamp}}]})           
+                    reportedReportsCount = mongo.db.report.find({"$and": [{locationType:value}, {"timestamp":{"$gte": startDateTimeStamp,"$lt":endDateTimeStamp}}, {"report_to_authorities": "Yes"}]}).count()
             # Statistics for search results pages
             number_of_reports = report.count()
             percentageOfDb = calculate_percentage_of_report_in_db(report, totalReportsCount) 
@@ -616,18 +616,18 @@ def search_db_reports():
             numOfPagesRounded = get_number_of_pages_from_search(report)
             page_size = 10
             pages = []
-            page1 = mongo.db.report.find( {locationType:value } ).limit(page_size)
+            page1 = mongo.db.report.find({locationType:value}).limit(page_size)
             pages.append(page1)
             for x in range(numOfPagesRounded):
-                page = mongo.db.report.find( {locationType:value } ).skip(int(x+1)*10).limit(page_size)
+                page = mongo.db.report.find({locationType:value}).skip(int(x+1)*10).limit(page_size)
                 pages.append(page)
             return render_template('searchResult.html', reportedReports=reportedReports, percentageOfDb=percentageOfDb, number_of_reports=number_of_reports, report=report, collapsibles=numOfPagesRounded, pages=pages)
     elif typeOfSearch == "searchByDiscrimination":
         category = request.form['category']
         useTimeFrame = request.form['useTimeFrame']
         if useTimeFrame == "No":
-            report = mongo.db.report.find( { "category_name":category } )
-            reportedReportsCount = mongo.db.report.find( {"$and":[{ "category_name":category }, {"report_to_authorities": "Yes"}] }).count()
+            report = mongo.db.report.find({"category_name":category})
+            reportedReportsCount = mongo.db.report.find({"$and": [{"category_name":category}, {"report_to_authorities": "Yes"}]}).count()
         else:
             startDatestr = request.form['categoryStartDateFrame']
             endDatestr = request.form['categoryEndDateFrame']
@@ -639,8 +639,8 @@ def search_db_reports():
                 endDateTimeConversion = datetime.strptime(endDatestr, "%Y-%m-%d")
                 startDateTimeStamp = datetime.timestamp(startDateConversion)
                 endDateTimeStamp = datetime.timestamp(endDateTimeConversion)
-                report = mongo.db.report.find( {"$and":[{ "category_name":category }, {"timestamp":{ "$gte": startDateTimeStamp,"$lt":endDateTimeStamp }}]}) 
-                reportedReportsCount = mongo.db.report.find( {"$and":[{ "category_name":category }, {"report_to_authorities": "Yes"},  {"timestamp":{ "$gte": startDateTimeStamp,"$lt":endDateTimeStamp }}]}).count()           
+                report = mongo.db.report.find({"$and": [{"category_name":category}, {"timestamp":{"$gte": startDateTimeStamp,"$lt":endDateTimeStamp}}]}) 
+                reportedReportsCount = mongo.db.report.find({"$and": [{"category_name":category}, {"report_to_authorities": "Yes"},  {"timestamp":{"$gte": startDateTimeStamp,"$lt":endDateTimeStamp}}]}).count()           
         # Statistics
         number_of_reports = report.count()
         percentageOfDb = calculate_percentage_of_report_in_db(report, totalReportsCount)
@@ -649,18 +649,18 @@ def search_db_reports():
         page_size = 10
         numOfPagesRounded = get_number_of_pages_from_search(report)        
         pages = []
-        page1 = mongo.db.report.find( { "category_name":category }).limit(page_size)
+        page1 = mongo.db.report.find({"category_name":category}).limit(page_size)
         pages.append(page1)
         for x in range(numOfPagesRounded):
-            page = mongo.db.report.find( { "category_name":category }).skip(int(x+1)*10).limit(page_size)
+            page = mongo.db.report.find({"category_name":category}).skip(int(x+1)*10).limit(page_size)
             pages.append(page)
         return render_template('searchResult.html', number_of_reports=number_of_reports, reportedReports=reportedReports, percentageOfDb=percentageOfDb, report=report, collapsibles=numOfPagesRounded, pages=pages)
     else:
         reportedToAuthorities = request.form['searchReported']
         useTimeFrame = request.form['useTimeFrame']
         if useTimeFrame == "No":
-            report = mongo.db.report.find({"report_to_authorities": reportedToAuthorities }  )
-            reportedReportsCount = mongo.db.report.find( {"$and":[{"report_to_authorities": reportedToAuthorities }, {"report_to_authorities": "Yes"}]}).count() 
+            report = mongo.db.report.find({"report_to_authorities": reportedToAuthorities})
+            reportedReportsCount = mongo.db.report.find({"$and": [{"report_to_authorities": reportedToAuthorities}, {"report_to_authorities": "Yes"}]}).count() 
         else:
             startDatestr = request.form['reportedStartDateFrame']
             endDatestr = request.form['reportedEndDateFrame']
@@ -672,8 +672,8 @@ def search_db_reports():
                 endDateTimeConversion = datetime.strptime(endDatestr, "%Y-%m-%d")
                 startDateTimeStamp = datetime.timestamp(startDateConversion)
                 endDateTimeStamp = datetime.timestamp(endDateTimeConversion)
-                report = mongo.db.report.find( {"$and":[{"report_to_authorities": reportedToAuthorities } , {"timestamp":{ "$gte": startDateTimeStamp,"$lt":endDateTimeStamp }}]})           
-                reportedReportsCount = mongo.db.report.find( {"$and":[{"report_to_authorities": reportedToAuthorities }, {"report_to_authorities": "Yes"},  {"timestamp":{ "$gte": startDateTimeStamp,"$lt":endDateTimeStamp }}]}).count()
+                report = mongo.db.report.find({"$and": [{"report_to_authorities": reportedToAuthorities} , {"timestamp":{"$gte": startDateTimeStamp,"$lt":endDateTimeStamp}}]})           
+                reportedReportsCount = mongo.db.report.find({"$and": [{"report_to_authorities": reportedToAuthorities}, {"report_to_authorities": "Yes"},  {"timestamp":{"$gte": startDateTimeStamp,"$lt":endDateTimeStamp}}]}).count()
         # Statistics
         number_of_reports = report.count()
         percentageOfDb = calculate_percentage_of_report_in_db(report, totalReportsCount)
@@ -682,10 +682,10 @@ def search_db_reports():
         numOfPagesRounded = get_number_of_pages_from_search(report)
         page_size = 10
         pages = []
-        page1 = mongo.db.report.find(  {"report_to_authorities": reportedToAuthorities } ).limit(page_size)
+        page1 = mongo.db.report.find(  {"report_to_authorities": reportedToAuthorities}).limit(page_size)
         pages.append(page1)
         for x in range(numOfPagesRounded):
-            page = mongo.db.report.find(  {"report_to_authorities": reportedToAuthorities } ).skip(int(x+1)*10).limit(page_size)
+            page = mongo.db.report.find(  {"report_to_authorities": reportedToAuthorities}).skip(int(x+1)*10).limit(page_size)
             pages.append(page)
         return render_template('searchResult.html', reportedReports=reportedReports, percentageOfDb=percentageOfDb, number_of_reports=number_of_reports, report=report, collapsibles=numOfPagesRounded, pages=pages)
 
@@ -737,7 +737,7 @@ def insert_report():
     category = request.form['category_name']
     incident = request.form['incident_description']
     reported = request.form['report_to_authorities']
-    report.insert_one( { "email": currentUserEmail, "time": timestamp, "category_name": category, "incident_description": incident, "report_to_authorities": reported } )
+    report.insert_one({"email": currentUserEmail, "time": timestamp, "category_name": category, "incident_description": incident, "report_to_authorities": reported} )
     return render_template('addLocationToNewReport.html', now=timestamp)
 
 
@@ -754,7 +754,7 @@ def addLocationToReport():
     addCity = request.form['city'].capitalize()
     addCounty = request.form['county'].capitalize()
     addPostcode = request.form['postcode'].upper()
-    mongo.db.report.update_one({ "$and": [ {"email": currentUserEmail}, {"time": float(reportTimeStamp)}]}, {"$set": {"building": addBuilding, "city": addCity, "street": addStreet, "county": addCounty, "postcode": addPostcode}})
+    mongo.db.report.update_one({"$and": [{"email": currentUserEmail}, {"time": float(reportTimeStamp)}]}, {"$set": {"building": addBuilding, "city": addCity, "street": addStreet, "county": addCounty, "postcode": addPostcode}})
     return render_template('addDateToReport.html', reportTimeStamp=reportTimeStamp, currentUserEmail=currentUserEmail)
 
 
@@ -768,7 +768,7 @@ def addDateToReport():
     reportTimeStamp = (request.form['reportTimeStamp'])    
     strDate = str(request.form['date'])
     if strDate == '':
-        mongo.db.report.update_one({ "$and": [ {"email": currentUserEmail}, {"time": float(reportTimeStamp)}]}, {"$set": {"date": strDate}})
+        mongo.db.report.update_one({"$and": [{"email": currentUserEmail}, {"time": float(reportTimeStamp)}]}, {"$set": {"date": strDate}})
         if session.get("email") is None:
             flash("Thank you for your report!")
             return redirect(url_for('add_report'))
@@ -781,7 +781,7 @@ def addDateToReport():
             flash("Please select a date that is not in the future")
             return render_template('addDateToReport.html', reportTimeStamp=reportTimeStamp, currentUserEmail=currentUserEmail)
         else:
-            mongo.db.report.update_one({ "$and": [ {"email": currentUserEmail}, {"time": float(reportTimeStamp)}]}, {"$set": {"date": strDate, "timestamp": timestampDate }})
+            mongo.db.report.update_one({"$and": [{"email": currentUserEmail}, {"time": float(reportTimeStamp)}]}, {"$set": {"date": strDate, "timestamp": timestampDate}})
             if session.get("email") is None:
                 flash("Your report has been submitted - thank you.")
                 return redirect(url_for('add_report'))
@@ -814,7 +814,7 @@ def edit_report(report_id):
                   'county': request.form.get('county'),
                   'postcode': request.form.get('postcode'),
                   'report_to_authorities': request.form.get('report_to_authorities')
-                  })
+                 })
     return redirect(url_for('dashboard'))
 
 ##################################################################
