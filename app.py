@@ -22,8 +22,6 @@ mongo = PyMongo(app)
 
 
 # This section has all the repeated functions.
-
-
 # Checking if the password is valid with regards to requirements.
 def is_new_password_valid(new_password):
     while True:
@@ -39,7 +37,6 @@ def is_new_password_valid(new_password):
         elif not re.search("[0-9]", new_password):
             flag = -1
             break
-            # this one would be do not contain
         elif re.search("\\s", new_password):
             flag = -1
             break
@@ -282,14 +279,11 @@ def changeDetails():
         currentEmail = session.get("email")
         if changeType == 'password':
             salt = os.urandom(32)
-            # Validating the new password
             new_password = request.form['updatePassword']
             flag = is_new_password_valid(new_password)
             if flag == -1:
                 flash('Please use a valid password')
                 return redirect(url_for('user-Setting'))
-            # Hashing the new password ready for the database
-            # Checking the current password is correct.
             current_user = mongo.db.user_credentials.find_one(
                                     {"user_email": currentEmail})
             stored_password = get_user_password(current_user)
@@ -532,19 +526,16 @@ def search_reports():
 def search_db_reports():
     totalReportsCount = mongo.db.report.find().count()
     typeOfSearch = request.form['userSearchReports']
-    # Search entire db
     if typeOfSearch == "searchAll":
         report = mongo.db.report.find()
         reportedReportsCount = mongo.db.report.find({"report_to_authorities":
                                                      "Yes"}).count()
         number_of_reports = report.count()
-        # Statistics for the top of the search page.
         percentageOfDb = calculate_percentage_of_report_in_db(
                                                 report, totalReportsCount)
         numOfPagesRounded = get_number_of_pages_from_search(report)
         reportedReports = calculate_percentage_of_search_reported_to_authorities(
                                             report, reportedReportsCount)
-        # Pagination
         pages = []
         page_size = 10
         page1 = mongo.db.report.find().limit(page_size)
@@ -559,22 +550,18 @@ def search_db_reports():
                                report=report,
                                collapsibles=numOfPagesRounded,
                                pages=pages)
-    # Search db by Location
     elif typeOfSearch == "searchByLocation":
         locationType = request.form['locationType']
-        # Search by building
         if locationType == 'building':
             building_name = request.form['building']
             extraLocation = request.form['extraLocationSearchWithBuilding']
             if extraLocation == "all":
-                # Search buildings in all locations with no time frame
                 useTimeFrame = request.form['useTimeFrame']
                 if useTimeFrame == "No":
                     report = mongo.db.report.find({"building": building_name})
                     reportedReportsCount = mongo.db.report.find({"$and": [{"building": building_name},
                                                                  {"report_to_authorities": "Yes"}]}).count()
                 else:
-                    # Search buildings in all locations with time frame
                     startDatestr = request.form['startDateLocation']
                     endDatestr = request.form['endDateLocation']
                     if startDatestr == "" or endDatestr == "":
@@ -593,13 +580,11 @@ def search_db_reports():
                                                                     {"$gte": startDateTimeStamp,
                                                                      "$lt": endDateTimeStamp}},
                                                                     {"report_to_authorities": "Yes"}]}).count()
-                # Statistics for results page
                 page_size = 10
                 number_of_reports = report.count()
                 percentageOfDb = calculate_percentage_of_report_in_db(report, totalReportsCount)
                 reportedReports = calculate_percentage_of_search_reported_to_authorities(
                                   report, reportedReportsCount)
-                # Pagination
                 numOfPagesRounded = get_number_of_pages_from_search(report)
                 pages = []
                 page1 = mongo.db.report.find({"building": building_name}).limit(page_size)
@@ -641,11 +626,9 @@ def search_db_reports():
                                                                     {"timestamp": {"$gte": startDateTimeStamp,
                                                                      "$lt": endDateTimeStamp}},
                                                                     {"report_to_authorities": "Yes"}]}).count()
-                # Statistics for search page
                 number_of_reports = report.count()
                 percentageOfDb = calculate_percentage_of_report_in_db(report, totalReportsCount)
                 reportedReports = calculate_percentage_of_search_reported_to_authorities(report, reportedReportsCount)
-                # Pagination
                 numOfPagesRounded = get_number_of_pages_from_search(report)
                 page_size = 10
                 pages = []
@@ -727,11 +710,9 @@ def search_db_reports():
                                                             {"report_to_authorities": "Yes"},  {"timestamp":
                                                             {"$gte": startDateTimeStamp, "$lt": endDateTimeStamp}}]
                                                           }).count()
-        # Statistics
         number_of_reports = report.count()
         percentageOfDb = calculate_percentage_of_report_in_db(report, totalReportsCount)
         reportedReports = calculate_percentage_of_search_reported_to_authorities(report, reportedReportsCount)
-        # Pagination
         page_size = 10
         numOfPagesRounded = get_number_of_pages_from_search(report)
         pages = []
@@ -767,11 +748,9 @@ def search_db_reports():
                                                             {"report_to_authorities": "Yes"},  {"timestamp":
                                                             {"$gte": startDateTimeStamp, "$lt": endDateTimeStamp}}]
                                                             }).count()
-        # Statistics
         number_of_reports = report.count()
         percentageOfDb = calculate_percentage_of_report_in_db(report, totalReportsCount)
         reportedReports = calculate_percentage_of_search_reported_to_authorities(report, reportedReportsCount)
-        # Pagination
         numOfPagesRounded = get_number_of_pages_from_search(report)
         page_size = 10
         pages = []
@@ -791,7 +770,6 @@ def get_report():
     return render_template("report.html", report=mongo.db.report.find())
 
 
-# This is the OG screen with one search box as default.
 @app.route('/search-report')
 def search_report():
     total = mongo.db.report.find().count()
@@ -934,7 +912,6 @@ def confirm_delete_report(report_id):
 
 @app.route('/delete-report/<report_id>', methods=["POST"])
 def delete_report(report_id):
-    # Trigger a modal of some kind where the user has to input the correct email.
     report = mongo.db.report
     report.delete_one({'_id': ObjectId(report_id)})
     return redirect(url_for('dashboard'))
