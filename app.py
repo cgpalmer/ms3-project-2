@@ -353,8 +353,6 @@ def delete_user():
     else:
         current_user = session.get('email')
         login_password = request.form['deletePassword']
-        user = mongo.db.user_credentials.find_one(
-                     {"user_email": current_user})
         stored_salt = get_user_password_salt(current_user)
         user_password = get_user_password(current_user)
         hash_login_password = hash_a_password_to_check_it_is_correct(
