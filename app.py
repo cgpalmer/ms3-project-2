@@ -136,22 +136,17 @@ def homepage():
     return render_template("home.html", report=report)
 
 
-
 ######################################################################
 # User controls
-
-
-#signup
+# Rendering the signup page
 @app.route('/signup')
 def signup():
     list_existing_emails = []
     used_email = mongo.db.user_credentials.find()
-    
     for x in used_email:
-       
         list_existing_emails.append(x["user_email"])
-        
-    return render_template("signup.html", list_existing_emails=list_existing_emails)
+    return render_template("signup.html",
+                           list_existing_emails=list_existing_emails)
 
 #signup
 @app.route('/creating-user', methods=['POST'])
