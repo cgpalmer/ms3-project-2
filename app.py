@@ -13,12 +13,8 @@ import re
 app = Flask(__name__)
 app.secret_key = 'thefluffiestofwoofers'
 
-if path.exists("env.py"):
-    import env
-
 app.config["MONGO_URI"] = os.environ.get('MONGO_URI')
 app.config["MONGO_DBNAME"] = "projectDB"
-
 
 
 
