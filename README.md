@@ -307,6 +307,13 @@ I specifically test the following things:
    + Do the select options work? 
 
 On the browsers Firefox, Edge and Chrome, all of th elements above are working properly.
+I have attached a pdf of the results of the tests. They are only for Firefox and Edge as Chrome was my main developer and is
+covered by my other testing.
+
+[Firefox cross browser testing.](static/files/testing/crossBrowserTesting/crossBrowserFirefoxTest.pdf) 
+[Edge cross browser testing.](static/files/testing/crossBrowserTesting/crossBrowserEdgeTest.pdf) 
+
+
 
 ### Code validation
 
