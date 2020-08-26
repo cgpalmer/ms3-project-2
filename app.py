@@ -252,10 +252,9 @@ def dashboard():
 
 
 #####################################################
-
 # User preferences
 
-
+# Loading User settings page
 @app.route('/user-Setting')
 def userSetting():
     if session.get("email") is None:
@@ -263,18 +262,22 @@ def userSetting():
         return redirect(url_for('login'))
     else:
         user_email = session.get('email')
-        current_user = mongo.db.user_credentials.find_one({"user_email": user_email}) 
-        user_password = get_user_password(current_user)   
-        preferred_name = session.get('name')    
-        return render_template("settings.html", user_email=user_email, user_password=user_password, preferred_name=preferred_name)
+        current_user = mongo.db.user_credentials.find_one(
+                                {"user_email": user_email})
+        user_password = get_user_password(current_user)
+        preferred_name = session.get('name')
+        return render_template("settings.html", user_email=user_email,
+                               user_password=user_password,
+                               preferred_name=preferred_name)
 
 
+# Route for changing the details of the user.
 @app.route('/change-Details', methods=['POST'])
 def changeDetails():
     if session.get("email") is None:
         flash('Please login to see all of our amazing features')
         return redirect(url_for('login'))
-    else:   
+    else:
         changeType = request.form['changeType']
         currentEmail = session.get("email")
         if changeType == 'password':
@@ -282,30 +285,27 @@ def changeDetails():
             # Validating the new password
             new_password = request.form['updatePassword']
             flag = is_new_password_valid(new_password)
-          
-            
-            if flag ==-1: 
-                
+            if flag ==-1:
                 flash('Please use a valid password')
                 return redirect(url_for('user-Setting'))
-
             # Hashing the new password ready for the database
-            
-          
-                      
-
             # Checking the current password is correct.
-            current_user = mongo.db.user_credentials.find_one({"user_email": currentEmail})
+            current_user = mongo.db.user_credentials.find_one(
+                                    {"user_email": currentEmail})
             stored_password = get_user_password(current_user)
             stored_salt = get_user_password_salt(current_user)
             login_password = request.form['confirmCurrentPass']
             hash_new_password = hashing_a_new_password(new_password, salt)
-            hash_login_password = hash_a_password_to_check_it_is_correct(stored_salt, login_password)
+            hash_login_password = hash_a_password_to_check_it_is_correct(
+                                                stored_salt, login_password)
             if hash_login_password == stored_password:
-                mongo.db.user_credentials.update_one({"user_email": currentEmail},{"$set": {"user_password": hash_new_password, "salt": salt}})
+                mongo.db.user_credentials.update_one({"user_email":
+                                                     currentEmail},
+                                                     {"$set": {"user_password":
+                                                      hash_new_password,
+                                                      "salt": salt}})
                 flash("Password updated")
                 return redirect(url_for('user-Setting'))
-
             else: 
                 flash("Incorrect password")
                 return redirect(url_for('user-Setting'))
