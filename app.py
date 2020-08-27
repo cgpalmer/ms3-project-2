@@ -598,6 +598,7 @@ def search_reports():
     This function will also paginate the results into blocks of ten.
 '''
 
+
 @app.route('/search-db-reports', methods=['GET', 'POST'])
 def search_db_reports():
     totalReportsCount = mongo.db.report.find().count()
@@ -841,14 +842,9 @@ def search_db_reports():
                                pages=pages)
 
 
-@app.route('/get-report')
-def get_report():
-    return render_template("report.html", report=mongo.db.report.find())
-
-
+# Loading the search report. It will pull all of the distinct values from the reports stored in the database.
 @app.route('/search-report')
 def search_report():
-    total = mongo.db.report.find().count()
     category = mongo.db.report.find().distinct("category_name")
     building = mongo.db.report.find().distinct("building")
     city = mongo.db.report.find().distinct("city")
@@ -856,7 +852,7 @@ def search_report():
     postcode = mongo.db.report.find().distinct("postcode")
     return render_template('searchReports.html', categories=mongo.db.categories.find(),
                            postcode=postcode, city=city, county=county, building=building,
-                           category=category, total=total)
+                           category=category)
 
 
 #######################################################################
