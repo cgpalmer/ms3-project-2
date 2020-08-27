@@ -856,7 +856,11 @@ def search_report():
 
 
 #######################################################################
-# Creating reports
+''' This function will add a report to the database.
+    It checks to see if someone is logged in and if so then it will add the report to their
+    collection. If not it will give the email as anonymous. It will then move the user
+    to the add report page. '''
+
 
 @app.route('/add-report')
 def add_report():
@@ -868,6 +872,11 @@ def add_report():
     else:
         return render_template("addReport.html", currentUserEmail=currentUserEmail,
                                categories=mongo.db.categories.find())
+
+
+''' Inserting report will take all of the values from the form. It will update
+    the category, report_to and incident description with the relevant info.
+    It also will innput the email or anonymous to the email.'''
 
 
 @app.route('/insert-report', methods=['GET', 'POST'])
