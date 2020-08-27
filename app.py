@@ -337,7 +337,7 @@ def changeDetails():
             flag = is_new_password_valid(new_password)
             if flag == -1:
                 flash('Please use a valid password')
-                return redirect(url_for('user-Setting'))
+                return redirect(url_for('userSetting'))
             current_user = mongo.db.user_credentials.find_one(
                                     {"user_email": currentEmail})
             stored_password = get_user_password(current_user)
@@ -353,10 +353,10 @@ def changeDetails():
                                                       hash_new_password,
                                                       "salt": salt}})
                 flash("Password updated")
-                return redirect(url_for('user-Setting'))
+                return redirect(url_for('userSetting'))
             else:
                 flash("Incorrect password")
-                return redirect(url_for('user-Setting'))
+                return redirect(url_for('userSetting'))
         if changeType == 'email':
             updated_email = request.form['updateEmail']
             regex = '^[a-z0-9]+[\\._]?[a-z0-9]+[@]\\w+[.]\\w{2,3}$'
@@ -375,13 +375,13 @@ def changeDetails():
                     flash("Email updated.")
                     session.pop("email", None)
                     session["email"] = updated_email
-                    return redirect(url_for('user-Setting'))
+                    return redirect(url_for('userSetting'))
                 else:
                     flash("Sorry, that email is taken.")
-                    return redirect(url_for('user-Setting'))
+                    return redirect(url_for('userSetting'))
             else:
                 flash("Please use a valid email.")
-                return redirect(url_for('user-Setting'))
+                return redirect(url_for('userSetting'))
         if changeType == 'name':
             updated_name = request.form['updateName']
             mongo.db.user_credentials.update_one({"user_email": currentEmail},
@@ -390,7 +390,7 @@ def changeDetails():
             flash("Name updated.")
             session.pop("name", None)
             session["name"] = updated_name
-            return redirect(url_for('user-Setting'))
+            return redirect(url_for('userSetting'))
 
 
 ''' The delete user function again checks for an authenticated user.
@@ -424,7 +424,7 @@ def delete_user():
 
 
 ###################################################################
-# Logout
+# Logout the current user
 
 @app.route('/logout')
 def logout():
