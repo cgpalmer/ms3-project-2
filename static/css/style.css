@@ -129,6 +129,10 @@ textarea.materialize-textarea:focus:not([readonly]) {
     
 }
 
+.btn-floating:hover, .btn-floating:focus {
+    background-color: #595775;
+} 
+
 
 
 /* Nav bar */
