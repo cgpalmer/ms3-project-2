@@ -301,7 +301,7 @@ textarea.materialize-textarea {
 .page-container {
     min-height: 81.25vh;
     padding-bottom: 1rem;
-    margin-top: 56px;
+    padding-top: 56px;
 }
 
 .row {
@@ -646,11 +646,11 @@ footer i {
     /* Margins */
 
     .page-container{
-        margin-top: 89px;
+        padding-top: 89px;
     }
 
     .page-header {
-        margin-top: 2rem;
+        margin-top: 4rem;
     }
 
     .btn-with-extra-margin {
