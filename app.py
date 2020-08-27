@@ -897,6 +897,11 @@ def insert_report():
     return render_template('addLocationToNewReport.html', now=timestamp)
 
 
+''' Adding location takes the timestamp from the report that has just been added
+    and uses it to find the correct report. It then updates the report with the
+    locations.'''
+
+
 @app.route('/add-Location-To-Report', methods=['GET', 'POST'])
 def addLocationToReport():
     currentUserEmail = session.get("email")
@@ -904,16 +909,23 @@ def addLocationToReport():
         currentUserEmail = "anonymous"
     else:
         currentUserEmail = session.get('email')
-    reportTimeStamp = request.form['reportTimeStamp']
-    addBuilding = request.form['building'].capitalize()
-    addStreet = request.form['street'].capitalize()
-    addCity = request.form['city'].capitalize()
-    addCounty = request.form['county'].capitalize()
-    addPostcode = request.form['postcode'].upper()
-    mongo.db.report.update_one({"$and": [{"email": currentUserEmail}, {"time": float(reportTimeStamp)}]},
-                               {"$set": {"building": addBuilding, "city": addCity, "street": addStreet,
-                                "county": addCounty, "postcode": addPostcode}})
+        reportTimeStamp = request.form['reportTimeStamp']
+        addBuilding = request.form['building'].capitalize()
+        addStreet = request.form['street'].capitalize()
+        addCity = request.form['city'].capitalize()
+        addCounty = request.form['county'].capitalize()
+        addPostcode = request.form['postcode'].upper()
+        mongo.db.report.update_one({"$and": [{"email": currentUserEmail}, {"time": float(reportTimeStamp)}]},
+                                   {"$set": {"building": addBuilding, "city": addCity, "street": addStreet,
+                                    "county": addCounty, "postcode": addPostcode}})
     return render_template('addDateToReport.html', reportTimeStamp=reportTimeStamp, currentUserEmail=currentUserEmail)
+
+
+''' Adding a date to the report works exactly the same way a adding a location.
+    The function takes the user inputted date, converts it to a timestamp and then
+    stores that in the database as 'time'. It also stores the user input date for
+    display purposes. It will also check for future dates and give feedback to the
+    user if the date for the incident is after the current date.'''
 
 
 @app.route('/add-Date-To-Report', methods=['GET', 'POST'])
