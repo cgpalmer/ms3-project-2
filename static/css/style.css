@@ -119,6 +119,18 @@ textarea.materialize-textarea:focus:not([readonly]) {
     border-bottom: 2px solid #595775;
 }
 
+.quickButton{
+    text-align: center;
+}
+
+.btn-floating{
+    background-color: #595775;
+    display: inline-block;
+    
+}
+
+
+
 /* Nav bar */
 
 nav {
