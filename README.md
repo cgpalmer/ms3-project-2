@@ -386,9 +386,9 @@ covered by my other testing.
 ### Code validation
 
 #### Python
-To check my python code validation, I have used a combination of 'cornflakes-linter 0.4.0' and http://pep8online.com/checkresult
+To check my python code validation, I have used a combination of 'cornflakes-linter 0.4.0' and http://pep8online.com/
 I have configured the cornflakes to accept a line length of 120 characters.
-Therefore, the only code issue that comes up on http://pep8online.com/checkresult is that the lines are too long as it is set to 79 characters.
+Therefore, the only code issue that comes up on http://pep8online.com/ is that the lines are too long as it is set to 79 characters.
 
 #### CSS
 CSS has been checked by this online validator: https://jigsaw.w3.org/css-validator/#validate_by_input
