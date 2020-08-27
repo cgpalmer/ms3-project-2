@@ -918,15 +918,15 @@ def addLocationToReport():
         currentUserEmail = "anonymous"
     else:
         currentUserEmail = session.get('email')
-        reportTimeStamp = request.form['reportTimeStamp']
-        addBuilding = request.form['building'].capitalize()
-        addStreet = request.form['street'].capitalize()
-        addCity = request.form['city'].capitalize()
-        addCounty = request.form['county'].capitalize()
-        addPostcode = request.form['postcode'].upper()
-        mongo.db.report.update_one({"$and": [{"email": currentUserEmail}, {"time": float(reportTimeStamp)}]},
-                                   {"$set": {"building": addBuilding, "city": addCity, "street": addStreet,
-                                    "county": addCounty, "postcode": addPostcode}})
+    reportTimeStamp = request.form['reportTimeStamp']
+    addBuilding = request.form['building'].capitalize()
+    addStreet = request.form['street'].capitalize()
+    addCity = request.form['city'].capitalize()
+    addCounty = request.form['county'].capitalize()
+    addPostcode = request.form['postcode'].upper()
+    mongo.db.report.update_one({"$and": [{"email": currentUserEmail}, {"time": float(reportTimeStamp)}]},
+                               {"$set": {"building": addBuilding, "city": addCity, "street": addStreet,
+                                "county": addCounty, "postcode": addPostcode}})
     return render_template('addDateToReport.html', reportTimeStamp=reportTimeStamp, currentUserEmail=currentUserEmail)
 
 
