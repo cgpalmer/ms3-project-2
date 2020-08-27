@@ -344,6 +344,16 @@ bigger text
 Despite there being a message after the category and description has been entered, it is clear that some users require an extra
 extra confirmation. So I have added a flash message "Your report has been submitted - thank you." after the date has been added or skipped.
 
+"When I create the report, adding an address is optional. However, when I edit it’s mandatory. Was this intentional?"
+
+This was not intentional. I had added a feature into the "add report" which allowed you to skip location and date. However,
+on edit report, I hadn't taken the 'required' off the city. I have since done that.
+
+"Also, ux wise - when I go into the dashboard, I can hit ‘create a report’ and then move to the add page. However, if I want to go back to the dashboard I need to use the navbar. So on your create page I’d potentially add a button that’d let the user navigate back to the dashboard without creating an entry in case they change their mind"
+
+This was an excellent piece of advice. However, due to time constraints, I have added this in the future features section. 
+In addition to this, I have also made the nav bar always appear at the top of mobile and tablet devices - which means the
+menu is much easier to access. 
 
 
 
