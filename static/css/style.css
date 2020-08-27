@@ -850,7 +850,7 @@ footer i {
     }
     
     .page-container{
-        margin-top: 0;
+        padding-top: 0;
     }
     
     /* Footer */
@@ -968,6 +968,10 @@ footer i {
     /* Nav */
     nav {
         height: 11.4vw;
+    }
+
+    .page-container{
+        padding-top: 0;
     }
 
     p,
@@ -1226,5 +1230,9 @@ footer i {
     /* Nav */
     nav {
         line-height: 82px;
+    }
+
+    .page-container{
+        padding-top: 0;
     }
 }
