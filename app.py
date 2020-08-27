@@ -296,7 +296,7 @@ def dashboard():
     It then finds the user's credentials and takes the information to be displayed
     in the html. It will then render the page.'''
 
-    
+
 @app.route('/user-Setting')
 def userSetting():
     if session.get("email") is None:
@@ -313,7 +313,16 @@ def userSetting():
                                preferred_name=preferred_name)
 
 
-# Route for changing the details of the user.
+''' Changing details goes through the same security login as user dash or settings.
+    An if statement is built on which kind of detail the user wants to change. It 
+    gets this information from a hidden field in the form.
+    If the detail type is a password, it will check to see if the input for the current
+    password matches the password in the db. If so it will generate a new salt and hash the inputted new password
+    before updating the db entry. 
+    It repeats this process for the email and the preffered name. Both times it will pull information from the session
+    and update the db entry. The email address will also check for a vali email code.'''
+
+    
 @app.route('/change-Details', methods=['POST'])
 def changeDetails():
     if session.get("email") is None:
