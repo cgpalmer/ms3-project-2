@@ -266,7 +266,7 @@ ___
 + I ask the user to confirm their password before they can delete their account.
 + The passwords are hashed and a different salt is generated each time a password is made/changed. If anyone hacks into
   database they will not be able to see the passwords.
-
++ Add a dashboard button to the pages when a user is logged in on mobile/tablet. This is for quick and easy access. It would look like the settings icon in the dashboard.
 ___
 <span id="technologiesUsed"></span>
 ### Technologies Used
