@@ -520,6 +520,13 @@ http://jsfiddle.net/YPsqQ/
 Tutorial on how to hash a password
 https://nitratine.net/blog/post/how-to-hash-passwords-in-python/
 
+Tutorial helped me to pull certain keys and values from mongodb queries
+https://realpython.com/iterate-through-dictionary-python/
+
+I also use the documentation for Flask, Jinja, Materialize, jQuery and Python.
+I used W3Schools for any basics that I needed to brush up on.
+A special thank you to Stack Overflow, as even though I didn't always use the help they provided in the end, I still learnt a lot from trial and error.
+
 
 <span id="media"></span>
 <ins>Media</ins>
