@@ -96,7 +96,7 @@ def hashing_a_new_password(new_password, salt):
 
 
 ''' This function will take the number of reports returned from
-a query and divide it by 10 for the pagination. '''
+    a query and divide it by 10 for the pagination. '''
 
 
 def get_number_of_pages_from_search(report):
@@ -112,7 +112,7 @@ def get_number_of_pages_from_search(report):
     If there aren't any reports from the queries, then it will pass 0 as a string to avoid a
     division error. '''
 
-    
+
 def calculate_percentage_of_report_in_db(report, totalReportsCount):
     number_of_reports = report.count()
     if number_of_reports == 0:
@@ -123,7 +123,11 @@ def calculate_percentage_of_report_in_db(report, totalReportsCount):
     return percentageOfDb
 
 
-# Percentage of the reports that have been reported
+''' This function will calculate the amount of reported reports
+    that are returned from a query. It has the same dividing by 0
+    defensive design. '''
+
+
 def calculate_percentage_of_search_reported_to_authorities(
                                 report, reportedReportsCount):
     number_of_reports = report.count()
@@ -139,7 +143,7 @@ def calculate_percentage_of_search_reported_to_authorities(
 # Routes
 
 
-# Initial home page
+# Initial home page - renders the template
 @app.route('/')
 @app.route('/homepage')
 def homepage():
@@ -160,7 +164,12 @@ def signup():
                            list_existing_emails=list_existing_emails)
 
 
-# Creating a new user
+''' This function creates a new user by taking the input values from the sign up form and entering them
+    into a user-credentials database. It will check that the email and password is a valid format and 
+    hash the password before submitting anything to the database. Feedback is provided to the user through
+    flash messages.'''
+
+
 @app.route('/creating-user', methods=['POST'])
 def creating_user():
     salt = os.urandom(32)
