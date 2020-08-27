@@ -680,6 +680,19 @@ footer i {
     }
 
     /* Home Page */
+
+  
+.btn-floating {
+    
+    width: 55px;
+    height: 55px;
+    line-height: 40px;
+}
+
+  .btn-floating i {
+    font-size: 2.6rem;
+    line-height: 55px;
+}
     #meetTheTeam {
         font-size: 5rem;
     }
