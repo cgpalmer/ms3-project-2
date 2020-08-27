@@ -1014,6 +1014,8 @@ def confirm_delete_report(report_id):
 
 ''' Delete report will find the correct report based on the report_id and then delete it from
     the database. It will also give the user feedback that it has been deleted with a flash message. '''
+
+
 @app.route('/delete-report/<report_id>', methods=["POST"])
 def delete_report(report_id):
     report = mongo.db.report
