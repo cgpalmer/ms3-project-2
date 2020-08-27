@@ -256,7 +256,16 @@ def check_password():
 
 ############################################################
 # Dashboard
-# Dashboard page
+
+
+''' The dashboard route will load the dashboard page. It also will
+    pull certain information form the db. Initially, checks to see
+    if an authenticated user is allowed into the dashboard area. If the user
+    has not signed in then the user is directed to the login page, with flash feeback.
+    Otherwise the dashboard will load and generate messages that will use the users
+    name, count how many reports they have submitted and pull data for the search options. '''
+
+
 @app.route('/dashboard')
 def dashboard():
     if session.get("email") is None:
