@@ -941,7 +941,7 @@ def addDateToReport():
         mongo.db.report.update_one({"$and": [{"email": currentUserEmail},
                                     {"time": float(reportTimeStamp)}]}, {"$set": {"date": strDate}})
         if session.get("email") is None:
-            flash("Thank you for your report!")
+            flash("Your report has been submitted - thank you.")
             return redirect(url_for('add_report'))
         else:
             return redirect(url_for('dashboard'))
