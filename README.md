@@ -307,20 +307,19 @@ As a first-time user, I want my personal details to be private and kept away fro
  
 User Stories - returning users | Expected outcome | Actual outcome 
 --------- | --------------- | ---
-As a returning user, I want to be able to log in easily.                                                     | Design is responsive and readable | True
-As a As a returning user, I want to be able to do all the things as stated in a new user with the same ease. | Design is responsive and readable | True
-As a returning user, I want to search through my own reports.                                                 | Design is responsive and readable | True
-As a returning user, I want to be able to add a report and it go into my collection.                          | Design is responsive and readable | True
-As a returning user, I want to be able to modify one of my reports.                                          | Design is responsive and readable | True
-As a returning user, I want to be able to delete one of my reports.                                          | Design is responsive and readable | True
-As a returning user, I want to be able to change my preferred name.                                          | Design is responsive and readable | True
-As a returning user, I want to be able to change my email.                                                   | Design is responsive and readable | True
-As a returning user, I want to be able to change my password.                                                | Design is responsive and readable | True
-As a returning user, I want to be able to delete my account.                                                  | Design is responsive and readable | True
+As a returning user, I want to be able to log in easily.                                                     | I expect to find the login button easily and be able to fill in the form to login.| I could find the login button easily in the nav bar and the form is very quick to fill in. Once I have logged in I am taken to the dashboard.
+As a returning user, I want to search through my own reports.                                                 | I expect to be able to search through my own reports. | I can intuitively search through my own reports in the dashboard over. The collapsible is already open to draw my attention. I filled out the form and I receive the results in the same style as searching the whole database.
+As a returning user, I want to be able to add a report and it go into my collection.                          | I expect to add a report and then find it in my results| I clicked the link to add a report in the dashboard and it took me to the same add report link as a new user. Once I had added the report, I could then find it by searching ym reports in the dashboard.
+As a returning user, I want to be able to modify one of my reports.                                          | I expect to be able to pick a report and update any of the elements | I could edit any of the reports after doing a search in the dashboard. I can then update any of the elements and, if untouched, the rest stay the same.
+As a returning user, I want to be able to delete one of my reports.                                          | I expect to pick a report, click delete and then confirm my delete | I can select any of my reports, click delete, view the report and confirm delete. I am then taken back to the dashboard and receive feedback that my report has been sucessfully deleted.
+As a returning user, I want to be able to change my preferred name.                                          | I expect to be able to changed my preferred name and receive feedback| I can change my preferred name in the settings page, which I can access intuitively from the dashboard. I am informed of my current preferred name before I change the name and then receive feedback once I have changed it to let me know I was successful.
+As a returning user, I want to be able to change my email.                                                   | I expect to be able to change the email address associate with my account | Like the password, I can change my email in the settings. When I change the email address, I get feedback to say I was successful. Also, all of my reports have been swapped over to my new email.
+As a returning user, I want to be able to change my password.                                                | I expect to be able to change my password securely | I can change my password int he settings page. If I input my old password correctly, I can change my password. I received feedback to let me know I was successful.
+As a returning user, I want to be able to delete my account.                                                  | I expect to be able to delete my account and have all my reports deleted with it| My account is deleted and if I search the database none of my reports are there.
 
 User as a charity or researcher (professional user)| Expected outcome | Actual outcome 
 --------- | --------------- | ---
-1. As a profession user, I want to be able to see some statistics about my search so I can compare them to other searches. | Design is responsive and readable | True
+As a profession user, I want to be able to see some statistics about my search so I can compare them to other searches. | I expect to see some statistics when I search the database | At the top of the search results, I can see how many reports have been returned, what percentage of the database they are and how many have been reported to authorities.
 
 ### General testing
 
