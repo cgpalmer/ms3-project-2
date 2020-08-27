@@ -324,6 +324,31 @@ User as a charity or researcher (professional user)| Expected outcome | Actual o
 
 ### General testing
 
+#### Feedback from other users
+User 1
+
+"When i click search by location, it does not populate any cities after choosing that location type. If there are none in the database maybe include a little message saying sorry there are none as it currently looks like a bug"
+
+Regarding this comment, I have since filled out several reports so that the website has something to pull from the database. 
+It is unnecessary for me put in a comment about there not being any available as the database will always have reports in.
+
+
+"also as a personal opinion on the layout - it looks good, but for me some things are a bit too large layout wise , its strange on the eyes"
+
+With regards to the forms being too large, my vision for having larger text on the bigger screens to make it simple and easy to read.
+It also keeps the design simplified. However, in the future it may be worth having the larger text as an option for the user. 
+bigger text 
+
+"Hey Chris! Just added a report and notice there was no ‘submitted successfully’ notification. Might be worthwhile inclusion?"
+
+Despite there being a message after the category and description has been entered, it is clear that some users require an extra
+extra confirmation. So I have added a flash message "Your report has been submitted - thank you." after the date has been added or skipped.
+
+
+
+
+
+
 ### Responsive design
 
 As in the wireframes section, the website is responsive across mobile, iPad, iPad Pro and Laptops - both MDi and HDMi.
