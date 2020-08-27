@@ -326,29 +326,33 @@ As a profession user, I want to be able to see some statistics about my search s
 #### Feedback from other users
 User 1
 
-"When i click search by location, it does not populate any cities after choosing that location type. If there are none in the database maybe include a little message saying sorry there are none as it currently looks like a bug"
+* "When i click search by location, it does not populate any cities after choosing that location type. If there are none in the database maybe include a little message saying sorry there are none as it currently looks like a bug" *
 
 Regarding this comment, I have since filled out several reports so that the website has something to pull from the database. 
 It is unnecessary for me put in a comment about there not being any available as the database will always have reports in.
 
 
-"also as a personal opinion on the layout - it looks good, but for me some things are a bit too large layout wise , its strange on the eyes"
+* "also as a personal opinion on the layout - it looks good, but for me some things are a bit too large layout wise , its strange on the eyes" *
 
 With regards to the forms being too large, my vision for having larger text on the bigger screens to make it simple and easy to read.
 It also keeps the design simplified. However, in the future it may be worth having the larger text as an option for the user. 
 bigger text 
 
-"Hey Chris! Just added a report and notice there was no ‘submitted successfully’ notification. Might be worthwhile inclusion?"
+User 2
+
+* "Hey Chris! Just added a report and notice there was no ‘submitted successfully’ notification. Might be worthwhile inclusion?" *
 
 Despite there being a message after the category and description has been entered, it is clear that some users require an extra
 extra confirmation. So I have added a flash message "Your report has been submitted - thank you." after the date has been added or skipped.
 
-"When I create the report, adding an address is optional. However, when I edit it’s mandatory. Was this intentional?"
+User 3 
+
+* "When I create the report, adding an address is optional. However, when I edit it’s mandatory. Was this intentional?" *
 
 This was not intentional. I had added a feature into the "add report" which allowed you to skip location and date. However,
 on edit report, I hadn't taken the 'required' off the city. I have since done that.
 
-"Also, ux wise - when I go into the dashboard, I can hit ‘create a report’ and then move to the add page. However, if I want to go back to the dashboard I need to use the navbar. So on your create page I’d potentially add a button that’d let the user navigate back to the dashboard without creating an entry in case they change their mind"
+* "Also, ux wise - when I go into the dashboard, I can hit ‘create a report’ and then move to the add page. However, if I want to go back to the dashboard I need to use the navbar. So on your create page I’d potentially add a button that’d let the user navigate back to the dashboard without creating an entry in case they change their mind" *
 
 This was an excellent piece of advice. However, due to time constraints, I have added this in the future features section. 
 In addition to this, I have also made the nav bar always appear at the top of mobile and tablet devices - which means the
