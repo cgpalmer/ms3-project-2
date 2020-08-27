@@ -21,8 +21,10 @@ app.config["MONGO_DBNAME"] = "projectDB"
 mongo = PyMongo(app)
 
 
-# This section has all the repeated functions.
-# Checking if the password is valid with regards to requirements.
+''' This section has all the repeated functions.
+Checking if the password is valid with regards to requirements. '''
+
+
 def is_new_password_valid(new_password):
     while True:
         if (len(new_password) < 8):
@@ -81,7 +83,7 @@ def hash_a_password_to_check_it_is_correct(stored_salt, login_password):
     return hash_login_password
 
 
-# Storing a new password
+# Hashing a new password for storing
 def hashing_a_new_password(new_password, salt):
     hash_new_password = hashlib.pbkdf2_hmac(
             'sha256',
@@ -93,7 +95,10 @@ def hashing_a_new_password(new_password, salt):
     return hash_new_password
 
 
-# Finding the number of pages from a report
+''' This function will take the number of reports returned from
+a query and divide it by 10 for the pagination. '''
+
+
 def get_number_of_pages_from_search(report):
     number_of_reports = report.count()
     page_size = 10
@@ -102,7 +107,12 @@ def get_number_of_pages_from_search(report):
     return numOfPagesRounded
 
 
-# Working out the percentage of reports return from a search
+''' This function will find take the amount of query-returned reports
+    and divide them by the total reports. It will return a number for a percentage.
+    If there aren't any reports from the queries, then it will pass 0 as a string to avoid a
+    division error. '''
+
+    
 def calculate_percentage_of_report_in_db(report, totalReportsCount):
     number_of_reports = report.count()
     if number_of_reports == 0:
