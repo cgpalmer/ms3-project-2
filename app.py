@@ -165,7 +165,7 @@ def signup():
 
 
 ''' This function creates a new user by taking the input values from the sign up form and entering them
-    into a user-credentials database. It will check that the email and password is a valid format and 
+    into a user-credentials database. It will check that the email and password is a valid format and
     hash the password before submitting anything to the database. Feedback is provided to the user through
     flash messages.'''
 
@@ -197,6 +197,8 @@ def creating_user():
         flash('Please use a valid email format. For example - email@test.com')
         return redirect(url_for('signup'))
 
+''' The insert name function updates the current user credentials with a preferred name.
+    It pulls the username from the session and then pull the preferred name form a user input. ''' 
 
 @app.route('/insert-name', methods=['POST'])
 def insert_name():
