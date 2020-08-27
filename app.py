@@ -1018,7 +1018,7 @@ def confirm_delete_report(report_id):
 def delete_report(report_id):
     report = mongo.db.report
     report.delete_one({'_id': ObjectId(report_id)})
-
+    flash("Report successfully deleted.")
     return redirect(url_for('dashboard'))
 
 
