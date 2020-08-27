@@ -944,6 +944,7 @@ def addDateToReport():
             flash("Your report has been submitted - thank you.")
             return redirect(url_for('add_report'))
         else:
+            flash("Your report has been submitted - thank you.")
             return redirect(url_for('dashboard'))
     else:
         timeStamp = datetime.strptime(strDate, "%Y-%m-%d")
