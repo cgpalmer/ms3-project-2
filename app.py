@@ -197,8 +197,10 @@ def creating_user():
         flash('Please use a valid email format. For example - email@test.com')
         return redirect(url_for('signup'))
 
+
 ''' The insert name function updates the current user credentials with a preferred name.
-    It pulls the username from the session and then pull the preferred name form a user input. ''' 
+    It pulls the username from the session and then pull the preferred name form a user input. '''
+
 
 @app.route('/insert-name', methods=['POST'])
 def insert_name():
@@ -212,13 +214,22 @@ def insert_name():
 ######################################################################
 
 
-# Login page
+# Render Login page
 @app.route('/login')
 def login():
     return render_template("login.html")
 
 
-# Authenticating the login password
+''' The check_password function will check to see if the password matches the one recorded in this
+    user's DB - allowing them to log in. It pulls the user information from the login form.
+    It will then find the user's current details from the DB using the input-username.
+    If the username doesn't exist, then feedback is provided to the user.
+    Assuming the account exists, it will then retrieve the salt and password from the db.
+    The function will then use the retrieved salt to hash the inputted-password and compare
+    it with the password from the db. If it matches, then the user is logged in and transferred
+    to the dashboard page.'''
+
+
 @app.route('/check-password', methods=['POST'])
 def check_password():
     login_email = request.form['login_username']
@@ -236,7 +247,6 @@ def check_password():
                                             stored_salt, login_password)
         if stored_password == hash_login_password:
             session["email"] = login_email
-            username = session.get("email")
             session["name"] = login_name
             return redirect(url_for('dashboard'))
         else:
