@@ -406,10 +406,14 @@ def delete_user():
         flash('Please login to see all of our amazing features')
         return redirect(url_for('login'))
     else:
-        current_user = session.get('email')
+        current_email = session.get('email')
+        current_user = mongo.db.user_credentials.find_one(
+                                    {"user_email": current_email})
+        print(login)
         login_password = request.form['deletePassword']
-        stored_salt = get_user_password_salt(current_user)
         user_password = get_user_password(current_user)
+        stored_salt = get_user_password_salt(current_user)
+
         hash_login_password = hash_a_password_to_check_it_is_correct(
                                           stored_salt, login_password)
         if hash_login_password == user_password:
@@ -418,9 +422,10 @@ def delete_user():
             session.pop("email", None)
             session.pop("name", None)
             return redirect(url_for('signup'))
+        
         else:
             flash('Password incorrect')
-            return redirect(url_for('dashboard'))
+            return redirect(url_for('userSetting'))
 
 
 ###################################################################
