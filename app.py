@@ -22,7 +22,9 @@ mongo = PyMongo(app)
 
 
 ''' This section has all the repeated functions.
-Checking if the password is valid with regards to requirements. '''
+Checking if the password is valid with regards to requirements.
+Each criteria in [] is checking the password for something such as
+lowercase, uppercase, numbers and spaces. '''
 
 
 def is_new_password_valid(new_password):
