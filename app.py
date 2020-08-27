@@ -314,15 +314,15 @@ def userSetting():
 
 
 ''' Changing details goes through the same security login as user dash or settings.
-    An if statement is built on which kind of detail the user wants to change. It 
+    An if statement is built on which kind of detail the user wants to change. It
     gets this information from a hidden field in the form.
     If the detail type is a password, it will check to see if the input for the current
     password matches the password in the db. If so it will generate a new salt and hash the inputted new password
-    before updating the db entry. 
+    before updating the db entry.
     It repeats this process for the email and the preffered name. Both times it will pull information from the session
     and update the db entry. The email address will also check for a vali email code.'''
 
-    
+
 @app.route('/change-Details', methods=['POST'])
 def changeDetails():
     if session.get("email") is None:
@@ -391,6 +391,13 @@ def changeDetails():
             session.pop("name", None)
             session["name"] = updated_name
             return redirect(url_for('user-Setting'))
+
+
+''' The delete user function again checks for an authenticated user.
+    It will retrieve the password and salt from the account based on which user
+    is logged into the session. It will then check the inputted password to the db password
+    by hashing the input with the salt from the db. If the two match then it delete the credentials.
+    If the password is wrong the user will get feedback through a flash message and returned to the settings page.'''
 
 
 @app.route('/delete-user', methods=['POST'])
