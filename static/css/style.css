@@ -161,6 +161,7 @@ nav {
 
 .sidenav {
     width: 180px;
+    z-index: 1500;
 }
 
 .first-nav-link {
