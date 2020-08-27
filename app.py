@@ -435,7 +435,15 @@ def logout():
 ##############################################
 
 
-# Reading reports
+''' This will allow users to search their own reports. It takes the email from the session and then performs
+    a find query based on the email. It will then ask for which type of a search it is and input that into if/else
+    conditions. Each condition will take the inputs from the form and perform a query based on those and the email.
+    All options return to the searchResult template. It will also work out the amount of reports that have been
+    returned, what percentage have been reported and what percentage of the db it includes.
+    This function will also paginate the results into blocks of ten.
+'''
+
+
 @app.route('/search-reports', methods=['GET', 'POST'])
 def search_reports():
     typeOfSearch = request.form['userSearchOwnReports']
@@ -580,8 +588,15 @@ def search_reports():
                                collapsibles=numOfPagesRounded,
                                pages=pages)
 
-#####################################################
 
+#####################################################
+''' This will allow users to search the database reports. It will ask for which type of a search it is and
+    input that into if/else conditions. Each condition will take the inputs from the form and perform a query
+    based on those and the email. All options return to the searchResult template. It will also work out the
+    amount of reports that have been returned, what percentage have been reported and what percentage of the
+    db it includes.
+    This function will also paginate the results into blocks of ten.
+'''
 
 @app.route('/search-db-reports', methods=['GET', 'POST'])
 def search_db_reports():
