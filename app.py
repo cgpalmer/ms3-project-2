@@ -964,7 +964,10 @@ def addDateToReport():
 
 
 #####################################################################################
-# Updating reports
+''' User modify takes the report ID of the element chosen and uses it to render the result in the modify template.
+    It will also pull down the email from the session to ensure the correct reports are being edited. '''
+
+
 @app.route('/user-modify/<report_id>')
 def user_modify(report_id):
     the_report = mongo.db.report.find_one({"_id": ObjectId(report_id)})
@@ -974,13 +977,16 @@ def user_modify(report_id):
                            report=the_report, categories=available_categories)
 
 
+''' Edit report uses the report id from the user_modify route to ensure the correct report is being edited.
+    It will pull all of the inputted details from the form and update the entry. '''
+
+
 @app.route('/edit-report/<report_id>', methods=["POST"])
 def edit_report(report_id):
     report = mongo.db.report
     report.update({'_id': ObjectId(report_id)},
                   {
                   'email': request.form.get('email'),
-                  'username': request.form.get('username'),
                   'category_name': request.form.get('category_name'),
                   'incident_description': request.form.get('incident_description'),
                   'building': request.form.get('building'),
@@ -996,11 +1002,14 @@ def edit_report(report_id):
 # Deleting reports
 
 
+''' Similar to the edit_reports, when deleting a report it will use the report id to find the correct one.
+    It will then render the template with all of the information showing.'''
+
+
 @app.route('/confirm-delete-report/<report_id>')
 def confirm_delete_report(report_id):
     the_report = mongo.db.report.find_one({"_id": ObjectId(report_id)})
-    available_categories = mongo.db.categories.find()
-    return render_template('userDeleteReport.html', report=the_report, categories=available_categories)
+    return render_template('userDeleteReport.html', report=the_report)
 
 
 @app.route('/delete-report/<report_id>', methods=["POST"])
