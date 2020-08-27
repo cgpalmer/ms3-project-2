@@ -291,7 +291,12 @@ def dashboard():
 #####################################################
 # User preferences
 
-# Loading User settings page
+''' Loading the user settings is much like the dashboard. It first checks to
+    see if a user has logged in - redirecting them to the login page if not.
+    It then finds the user's credentials and takes the information to be displayed
+    in the html. It will then render the page.'''
+
+    
 @app.route('/user-Setting')
 def userSetting():
     if session.get("email") is None:
