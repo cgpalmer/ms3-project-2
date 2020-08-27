@@ -34,8 +34,9 @@ footer,
     font-weight: 700;
 }
 
-.datepicker-cancel, .datepicker-done {
-    color: #595775; 
+.datepicker-cancel,
+.datepicker-done {
+    color: #595775;
 }
 
 .page-container {
@@ -119,34 +120,31 @@ textarea.materialize-textarea:focus:not([readonly]) {
     border-bottom: 2px solid #595775;
 }
 
-.quickButton{
+.quickButton {
     text-align: center;
 }
 
-.btn-floating{
+.btn-floating {
     background-color: #595775;
     display: inline-block;
-    
 }
 
-.btn-floating:hover, .btn-floating:focus {
+.btn-floating:hover,
+.btn-floating:focus {
     background-color: #595775;
-} 
-
-
+}
 
 /* Nav bar */
 
 nav {
     height: 8.4vh;
-    
+
     position: fixed;
     top: 0px;
     z-index: 1000;
 }
 .nav-wrapper {
     box-shadow: 0px 6px 13px 4px rgba(89, 87, 117, 0.4);
-  
 }
 
 .nav-wrapper,
@@ -178,14 +176,12 @@ nav .sidenav-trigger i {
     font-size: 2.1rem;
 }
 
-
-
 /* Re-used classes */
 .hidden {
     display: none;
 }
 
-.datepicker-controls .select-month input{
+.datepicker-controls .select-month input {
     width: 120px;
 }
 
@@ -324,7 +320,8 @@ textarea.materialize-textarea {
 }
 
 /* Button */
-.btn,  textarea.materialize-textarea {
+.btn,
+textarea.materialize-textarea {
     margin: 1rem 0 0 0;
     font-family: "Alegreya", serif;
     font-weight: 700;
@@ -649,10 +646,9 @@ footer i {
         margin: 1.5rem 0;
     }
 
-
     /* Margins */
 
-    .page-container{
+    .page-container {
         padding-top: 89px;
     }
 
@@ -682,18 +678,16 @@ footer i {
 
     /* Home Page */
 
-  
-.btn-floating {
-    
-    width: 55px;
-    height: 55px;
-    line-height: 40px;
-}
+    .btn-floating {
+        width: 55px;
+        height: 55px;
+        line-height: 40px;
+    }
 
-  .btn-floating i {
-    font-size: 2.6rem;
-    line-height: 55px;
-}
+    .btn-floating i {
+        font-size: 2.6rem;
+        line-height: 55px;
+    }
     #meetTheTeam {
         font-size: 5rem;
     }
@@ -732,9 +726,9 @@ footer i {
         font-size: 2rem;
     }
 
-.catTimeFrameDisplay .select-wrapper input.select-dropdown {
-    font-size: 1.5rem;
-}
+    .catTimeFrameDisplay .select-wrapper input.select-dropdown {
+        font-size: 1.5rem;
+    }
 
     /* Login page */
     .input-field > .login-form:not(.label-icon).active {
@@ -868,11 +862,11 @@ footer i {
     nav .nav-links {
         padding: 0 4rem;
     }
-    
-    .page-container{
+
+    .page-container {
         padding-top: 0;
     }
-    
+
     /* Footer */
     footer {
         height: 22vh;
@@ -990,7 +984,7 @@ footer i {
         height: 11.4vw;
     }
 
-    .page-container{
+    .page-container {
         padding-top: 0;
     }
 
@@ -1053,7 +1047,7 @@ footer i {
     .dropdown-content li > span,
     input[type="password"]:not(.browser-default),
     .input-field .login-form,
-    .material-icons{
+    .material-icons {
         font-size: 2rem;
     }
 
@@ -1195,7 +1189,6 @@ footer i {
         margin-top: 7rem;
     }
 
-
     /* Signup Page */
 
     input[type="text"]:not(.browser-default) {
@@ -1252,7 +1245,7 @@ footer i {
         line-height: 82px;
     }
 
-    .page-container{
+    .page-container {
         padding-top: 0;
     }
 }
