@@ -295,15 +295,15 @@ ___
 
 User Stories - first time users | Expected outcome | Actual outcome 
 --------- | --------------- | ---
-As a first-time user, I want to easily navigate through the website be able to easily access all of its features. | Design is responsive and readable | True
-As a first-time user, I want to be able to immediately see what the website is about.                             | Design is responsive and readable | True
-As a first-time user, I want to be able to create an account.                                                     | Design is responsive and readable | True
-As a first-time user, I want to be able to log in with my new account.                                            | Design is responsive and readable | True
-As a first time user, I want to be able to explore the dashboard immediately.                                     | Design is responsive and readable | True
-As a first time user, I want to be able to add a report regardless of whether I have created an account or not.   | Design is responsive and readable | True
-As a first-time user, I want to be able to search reports.                                                        | Design is responsive and readable | True
-As a first-time user, I want to be able to log out when I am done.                                                | Design is responsive and readable | True
-As a first-time user, I want my personal details to be private and kept away from the reports.                    | Design is responsive and readable | True
+As a first-time user, I want to easily navigate through the website be able to easily access all of its features. | I expect all of the links to be working and in an intuitive position| All the links take me to their destination and none are broken.
+As a first-time user, I want to be able to immediately see what the website is about.                             | I expect information about the website to be ready available on the landing page without needed to click a button | The purpose is very close to the top and the home page gives me all the information I need 
+As a first-time user, I want to be able to create an account.                                                     | I expect to be able to fill in the signup form and successfully create and account | I can fill out the form and submit it. I receive feedback if I make a mistake and when I am successful I am taken to my dashboard area. I know it has worked because on the dashboard I can see 'Welcome, (my name)'.
+As a first-time user, I want to be able to log in with my new account.                                            | I expect to be able to login to my new account immediately. | After I sign up, I am taken to the dashboard. If I log out I can immediately log in again.
+As a first time user, I want to be able to explore the dashboard immediately.                                     | I expect that when I signup, I am taken to the user area (dashboard) immediately. | The result is as expected. I can explore my reports and get into my settings.
+As a first time user, I want to be able to add a report regardless of whether I have created an account or not.   | I expect to be able to add a report even if I don't have an account by filling out the add report form. | If I add a report without creating an account, I am still successful. I receive feedback thanking me for my report and I am taken back to the 'add report' screen.
+As a first-time user, I want to be able to search reports.                                                        | I expect to click on the search report link and fill in the form to find reports.| I can get to the search page regardless of being a user or not. I can search by location, discrimination or reported reports and it will display my results in a pagination collapsible.
+As a first-time user, I want to be able to log out when I am done.                                                | I can click the logout link and no longer be logged in | After clicking the log out link, I am taking to the home page and the options to login or signup reappears on the nav.
+As a first-time user, I want my personal details to be private and kept away from the reports.                    | When I search the database for a report, I do expect there to be any of my login details on display | This is as expected - none of my details are on display.
  
 User Stories - returning users | Expected outcome | Actual outcome 
 --------- | --------------- | ---
