@@ -257,6 +257,7 @@ ___
 <span id="defensiveFeatures"></span>
 ## Defensive Features
 
++ If you use the back button after logging in, then you can trya nd log back in but it will take you to the dashboard with feedback telling you that you are currently logged in. After that the login link will hide.
 + I wanted to make sure that the users inputted all the information necessary for a successful search. 
   So I have used JS to disable the buttons until a criteria has been met. 
 + If you try to access any of the web pages that are reserved for account holders, it will redirect you to the login
@@ -667,7 +668,7 @@ out of the experience.
 + I need to use an ajax to live check the email addresses when signing up as the regex will become slow and cumbersome 
   as the users grow.
 + The code for counting the reports has recently become depreciated - in the future I would like to upgrade the code to the new version.
-
++ Some of my flash messages aren't clear enough to standout to the user. It would be better if they had a border or different css to help them stand out. 
 
 
 
