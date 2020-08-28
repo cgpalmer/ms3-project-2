@@ -301,7 +301,7 @@ $("#seePassword").click(function() {
     function passwordReveal() {
         seePassword.type = "password";
     }
-    clearTimeout(passwordTimeout);
+    clearTimeout();
 });
 
 // //   Matching passwords
