@@ -479,7 +479,7 @@ Configure the following:
 Key | Value
 IP | 0.0.0.0
 PORT | 8080
-MONGO_URI | <link to your MongoDB>
+MONGO_URI | <"link to your MongoDB">
 
 You can find your MongoDB link by going into MongoDB Atlas and clicking the ‘connect’ button. From there you have the option to choose to connect to your application and can select the correct language and version. 
 
