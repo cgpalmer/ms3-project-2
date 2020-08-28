@@ -10,8 +10,8 @@ from bson.objectid import ObjectId
 import re
 
 app = Flask(__name__)
-# app.secret_key = 'thefluffiestofwoofers'
-app.secret_key = os.environ.get("SECRET_KEY")
+app.secret_key = 'thefluffiestofwoofers'
+
 
 if path.exists("env.py"):
     import env
