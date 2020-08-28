@@ -482,7 +482,9 @@ ___
 <span id="deployment"></span>
 ## Deployment
 
-To run the app on Heroku. 
+<span id="deploymentLive"></span>
+
+### To run the app on Heroku. 
 
 Create a Heroku account.
 Click to start a new app.
@@ -529,6 +531,9 @@ Push your commits to Heroku using this command:
 '''
 $ git push -u Heroku master
 '''
+
+
+<span id="deploymentLocal"></span>
 
 ### To run the app locally
 
@@ -585,24 +590,6 @@ python3 app.py
 '''
 
 This will open a port (which may be different depending on your IDE) and gives you the open to see your app.
-
-
-
-
-
-
-<span id="deploymentLive"></span>
-Deployment – Live Website  
-
-   1.	Create repository in GitHub and give it a relevant name.
-   
-
-<span id="deploymentLocal"></span>
-Deployment – Run Locally  
-
-   1.	Again, click on the repository called The-Book-Club.
-   
-
 
 ___
 <span id="credit"></span>
