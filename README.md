@@ -2,7 +2,7 @@
 
 ![Image a website on different devices](static/files/wireframes/responsive-design.jpg)
 
-### [Live page](https://ms3-cgpalmer91.herokuapp.com/)
+### [Live page](http://report-against-discrimination.herokuapp.com/homepage)
 
 # Disclaimer
 
