@@ -363,7 +363,7 @@ As a profession user, I want to be able to see some statistics about my search s
 #### Feedback from other users
 User 1
 
-* "When i click search by location, it does not populate any cities after choosing that location type. If there are none in the database maybe include a little message saying sorry there are none as it currently looks like a bug" *
+* "When i click search by location, it does not populate any cities after choosing that location type. If there are none in the database maybe include a little message saying sorry there are none as it currently looks like a bug" 
 
 Regarding this comment, I have since filled out several reports so that the website has something to pull from the database. 
 It is unnecessary for me put in a comment about there not being any available as the database will always have reports in.
@@ -503,6 +503,7 @@ Heroku actually have excellent documentation on this and the full documentation 
 
 Then, head over to the ‘settings’ tab and click on the ‘reveal config vars’ button. 
 Configure the following:
+
 Key | Value
 IP | 0.0.0.0
 PORT | 8080
