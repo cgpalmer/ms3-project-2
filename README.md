@@ -277,6 +277,7 @@ ___
 <span id="defensiveFeatures"></span>
 ## Defensive Features
 
+
 + If you use the back button after logging in, then you can trya nd log back in but it will take you to the dashboard with feedback telling you that you are currently logged in. After that the login link will hide.
 + I wanted to make sure that the users inputted all the information necessary for a successful search. 
   So I have used JS to disable the buttons until a criteria has been met. 
@@ -284,6 +285,7 @@ ___
   page. I did this to help protect people's reports so that only they could modify them. 
 + A new user cannot use the same email as a current user. This is because the functionality of the website uses the
   email address to identify which user to assign the report to. 
++ A returning user cannot select an email that has already been taken. 
 + I ask the user to confirm their password before they can delete their account.
 + The passwords are hashed and a different salt is generated each time a password is made/changed. If anyone hacks into
   database they will not be able to see the passwords.
