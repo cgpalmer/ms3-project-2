@@ -273,10 +273,16 @@ ___
 
 Languages used
 
+Front-end
+
 1. HTML
 2. CSS
 3. Javascript
-4. Python 
+
+Back-end 
+
+1. Python 
+2. MongoDB Atlas
 
 Frameworks
 
@@ -284,6 +290,7 @@ Frameworks
 2. Flask 
 3. Jinja 
 4. jQuery
+
 
 ___
 <span id="testing"></span>
