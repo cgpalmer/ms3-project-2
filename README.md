@@ -696,6 +696,7 @@ out of the experience.
 <span id="improvements"></span>
 ### Improvements
 
++ I tried to move my secret_key to the env.py but for some reason it didn't work. I'd need to hide it to make it more secure in the future.
 + I would like to refactor the code that chooses whether you can search by a date.
 + The menu could have icons on it as a visual reminder.
 + There could be a dashboard button like the settings button on the pages as a shortcut.
