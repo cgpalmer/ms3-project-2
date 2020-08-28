@@ -31,7 +31,7 @@ ___
 + <a href="#responsiveDesign">Responsive design</a>
 + <a href="#deployment">Deployment</a>
    - <a href="#deploymentLive">Deployment Live</a>
-   - <a href="#deploymentLive">Deployment Local</a>
+   - <a href="#deploymentLocal">Deployment Local</a>
 + <a href="#credit">Credit</a>
    - <a href="#tutorials">Tutorials</a>
    - <a href="#media">Media</a>
