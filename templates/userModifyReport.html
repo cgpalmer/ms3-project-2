@@ -31,8 +31,8 @@
             <input type="text" name="date" id="date" value="{{report.date}}" class="datepicker" placeholder="Date" />
         </div>
         <div>
-            <select  id="update_report_to_authorities" name="report_to_authorities" required>
-                <option disabled selected value="">Reported to authorities?</option>
+            <select  id="update_report_to_authorities" name="report_to_authorities" >
+                <option selected value="{{report.report_to_authorities}}">{{report.report_to_authorities}}</option>
 
                 <option value="Yes">Yes</option>
                 <option value="No">No</option>
