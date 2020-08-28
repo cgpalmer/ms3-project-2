@@ -341,7 +341,7 @@ As a returning user, I want to be able to log in easily.                        
 As a returning user, I want to search through my own reports.                                                 | I expect to be able to search through my own reports. | I can intuitively search through my own reports in the dashboard over. The collapsible is already open to draw my attention. I filled out the form and I receive the results in the same style as searching the whole database.
 As a returning user, I want to be able to add a report and it go into my collection.                          | I expect to add a report and then find it in my results| I clicked the link to add a report in the dashboard and it took me to the same add report link as a new user. Once I had added the report, I could then find it by searching ym reports in the dashboard.
 As a returning user, I want to be able to modify one of my reports.                                          | I expect to be able to pick a report and update any of the elements | I could edit any of the reports after doing a search in the dashboard. I can then update any of the elements and, if untouched, the rest stay the same.
-As a returning user, I want to be able to delete one of my reports.                                          | I expect to pick a report, click delete and then confirm my delete | I can select any of my reports, click delete, view the report and confirm delete. I am then taken back to the dashboard and receive feedback that my report has been sucessfully deleted.
+As a returning user, I want to be able to delete one of my reports.                                          | I expect to pick a report, click delete and then confirm my delete | I can select any of my reports, click delete, view the report and confirm delete. I am then taken back to the dashboard and receive feedback that my report has been successfully deleted.
 As a returning user, I want to be able to change my preferred name.                                          | I expect to be able to changed my preferred name and receive feedback| I can change my preferred name in the settings page, which I can access intuitively from the dashboard. I am informed of my current preferred name before I change the name and then receive feedback once I have changed it to let me know I was successful.
 As a returning user, I want to be able to change my email.                                                   | I expect to be able to change the email address associate with my account | Like the password, I can change my email in the settings. When I change the email address, I get feedback to say I was successful. Also, all of my reports have been swapped over to my new email.
 As a returning user, I want to be able to change my password.                                                | I expect to be able to change my password securely | I can change my password int he settings page. If I input my old password correctly, I can change my password. I received feedback to let me know I was successful.
@@ -503,12 +503,13 @@ Heroku actually have excellent documentation on this and the full documentation 
 
 Then, head over to the ‘settings’ tab and click on the ‘reveal config vars’ button. 
 Configure the following:
+Key: value
 
---------- | ---------------
-Key | Value
-IP | 0.0.0.0
-PORT | 8080
-MONGO_URI | "link to your MongoDB"
+IP: 0.0.0.0 
+
+PORT: 8080 
+
+MONGO_URI: "link to your MongoDB" 
 
 You can find your MongoDB link by going into your MongoDB Atlas account and clicking the ‘connect’ button. From there you have the option to choose to connect to your application and can select the correct language and version. 
 
