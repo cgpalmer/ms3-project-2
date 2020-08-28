@@ -278,7 +278,7 @@ ___
 ## Defensive Features
 
 
-+ If you use the back button after logging in, then you can trya nd log back in but it will take you to the dashboard with feedback telling you that you are currently logged in. After that the login link will hide.
++ If you use the back button after logging in, then you can try and log back in but it will take you to the dashboard with feedback telling you that you are currently logged in. After that the login link will hide.
 + I wanted to make sure that the users inputted all the information necessary for a successful search. 
   So I have used JS to disable the buttons until a criteria has been met. 
 + If you try to access any of the web pages that are reserved for account holders, it will redirect you to the login
@@ -702,6 +702,7 @@ out of the experience.
 <span id="improvements"></span>
 ### Improvements
 
++ There could be a few instructions on where to find what - especially things like searching your own reports in the dashboard. However, the dashboard is hidden and you are taken straight there when you log in and the manage reports is open ready. 
 + I tried to move my secret_key to the env.py but for some reason it didn't work. I'd need to hide it to make it more secure in the future.
 + I would like to refactor the code that chooses whether you can search by a date.
 + The menu could have icons on it as a visual reminder.
