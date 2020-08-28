@@ -504,6 +504,7 @@ Heroku actually have excellent documentation on this and the full documentation 
 Then, head over to the ‘settings’ tab and click on the ‘reveal config vars’ button. 
 Configure the following:
 
+--------- | ---------------
 Key | Value
 IP | 0.0.0.0
 PORT | 8080
