@@ -461,6 +461,88 @@ ___
 <span id="deployment"></span>
 ## Deployment
 
+To run the app on Heroku. 
+
+Create a Heroku account.
+Click to start a new app.
+Pick your location based on the closest free version (or paid version) to your actual location. For this project it was Europe.
+Choose an appropriate name for the app and click to create.
+
+Once your app has been created, then move to the ‘deploy’ tab. You can connect to GitHub through one of the tabs. 
+I, however, have used the CLI.
+You can link to an existing repository by using the following command in your IDE:
+$ heroku git:remote -a <enter-your-heroku-app-name>
+Heroku actually have excellent documentation on this and the full documentation can be found here under the ‘deploy’ tab in your Heroku account. There are several ways to connect your project to Heroku. 
+
+Then, head over to the ‘settings’ tab and click on the ‘reveal config vars’ button. 
+Configure the following:
+Key | Value
+IP | 0.0.0.0
+PORT | 8080
+MONGO_URI | <link to your MongoDB>
+
+You can find your MongoDB link by going into MongoDB Atlas and clicking the ‘connect’ button. From there you have the option to choose to connect to your application and can select the correct language and version. 
+
+With the Heroku settings sorted, you can head back to your IDE.
+There a few things you now need to set up:
+1. A ‘procfile’ which will tell Heroku what kind of application it is and how it should be run.
+2. A ‘requirements.txt’ which will tell Heroku which dependencies it needs to install in order for the app to run. 
+The command for ‘procfile’ is: echo web: python run.py > Procfile
+The command for requirements is:  pip3 freeze --local > requirements.txt
+Please note that you need to re-run the requirements command if you add any dependencies mid-project. Otherwise, Heroku will not deploy the app correctly. 
+
+With those set up, you can now push your project to Heroku directly from your IDE.
+$ heroku login -i
+Enter your username and password.
+Push your commits to Heroku using this command:
+$ git push -u Heroku master
+
+
+### To run the app locally
+
+To run this project locally, please ensure you have an IDE installed on your computer. Popular ones are gitpod, Visual Studio or PyCharm (for python projects specifically).
+
+Regardless of which IDE you choose, you will also need the following installed. 
++	This project uses MongoDB as a database, and therefore you will need either a MongoDB Atlas account or have MongoDB running locally on your machine.
+    +  	To set up MongoDB Atlas please see the documentation here.
++	PIP – to install packages such as pyMongo 
++	Python 3 – the project uses Python3 for the backend language – specially Python 3.8
++	Git – for easy version control
+
+The next step is to access your github repository.
+Option 1 is to download a zip file. 
+1. On the GitHub project page, there is a ‘code’ tab which will dropdown to allow you to download a zip file.
+2. Once downloaded, extract the files to a desired folder on the desktop.
+
+Option 2 is to clone the repository.
+1. Under the same code tab, click to copy the url for your repository.
+2. Open Git Bash on your local computer and ensure you are in the right directory. Then run the following command:
+git clone https://github.com/cgpalmer/ms3-project-2.git
+
+It is recommended to use a virtual environment for the Python interpreter. Python's own built in environment can utilised by this code:
+python -m .venv venv
+
+Please note: Different IDE and operating systems, your python command may be slightly different.
+Once you have your virtual environment, you can activate it with:
+.venv\Scripts\activate 
+I have attached a link to the documentation on setting up a virtual environment, here, in case the commands are different. 
+Next, you will need to download all of your requirements for the project. You can do this manually or you can run this code: 
+pip -r requirements.txt.
+
+
+All that is left to set up now is your SECRET_KEY and a MONGO_URI. You can store these in a file:- .flaskenv. 
+You must ensure your database name is the same as the one in MongoDB so it connects properly. For this project it is “projectDB”.
+
+There are three collections to interact with: report, categories, user_credentials. 
+Now, you are ready to run the app in browser.
+The command is: python3 app.py
+This will open a port (which may be different depending on your IDE) and gives you the open to see your app.
+
+
+
+
+
+
 <span id="deploymentLive"></span>
 Deployment – Live Website  
 
