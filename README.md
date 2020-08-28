@@ -494,9 +494,9 @@ Choose an appropriate name for the app and click to create.
 Once your app has been created, then move to the ‘deploy’ tab. You can connect to GitHub through one of the tabs. 
 I, however, have used the CLI.
 You can link to an existing repository by using the following command in your IDE:
-'''
+```
 $ heroku git:remote -a "enter-your-heroku-app-name"
-'''
+```
 Heroku actually have excellent documentation on this and the full documentation can be found here under the ‘deploy’ tab in your Heroku account. There are several ways to connect your project to Heroku. 
 
 Then, head over to the ‘settings’ tab and click on the ‘reveal config vars’ button. 
@@ -513,24 +513,24 @@ There a few things you now need to set up:
 1. A ‘procfile’ which will tell Heroku what kind of application it is and how it should be run.
 2. A ‘requirements.txt’ which will tell Heroku which dependencies it needs to install in order for the app to run. 
 The command for ‘procfile’ is: 
-'''
+```
 echo web: python run.py > Procfile
-'''
+```
 The command for requirements is:  
-'''
+```
 pip3 freeze --local > requirements.txt
-'''
+```
 Please note that you need to re-run the requirements command if you add any dependencies mid-project. Otherwise, Heroku will not deploy the app correctly. 
 
 With those set up, you can now push your project to Heroku directly from your IDE.
-'''
+```
 $ heroku login -i
-'''
+```
 Enter your username and password.
 Push your commits to Heroku using this command:
-'''
+```
 $ git push -u Heroku master
-'''
+```
 
 
 <span id="deploymentLocal"></span>
@@ -556,28 +556,28 @@ Option 2 is to clone the repository.
 1. Under the same code tab, click to copy the url for your repository.
 2. Open Git Bash on your local computer and ensure you are in the right directory. Then run the following command:
 
-'''
+```
 git clone https://github.com/cgpalmer/ms3-project-2.git
-'''
+```
 
 It is recommended to use a virtual environment for the Python interpreter. Python's own built in environment can utilised by this code:
-'''
+```
 python -m .venv venv
-'''
+```
 
 Please note: Different IDE and operating systems, your python command may be slightly different.
 Once you have your virtual environment, you can activate it with:
-'''
+```
 .venv\Scripts\activate 
-'''
+```
 
 I have attached a link to the documentation on setting up a virtual environment, in case the commands are different. 
 [Python interpreter](https://docs.python.org/3/library/venv.html)
 
 Next, you will need to download all of your requirements for the project. You can do this manually or you can run this code: 
-'''
+```
 pip -r requirements.txt.
-'''
+```
 
 All that is left to set up now is your SECRET_KEY and a MONGO_URI. You can store these in a file:- .flaskenv. 
 You must ensure your database name is the same as the one in MongoDB so it connects properly. For this project it is “projectDB”.
@@ -585,9 +585,9 @@ You must ensure your database name is the same as the one in MongoDB so it conne
 There are three collections to interact with: report, categories, user_credentials. 
 Now, you are ready to run the app in browser.
 The command is: 
-'''
+```
 python3 app.py
-'''
+```
 
 This will open a port (which may be different depending on your IDE) and gives you the open to see your app.
 
