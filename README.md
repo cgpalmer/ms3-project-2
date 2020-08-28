@@ -24,6 +24,7 @@ ___
 + <a href="#features">Features</a>
    - <a href="#existingFeatures">Existing Features</a>
    - <a href="#featuresLeftToImplement">Features left To Implement</a>
++ <a href="#dataIntegration">Data Integration</a>
 + <a href="#defensiveFeatures">Defensive Features</a>
 + <a href="#technologiesUsed">Technologies Used</a>
 + <a href="#testing">Testing</a>
@@ -251,8 +252,27 @@ ___
 - People can filter incidents just by a date frame. 
 - Export data as a CSV to be used on excel.
 - Councils/ other professional bodies will be able to upload reports of discrimination via their own CSV.
+___
+<span id="dataIntegration"></span>
+## Data Integration
 
+I chose to use MongoDB for my project as I anticipate the website getting a huge amount of reports. I also wanted the user
+to be able to choose what data they input for the report. I thought MongoDB would offer more flexibility with regards
+to my website. 
 
+In MongoDB, my collections are report, user_credentials and categories. They store a mixture of strings, binary and floats.
+The floats were for storing a time-stamp. I used binary by default as I hashed all of my passwords. 
+
+Use of MongoDB
+
++ I used the categories section to run a loop and save cumbersome html. 
++ I have stored the location values as lowercase to avoid any repeat values in the selects because of capitlisation. The information is
+  then capitalised in Jinja when printed to the html. The rest of the values are taken from pre-selected value so is not a concern.
++ User credentials stores the details of each user with hash passwords, email addresses and salts. They can then be retrieved to modify
+  or deleted. 
++ The email address used to log in is used to query the database when users are modifying their reports. 
++ The email address is inputted to the report if a user is logged in, otherwise it is inputted as 'anonymous'.
+  
 ___
 <span id="defensiveFeatures"></span>
 ## Defensive Features
